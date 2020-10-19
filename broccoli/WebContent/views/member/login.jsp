@@ -3,20 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<title>브로콜리 회원 로그인</title>
+<!-- 김근희 작성 : 사용자 메뉴바 앉히면 제거하기 -->
 <meta charset="UTF-8">
-<title>브로콜리 로그인페이지</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
       .container{
           font-family: 'Nanum Gothic', serif;
           font-size: 30px;
           font-weight: 700;
           width: 360px;
+          /* height: 232px; */
           margin-top: 100px;
       }
       .form-control, button{
@@ -27,9 +30,9 @@
       .form-group, span{font-size: 12px;}
       .login-search{margin-bottom: 20px;}
       span{color: black;text-decoration: none;}
-      
-  </style>
+</style>
 </head>
+
 <body>
 <div class="container">
   <p align="center">회원 로그인</p>
@@ -54,6 +57,5 @@
   </form>
   <div><button class="btn btn-dark">회원가입</button></div>
 </div>
-
 </body>
 </html>
