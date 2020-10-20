@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>브로콜리 회원 로그인</title>
-<!-- 김근희 작성 : 사용자 메뉴바 앉히면 제거하기 -->
+<title>브로콜리 관리자 로그인</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -14,28 +12,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
-      .container{
-          font-family: 'Nanum Gothic', serif;
-          font-size: 30px;
-          font-weight: 700;
-          width: 360px;
-          /* height: 232px; */
-          margin-top: 100px;
-      }
-      .form-control, button{
-          width: 100%;
-          height: 54px;
-          margin-bottom: 10px;
-      }
-      .form-group, span{font-size: 12px;}
-      .login-search{margin-bottom: 20px;}
-      span{color: black;text-decoration: none;}
+    .container{
+        font-family: 'Nanum Gothic', serif;
+        font-size: 30px;
+        font-weight: 700;
+        width: 360px;
+        margin-top: 100px;
+    }
+    .form-control, button{
+        width: 100%;
+        height: 54px;
+        margin-bottom: 10px;
+    }
+    .form-group{font-size: 12px;}
+    .login-search{margin-bottom: 20px;}
+    
 </style>
 </head>
-
 <body>
 <div class="container">
-  <p align="center">회원 로그인</p>
+  <p align="center">관리자 로그인</p>
   <form action="/login.me" class="was-validated" method="post">
     <div class="form-group">
       <input type="text" class="form-control" id="userName" placeholder="아이디를 입력해주세요" name="userName" required>
@@ -48,14 +44,8 @@
         <input class="form-check-input" type="checkbox" name="remember" value="remember-me"> 아이디 저장
       </label>
     </div>
-    <div class="login-search">
-        <a href="/broccoli/views/member/findId.jsp"><span>아이디찾기</span> </a>
-        <span> | </span>
-        <a href="/broccoli/views/member/findPwd.jsp"><span>비밀번호찾기</span> </a>
-    </div>
     <button type="submit" class="btn btn-success">로그인</button>
   </form>
-  <div><button class="btn btn-dark">회원가입</button></div>
 </div>
 </body>
 </html>

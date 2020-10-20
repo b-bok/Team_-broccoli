@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>브로콜리 관리자 대쉬보드 메뉴바</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 대쉬보드에서 쓸 공통 css -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,21 +31,15 @@
     font-family: sansation;
     font-weight: 400;
   }
-  h2{
+  h2, h3{
     font-family: 'Single Day';
     color: white;
   }
 
-  hr.new1 {
-    border: 3px dashed white;
-    border-top: 1px;
-  } 
-
-
   /* 탑바 */
   .topnav {
     overflow: hidden;
-    background-color:#333;
+    background-color:gray;
     }
 
     .topnav a {
@@ -59,7 +53,7 @@
 
     .topnav a:hover {
     background-color: #ffffff;
-    color:#4CAF50;
+    color:#08a045;
     }
 
     .topnav a.active {
@@ -79,7 +73,7 @@
     position: fixed;
     z-index: 1;
     left: 0;
-    background-color: #39403c; 
+    background-color: gray; 
     padding-top: 8px;
     padding-left: 8px;
   }
@@ -88,7 +82,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    background-color:#39403c;
+    background-color:gray;
     color: #ffffff;
     display: block;
     border: none;
@@ -101,18 +95,18 @@
 
   /* On mouse-over */
   .sidenav a:hover, .dropdown-btn:hover {
-    color: #4CAF50;
+    color: lightgray;
   }
 
   .active {
     background-color:white;
-    color: #4CAF50;
+    color: #08a045;
   }
 
   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
   .dropdown-container {
     display: none;
-    background-color:#39403c;
+    background-color:gray;
     padding-left: 8px;
   }
   .dropdown-container a{
@@ -156,10 +150,8 @@
   <!-- 사이드바 -->
   <div class="sidenav">
     <div class="container-fluid">
-      <a href="#"> <h2>브로콜리대쉬보드</h2></a>
+      <a href="#"> <h2>브로콜리대쉬보드</h2></a><br>
     </div>
-    <hr class="new1"> <br>
-
     <button class="dropdown-btn"><i class="fa fa-fw fa-user"></i>&nbsp;회원관리 
       <i class="fa fa-caret-down"></i>
     </button>
