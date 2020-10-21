@@ -110,6 +110,7 @@
                 3) 구매후기 취지에 어긋난 내용
                 4) 기타 : (세부사항 영역있음)
               -->
+              <!-- 체크박스 선택하고 블랙컨슈머 해지 버튼 만들기 작업해야함 -->
 
             <tr role="row" class="odd">
                 <td><input type="checkbox" name="chk"></td>
