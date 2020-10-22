@@ -15,8 +15,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 <!-- 엔딩 :  대쉬보드에서 쓸 공통 css --> 
 
-<!-- 리뷰/레시피/신고조회 페이지에 넣을 css -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
     .container{padding-bottom: 100px;}
@@ -153,7 +151,7 @@
   </style>
 </head>
 <body>
-    <div class="container" style="overflow-x:auto;">
+    <div class="container pt-3">
         <h2>레시피 상세조회</h2><br><br>
         <table class="table table-bordered">
           <tbody>

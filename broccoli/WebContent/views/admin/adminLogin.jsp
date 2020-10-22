@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.member.model.vo.Member" %>
+    
+<%
+	Member loginMember = (Member)session.getAttribute("loginMember");
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +38,12 @@
 <body>
 <div class="container">
   <p align="center">관리자 로그인</p>
-  <form action="/login.me" class="was-validated" method="post">
+  <form action="<%= contextPath %>/login.me" class="was-validated" method="post">
     <div class="form-group">
-      <input type="text" class="form-control" id="userName" placeholder="아이디를 입력해주세요" name="userName" required>
+      <input type="text" class="form-control" id="memId" placeholder="아이디를 입력해주세요" name="memId" required>
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" id="userPwd" placeholder="비밀번호를 입력해주세요" name="userPwd" required>
+      <input type="password" class="form-control" id="memPwd" placeholder="비밀번호를 입력해주세요" name="memPwd" required>
     </div>
     <div class="form-group form-check">
       <label class="form-check-label">
