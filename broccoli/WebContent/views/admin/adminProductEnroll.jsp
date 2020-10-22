@@ -24,7 +24,10 @@
   </style>
 </head>
 <body>
-<!-- 상품등록하기 화면 -->
+
+	<!--  대쉬보드 추가 예정 -->
+
+	<!-- 상품등록하기 화면 -->
   <div class="outer">
     <form action="" id="enrollPForm" method="POST">
       <br>
