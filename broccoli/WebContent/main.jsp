@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>브로콜리</title>
 <style>
  	div{box-sizing: border-box; font-size: 12px; border: 0px solid red;}
     .wrap{width: 100%; height: 1000px;}
