@@ -13,7 +13,6 @@
 
   <style>
 
-    
     .menu {
         background: lightgray;
         display: table-cell; 
@@ -43,7 +42,6 @@
 </head>
 <body>
 
-    <br>
 
     <div class="navwrap" align="center">
       
