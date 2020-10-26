@@ -48,7 +48,7 @@ public class DashboardController extends HttpServlet {
 		}else {//관리자 로그인 성공 -> 대쉬보드 페이지로 이동 
 			
 			request.getSession().setAttribute("login", login);
-			response.sendRedirect(request.getContextPath() + "/views/admin/dashboard.jsp");
+			response.sendRedirect(request.getContextPath() + "/views/admin/dashboard.jsp"); //매핑은 차후에 진행예정 
 			//http://localhost:9999/broccoli/views/admin/dashboard.jsp
 		}
 		
