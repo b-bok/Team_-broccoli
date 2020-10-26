@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class LoginController
  */
 @WebServlet("/login.me")
-public class LoginController extends HttpServlet {
+public class LoginFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LoginFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 로그인페이지로 이동 
-		request.getRequestDispatcher("views/member/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/member/login.jsp").forward(request, response);
 
 	}
 

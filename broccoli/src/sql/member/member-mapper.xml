@@ -22,7 +22,7 @@
 		FROM MEMBERS
 		WHERE MEM_ID = ?
 		AND MEM_PWD = ?
-		AND STATUS = 'Y';
+		AND STATUS = 'Y'
 	</entry>
 
 </properties>

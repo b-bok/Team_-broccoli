@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	String contextPath = request.getContextPath();
+	String broccoli = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -145,7 +145,7 @@
   <div class="topnav">
     <div class="topnav-right">
       <a href="#search"><a href="#"><span class="fa fa-fw fa-user" style="font-size: 24px;"></span> 관리자정보</a>
-      <a href="<%=contextPath%>/logout.me"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
+      <a href="<%=broccoli%>/logout.me"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
     </div>
   </div>
   

@@ -4,7 +4,7 @@
     
 <%
 	Member loginMember = (Member)session.getAttribute("loginMember");
-	String contextPath = request.getContextPath();
+	String broccoli = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 <body>
 <div class="container">
   <p align="center">관리자 로그인</p>
-  <form action="<%= contextPath %>/login.me" class="was-validated" method="post">
+  <form action="<%= broccoli %>/adminLogin.me" class="was-validated" method="post">
     <div class="form-group">
       <input type="text" class="form-control" id="memId" placeholder="아이디를 입력해주세요" name="memId" required>
     </div>
