@@ -40,6 +40,8 @@
     #footer{height:20%; margin-top: 100px;}
     /* 이미지 */
     img{width:100%; height:100%}
+    #adminLogin a{color:blue;font-size:15px;font-weight:800;}
+
 </style>
 </head>
 <body>
@@ -159,7 +161,12 @@
                 </div>
             </div>
         
-        <div id="footer" align="center"><h1>footer</h1></div>
+        <div id="footer" align="center"><h1>footer</h1>
+        <!--  김근희 작성 : 관리자로그인은 푸터에 두기로... css 작업은 맨 마지막에 -->
+        	<div id="adminLogin" class="container">
+        		<a href= "<%= broccoli%>/login.admin">관리자 로그인</a>
+        	</div>
+        </div>	
         
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
