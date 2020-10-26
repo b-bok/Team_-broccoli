@@ -1,4 +1,4 @@
-package com.kh.admin.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminLogoutController
+ * Servlet implementation class LogoutController
  */
 @WebServlet("/logout.me")
-public class AdminLogoutController extends HttpServlet {
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLogoutController() {
+    public LogoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class AdminLogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath()+"/views/admin/adminLogin.jsp"); //인덱스 페이지 업데이트 이후 경로 재수정하기 
+		response.sendRedirect(request.getContextPath()); 
 	}
 
 	/**
