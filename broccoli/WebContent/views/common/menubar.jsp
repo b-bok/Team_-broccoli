@@ -115,12 +115,12 @@ a {
 				<%
 					if(login == null){
 				%>
-				<li><a href="<%= broccoli %>/registration.me">회원가입</a></li>
+				<li><a href="<%= broccoli%>/registration.me">회원가입</a></li>
 				<li><a href="<%= broccoli%>/login.me">로그인</a></li>
 				<% }else{ %>
 				
 				<!-- 로그인 후  -->
-				<li><a href="<%= broccoli%>/login.me">로그아웃</a></li>
+				<li><a href="<%= broccoli%>/logout.me">로그아웃</a></li>
 				<li><a href="★">마이페이지</a></li>
 				<% } %>
 				
