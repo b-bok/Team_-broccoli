@@ -167,7 +167,7 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품등록/수정/삭제</a>
+      <a href="<%=broccoli%>/productEnroll.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품등록/수정/삭제</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품조회</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 재고관리</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품 문의관리</a>
