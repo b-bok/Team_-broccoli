@@ -38,7 +38,7 @@
           <tr>
             <td>* 상품번호 :</td> <!-- db로 자동부여하면 뺄 예정입니다. -->
             <td><input type="number" name="pNo" required></td>
-            <td></td>
+            <td>db로 자동부여하면 뺄 예정입니다.</td>
           </tr>
           <tr>
             <td>* 카테고리 : </td>
