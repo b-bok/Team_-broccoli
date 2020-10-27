@@ -3,52 +3,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>비밀번호 찾기</title>
-<!-- 김근희 작성 : 사용자 메뉴바 앉히면 제거하기 -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
-    .container{
-        font-family: 'Nanum Gothic', serif;
-        font-size: 30px;
-        font-weight: 700;
-        text-align: center;
-        width: 360px;
-        margin-top: 100px;
-    }
-    .form-control, button{
-        font-family: 'Nanum Gothic', serif;
-        width: 100%;
-        height: 54px;
-        font-size: 14px;
-    }
-    p{
-      padding: 10px;
-    }
+.container {
+	padding: 16px;
+	margin: auto;
+	margin-top: 100px;
+	width: 480px;
+}
+
+.form-group input[type=text], .form-group input[type=password], .form-group input[type=email] {
+	width: 98%;
+	height:100%;
+	padding: 15px;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+}
+
+.form-group input[type=text]:focus, .form-group input[type=password]:focus, .form-group input[type=email]:focus
+	{
+	background-color: #dddddd;
+	outline: none;
+}
+
+.btn-dark, .btn-success {
+	color: white;
+    height: 54px;
+    margin-bottom: 10px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+}
+
+.form-group, .login-search {
+	font-size: 12px;
+	margin-bottom: 20px;
+}
 </style>
 </head>
 <body>
 <%@ include file="../common/menubar.jsp" %>
 <div class="container">
-  <p>비밀번호 찾기</p>
-  <form action="/findPwd.me" class="was-validated" method="post">
-    <div class="form-group">
-      <input type="text" class="form-control" id="userName" placeholder="고객님의 이름을 입력해주세요" name="userName" required>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="userId" placeholder="아이디를 입력해주세요" name="userPwd" required>
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" id="email" placeholder="가입시 등록한 이메일을 입력해주세요" name="email" required>
-    </div>
-    <button type="submit" class="btn btn-success">찾기</button>
-  </form>
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+		  <h2 align="center">비밀번호 찾기</h2><br>
+		  <form action="/findPwd.me" class="was-validated" method="post">
+		    <div class="form-group">
+		      <input type="text" class="form-control" id="userName" placeholder="고객님의 이름을 입력해주세요" name="userName" required>
+		    </div>
+		    <div class="form-group">
+		      <input type="text" class="form-control" id="userId" placeholder="아이디를 입력해주세요" name="userPwd" required>
+		    </div>
+		    <div class="form-group">
+		        <input type="text" class="form-control" id="email" placeholder="가입시 등록한 이메일을 입력해주세요" name="email" required>
+		    </div>
+		    <button type="submit" class="btn btn-success">찾기</button>
+		  </form>
+		  </div>
+  		<div class="col-sm-4"></div>
+	</div>
 </div>
 </body>
 </html>
