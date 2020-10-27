@@ -151,7 +151,8 @@
   </style>
 </head>
 <body>
-    <div class="container pt-3">
+<%@ include file="adminNav.jsp" %>
+    <div class="container pt-3" style="margin-left:300px;">
         <h2>레시피 상세조회</h2><br><br>
         <table class="table table-bordered">
           <tbody>

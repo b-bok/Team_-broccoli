@@ -162,7 +162,7 @@
             </div>
         
         <div id="footer" align="center"><h1>footer</h1>
-        <!--  김근희 작성 : 관리자로그인은 푸터에 두기로... css 작업은 맨 마지막에 -->
+        <!--  김근희 작성 : 관리자로그인은 푸터에 두기로... CSS 작업하실 때 삭제하지 말아주세요!! -->
         	<div id="adminLogin" class="container">
         		<a href= "<%= broccoli%>/login.admin">관리자 로그인</a>
         	</div>

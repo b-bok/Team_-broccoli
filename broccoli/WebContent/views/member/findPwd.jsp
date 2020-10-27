@@ -34,6 +34,7 @@
 </style>
 </head>
 <body>
+<%@ include file="../common/menubar.jsp" %>
 <div class="container">
   <p>비밀번호 찾기</p>
   <form action="/findPwd.me" class="was-validated" method="post">

@@ -2,7 +2,6 @@ package com.kh.member.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +12,16 @@ import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class DashboardController
+ * Servlet implementation class LoginInsertController
  */
-@WebServlet("/adminLogin.me")
-public class DashboardController extends HttpServlet {
+@WebServlet("/memLogin.me")
+public class LoginInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DashboardController() {
+    public LoginInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,24 +34,18 @@ public class DashboardController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String memId = request.getParameter("memId");
-		String memPwd = request.getParameter("memPwd"); 
+		String memPwd = request.getParameter("memPwd");
 		
-		Member login = (Member) new MemberService().loginMember(memId, memPwd); 
+		Member login = new MemberService().loginMember(memId, memPwd);
 		
-		if(login == null) {// 관리자 로그이 실패 -> 에러메세지 
-			
-			request.setAttribute("errorMsg", "접속에 실패했습니다. 다시 시도해주세요!" );
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		
-		}else {//관리자 로그인 성공 -> 대쉬보드 페이지로 이동 
-			
+		if(login == null) {
+			request.setAttribute("errorMsg", "로그인에 실패했습니다! 5초후 로그인 페이지로 이동합니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}else {
 			request.getSession().setAttribute("login", login);
-			response.sendRedirect(request.getContextPath() + "/views/admin/dashboard.jsp"); 
-			//http://localhost:9999/broccoli/views/admin/dashboard.jsp
+			response.sendRedirect(request.getContextPath());
 		}
 		
-
 	}
 
 	/**

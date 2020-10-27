@@ -34,6 +34,7 @@
 </style>
 </head>
 <body>
+<%@ include file="../common/menubar.jsp" %>
 <div class="container">
   <p>아이디 찾기</p>
   <form action="/findId.me" class="was-validated" method="post">

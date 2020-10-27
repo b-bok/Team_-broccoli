@@ -40,7 +40,8 @@ a {
 </style>
 </head>
 <body>
-	<div class="container pt-3">
+<%@ include file="adminNav.jsp" %>
+	<div class="container pt-3" style="margin-left:300px;">
 		<!-- 부트스트랩 테이블 검색어 input  -->
 		<div class="row">
 			<div class="col">

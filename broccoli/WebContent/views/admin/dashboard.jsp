@@ -71,12 +71,10 @@
 
 .bg-c-3 {
     background: #3da35d;
-    color:white;
 }
 
 .bg-c-4 {
     background: #3e8914;
-    color:white;
 }
 
 .bg-c-5 {

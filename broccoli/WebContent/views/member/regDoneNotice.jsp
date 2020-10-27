@@ -27,6 +27,7 @@
 </style>
 </head>
 <body>
+<%@ include file="../common/menubar.jsp" %>
     <div class=container><img src="../resources/image/pngkey.com-broccoli-png-1490408.png" width="300px" alt="logo"></div>
     <div class=container>회원가입이 완료되었습니다. <br>회원인증을 위해 등록한 이메일을 확인부탁드리겠습니다..</div>
 </body>

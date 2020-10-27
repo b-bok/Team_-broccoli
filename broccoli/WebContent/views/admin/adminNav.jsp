@@ -34,7 +34,7 @@
     font-family: sansation;
     font-weight: 400;
   }
-  h2, h3{
+  .sidenav h2, .sidenav h3{
     font-family: 'Single Day';
     color: white;
   }
@@ -159,8 +159,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 회원리스트</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 블랙컨슈머리스트</a>
+      <a href="<%=broccoli%>/selectMember.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 회원리스트</a>
+      <a href="<%=broccoli%>/selectBlackCon.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 블랙컨슈머리스트</a>
     </div>
     
     <button class="dropdown-btn"><i class="fa fa-product-hunt"></i>&nbsp; 상품관리 
@@ -197,15 +197,11 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 리뷰 전체조회</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 리뷰 상세조회</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 레시피 전체조회</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 레시피 상세조회</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 신고 전체조회</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 신고 상세조회</a>
+      <a href="<%=broccoli%>/selectReview.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 리뷰 전체조회</a>
+      <a href="<%=broccoli%>/selectRecipe.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 레시피 전체조회</a>
+      <a href="<%=broccoli%>/selectReport.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 신고 전체조회</a>
     </div>
-    
-        
+          
     <button class="dropdown-btn"><i class="fa fa-feed"></i> &nbsp; CS관리 
       <i class="fa fa-caret-down"></i>
     </button>
