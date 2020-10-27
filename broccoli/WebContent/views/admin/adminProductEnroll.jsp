@@ -25,10 +25,11 @@
 </head>
 <body>
 
-	<!--  대쉬보드 추가 예정 -->
-
+	<!--  대쉬보드 추가 -->
+	<%@ include file="adminNav.jsp" %>
+	
 	<!-- 상품등록하기 화면 -->
-  <div class="outer">
+  <div class="outer" style="margin-left:300px;">
     <form action="" id="enrollPForm" method="POST">
       <br>
       <h2 align="center">상품 등록하기</h2>
