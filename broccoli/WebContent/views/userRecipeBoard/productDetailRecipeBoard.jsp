@@ -127,7 +127,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>2</td>
@@ -137,7 +137,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>3</td>
@@ -147,7 +147,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>4</td>
@@ -157,7 +157,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>5</td>
@@ -167,7 +167,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 
 					<tr>
@@ -178,7 +178,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 
 					<tr>
@@ -189,7 +189,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 
 					<tr>
@@ -200,7 +200,7 @@
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 				</tbody>
 
@@ -240,6 +240,7 @@
 
     </div>
 
+	<%@include file="../common/declarationModal.jsp" %>
 
 </body>
 </html>

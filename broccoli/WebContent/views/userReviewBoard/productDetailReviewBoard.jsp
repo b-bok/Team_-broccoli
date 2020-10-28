@@ -121,7 +121,7 @@ div {
 						<th>작성일</th>
 						<th>좋아요</th>
 						<th>조회</th>
-						<th>신고하기</th>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 				</thead>
 
@@ -136,7 +136,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>2</td>
@@ -146,7 +146,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>3</td>
@@ -156,7 +156,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>4</td>
@@ -166,7 +166,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 					<tr>
 						<td>5</td>
@@ -176,7 +176,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 
 					<tr>
@@ -187,7 +187,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 
 					<tr>
@@ -198,7 +198,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 
 					<tr>
@@ -209,7 +209,7 @@ div {
 						<td>2020-10-30</td>
 						<td><i class="fas fa-thumbs-up"></i></td>
 						<td>500</td>
-						<td><a href="">신고하기</a></td>
+						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
 				</tbody>
 
@@ -235,7 +235,8 @@ div {
 		</div>
 
 	</div>
-
+	
+	<%@include file="../common/declarationModal.jsp" %>
 
 </body>
 </html>
