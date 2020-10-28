@@ -175,6 +175,8 @@
 
 	
 	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
+	
+	
 
 </body>
 </html>

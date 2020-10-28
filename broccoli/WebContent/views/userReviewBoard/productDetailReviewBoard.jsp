@@ -59,7 +59,7 @@ div {
 	float: left;
 }
 
-#recipeSort {
+#reviewSort {
 	margin-top: 5px;
 }
 
