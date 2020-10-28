@@ -33,7 +33,7 @@
             float: left;
         }
 
-        #menubar{height: 15%;}
+
         #boardSorting{height: 5%;}
         #boardBrief{height: 10%;}
         #board{height: 60%;}
@@ -63,11 +63,9 @@
 	
 <div class="wrap">
 
-        <div id="menubar">
 
-             메뉴 네비게이터 자리입니다.
+		<%@ include file="../common/reviewMenubar.jsp"%>
 
-        </div>
 
         <div id="boardSorting" align="right">
 
@@ -104,84 +102,109 @@
 
             
 
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>도움이돼요</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>좋아요</th>
-                    <th>조회</th>
-                    <th>신고하기</th>
-                </tr>
-                </thead>
-    
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a href="">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a href="">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <i class="fas fa-star"></i>
-                    </td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a href="">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>
-                        <i class="fas fa-star"></i>
-                    </td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a href="">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a href="">신고하기</a></td>
-                </tr>
-                </tbody>
-    
-            </table>
+ 			<table class="table table-hover" id="reviewTable">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>고객만족도</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>좋아요</th>
+						<th>조회</th>
+						<th>신고하기</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+							class="fas fa-star"></i><i class="fas fa-star"></i><i
+							class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+
+					<tr>
+						<td>6</td>
+						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+
+					<tr>
+						<td>7</td>
+						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+
+					<tr>
+						<td>8</td>
+						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+						<td>제목입니다1</td>
+						<td>작성자아이디</td>
+						<td>2020-10-30</td>
+						<td><i class="fas fa-thumbs-up"></i></td>
+						<td>500</td>
+						<td><a href="">신고하기</a></td>
+					</tr>
+				</tbody>
+
+			</table>
             
 
         </div>
