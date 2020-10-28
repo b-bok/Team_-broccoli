@@ -87,15 +87,15 @@
                 <table border="1px" id="qnaTable">
                     <tr>
                         <th class="table-success" width="150">작성자</th>
-                        <td><input type="text" name="userName" style="width: 40%;"></td>
+                        <td><input type="text" name="userName" style="width: 40%;"  value="작성자" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">이메일</th>
-                        <td><input type="email" name="userEmail" style="width: 40%;"></td>
+                        <td><input type="email" name="userEmail" style="width: 40%;" value="이메일" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">핸드폰</th>
-                        <td><input type="phone" name="phone" style="width: 40%;"></td>
+                        <td><input type="phone" name="phone" style="width: 40%;" value="핸드폰번호" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">비밀글</th>
@@ -118,10 +118,10 @@
             
         </div>
 
-        <div id="qnaFotter" align="center">
-            <a href="">등록하기</a> 
-            &nbsp;&nbsp;&nbsp;
-            <a href="">돌아가기</a>
+        <div id="qnaFotter" align="center" style="margin-top: 10px;">
+        
+     		<button type="submit" >등록하기</button>
+            <button type="button" onclick="history.back();">뒤로가기</button>
         </div>
     </div>
 
