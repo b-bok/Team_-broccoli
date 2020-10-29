@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ProductEnrollFormController
+ * 상품 수정하기 페이지로
+ * Servlet implementation class ProductUpdateController
  */
-@WebServlet("/enrollProduct.admin")
-public class ProductEnrollFormController extends HttpServlet {
+@WebServlet("/updateProduct.admin")
+public class ProductUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductEnrollFormController() {
+    public ProductUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +28,7 @@ public class ProductEnrollFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/adminProductEnroll.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/adminUpdateProduct.jsp").forward(request, response);
 		
 	}
 

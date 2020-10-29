@@ -30,6 +30,15 @@
 	
 	<!-- 상품등록하기 화면 -->
   <div class="outer" style="margin-left:300px;">
+  
+  	<select onchange="location.href=this.value">
+      
+      <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
+      <option value="<%=broccoli%>/updateProduct.admin">상품수정</option>
+      <option value="주소입력">상품삭제</option>
+    
+    </select>
+    
     <form action="" id="enrollPForm" method="POST">
       <br>
       <h2 align="center">상품 등록하기</h2>
