@@ -7,19 +7,18 @@
 <title>Insert title here</title>
 
    <style>
-        div {
-            border: 1px solid red;
-            box-sizing: border-box;
-        }
+        div {box-sizing: border-box;}
 
         .wrap {
+        	border: 1px solid red;
             width: 1000px;
             height: 800px;
             margin: auto;
+            margin-top:50px;
 
         }
 
-        .wrap>div{width: 100%;}
+        .wrap>div{width: 100%; border: 1px solid red;}
         #header {height: 10%;}
         #content {height: 80%;}
         #fotter {height: 10%;}
@@ -30,7 +29,7 @@
         }
 
         #header_1{height: 50%;}
-        #header_2{height: 50%;}
+        #header_2{height: 50%; margin-top: 10px;}
 
         #header>div>a {
             text-decoration: none;
@@ -77,6 +76,8 @@
 <body>
 	
 	<!-- 상품 전체 조회 페이지 입니다.  -->
+	
+	<%@ include file="../common/menubar.jsp" %>
  
     <div class="wrap">
         <div id="header">

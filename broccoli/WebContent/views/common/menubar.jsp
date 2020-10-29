@@ -143,11 +143,11 @@ a {
 				<!------------------------------------★★★★★신상품/베스트/이벤트/상품검색 jsp파일경로 넣어주세요 ★★★★★------------------------------------------->
 
 
-				<li><a href="★"><i class="fas fa-bars"></i>&nbsp;&nbsp;전체
+				<li><a href="<%= broccoli %>/allProduct.pb"><i class="fas fa-bars"></i>&nbsp;&nbsp;전체
 						카테고리</a></li>
 				<li><a href="★">신상품</a></li>
 				<li><a href="★">베스트</a></li>
-				<li><a href="★">이벤트</a></li>
+				<li><a href="<%= broccoli%>/eventProduct.pb">이벤트</a></li>
 				<li>
 					<form class="form-inline" action="★" method="GET">
 						<input name="search" class="form-control form-control-sm"

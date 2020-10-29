@@ -105,7 +105,7 @@
                 <div class="thumbgroup">
                     <ul class="thumbmenu">
                         <li>
-                            <a href="★">
+                            <a href="<%= broccoli%>/detail.pb">
                                 <div class="thumbnail">
                                     <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
                                 </div>
@@ -118,7 +118,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="★">
+                            <a href="<%= broccoli%>/detail.pb">
                                 <div class="thumbnail">
                                     <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
                                 </div>
@@ -131,7 +131,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="★">
+                            <a href="<%= broccoli%>/detail.pb">
                                 <div class="thumbnail">
                                     <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
                                 </div>
@@ -144,7 +144,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="★">
+                            <a href="<%= broccoli%>/detail.pb">
                                 <div class="thumbnail">
                                     <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
                                 </div>
