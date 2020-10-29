@@ -147,7 +147,7 @@ a {
 						카테고리</a></li>
 				<li><a href="<%= broccoli %>/newProduct.pb">신상품</a></li>
 				<li><a href="<%= broccoli %>/bestProduct.pb">베스트</a></li>
-				<li><a href="<%= broccoli%>/eventProduct.pb">이벤트</a></li>
+				<li><a href="<%= broccoli %>/eventProduct.pb">이벤트</a></li>
 				<li>
 					<form class="form-inline" action="★" method="GET">
 						<input name="search" class="form-control form-control-sm"
