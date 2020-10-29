@@ -59,7 +59,6 @@
 </head>
 <body>
 
-<%@ include file="../common/menubar.jsp" %>
 	
 	<!-- 상품상세페이지 레시피게시판입니다. -->
 	

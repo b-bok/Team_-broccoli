@@ -73,7 +73,7 @@ margin-top: 5px;
 
 </head>
 <body>
-<%@ include file="../common/menubar.jsp" %>	
+
 
     	<!-- 상품상세페이지 리뷰게시판 입니다. -->
 
