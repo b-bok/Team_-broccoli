@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<link rel="stylesheet"
+    <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -22,7 +21,7 @@
 
 <style>
 div {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	box-sizing: border-box;
 }
 
@@ -59,19 +58,14 @@ div {
 	float: left;
 }
 
-#reviewSort {
-	margin-top: 5px;
-}
+#reviewSort {margin-top: 5px;}
 
-#reviewForm, #pagingBar {
-	height: 50%;
-	margin-top: 5px;
-}
+#reviewForm, #pagingBar {height: 50%;}
+
 </style>
 
 </head>
 <body>
-
 	<!-- 상품상세페이지 리뷰게시판 입니다. -->
 
 	<div class="wrap">
@@ -121,7 +115,7 @@ div {
 						<th>작성일</th>
 						<th>좋아요</th>
 						<th>조회</th>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
+						<th>신고하기</th>
 					</tr>
 				</thead>
 
@@ -224,13 +218,15 @@ div {
 				<button>후기 작성</button>
 			</div>
 
-			<div id="pagingBar" align="center">
-
-				<a href="">&lt;</a> <a href="">1</a> <a href="">2</a> <a href="">3</a>
-				<a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">7</a>
-				<a href="">8</a> <a href="">9</a> <a href="">10</a> <a href="">&gt;</a>
-
-			</div>
+			<div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+            </div>
 
 		</div>
 
