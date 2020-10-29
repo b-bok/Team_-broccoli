@@ -9,16 +9,21 @@
    <style>
 
         div {
-            border: 1px solid red;
+          
             box-sizing: border-box;
         }
-
+		
+		
+		
         .wrap {
             width: 1000px;
             height: 800px;
-            margin: auto;          
+            margin: auto; 
+            margin-top : 50px;         
         }
-
+		
+		.wrap>div>* {border: 1px solid red;}
+		
         #content{
             width: 100%;
             height: 100%;
@@ -35,7 +40,7 @@
 
 </head>
 <body>
-<%@ include file="../common/menubar.jsp" %>
+
 	
 		<!-- 이벤트 페이지입니다. -->
 	
