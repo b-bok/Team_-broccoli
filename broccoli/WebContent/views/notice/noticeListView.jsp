@@ -16,31 +16,35 @@ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
 <script
 src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
+	div { box-sizing: border-box;}
 
-	div {border: 1px solid white; box-sizing: border-box;}
-	
 	.wrap {
 	width: 1000px;
 	height: 800px;
 	margin: auto;
+	margin-top: 50px;
 	}
-	
-	.wrap>div {width: 100%;float: left;}
-	
-	#noticeCategory {height: 5%; margin-top: 5px;}
-	
-	#fotter {height: 10%;}
-	
-	#fotter>div {width: 100%;float: left;}
-	
-	#titleEx pre{float: left; font-size: x-large;}
-	#titleEx p{
-	    float: left;
-	    margin-left: 30px;
-	    line-height: 250%;
-	}
-	#notice_SearchList, #notice_Keyword{margin-right: 10px;float:right;}
+.wrap>div {width: 80%;float:right;}
 
+#noticeCategory {height: 5%; margin-top: 5px;}
+
+#fotter {height: 10%;}
+
+#fotter>div {width: 100%;float: left;}
+
+#titleEx pre{float: left; font-size: x-large;}
+#titleEx p{
+    float: left;
+    margin-left: 30px;
+    line-height: 250%;
+}
+#notice_SearchList, #notice_Keyword{margin-right: 10px;float:right;}
+
+#btn-group{
+	float: left;
+	width:20%;
+	padding-right: 10px;
+}
 </style>
 </head>
 <body>
