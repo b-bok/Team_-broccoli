@@ -36,31 +36,40 @@
         }
 
         .eventThumbnail {width: 100%; height: 100%;}
+        .eventThumbnail>img {width: 100%; height: 100%;}
     </style>
 
 </head>
 <body>
 
-	
+	<%@include file="../common/menubar.jsp" %>
 		<!-- 이벤트 페이지입니다. -->
 	
 	  <div class="wrap">
         <div id="content">
 
             <div id="eventPage_1">
-                <div class="eventThumbnail">이벤트 썸네일</div>
+                <div class="eventThumbnail">
+				<img src="../resources/image/bgsample.PNG">
+				</div>
             </div>
 
             <div id="eventPage_2">
-                <div class="eventThumbnail">이벤트 썸네일</div>
+                <div class="eventThumbnail">
+				<img src="../resources/image/man_bench.jpg">
+				</div>
             </div>
 
             <div id="eventPage_3">
-                <div class="eventThumbnail">이벤트 썸네일</div>
+                <div class="eventThumbnail">
+				<img src="../resources/image/man_bench.jpg">
+				</div>
             </div>
 
             <div id="eventPage_4">
-                <div class="eventThumbnail">이벤트 썸네일</div>
+                <div class="eventThumbnail">
+				<img src="../resources/image/man_bench.jpg">
+				</div>
             </div>
 
         </div>    

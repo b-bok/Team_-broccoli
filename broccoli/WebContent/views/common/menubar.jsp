@@ -149,7 +149,7 @@ a {
 				<li><a href="<%= broccoli %>/bestProduct.pb">베스트</a></li>
 				<li><a href="<%= broccoli%>/eventProduct.pb">이벤트</a></li>
 				<li>
-					<form class="form-inline" action="★" method="GET">
+					<form class="form-inline" action="<%=broccoli %>/search.pb" method="GET">
 						<input name="search" class="form-control form-control-sm"
 							type="text" size="20px" placeholder="검색어를 입력하세요">
 						<button class="btn btn-secondary btn-sm" type="submit">

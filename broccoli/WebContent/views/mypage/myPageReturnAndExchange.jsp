@@ -76,6 +76,8 @@
         
 
         #content_2>div{width:100%; height:100%;}
+    
+        
         
        
        
@@ -85,20 +87,16 @@
 
         #topic{color:green;}
 
-        #status{
-            text-align:center;
-        }
+        
 
+        
+}
         
     </style>
 </head>
 <body>
-
 <%@ include file="../common/menubar.jsp"%>
-   
-   
-
-    <br clear="both">
+<br clear="both">
 
     <div class="wrap">
         <div id="navigator">
@@ -117,8 +115,8 @@
                     <br>
                     <h1 id = "topic">마이페이지</h1>
                     <br>
-                    <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회▶</a></div><br>
-                    <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회▶</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
                     <div class="menu"><a href="">배송지 등록</a></div><br>
@@ -133,14 +131,9 @@
             <div id="content_2">
                 <div id="content_2_1">
                     
-                    <br><br><h1>주문 조회/ 배송 조회</h1>
+                    <br><br><h1>반품/ 교환 조회</h1>
                     
                     <hr>
-
-                    <br><h2 id="status">주문하신 상품이 없습니다.</h2> 
-
-                    <br><hr>
-
 
                     
                 </div>

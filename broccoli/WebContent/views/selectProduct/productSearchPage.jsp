@@ -6,26 +6,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
- <style>
+    <style>
 
         div{
-            border: 1px solid red;
+            /* border: 1px solid red; */
             box-sizing: border-box;    
         }
 
         .wrap {
             width: 1000px;
-            height: 800px;
+            height: 1200px;
             margin: auto;
+            margin-top: 50px;
         }
 
         .wrap>div{width: 100%;}
 
-        #header{height: 15%;}
+        #header{height: 10%;}
         #searcbar{height: 15%; position: relative;}
         #searchSorting{height: 5%;}
         #content{height: 60%;}
-        #fotter{height: 5%;}
+        #fotter{height: 10%;}
 
         #searchbarForm{
 
@@ -47,35 +48,24 @@
         #searchbarForm input {width: 100%; height: 100%;}
 
 
-        #content_1, #content_2, #content_3 {width: 100%; float: left;}
+        .thumbnail {
+            border: 1px solid white;
+            width: 220px;
+            display:inline-block;
+            margin: 10px;
+        }
 
-        #content_1 {height: 34%;}
-        #content_2 {height: 33%;}
-        #content_3 {height: 33%;}
+        .thumbnail:hover {
+            cursor: pointer;
+            opacity: 0.3;
+        }
 
-        #content_1>div{height: 100%;float: left;}    
+        #pagingBar {
+            margin: auto;
+            /* border: 1px solid black; */
+            width: 250px;
 
-        #content_1_1 {width: 34%;}
-        #content_1_2 {width: 33%;}
-        #content_1_3 {width: 33%;}
-
-        #content_2>div{height: 100%;float: left;}    
-
-        #content_2_1 {width: 34%;}
-        #content_2_2 {width: 33%;}
-        #content_2_3 {width: 33%;}
-
-        #content_3>div{height: 100%;float: left;}    
-
-        #content_3_1 {width: 34%;}
-        #content_3_2 {width: 33%;}
-        #content_3_3 {width: 33%;}
-
-        .thumbnail {width: 100%; height: 70%; border: 1px solid blue;}
-        .productName {height: 10%; border: 1px solid blue;}
-        .productPrice {height: 10%; border: 1px solid blue;}
-        .productBrief {height: 10%; border: 1px solid blue;}
-
+        }
 
     </style>
 
@@ -84,26 +74,28 @@
 <%@ include file="../common/menubar.jsp" %>
 	<!-- 상품검색 페이지입니다.  -->
 	
-    <div class="wrap">
+   <div class="wrap">
 
-        <div id="header">상품검색</div>
+        <div id="header" align="center"><h1>상품검색</h1></div>
 
         <div id="searcbar">
-
-            <form action="" id="searchbarForm">
+            <hr>
+            <form action="<%=broccoli %>/search.pb" id="searchbarForm" method="get">
 
             <div id="search_text">
-                <input type="text" name="keyword">
+                <input type="text" class="form-control form-control-sm" name="keyword">
             </div>
             
             <div id="search_btn">
-                <input type="submit" value="검색"></input>
+                <button class="btn btn-secondary btn-sm" type="submit">
+                    <i class="fas fa-search" style="font-size: 25px;"></i>
+                </button>
             </div>
-
+            
             </form>    
-
+            
         </div>
-
+        <hr>
         <div id="searchSorting">
             총 68개의 상품이 검색되었습니다.
 
@@ -117,106 +109,99 @@
 
         </div>
         <div id="content">
-            <div id="content_1">
-                <div id="content_1_1">
-
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
-
-                </div>
-                <div id="content_1_2">
-
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
-
-                </div>
-                <div id="content_1_3">
-
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
-
-                </div>
+          
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
             </div>
-            <div id="content_2">
-                <div id="content_2_1">
 
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
 
-                </div>
-                <div id="content_2_2">
-
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
-                    
-                </div>
-                <div id="content_2_3">
-
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
-
-                </div>
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
             </div>
-            <div id="content_3">
-                <div id="content_3_1">
 
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
+            </div>
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
+            </div>
 
-                </div>
-                <div id="content_3_2">
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
+            </div>
 
-                    <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
+            </div>
 
-                </div>
-                <div id="content_3_3">
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
+            </div>
 
-             <div class="thumbnail">제품 썸네일</div>
-                    <div class="productName">제품명</div>
-                    <div class="productPrice">제품가격</div>
-                    <div class="productBrief">제품 간단 설명</div>
-
-                </div>
+            <div class="thumbnail" align="center">
+                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
+   
+                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
+                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
+                    <span style="color: green;">--> 14,310원</span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+              
             </div>
         </div>
-        <div id="fotter"> 
-            
+        <div id="fotter">
+            <br><br>
             <div id="pagingBar" align="center">
-
-                <a href="">&lt;</a>
-        
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a href="">4</a>
-                <a href="">5</a>
-                <a href="">6</a>
-                <a href="">7</a>
-                <a href="">8</a>
-                <a href="">9</a>
-                <a href="">10</a>
-        
-                <a href="">&gt;</a>
-        
-                </div>
-
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+            </div>
+            
         </div>
 
 
