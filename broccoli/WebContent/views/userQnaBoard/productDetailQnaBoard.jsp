@@ -97,7 +97,7 @@ float: left;
 
 		<div id="qnaBoardBrief">
 
-			PRODUCT Q&A
+			<h5 id="list5">PRODUCT Q&A</h5>
 
 			<ul>
 				<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로

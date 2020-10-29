@@ -153,7 +153,7 @@
 
         <div id="productDexp" align="center">
         
-            <h2 style="margin: 10;">상품 이름</h2>
+            <h2 style="margin: 10;" id="list1">상품 이름</h2>
         </div>
         <div id="productSexp">
             <p >
@@ -170,7 +170,7 @@
 
 
         <div class="productDetailImage" align="center">
-            <img src="../resources/image/flower2.PNG" width="60%" height="100%" name="productImage1" >
+            <img src="../resources/image/flower2.PNG" width="60%" height="100%" name="productImage1" id="list2" >
         </div>
 
 
