@@ -73,9 +73,6 @@
 
 </head>
 <body>
-	
-	<%@include file="../common/menubar.jsp" %>
-
     <div class="wrap">
 
         <div id="productCut">
@@ -167,12 +164,12 @@
 	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 	
 
-
+	<!--  
 	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
 	
 	
 	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
-
+	-->
 
 </body>
 </html>
