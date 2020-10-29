@@ -81,7 +81,7 @@
 
 </head>
 <body>
-
+<%@ include file="../common/menubar.jsp" %>
 	<!-- 상품검색 페이지입니다.  -->
 	
     <div class="wrap">

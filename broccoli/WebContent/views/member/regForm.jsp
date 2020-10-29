@@ -100,29 +100,63 @@ span {
 					<table id="basic" style="width:100%;">
 						<tr>
 							<td>
-								<label for="userId"><b>아이디<span>*</span></b></label> 
-								<input type="text" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" name="userId" id="userId" required > 
-									<!-- 마켓컬리안에 있는 소스(1) - 유효성검증하는 부분은 진도상황에 따라 준비  
-		                            <p class="txt_guide square" style="display: block;">
-		                            <span class="txt txt_case1">::before 6자 이상의 영문 혹은 영문과 숫자를 조합</span>
-		                            <span class="txt txt_case2">::before 아이디 중복확인</span>
-		                        	</p> 
-                        			-->
+								<label for="memId"><b>아이디<span>*</span></b></label> 
+								<input type="text" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" name="memId" id="memId" required > 
+								<div class="id regEx"></div>
                         	</td>
 							<td>
-								<button type="button" class="checkbtn">중복확인</button> <br>
+								<input type="button" class="checkbtn" id="checkbtn1" value="중복확인"></input>
+								<input type="hidden" name="idCheck" value="idUncheck"> <br>
+									<script>
+										//아이디중복확인 및 유효성검사 
+											$(function(){
+												
+												$("#checkbtn1").click(function(){
+													
+													var id = $("#memId").val(); 
+													if(id == ""){
+													 	alert("아이디를 입력해주세요");
+														return false;
+													 }
+													
+													//6자 이상의 영문 혹은 영문과 숫자를 조합
+													var regEx = /^[a-z\d]{6,}$/i;
+													var result = regEx.exec(id);
+							
+													if(result != null){
+														$(".id.regEx").html("");
+														window.open("idCheck.jsp?memId="+memId,"","width=500px,height=300px,top=300px,left=200px, resizable=no,scrollbars=no")
+													}else{
+														$(".id.regEx").html("6자 이상의 영문 혹은 영문과 숫자를 조합");
+														$(".id.regEx").css("color","red").css("font-size","10px");
+													}
+												});
+												
+											});
+								</script>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label for="userPwd"><b>비밀번호<span>*</span></b></label> 
-								<input type="password" placeholder="비밀번호를 입력해주세요" name="userPwd"	id="userPwd" required> 
-								<!-- 마켓컬리안에 있는 소스(2)
-		                        <p class="txt_guide square" style="display: block;">
-		                        <span class="txt txt_case1">10자 이상 입력</span>
-		                        <span class="txt txt_case2">영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</span>
-		                        <span class="txt txt_case3">동일한 숫자 3개 이상 연속 사용 불가</span>
-		                        </p> -->
+								<label for="memPwd"><b>비밀번호<span>*</span></b></label> 
+								<input type="password" placeholder="비밀번호를 입력해주세요" name="memPwd"	id="memPwd" required> 
+								<div class="pwd regEx"></div>
+								<script>
+									//비밀번호유효성확인
+									$(function(){
+										$("#memPwd").keyup(function(){
+											
+											var regEx = /^[a-z\d]{8,14}$/i;
+											var result = regEx.exec($(this).val());
+											if(result!=null){
+												$(".pwd.regEx").html("유효한 비밀번호입니다");
+											}else{
+												$(".pwd.regEx").html("영대소문자, 숫자, 8-15자리")
+												$(".pwd.regEx").css("color","red").css("font-size","10px");
+											}
+										});
+									});
+								</script>
                     		</td>
 							<td></td>
 						</tr>
@@ -130,31 +164,106 @@ span {
 							<td>
 								<label for="pwdRepeat"><b>비밀번호 확인<span>*</span></b></label>
 								<input type="password" placeholder="비밀번호를 한번 더 입력해 주세요" name="pwdRepeat" id="pwdRepeat" required>
-								 <!-- 마켓컬리안에 있는 소스(3)
-		                        <p class="txt_guide square" style="display: block;">
-		                        <span class="txt txt_case1">동일한 비밀번호를 입력해주세요.</span>
-		                        </p>-->
+								<div class="repwd regEx"></div>
+								<script>
+								//비밀번호 일치유무  
+								$(function(){
+									$("#pwdRepeat").keyup(function(){
+										if($("#memPwd").val()==$(this).val()){
+											$(".repwd.regEx").html("비밀번호가 일치합니다");
+											$(".repwd.regEx").css("color","green");
+										}else{
+											$(".repwd.regEx").html("비밀번호가 일치하지 않습니다");
+											$(".repwd.regEx").css("color","red").css("font-size","10px");
+										}
+									});
+								});
+								</script>
 			                </td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>
-								<label for="userName"><b>이름<span>*</span></b></label> 
-								<input type="text" placeholder="이름을 입력해 주세요" name="userName" id="userName" required></td>
+								<label for="memName"><b>이름<span>*</span></b></label> 
+								<input type="text" placeholder="이름을 입력해 주세요" name="memName" id="memName" required>
+								<div class="name regEx"></div>
+								<script>
+									//이름 유효성확인
+									$(function(){
+										$("#memName").keyup(function(){
+											var regEx = /[가-힣]{2,}/;
+											var result = regEx.exec($(this).val());
+											if(result!=null){
+												$(".name.regEx").html("");
+											}else{
+												$(".name.regEx").html("한글만 입력가능합니다");
+												$(".name.regEx").css("color","red").css("font-size","10px");
+											}
+										}); 
+									});
+								</script>
+							</td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>
 								<label for="email"><b>이메일<span>*</span></b></label> 
-								<input type="text" placeholder="예:broccoli@broccoli.com" name="email" id="email" required></td>
+								<input type="text" placeholder="예:broccoli@broccoli.com" name="email" id="email" required>
+								<div class="email regEx"></div>
+							</td>
 							<td>
-								<button type="button" class="checkbtn">중복확인</button> <br>
+								<button type="button" class="checkbtn" id="checkbtn2">중복확인</button> <br>
+								<script>
+									//이메일 중복 및 유효성 검사 
+									$(function(){
+										
+										$("#checkbtn2").click(function(){
+											
+											var email = $("#email").val();
+											if(email == ""){
+											 	alert("이메일 형식에 맞게 입력해주세요");
+												return;
+											 }
+											
+											var regEx = /^[a-z\d\_\.]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
+											var result = regEx.exec(email);
+					
+											if(result != null){
+												$(".email.regEx").html("");
+												// db 연결하고 else 경우의 수에 따라 html에 입력될 메시지 작성하기 
+												window.open("emailCheck.jsp?email="+email,"","width=500px,height=300px,top=300px,left=200px");
+											}else{
+												$(".email.regEx").html("다시 이메일을 입력해주세요");
+												$(".email.regEx").css("color","red").css("font-size","10px");
+											}
+										});
+									});
+								</script>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<label for="mobile"><b>휴대폰<span>*</span></b></label> 
-								<input type="text" placeholder="- 포함해 주세요" name="mobile" id="mobile" required></td>
+								<input type="text" placeholder="- 포함해 주세요" name="mobile" id="mobile" required>
+								<div class="mobile regEx"></div>
+								<script>
+									//휴대폰 유효성검사
+									$(function(){
+										$("#mobile").keyup(function(){
+											
+											var regEx = /^01([0|1|6|7|8|9]?)[-](\d{3,4})[-](\d{4})$/;
+											var result = regEx.exec($(this).val());
+			
+											if(result!=null){
+												$(".mobile.regEx").html("");
+											}else{
+												$(".mobile.regEx").html("올바르지 않은 형식입니다"); 
+												$(".mobile.regEx").css("color","red").css("font-size","10px");
+											}
+										});
+									});
+								</script>
+							</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -191,10 +300,12 @@ span {
 								type="checkbox" id="terms4" name="chk"> <label
 								for="terms4">본인은 만14세 이상입니다 <span>(필수)</span></label></td>
 							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th colspan="4"><button type="submit" class="registerbtn">회원가입</button></th>
 						</tr>
 					</table>
-					<hr>
-					<td colspan="2"><button type="submit" class="registerbtn">회원가입</button></td>
 				</form>
 				<script>
 					// 전체선택할 수 있는 jquery 
@@ -206,16 +317,22 @@ span {
 								$("input[name=chk]").prop("checked", false);
 							}
 						})
-					})
+					});
+					
 				</script>
+				
+				
+				
 			<div class="col-sm-3"></div>
+			
 				<!-- Modal -->
 				<div class="modal fade" id="myModal1" role="dialog">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">이용약관</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								
 							</div>
 							<div class="modal-body">
 
@@ -553,8 +670,8 @@ span {
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
 							<h4 class="modal-title">개인정보수집 이용 동의(필수)</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 						<div class="modal-body">
 							<div class="box_tbl">
@@ -595,8 +712,8 @@ span {
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">개인정보수집 이용 동의(선택)</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="box_tbl">

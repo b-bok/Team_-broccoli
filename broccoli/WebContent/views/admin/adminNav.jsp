@@ -24,7 +24,39 @@
 
 
   <style>
-  /* 사이드바 폰트설정 */
+
+  /* 탑바 */
+  .topnav {
+    overflow: hidden; 
+    /*position: fixed;*/
+    width: 100%;
+    background-color:gray;
+    }
+
+  .topnav a {
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    }
+
+  .topnav a:hover {
+    background-color: #ffffff;
+    color:#08a045;
+    }
+
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+    }
+
+  .topnav-right {
+    float: right;
+    }
+
+  /* 좌측사이드바 */
   @font-face {
     font-family: sansation, 'Single Day', cursive;
     src: url(sansation_light.woff);
@@ -38,37 +70,6 @@
     font-family: 'Single Day';
     color: white;
   }
-
-  /* 탑바 */
-  .topnav {
-    overflow: hidden;
-    background-color:gray;
-    }
-
-    .topnav a {
-    float: left;
-    color: #ffffff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    }
-
-    .topnav a:hover {
-    background-color: #ffffff;
-    color:#08a045;
-    }
-
-    .topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-    }
-
-    .topnav-right {
-    float: right;
-    }
-
-  /* 좌측사이드바 */
   .sidenav {
     overflow-x: hidden;
     height: 100%;
@@ -153,13 +154,13 @@
   <!-- 사이드바 -->
   <div class="sidenav">
     <div class="container-fluid">
-      <a href="#"> <h2>브로콜리대쉬보드</h2></a><br>
+      <a href="<%=broccoli%>/views/admin/dashboard.jsp"> <h2>브로콜리대쉬보드</h2></a><br>
     </div>
     <button class="dropdown-btn"><i class="fa fa-fw fa-user"></i>&nbsp;회원관리 
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-container">
-      <a href="<%=broccoli%>/selectMember.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 회원리스트</a>
+    <div class="dropdown-container"> 
+      <a href="<%=broccoli%>/members.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 회원리스트</a>
       <a href="<%=broccoli%>/selectBlackCon.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 블랙컨슈머리스트</a>
     </div>
     

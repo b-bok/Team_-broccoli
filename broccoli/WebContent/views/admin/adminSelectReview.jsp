@@ -6,24 +6,10 @@
 <title>리뷰전체조회</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 차후 소스들은 관리자 대쉬보드 헤더+사이드바 페이지에 담아서 include 시키기 -->
-<!-- 대쉬보드에서 쓸 공통 css -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- 엔딩 :  대쉬보드에서 쓸 공통 css -->
-
+<!-- 검색바CSS -->
+<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- 고객만족도 추가 라이브러리 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 .table {
@@ -49,8 +35,7 @@ a {
 			</div>
 			<div class="col"></div>
 			<div class="col">
-				<input class="form-control input-lg" id="myInput" type="text"
-					placeholder="리뷰 전체검색">
+				<input class="form-control input-lg" id="myInput" type="text" placeholder="리뷰 전체검색">
 			</div>
 		</div>
 		<br> <br>

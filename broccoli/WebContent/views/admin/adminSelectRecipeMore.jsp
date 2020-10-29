@@ -6,16 +6,8 @@
 <title>레시피상세조회</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 차후 소스들은 관리자 대쉬보드 헤더+사이드바 페이지에 담아서 include 시키기 -->
-<!-- 대쉬보드에서 쓸 공통 css -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-<!-- 엔딩 :  대쉬보드에서 쓸 공통 css --> 
-
-
+<!-- 검색바CSS -->
+<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
     .container{padding-bottom: 100px;}
 
@@ -39,7 +31,6 @@
       position: fixed;
       /* Stay in place */
       z-index: 1;
-      /* Sit on top */
       padding-top: 100px;
       /* Location of the box */
       left: 0;
@@ -110,14 +101,13 @@
       position: absolute;
       top: 15px;
       right: 35px;
-      color: #f1f1f1;
       font-size: 40px;
       font-weight: bold;
       transition: 0.3s;
     }
 
     .close:hover, .close:focus {
-      color: #bbb;
+      color: #f1f1f1;
       text-decoration: none;
       cursor: pointer;
     }
@@ -157,10 +147,8 @@
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <th class="table-success">레시피 제목</th>
-              <td>해물파전</td>
-              <th class="table-success">카테고리</th>
-              <td>특별한날 <br>상품카테고리 DB 컬럼값 확인하기>> 마켓컬리처럼 3가지로 나누기로함  </td>
+              <th class="table-success" >레시피 제목</th>
+              <td colspan="3">해물파전</td>
             </tr>
             <tr>
               <th class="table-success">작성자</th>
@@ -222,7 +210,7 @@
     
         <!-- 이미지 모달  -->
         <div id="myModal" class="modal">
-          <span class="close">&times;</span>
+          <span class="close" data-dismiss="modal" style="color:white">close&times;</span>
           <img class="modal-content" id="img01">
           <div id="caption"></div>
         </div>

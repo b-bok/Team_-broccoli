@@ -5,14 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지에 오신걸 환영합니다.</title>
-<!-- 대쉬보드에서 쓸 공통 css -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- 엔딩 :  대쉬보드에서 쓸 공통 css -->
-
 <style>
 
 /* 공통요소 세팅 */
@@ -91,7 +83,6 @@
 </head>
 <body>
 <%@ include file="adminNav.jsp" %>
-
 <div class="container"   style="margin-left:300px;"">
   <div class="content1"">
     <div class="row">

@@ -24,5 +24,40 @@
 		AND MEM_PWD = ?
 		AND STATUS = 'Y'
 	</entry>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*) LISTCOUNT
+		  FROM MEMBERS
+		 WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectList">
+	  SELECT *
+		FROM 
+		    (SELECT ROWNUM RNUM
+		           , A.*
+		    FROM 
+		         (SELECT
+		                  MEM_NO
+		                 ,MEM_ID
+		                 ,MEM_NAME
+		                 ,MEM_PWD
+		                 ,EMAIL
+		                 ,MOBILE
+		                 ,ADDRESS1
+		                 ,ADDRESS2
+		                 ,ZIPCODE
+		                 ,BIRTH_DATE
+		                 ,GENDER
+		                 ,REG_DATE
+		                 ,POINT
+		                 ,STATUS
+		                 ,ADDRESS_NO
+		                 ,MEM_CATEGORY
+		            FROM MEMBERS
+		        ORDER BY REG_DATE DESC) A)
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
 
 </properties>

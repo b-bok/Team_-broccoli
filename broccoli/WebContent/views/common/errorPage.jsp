@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta meta http-equiv="refresh" content="5; url=<%=broccoli %>/login.me">
+
 <title>에러페이지</title>
 <style>
 	img{margin-top: 50px;}

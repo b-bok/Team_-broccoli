@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import = "com.kh.member.model.vo.*, java.util.ArrayList" %>
+<%
+	Pagination p = (Pagination) request.getAttribute("p");
+	ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>회원전체조회</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 차후 소스들은 관리자 대쉬보드 헤더+사이드바 페이지에 담아서 include 시키기 -->
-<!-- 대쉬보드에서 쓸 공통 css -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@800&display=swap">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- 엔딩 :  대쉬보드에서 쓸 공통 css -->
+<!-- 검색바CSS -->
+<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
+
 .table {
 	text-align: center;
 }
-
 a {
 	color: green;
 }
@@ -26,18 +25,33 @@ a {
 </head>
 <body>
 <%@ include file="adminNav.jsp" %>
+
 	<div class="container pt-3" style="margin-left:300px;">
-		<!-- 부트스트랩 테이블 검색어 input  -->
-		<div class="row">
+		<div class="row">		
 			<div class="col">
 				<h2>회원리스트</h2>
 			</div>
 			<div class="col"></div>
 			<div class="col">
-				<input class="form-control input-lg" id="myInput" type="text" placeholder="회원 전체검색">
+			<!-- 부트스트랩 테이블 검색어 input  -->
+				<input class="form-control input-lg" id="myInput" type="text" placeholder="회원 검색">
 			</div>
+			<script>
+				// 테이블 검색 
+					$(document).ready(function() {
+						$("#myInput").on("keyup",function() {
+							var value = $(this).val().toLowerCase();
+								$("#myTable tr").filter(function() {
+									$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+								});
+							});
+					});
+			</script>
+			
 		</div>
+		
 		<br> <br>
+		
 		<table class="table table-hover" style="width: 100%;">
 			<thead>
 				<tr>
@@ -56,154 +70,60 @@ a {
 				</tr>
 			</thead>
 			<tbody id="myTable">
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>김브로</td>
-					<td>bro@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>파이낸스센터 2001호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>5000</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>user03</td>
-					<td>이야채</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>진도오피스텔 202호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>5000</td>
-					<td>2020-10-03</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>user04</td>
-					<td>이브로</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>진도오피스텔 202호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>user05</td>
-					<td>최브로</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>진도오피스텔 202호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>broccoli</td>
-					<td>최롯데</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>파이낸스센터 2001호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>broccoli</td>
-					<td>김브로</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>파이낸스센터 2001호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>11</td>
-					<td>broccoli</td>
-					<td>김브로</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>파이낸스센터 2001호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>12</td>
-					<td>broccoli</td>
-					<td>김브로</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>파이낸스센터 2001호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>Y</td>
-				</tr>
-				<tr>
-					<td>13</td>
-					<td>broccoli</td>
-					<td>김브로</td>
-					<td>broccoli@gmail.com</td>
-					<td>010-2222-3333</td>
-					<td>서울시 강남구 역삼동 101</td>
-					<td>파이낸스센터 2001호</td>
-					<td>123456</td>
-					<td>여</td>
-					<td>0</td>
-					<td>2020-10-01</td>
-					<td>N</td>
-				</tr>
+				<% if(list.isEmpty()){ %>
+					<!--  조회된 리스트가 없는 경우 -->
+					<tr>
+						<td colspan="12">리스트가 존재하지 않습니다!</td>
+					</tr>
+					<%}else{ %>
+					<!--  리스트가 있는 경우 -->
+					<% for(Member m : list){ %>
+					<tr>
+						<td><%=m.getMemNo()%></td>
+						<td><%=m.getMemId()%></td>
+						<td><%=m.getMemName()%></td>
+						<td><%=m.getEmail()%></td>
+						<td><%=m.getMobile()%></td>
+						<td><%=m.getAddress1()%></td>
+						<td><%=m.getAddress2()%></td>
+						<td><%=m.getZipcode()%></td>
+						<td><%=m.getGender()%></td>
+						<td><%=m.getPoint()%></td>
+						<td><%=m.getRegDate()%></td>
+						<td><%=m.getStatus()%></td>
+					</tr>
+					<%} %>
+				<%} %>
+
 			</tbody>
 		</table>
-		<script>
-		// 테이블 검색 
-			$(document).ready(function() {
-				$("#myInput").on("keyup",function() {
-					var value = $(this).val().toLowerCase();
-						$("#myTable tr").filter(function() {
-							$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-						});
-					});
-			});
-		</script>
+		
+	<!-- 페이징바 -->
+	<div  class="paging-area" align="center">
 
 		<ul class="pager">
-			<li><a href="#">이전</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">다음</a></li>
+		<% if(p.getCurrentPage()!= 1){ %>
+			<li><a href="<%=broccoli %>/members.admin?currentPage=<%=p.getCurrentPage()-1%>">이전</a></li>
+		<% } %>
+		
+		<% for(int i = p.getStartPage();i<=p.getEndPage();i++){ %>
+			<li><a href="<%=broccoli%>/members.admin?currentPage=<%=i%>" class="btn btn-sm"> <%=i%></a></li>
+		<%} %>
+		
+		<% if(p.getCurrentPage() != p.getMaxPage()){ %>
+			<li><a href="<%=broccoli%>/members.admin?currentPage=<%=p.getCurrentPage()+1%>">다음</a></li>
+		<%} %>
 		</ul>
 	</div>
+	<script>
+		$(function(){
+			$(".btn-sm").click(function(){
+				$(this).attr(active);
+			})
+		})
+	</script>
+	
+</div>
 
 </body>
 </html>

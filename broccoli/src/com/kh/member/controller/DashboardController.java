@@ -41,7 +41,7 @@ public class DashboardController extends HttpServlet {
 		
 		if(login == null) {// 관리자 로그이 실패 -> 에러메세지 
 			
-			request.setAttribute("errorMsg", "접속에 실패했습니다. 다시 시도해주세요!" );
+			request.setAttribute("errorMsg", "접속에 실패했습니다." );
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		

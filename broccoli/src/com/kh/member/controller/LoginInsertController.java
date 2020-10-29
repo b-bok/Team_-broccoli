@@ -39,7 +39,7 @@ public class LoginInsertController extends HttpServlet {
 		Member login = new MemberService().loginMember(memId, memPwd);
 		
 		if(login == null) {
-			request.setAttribute("errorMsg", "로그인에 실패했습니다! 5초후 로그인 페이지로 이동합니다.");
+			request.setAttribute("errorMsg", "로그인에 실패했습니다! ");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}else {
 			request.getSession().setAttribute("login", login);

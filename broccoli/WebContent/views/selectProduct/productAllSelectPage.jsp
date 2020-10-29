@@ -75,7 +75,7 @@
 
 </head>
 <body>
-	
+<%@ include file="../common/menubar.jsp" %>	
 	<!-- 상품 전체 조회 페이지 입니다.  -->
  
     <div class="wrap">
