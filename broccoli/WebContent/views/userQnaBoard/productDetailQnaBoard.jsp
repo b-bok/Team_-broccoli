@@ -14,6 +14,15 @@ href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 crossorigin="anonymous">
 </head>
+
+    
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+crossorigin="anonymous">
+</head>
 <script
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -23,7 +32,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 
 <style>
 div {
-border: 1px solid red;
+/* border: 1px solid red; */
 box-sizing: border-box;
 }
 
@@ -43,31 +52,20 @@ height: 5%;
 margin-top: 5px;
 }
 
-#qnaBoardBrief {
-height: 10%;
-}
+#qnaBoardBrief {height: 10%;}
 
-#qnaBoard {
-height: 60%;
-}
+#qnaBoard {height: 60%;}
 
-#qnaFotter {
-height: 10%;
-}
+#qnaFotter {height: 10%;}
 
 #qnaFotter>div {
 width: 100%;
 float: left;
 }
 
-#qnaSort {
-margin-top: 5px;
-}
+#qnaSort {margin-top: 5px;}
 
-#qnaForm, #qnaPagingBar {
-height: 50%;
-margin-top: 5px;
-}
+#qnaForm, #pagingBar {height: 50%;}
 </style>
 
 
@@ -185,17 +183,19 @@ margin-top: 5px;
 
 		<div id="fotter">
 
-			<div id="reviewForm" align="right">
-                <a href="">전체보기</a>
-				<a href="">문의하기</a>
+			<div id="qnaForm" align="right">
+                <a href="" class="btn btn-success btn-sm">전체보기</a>
+				<a href="" class="btn btn-success btn-sm">문의하기</a>
 			</div>
 
-			<div id="pagingBar" align="center">
-
-				<a href="">&lt;</a> <a href="">1</a> <a href="">2</a> <a href="">3</a>
-				<a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">7</a>
-				<a href="">8</a> <a href="">9</a> <a href="">10</a> <a href="">&gt;</a>
-
+			<div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item active"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
 			</div>
 
 		</div>

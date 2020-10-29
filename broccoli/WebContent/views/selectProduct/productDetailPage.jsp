@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-    <style>
+  <style>
         div {
-          /*  border: 1px solid red;  */
+            /* border: 1px solid red; */
             box-sizing: border-box;
         }
 
@@ -30,14 +30,20 @@
             height: 40%;
         }
 
+        #productThumbnail {
+            width: 100%;
+            height: 100%;
+        }
+
         #buyButtons {
             height: 5%;
         }
 
 
-        #productDetailImage{
-            height: 10%;
+        .productDetailImage{height: 15%;}
 
+        .productDetailImage>img {
+            width:60%;
         }
 
         #productDexp {height: 6%;}
@@ -49,10 +55,11 @@
             float: left;
         }
 
-        #thumbnailImage {
-            width: 100%;
-            height: 100%;
-            
+        #productThumbnail>img {
+            width: 80%;
+            height: 80%;
+            margin-left: 50px;
+            margin-top: 30px;
         }
 
         #productExp>div {
@@ -73,14 +80,19 @@
 
 </head>
 <body>
-    <div class="wrap">
 
+	<%@ include file="../common/menubar.jsp" %>
+
+    <div class="wrap">
+        
         <div id="productCut">
 
             <div id="productThumbnail">
-                <img src="../resources/image/bgsample.PNG" id="thumbnailImage" >
+                <img src="../resources/image/bgsample.PNG" >
             </div>
+            
             <div id="productExp" align="center">
+            <form action="" method="post">  
                 <div id="productName">
                     <h3 style="margin: 0;">상품 이름</h3>
                 </div>
@@ -88,6 +100,7 @@
                     <h3 style="margin: 0;">상품 가격</h3>
                 </div>
                 <div id="productDetails">
+                    
                     <table >
                         <tr>
                             <th width="50">판매단위</th>
@@ -114,29 +127,32 @@
                             <td><input type="number" max="50" name="amount"></td>
                         </tr>
                         <tr>
-                            <th colspan="2" style="text-align: right;">총 상품 금액 : 3700원</th>
+                            <th>총 상품 금액 : 3700원</th>
+                            <td style="text-align: right;">
+                            <button type="submit" class="btn btn-success btn-sm">장바구니 담기</button>
+                            <button type="submit" class="btn btn-success btn-sm">바로 구매</button>
+                            </td>
+                        
                         </tr>
                     </table>
+                
                 </div>
-
+            </form>
             </div>
 
         </div>
 
-        <div id="buyButtons" align="right">
-            <a href="">장바구니 담기</a>
-            <a href="">바로 구매</a>
-        </div>
+    
+
+         	<%@ include file="../common/reviewMenubar.jsp" %>
 
 
-            <%@ include file ="../common/reviewMenubar.jsp" %>
-
-
-        <div id="productDetailImage" align="center">
-            <img src="../resources/image/flower2.PNG" width="100%" height="100%" name="productImage1" >
+        <div class="productDetailImage" align="center">
+            <img src="../resources/image/flower2.PNG" width="60%" height="100%" name="productImage1" >
         </div>
 
         <div id="productDexp" align="center">
+        
             <h2 style="margin: 10;">상품 이름</h2>
         </div>
         <div id="productSexp">
@@ -150,19 +166,19 @@
         </div>
 
 
-              <%@ include file ="../common/reviewMenubar.jsp" %>
+            <%@ include file="../common/reviewMenubar.jsp" %>
 
 
-        <div id="productDetailImage" align="center">
-            <img src="../resources/image/flower2.PNG" width="100%" height="100%" name="productImage1" >
+        <div class="productDetailImage" align="center">
+            <img src="../resources/image/flower2.PNG" width="60%" height="100%" name="productImage1" >
         </div>
+
 
     </div>
 	
 
 	
 	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
-	
 
 
 	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>

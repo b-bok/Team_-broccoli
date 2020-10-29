@@ -62,6 +62,8 @@ div {
 
 #reviewForm, #pagingBar {height: 50%;}
 
+#pagingBar{margin: 0;}
+
 </style>
 
 </head>
@@ -74,7 +76,7 @@ div {
 
 		<%@ include file="../common/reviewMenubar.jsp"%>
 
-
+		
 
 		<div id="boardSorting" align="right">
 
@@ -215,7 +217,7 @@ div {
 		<div id="fotter">
 
 			<div id="reviewForm" align="right">
-				<button>후기 작성</button>
+				<button class="btn btn-success btn-sm">후기 작성</button>
 			</div>
 
 			<div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
