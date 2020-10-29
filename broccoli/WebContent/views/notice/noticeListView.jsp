@@ -49,7 +49,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 
     <!-- 공지사항 리스트 페이지입니다. -->
 
-    <%@ include file="../common/Menubar.jsp"%>
+    <%@ include file="../common/menubar.jsp"%>
     
     <div>테스트용</div>
     <div class="wrap">
