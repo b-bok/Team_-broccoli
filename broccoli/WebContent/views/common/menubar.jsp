@@ -117,7 +117,7 @@ a {
 				
 				<!-- 로그인 후  -->
 				<li><a href="<%= broccoli%>/logout.me">로그아웃</a></li>
-				<li><a href="★">마이페이지</a></li>
+				<li><a href="<%= broccoli%>/myPageMain.my">마이페이지</a></li>
 				<% } %>
 				
 				<!-- 공통요소  -->
