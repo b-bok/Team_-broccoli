@@ -5,20 +5,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+  <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+</head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
 
     <style>
 
         div {
-            border: 1px solid red;
             box-sizing: border-box;
         }
 
         .wrap{
             width: 300px;
             height: 700px;
-            margin: auto;
+            margin-left: 370px;
+            margin-top: 10px;
 
         }
 
@@ -27,23 +40,24 @@
             float: left;
         }
 
-        #reviewImage{height: 70%;}
-        #reviewContent{height: 20%;}
-        #footer{height: 10%;}
+        #header {
+            margin-top: 50px;
 
-        #reviewImage>div{
-            width: 30%;
-            height: 40%;
         }
 
-        #reviewImage>div>img {
-            height: 100%;
-            width: 100%;
+        #headerTable {
+            border-top: 1px solid yellowgreen;
+            border-bottom: 1px solid lightgray;
         }
 
-        #reviewImage>div>img{
-            width: 80%;
-            height: 40%;
+
+        #reviewImage{height: 65%;}
+        #reviewContent{height: 25%;}
+        #reviewfooter{height: 10%;}
+
+        #reviewImage img {
+            width: 40%;
+            height: 30%;
         }
 
 
@@ -61,9 +75,32 @@
 </head>
 <body>
 
-	<!-- 리뷰 상세페이지 입니다.  -->
-	
-	 <div class="wrap">
+	<%@ include file="../common/menubar.jsp" %>
+
+    <div id="header"  align="center">
+        <table  id="headerTable">
+            <tr>
+                <th class="table-success" width="150" style="text-align: center;">제목</th>
+                <td colspan="3" width="600px">&nbsp; 황태양념구이</td>
+            </tr>
+            <tr>
+                <th class="table-success" style="text-align: center;">작성자</th>
+                <td colspan="3" width="600px">&nbsp; 브로콜리</td>
+            </tr>
+            <tr>
+                <th class="table-success" style="text-align: center;">작성일</th>
+                <td width="200px"> &nbsp; 2020-10-31</td>
+                <th class="table-success" style="text-align: center;">조회수</th>
+                <td> &nbsp; 7700</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <div class="wrap">
+
 
         <div id="reviewImage" align="center" >
 
@@ -73,7 +110,7 @@
                 <img src="../resources/image/bgsample.PNG" name="reviewImage1">
             </div>
             <div id="image2">
-                <img src="../resources/image/city1.PNG" name="reviewImage2">
+                <img src="../resources/image/city1.PNG"   name="reviewImage2">
             </div>
    
   
@@ -92,7 +129,7 @@
             </p>
 
         </div>
-        <div id="footer">
+        <div id="reviewfooter">
 
             <div id="like" align="right">
                 <button name="likeCount" >좋아요</button>
@@ -101,7 +138,6 @@
 
 
     </div>
-	
 
 </body>
 </html>

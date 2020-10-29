@@ -7,23 +7,11 @@
 <title>Insert title here</title>
 
     
-<link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-crossorigin="anonymous">
-</head>
-<script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 <style>
 div {
-border: 1px solid red;
+/* border: 1px solid red; */
 box-sizing: border-box;
 }
 
@@ -31,7 +19,7 @@ box-sizing: border-box;
 width: 1000px;
 height: 800px;
 margin: auto;
-margin-top : 50px;
+margin-top: 50px;
 }
 
 .wrap>div {
@@ -50,6 +38,7 @@ height: 10%;
 
 #qnaBoard {
 height: 60%;
+
 }
 
 #qnaFotter {
@@ -84,15 +73,26 @@ margin-top: 5px;
 </head>
 <body>
 
-
+<%@ include file="../common/menubar.jsp"%>
 
 	<div class="wrap">
 
 
+		<div id="qnaBoardSorting" align="right">
+
+			<select name="qnaSort" id="qnaSort">
+
+				<option value="lastPost" selected>최근등록 순</option>
+				<option value="moreLike">좋아요 순</option>
+				<option value="moreView">조회 순</option>
+
+			</select>
+
+		</div>
 
 		<div id="qnaBoardBrief">
 
-			PRODUCT Q&A
+			<h5>PRODUCT Q&A</h5>
 
 			<ul>
 				<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
@@ -101,13 +101,13 @@ margin-top: 5px;
 			</ul>
 		</div>
 
-		<div id="qnaBoard">
+		<div id="qnaBoard" >
 
 			<a href="">전체보기</a> <a href="">포토 리뷰</a> <br>
 
 
 
-			<table class="table table-hover" id="qnaTable" >
+			<table class="table table-hover" id="qnaTable">
 				<thead align="center">
 					<tr>
                         <th>번호</th>
@@ -188,21 +188,22 @@ margin-top: 5px;
 		<div id="fotter">
 
 			<div id="qnaForm" align="right">
-                <a href="">전체보기</a>
-				<a href="">문의하기</a>
+				<a href="<%=broccoli%>/enroll.qp" class="btn btn-success btn-sm">문의하기</a>
 			</div>
 
-			<div id="qnaPagingBar" align="center">
-
-				<a href="">&lt;</a> <a href="">1</a> <a href="">2</a> <a href="">3</a>
-				<a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">7</a>
-				<a href="">8</a> <a href="">9</a> <a href="">10</a> <a href="">&gt;</a>
-
-            </div>
+			<div id="qnaPagingBar" align="center" style="width: 250px; margin-left: 360px;">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item active"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
+			</div>
 
 		</div>
 
-        <div id="qnaSearchbar">
+        <div id="qnaSearchbar" >
             <form class="form-inline" action="★" method="GET">
 
 
@@ -239,7 +240,6 @@ margin-top: 5px;
         </div>
 
 	</div>
-
 
 
 </body>

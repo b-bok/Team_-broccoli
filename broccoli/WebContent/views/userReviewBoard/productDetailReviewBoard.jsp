@@ -235,6 +235,20 @@ div {
 	</div>
 	
 	<%@include file="../common/declarationModal.jsp" %>
+	
+	<script>
+        
+        $(function(){
+        	
+        	$("#reviewTable>tbody>tr").click(function(){
+        		
+        		location.href = "<%=broccoli%>/detail.rv?rno="+ $(this).children().eq(0).text();
+        		
+        	});
+        	
+        });
+        
+        </script>
 
 </body>
 </html>

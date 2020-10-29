@@ -99,7 +99,7 @@
 
         
 
-         <table class="table table-hover" id="reviewTable">
+         <table class="table table-hover" id="recipeTable">
             <thead>
                 <tr>
                     <th>번호</th>
@@ -227,6 +227,24 @@
     </div>
 
 	<%@include file="../common/declarationModal.jsp" %>
+	
+	
+	<script>
+        
+        $(function(){
+        	
+        	$("#recipeTable>tbody>tr").click(function(){
+        		
+        		location.href = "<%=broccoli%>/detail.rc?cno="+ $(this).children().eq(0).text();
+        		
+        	});
+        	
+        });
+        
+        </script>
+	
+	
+	
 
 </body>
 </html>

@@ -6,13 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-    
-<link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-crossorigin="anonymous">
+   
 </head>
 
     
@@ -184,8 +178,8 @@ float: left;
 		<div id="fotter">
 
 			<div id="qnaForm" align="right">
-                <a href="" class="btn btn-success btn-sm">전체보기</a>
-				<a href="" class="btn btn-success btn-sm">문의하기</a>
+                <a href="<%=broccoli %>/qnaAll.pq" class="btn btn-success btn-sm">전체보기</a>
+				<a href="<%=broccoli %>/enroll.pq" class="btn btn-success btn-sm">문의하기</a>
 			</div>
 
 			<div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
@@ -202,6 +196,20 @@ float: left;
 
 	</div>
     
+ 	<script>
+        
+        $(function(){
+        	
+        	$("#qnaTable>tbody>tr").click(function(){
+        		
+        		location.href = "<%=broccoli%>/detail.qna?qno="+ $(this).children().eq(0).text();
+        		
+        	});
+        	
+        });
+        
+        </script>
+
 
 </body>
 </html>
