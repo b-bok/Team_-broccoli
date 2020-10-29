@@ -74,7 +74,7 @@ margin-top: 5px;
 </head>
 <body>
 
-
+	
     	<!-- 상품상세페이지 리뷰게시판 입니다. -->
 
 	<div class="wrap">
