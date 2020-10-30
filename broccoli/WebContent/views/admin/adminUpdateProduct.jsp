@@ -46,9 +46,8 @@
     
   	<select onchange="location.href=this.value" style="margin-left: 50px; margin-top: 50px;">
       
-      <option value="<%=broccoli%>/updateProduct.admin">상품수정</option>
+      <option value="<%=broccoli%>/updateProduct.admin">상품수정/삭제</option>
       <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
-      <option value="주소입력">상품삭제</option>
     
     </select>
     
@@ -117,10 +116,25 @@
 
              <br>
 
-             <div>
-                 <a href="<%= broccoli %>/updateProductForm.admin">상품 선택시 수정양식으로 이동(임의로 만든 버튼)</a>
-             </div>
+              <div>
+                 <button class="btn btn-warning btn-sm"><a href="<%= broccoli %>/updateProductForm.admin">상품 선택시 수정양식으로 이동(임의로 만든 버튼)</a></button>
+                 <button class="btn btn-danger btn-sm" onclick="deleteProduct();">삭제하기</button>
+            </div>
              <br>
+             
+             <!-- 상품 삭제버튼시 컨펌창 출력 -->
+             <script>
+               function deleteProduct(){
+                $(function(){
+                   if(confirm("상품을 삭제하시겠습니까?")){
+                        
+                   }else{
+
+                   }
+
+                });
+               };
+            </script>
 
         </form>
 
