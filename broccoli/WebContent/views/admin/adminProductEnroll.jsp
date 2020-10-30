@@ -20,7 +20,10 @@
       margin-top: 50px;
     }
     #enrollPForm table{margin:auto;}
-    #enrollPForm input{margin:5px;}
+    #enrollPForm input:not(#radio), #enrollPForm textarea{
+      width: 100%;
+     box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
@@ -28,52 +31,43 @@
 	<!--  대쉬보드 추가 -->
 	<%@ include file="adminNav.jsp" %>
 	
-	<!-- 상품등록하기 화면 -->
-  <div class="outer" style="margin-left:300px;">
-  
-  	<select onchange="location.href=this.value">
-      
+  <!-- 상품등록하기 화면 -->
+  <div class="outer">
+    
+    <select onchange="location.href=this.value"  style="margin-left: 50px; margin-top: 50px;">
       <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
       <option value="<%=broccoli%>/updateProduct.admin">상품수정</option>
       <option value="주소입력">상품삭제</option>
-    
     </select>
-    
+
     <form action="" id="enrollPForm" method="POST">
       <br>
       <h2 align="center">상품 등록하기</h2>
 
       <table align="center">
           <tr>
-            <td>* 상품번호 :</td> <!-- db로 자동부여하면 뺄 예정입니다. -->
-            <td><input type="number" name="pNo" required></td>
-            <td>db로 자동부여하면 뺄 예정입니다.</td>
+            <td width="110">* 상품번호 :</td> <!-- db로 자동부여하면 뺄 예정입니다. -->
+            <td colspan="2" width="300"><input type="number" name="pNo" required></td>
           </tr>
           <tr>
             <td>* 카테고리 : </td>
-            <td><input type="text" name="catetoryNo" required placeholder="_사용가능"></td>
-            <td></td>
-          </tr>
-          
+            <td colspan="2"><input type="text" name="catetoryNo" required placeholder="_사용가능"></td>           
+          </tr>     
           <tr>
             <td>* 이벤트번호 :</td>
-            <td><input type="number" name="eNo" required></td>
-            <td></td>
+            <td colspan="2"><input type="number" name="eNo" required></td>
           </tr>
           <tr>
             <td>* 상품명 :</td>
-            <td> <input type="text" name="pName" required></td>
-            <td></td>
+            <td colspan="2"> <input type="text" name="pName" required></td>
           </tr>
           <tr>
             <td>* 판매가격 :</td>
-            <td><input type="number" name="pPrice" required></td>
-            <td></td>
+            <td colspan="2"><input type="number" name="pPrice" required></td>
           </tr>
           <tr>
             <td>* 할인가격 : </td>
-            <td><input type="number" name="pDiscount" required></td>
-            <td></td>
+            <td colspan="2"><input type="number" name="pDiscount" required></td>
           </tr>
           <tr>
             <td>* 기본이미지 :</td>
@@ -87,53 +81,43 @@
           </tr>
           <tr>
             <td>* 재고 :</td>
-            <td><input type="number" name="pInventory" required></td>
-            <td></td>
+            <td colspan="2"><input type="number" name="pInventory" required></td>
           </tr>
           <tr>
             <td>업체명 :</td>
-            <td><input type="text" name="pCompany" ></td>
-            <td></td>
+            <td colspan="2"><input type="text" name="pCompany" ></td>
           </tr>
           <tr>
             <td>판매단위 :</td>
-            <td><input type="text" name="pUnit"></td>
-            <td></td>
+            <td colspan="2"><input type="text" name="pUnit"></td>
           </tr>
           <tr>
             <td>중량 :</td>
-            <td><input type="text" name="pWeight"></td>
-            <td></td>
+            <td colspan="2"><input type="text" name="pWeight"></td>
           </tr>
           <tr>
             <td>상품상세정보 :</td>
-            <td> <textarea name="pDetail" cols="20" rows="10" style="resize: none;"></textarea> </td>
-            <td></td>
+            <td colspan="2"> <textarea name="pDetail" cols="20" rows="10" style="resize: none;"></textarea> </td>
           </tr>
           <tr>
             <td>할인여부 :</td>
-            <td><input type="radio" name="disYn"" value="Y">예<input type="radio" name="disYn" value="N" checked>아니오</td>
-            <td></td>
+            <td colspan="2">&ensp; &ensp;<input type="radio" id="radio" name="disYn"" value="Y" >예 &ensp; &ensp; &ensp; &ensp;<input type="radio" id="radio" name="disYn" value="N" checked>아니오</td>
           </tr>
           <tr>
             <td>이벤트 여부 :</td>
-            <td><input type="radio" name="eYn" value="Y">예<input type="radio" name="eYn" value="N" checked>아니오</td>
-            <td></td>
+            <td colspan="2">&ensp; &ensp;<input type="radio" id="radio" name="eYn" value="Y">예 &ensp; &ensp; &ensp; &ensp;<input type="radio" id="radio" name="eYn" value="N" checked>아니오</td>           
           </tr>
           <tr>
             <td>상품간단설명 :</td>
-            <td><textarea name="pSmallDetail" cols="20" rows="5" style="resize: none;"></textarea></td>
-            <td></td>
+            <td colspan="2"><textarea name="pSmallDetail" cols="20" rows="5" style="resize: none;"></textarea></td> 
           </tr>
           <tr>
             <td>원산지 :</td>
-            <td><input type="text" name="pNation"></td>
-            <td></td>
+            <td colspan="2"><input type="text" name="pNation"></td>           
           </tr>
           <tr>
             <td>포장타입 :</td>
-            <td><input type="text" name="pPacktype"></td>
-            <td></td>
+            <td colspan="2"><input type="text" name="pPacktype"></td>         
           </tr>
           <tr>
             <td>썸네일이미지 :</td>
@@ -154,6 +138,7 @@
           
   </div>
    <!-- 엔딩 상품등록하기 화면 -->
+
 
 </body>
 </html>

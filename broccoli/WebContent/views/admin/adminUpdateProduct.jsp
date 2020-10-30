@@ -42,9 +42,9 @@
 	<!--  대쉬보드 추가 -->
 	<%@ include file="adminNav.jsp" %>
 
-    <div class="outer">
+    <div class="outer" style="margin-left:300px;">
     
-  	<select onchange="location.href=this.value">
+  	<select onchange="location.href=this.value" style="margin-left: 50px; margin-top: 50px;">
       
       <option value="<%=broccoli%>/updateProduct.admin">상품수정</option>
       <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
@@ -115,8 +115,12 @@
                  </tbody>
              </table>
 
-             <br><br>
+             <br>
 
+             <div>
+                 <a href="<%= broccoli %>/updateProductForm.admin">상품 선택시 수정양식으로 이동(임의로 만든 버튼)</a>
+             </div>
+             <br>
 
         </form>
 
