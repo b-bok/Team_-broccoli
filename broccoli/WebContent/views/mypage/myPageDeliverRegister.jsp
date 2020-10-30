@@ -75,95 +75,81 @@
         
         
 
-        #content_2>div{width:100%; height:100%;}
-    
+        #content_2>div{width:100%; height:100%;
+
         
-        
-       
-       
-       
-        #p1{height:80%; padding:15px;}
+        }
+
+       #p1{height:80%; padding:15px;}
         #p2{height:20%; text-align:center;}
 
         #topic{color:green;
         font-weight:bold;
         }
 
-        #status{
+        #topic1{
             text-align: center;
         }
 
         
-}
-        
-    </style>
+</style>
 </head>
 <body>
 <%@ include file="../common/menubar.jsp"%>
-<br clear="both">
-
+ <br clear="both">
     <div class="wrap">
-        <div id="navigator">
+      <div id="navigator">
             <ul id="navi">
                 <li><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보</a></li>
                 <li><a href="<%= broccoli%>/myPagePoint.my">적립금</a></li>
                 <li><a href="<%= broccoli%>/myPagePick.my">찜상품</a></li>
                 <li><a href="<%= broccoli%>/main.jsp">메인으로가기</a></li>
             </ul>
-        </div>
+      </div>
 
-        <div id="content">
-
-            <div id="content_1">
-                <div id="content_1_1">
+      <div id="content">
+        <div id="content_1">
+          <div id="content_1_1">
                     <br>
-                    <h3 id = "topic" >마이페이지</h3>
+                    <h1 id = "topic">마이페이지</h1>
                     <br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회</a></div><br>
-                    <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회▶</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
-                    <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록▶</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPagePoint.my">적립금 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my">내 문의 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회</a></div>
-                </div>
-               
-            </div>
+          </div>
+        </div>
 
-            <div id="content_2">
-                <div id="content_2_1">
-                    
-                    <br><br><h3 style= font-weight:bold;>찜상품 조회</h3>
-                    
+        <div id="content_2">
+          <div id="content_2_1">
+              <br><br><h3 style= font-weight:bold;>배송지 등록</h3>
                     <hr>
-                    <div class="container">
-                                 
-                        <table class="table">
+            <div class="container">
+              <table class="table">
                           <thead>
                             <tr>
-                              <th><input type="checkbox">&nbsp;&nbsp;전체선택</th>
-                              <th>상품정보</th>
-                              
+                              <th>수령인</th>
+                              <th>전화번호</th>
+                              <th>주소</th>
                             </tr>
                           </thead>
                           <tbody>
-                            
+                         
                           </tbody>
-                          
                         </table>
-                        <h4 id="status">현재 찜상품이 없습니다.</h4>
-                      </div>
-
-                      <br><br><br><br><br><br><hr>
-                      <button type="button" class="btn btn-outline-success"style="float: right;">선택상품 장바구니</button>
-                      <button type="button" class="btn btn-outline-danger"style="float: right;">선택상품 삭제</button>
-
-                    
-                </div>
             </div>
+                        <br>
+                         <h4 id="topic1">현재 등록된 배송지가 없습니다.</h4>
+                         <button type="button" class="btn btn-success"style="float: right;">등록하기</button>
+                        <br>
+          </div>
         </div>
+      </div>
     </div>
 
 </body>

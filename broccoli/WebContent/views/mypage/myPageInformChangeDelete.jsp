@@ -142,10 +142,10 @@
     <div class="wrap">
         <div id="navigator">
             <ul id="navi">
-                <li><a href="">내 정보</a></li>
-                <li><a href="">적립금</a></li>
-                <li><a href="">찜상품</a></li>
-                <li><a href="">장바구니</a></li>
+                <li><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보</a></li>
+                <li><a href="<%= broccoli%>/myPagePoint.my">적립금</a></li>
+                <li><a href="<%= broccoli%>/myPagePick.my">찜상품</a></li>
+                <li><a href="<%= broccoli%>/main.jsp">메인으로가기</a></li>
             </ul>
         </div>
 
@@ -160,11 +160,11 @@
                     <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴▶</a></div><br>
-                    <div class="menu"><a href="">배송지 등록</a></div><br>
-                    <div class="menu"><a href="">적립금 조회</a></div><br>
-                    <div class="menu"><a href="">내 문의 조회</a></div><br>
-                    <div class="menu"><a href="">내 리뷰 조회</a></div><br>
-                    <div class="menu"><a href="">내 레시피 조회</a></div>
+                    <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPagePoint.my">적립금 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my">내 문의 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회</a></div>
                 </div>
                
             </div>
