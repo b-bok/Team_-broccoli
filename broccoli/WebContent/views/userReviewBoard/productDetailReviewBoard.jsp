@@ -62,6 +62,8 @@ div {
 
 #reviewForm, #pagingBar {height: 50%;}
 
+#pagingBar{margin: 0;}
+
 </style>
 
 </head>
@@ -74,7 +76,7 @@ div {
 
 		<%@ include file="../common/reviewMenubar.jsp"%>
 
-
+		
 
 		<div id="boardSorting" align="right">
 
@@ -90,7 +92,7 @@ div {
 
 		<div id="boardBrief">
 
-			PRODUCT REVIEW
+			<h5 id="list3">PRODUCT REVIEW</h5>
 
 			<ul>
 				<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로
@@ -215,7 +217,7 @@ div {
 		<div id="fotter">
 
 			<div id="reviewForm" align="right">
-				<button>후기 작성</button>
+				<button class="btn btn-success btn-sm">후기 작성</button>
 			</div>
 
 			<div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
@@ -233,6 +235,20 @@ div {
 	</div>
 	
 	<%@include file="../common/declarationModal.jsp" %>
+	
+	<script>
+        
+        $(function(){
+        	
+        	$("#reviewTable>tbody>tr").click(function(){
+        		
+        		location.href = "<%=broccoli%>/detail.rv?rno="+ $(this).children().eq(0).text();
+        		
+        	});
+        	
+        });
+        
+        </script>
 
 </body>
 </html>

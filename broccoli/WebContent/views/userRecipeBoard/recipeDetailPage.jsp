@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 
 
-
     <style>
 
         div {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             box-sizing: border-box;
            
         }
@@ -19,13 +18,26 @@
         .wrap{
             width: 300px;
             height: 1000px;
-            margin: auto;
+            margin-left: 370px;
+            margin-top: 10px;
+            
+        }
+
+        #header {
+            margin-top: 50px;
+
+        }
+
+        #headerTable {
+            border-top: 1px solid yellowgreen;
+            border-bottom: 1px solid lightgray;
         }
 
         .wrap {
             width: 50%;
             height: 100%;
             float: left;
+
         }
 
         #recipeImage{
@@ -60,10 +72,7 @@
         }
 
         #recipeIngredient {height: 50%;}
-        #recipeDetail {
-            height: 50%;
-            
-        }
+        #recipeDetail {height: 50%;}
 
 
 
@@ -71,12 +80,37 @@
 
 </head>
 <body>
-
+	
+	<%@ include file="../common/menubar.jsp" %>
+	
 	<!-- 레시피상세조회 페이지입니다.  -->
 
-  <div class="wrap">
+    <div id="header"  align="center">
+        <table  id="headerTable">
+            <tr>
+                <th class="table-success" width="150" style="text-align: center;">제목</th>
+                <td colspan="3" width="600px">&nbsp; 황태양념구이</td>
+            </tr>
+            <tr>
+                <th class="table-success" style="text-align: center;">작성자</th>
+                <td colspan="3" width="600px">&nbsp; 브로콜리</td>
+            </tr>
+            <tr>
+                <th class="table-success" style="text-align: center;">작성일</th>
+                <td width="200px"> &nbsp; 2020-10-31</td>
+                <th class="table-success" style="text-align: center;">조회수</th>
+                <td> &nbsp; 7700</td>
+            </tr>
 
-        <h3 align="center" style="margin: 5px;">레시피상세페이지</h3>
+        </table>
+
+    </div>
+
+	
+
+    <div class="wrap">
+
+        <h3 align="center" style="margin: 5px;">레시피 페이지 제목</h3>
         <hr>
         <div id="recipeImage">
 
@@ -193,7 +227,6 @@
 
 
     </div>
-
 
 </body>
 </html>

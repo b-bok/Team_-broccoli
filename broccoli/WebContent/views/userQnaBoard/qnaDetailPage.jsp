@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 
 
+
     <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -75,8 +76,10 @@
 
 </head>
 <body>
-<%@ include file="../common/menubar.jsp" %>	
-     <div class="wrap">
+
+	<%@ include file="../common/menubar.jsp" %>
+
+  <div class="wrap">
         <div id="qnaHeader">
             
             <div id="qnaHeader_1">
@@ -88,20 +91,20 @@
                 </ul>
 
             </div>
-            <form action="" method="POST">
+            <br>
             <div id="qnaHeader_2" >
                 <table  id="qnaTable">
                     <tr>
                         <th class="table-success" width="150">작성자</th>
-                        <td><input type="text" name="userName" style="width: 40%;" value="작성자" readonly></td>
+                        <td>&nbsp; 작성자아이디</td>
                     </tr>
                     <tr>
                         <th class="table-success">이메일</th>
-                        <td><input type="email" name="userEmail" style="width: 40%;" value="이메일" readonly></td>
+                        <td>&nbsp; 작성자 이메일</td>
                     </tr>
                     <tr>
                         <th class="table-success">핸드폰</th>
-                        <td><input type="phone" name="phone" style="width: 40%;" value="핸드폰번호" readonly></td>
+                        <td>&nbsp; 작성자 핸드폰 번호</td>
                     </tr>
                     <tr>
                         <th class="table-success">비밀글</th>
@@ -109,7 +112,7 @@
                     </tr>
                     <tr>
                         <th class="table-success">제목</th>
-                        <td><input type="text" name="qnaTitle" style="width: 90%;"></td>
+                        <td>&nbsp; 문의내역 제목 맛이 이상하네요?</td>
                     </tr>
                 </table>
 
@@ -117,20 +120,27 @@
         </div>
 
         <div id="qnaContent">
-
-            <textarea name="qnaText" id="qnaText"  style="resize: none;">
-            
-            </textarea>
+            <br><br>
+            <p name="qnaText">
+                뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 
+                커다란 역사를 청춘의
+                방황하였으며, 우리는 교향악이다. 새 이는 같이,
+                기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
+                얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
+ 
+    
+            </p>
             
         </div>
 
         <div id="qnaFotter" align="center" style="margin-top: 10px;">
-            <button type="submit" class="btn btn-success btn-sm">등록하기</button>
-            <button type="button" onclick="history.back();" class="btn btn-secondary btn-sm" >뒤로가기</button>
+            <button type="button" onclick="history.back();">뒤로가기</button>
         </div>
 
-        </form>
+        
     </div>
+    
+    
 
 </body>
 </html>

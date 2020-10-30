@@ -18,7 +18,7 @@
         display: table-cell; 
         /* 셀모양 처럼 옆으로 배열 */
         height: 50px;
-        width: 140px; 
+        width: 200px; 
     }
 
     .menu a {
@@ -45,15 +45,14 @@
 
     <div class="navwrap" align="center">
       
-       <div class="menu"><a href="">상품설명</a></div>
-       <div class="menu"><a href="">상품이미지</a></div>
-       <div class="menu"><a href="">상세정보</a></div>
-       <div class="menu"><a href="">고객후기</a></div>
-       <div class="menu"><a href="">상품레시피</a></div>
-       <div class="menu"><a href="">상품문의</a></div>
+       <div class="menu"><a href="#list1">상품설명</a></div>
+       <div class="menu"><a href="#list2">상품이미지</a></div>
+       <div class="menu"><a href="#list3">고객후기</a></div>
+       <div class="menu"><a href="#list4">상품레시피</a></div>
+       <div class="menu"><a href="#list5">상품문의</a></div>
 
     </div>
 
-
+	
 </body>
 </html>
