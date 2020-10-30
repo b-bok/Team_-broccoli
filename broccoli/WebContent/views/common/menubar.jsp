@@ -121,11 +121,11 @@ a {
 				<% } %>
 				
 				<!-- 공통요소  -->
-				<li><a href="★" class="dropdown-toggle" data-toggle="dropdown"
+				<li><a href="<%= broccoli%>" class="dropdown-toggle" data-toggle="dropdown"
 					style="font-size: 12px; padding: 0px;">고객센터</a>
 					<ul class="submenu">
-						<li><a href="★" class="dropdown-item" style="font-size: 11px;">공지사항</a></li>
-						<li><a href="★" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
+						<li><a href="<%= broccoli %>/list.no" class="dropdown-item" style="font-size: 11px;">공지사항</a></li>
+						<li><a href="<%= broccoli %>" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
 						
 						<!-- 1:1 문의, 신고하기 클릭하면 로그인 페이지로 이동하도록  -->
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>

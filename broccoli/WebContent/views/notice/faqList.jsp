@@ -65,7 +65,7 @@ margin-top: 50px;
 		
 		<!-- 좌측 버튼태그 (경로) -->
 		<div class="btn-group-vertical" id="btn-group">
-			<a href="" class="btn btn-outline-primary btn-lg">공지사항</a>
+			<a href="<%=broccoli%>/list.no" class="btn btn-outline-primary btn-lg">공지사항</a>
 			<a href="" class="btn btn-outline-primary btn-lg">1:1문의</a>
 			<a href="" class="btn btn-outline-primary btn-lg">자주하는 질문</a>
 		</div>

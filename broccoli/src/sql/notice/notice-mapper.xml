@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key ="selectNoticeList">
+	SELECT
+	       NOTICE_NO
+	     , NOTICE_TITLE
+	     , NOTICE_VIEWS
+	     , NOTICE_ENROLL
+	  FROM NOTICE
+	 WHERE NOTICE_NO >= 0;
+	 ORDER
+	    BY NOTICE_NO DESC
+	
+	</entry>
+	
+
+
+
+
+</properties>
