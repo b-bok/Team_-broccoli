@@ -35,16 +35,6 @@
         #header_1{height: 50%; margin-top: 10px;}
         #header_2{height: 50%;}
 
-        #header>div>a {
-            text-decoration: none;
-            color: black;
-            font-size:15px;
-            border: 1px solid blue;
-            display: block;
-            display: table-cell;
-            width: 150px;
-        }
-
         .thumbnail {
             border: 1px solid white;
             width: 220px;
