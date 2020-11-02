@@ -31,12 +31,11 @@ public class ProductAllSelectController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+	
+		  ArrayList list = new ProductService().selectAllProduct();
+		  
+		  request.setAttribute("list", list);
 		
-		/*
-		 * ArrayList list = new ProductService().selectAllProduct();
-		 * 
-		 * request.setAttribute("list", list);
-		 */
 		
 		request.getRequestDispatcher("views/selectProduct/productAllSelectPage.jsp").forward(request, response);
 		
