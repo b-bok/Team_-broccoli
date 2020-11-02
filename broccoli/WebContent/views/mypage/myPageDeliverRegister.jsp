@@ -121,12 +121,12 @@
                     <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록▶</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPagePoint.my">적립금 조회</a></div><br>
-                    <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my">내 문의 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my?currentPage=1">내 문의 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회</a></div>
           </div>
         </div>
-
+ 
         <div id="content_2">
           <div id="content_2_1">
               <br><br><h3 style= font-weight:bold;>배송지 등록</h3>
@@ -135,6 +135,7 @@
               <table class="table">
                           <thead>
                             <tr>
+                              <th>번호</th>
                               <th>수령인</th>
                               <th>전화번호</th>
                               <th>주소</th>
@@ -146,6 +147,8 @@
                         </table>
             </div>
                         <br>
+                        <!-- 등록된 배송지 없을 경우 -->
+                        
                          <h4 id="topic1">현재 등록된 배송지가 없습니다.</h4>
                          <div class="container">  
   <!-- 배송지등록 버튼-->
