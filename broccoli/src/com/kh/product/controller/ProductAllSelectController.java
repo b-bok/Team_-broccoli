@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.product.model.service.ProductService;
+import com.kh.product.model.vo.Product;
 
 /**
  * Servlet implementation class ProductAllSelectController
@@ -32,10 +33,10 @@ public class ProductAllSelectController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	
-		  ArrayList list = new ProductService().selectAllProduct();
+		  ArrayList<Product> list = new ProductService().selectAllProduct();
 		  
 		  request.setAttribute("list", list);
-		
+		  
 		
 		request.getRequestDispatcher("views/selectProduct/productAllSelectPage.jsp").forward(request, response);
 		

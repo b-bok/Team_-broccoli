@@ -52,6 +52,21 @@ public class Product {
 		this.thumbnail = thumbnail;
 		this.out = out;
 	}
+	
+	
+	
+	
+	
+	
+	public Product(int pno, String pName, int price, int discount, String smallDetail, String thumbnail) {
+		super();
+		this.pno = pno;
+		this.pName = pName;
+		this.price = price;
+		this.discount = discount;
+		this.smallDetail = smallDetail;
+		this.thumbnail = thumbnail;
+	}
 
 	public int getPno() {
 		return pno;
