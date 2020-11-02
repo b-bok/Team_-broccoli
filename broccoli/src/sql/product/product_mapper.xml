@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	
+	<entry key="selectAllProduct">
+		
+		SELECT 
+		      P_NO
+		    , P_NAME
+		    , P_PRICE
+		    , P_DISCOUNT
+		    , P_DETAIL
+		    , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+		 FROM PRODUCT   
+		 JOIN P_ATTACH USING(P_NO)
+		 WHERE 
+		      P_ATTACHTYPE = '썸네일'
+		
+		
+	</entry>
+	
+	
+	
+	
+
+
+
+
+</properties>

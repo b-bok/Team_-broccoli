@@ -20,8 +20,12 @@
       margin-top: 50px;
     }
     .list-area{
-        background-color: white;}
-    .list-area>thead{background-color: gainsboro;}
+        background-color: white;
+        }
+    .list-area>thead{
+    	background-color: gainsboro;
+    	text-align: center;
+    	}
     .list-area td, td, th{
         margin:auto;
         border: 1px solid gray;}
@@ -122,8 +126,15 @@
             </div>
              <br>
              
-             <!-- 상품 삭제버튼시 컨펌창 출력 -->
              <script>
+             <!-- 상품 선택시 수정양식으로 이동 -->
+			$(function(){
+				$(".list-area>tbody>tr").click(function(){
+					location.href = "<%=broccoli%>/updateProductForm.admin"
+				});
+			});
+             
+             <!-- 상품 삭제버튼시 컨펌창 출력 -->
                function deleteProduct(){
                 $(function(){
                    if(confirm("상품을 삭제하시겠습니까?")){
