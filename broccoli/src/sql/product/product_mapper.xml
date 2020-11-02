@@ -4,27 +4,129 @@
 
 	
 	<entry key="selectAllProduct">
-		
-		SELECT 
-		      P_NO
-		    , P_NAME
-		    , P_PRICE
-		    , P_DISCOUNT
-		    , P_DETAIL
-		    , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
-		 FROM PRODUCT   
-		 JOIN P_ATTACH USING(P_NO)
-		 WHERE 
-		      P_ATTACHTYPE = '썸네일'
-		
+	SELECT *
+	
+	  FROM (
+	        SELECT
+	              ROWNUM RNUM
+	            , A.* 
+	        FROM
+	            (SELECT 
+	                  P_NO
+	                , P_NAME
+	                , P_PRICE
+	                , P_DISCOUNT
+	                , P_DETAIL
+	                , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+	             FROM PRODUCT   
+	             JOIN P_ATTACH USING(P_NO)
+	             WHERE 
+	                    P_ATTACHTYPE = '썸네일'
+	             ORDER 
+	                BY P_NO DESC) A
+	                )       
+	                
+	WHERE RNUM BETWEEN ? AND ?
 		
 	</entry>
 	
 	
+	<entry key="selectListCount">
+		
+		SELECT 
+		       COUNT(*) LISTCOUNT
+		  FROM PRODUCT
+		 
+	
+	</entry>
 	
 	
+	<entry key="selectBestProduct">
+	
+		SELECT
+			      *
+		  FROM(   
+			   SELECT 
+			           ROWNUM RNUM
+			        , A.*
+			    
+			    FROM  
+			        (
+			        SELECT 
+			              P_NO
+			            , P_NAME
+			            , P_PRICE
+			            , P_DISCOUNT
+			            , P_DETAIL
+			            , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+			         FROM PRODUCT   
+			         LEFT JOIN P_ATTACH USING(P_NO)
+			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
+			         WHERE 
+			                P_ATTACHTYPE = '썸네일'
+			           AND  CATEGORY_1 = '베스트'
+			         ORDER BY P_NO DESC  
+			           ) A
+			        )
+			WHERE RNUM BETWEEN ? AND ?
+				
+	
+	
+	</entry>
+	
+	
+	<entry key="selectNewProduct">
+		SELECT
+			      *
+		  FROM(   
+			   SELECT 
+			           ROWNUM RNUM
+			        , A.*
+			    
+			    FROM  
+			        (
+			        SELECT 
+			              P_NO
+			            , P_NAME
+			            , P_PRICE
+			            , P_DISCOUNT
+			            , P_DETAIL
+			            , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+			         FROM PRODUCT   
+			         LEFT JOIN P_ATTACH USING(P_NO)
+			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
+			         WHERE 
+			                P_ATTACHTYPE = '썸네일'
+			           AND  CATEGORY_1 = '신상품'
+			         ORDER BY P_NO DESC  
+			           ) A
+			        )
+			WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+	
+	
+	<entry key="selectEventProduct">
 
-
+		        SELECT 
+		              P_NO
+		            , P_NAME
+		            , P_PRICE
+		            , P_DISCOUNT
+		            , P_DETAIL
+		            , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+		            
+		         FROM PRODUCT   
+		         LEFT JOIN P_ATTACH USING(P_NO)
+		         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
+		         WHERE 
+		                P_ATTACHTYPE = '썸네일'
+		           AND  E_NO = ?
+		           
+		         ORDER BY P_NO DESC  
+	
+	</entry>
+	
 
 
 </properties>

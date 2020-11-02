@@ -7,20 +7,71 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.product.model.dao.ProductDao;
+import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
 
 public class ProductService {
 	
-	public ArrayList<Product> selectAllProduct(){
+	public ArrayList<Product> selectAllProduct(PageInfo pi){
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Product> list = new ProductDao().selectAllProduct(conn);
+		ArrayList<Product> list = new ProductDao().selectAllProduct(conn, pi);
 		
 		close(conn);
 		
 		return list;
 		
 	}
+	
+	public int selectListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new ProductDao().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	
+	
+	public ArrayList<Product> selectBestProduct(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		
+		ArrayList<Product> list = new ProductDao().selectBestProduct(conn, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	public ArrayList<Product> selectNewProduct(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		
+		ArrayList<Product> list = new ProductDao().selectNewProduct(conn, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	public ArrayList<Product> selectEventProduct(int eno) {
+		
+		Connection conn = getConnection();
+		
+		
+		ArrayList<Product> list = new ProductDao().selectEventProduct(conn,eno);
+		
+		close(conn);
+		
+		return list;
+	}
+	
 	
 }
