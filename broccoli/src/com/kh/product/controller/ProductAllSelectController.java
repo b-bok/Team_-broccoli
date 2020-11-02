@@ -1,11 +1,15 @@
 package com.kh.product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.product.model.service.ProductService;
 
 /**
  * Servlet implementation class ProductAllSelectController
@@ -27,6 +31,11 @@ public class ProductAllSelectController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
+		ArrayList list = new ProductService().selectAllProduct();
+
+		request.setAttribute("list", list);
+		
 		request.getRequestDispatcher("views/selectProduct/productAllSelectPage.jsp").forward(request, response);
 		
 	}
