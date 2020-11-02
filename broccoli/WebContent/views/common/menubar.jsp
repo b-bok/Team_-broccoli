@@ -19,10 +19,10 @@
 <!-- 정아씨 -->
 <link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<style>
 <style>
 div {
 	box-sizing: border-box;
@@ -95,6 +95,7 @@ a {
 	cursor: pointer;
 	text-align: center;
 }
+
 </style>
 </head>
 <body>
@@ -151,14 +152,14 @@ a {
 				<li>
 					<form class="form-inline" action="<%=broccoli %>/search.pb" method="GET">
 						<input name="search" class="form-control form-control-sm"
-							type="text" size="20px" placeholder="검색어를 입력하세요">
-						<button class="btn btn-secondary btn-sm" type="submit">
-							<i class="fas fa-search" style="font-size: 20px;"></i>
+							type="text" size="15px" placeholder="검색어를 입력하세요">
+						<button class="btn btn-secondary btn-sm" type="submit" style="padding:8px">
+							<i class="fas fa-search" style="font-size: 15px;"></i>
 						</button>
 					</form>
 				</li>
 				<!-- 장바구니 -->
-				<li><a href="★"><i class="fas fa-shopping-cart"
+				<li><a href="<%= broccoli %>/cart.or"><i class="fas fa-shopping-cart"
 						style="font-size: 30px;"></i></a></li>
 			</ul>
 		</div>
