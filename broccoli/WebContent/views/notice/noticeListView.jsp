@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import = "java.util.ArrayList, com.kh.notice.model.vo.Notice" %>
+<%
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+ %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +86,6 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 			<table class="table table-hover" id="noticeList" >
 				
 				<thead align="center">
-					
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -88,67 +94,26 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
                         <th>조회수</th>
 					</tr>
 				</thead>
-
+			
+			
+			<%if(list.isEmpty()) { %>
+			<tr>
+				<td> 공지사항이 존재하지 않습니다.</td>
+			</tr>
+			<%}else { %>
+			
+	
+			<%for(Notice n : list) { %>
 				<tbody align="center">
 					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td>안녕</td>
+						<td>나는</td>
                         <td>2020-10-30</td>
                         <td>10</td>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>2</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
-
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
-
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>12</td>
-					</tr>
-
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
+				<%} %>
+				
+			<%} %>	
 				</tbody>
 
 			</table>
@@ -160,11 +125,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 
 			<div id="searchForm" align="left">
 
-                <form action ="test" method ="get">
+                <form action ="" method ="post">
 
-                    * 검색 &nbsp &nbsp 
+                    * 검색 &nbsp; &nbsp; 
 
-                    <input type="checkbox" id="checkbox" value=""> ID &nbsp 
+                    <input type="checkbox" id="checkbox" value=""> ID &nbsp; 
                     <input type="checkbox" id="checkbox" value=""> 제목
 
                     <input type="text" name="keyword" id="notice_Keyword"> 

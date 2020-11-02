@@ -90,7 +90,9 @@
         #topic1{
             text-align: center;
         }
-
+       #deliver{
+          float:right;
+        }
         
 </style>
 </head>
@@ -119,12 +121,12 @@
                     <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록▶</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPagePoint.my">적립금 조회</a></div><br>
-                    <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my">내 문의 조회</a></div><br>
+                    <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my?currentPage=1">내 문의 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회</a></div><br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회</a></div>
           </div>
         </div>
-
+ 
         <div id="content_2">
           <div id="content_2_1">
               <br><br><h3 style= font-weight:bold;>배송지 등록</h3>
@@ -133,6 +135,7 @@
               <table class="table">
                           <thead>
                             <tr>
+                              <th>번호</th>
                               <th>수령인</th>
                               <th>전화번호</th>
                               <th>주소</th>
@@ -144,8 +147,88 @@
                         </table>
             </div>
                         <br>
+                        <!-- 등록된 배송지 없을 경우 -->
+                        
                          <h4 id="topic1">현재 등록된 배송지가 없습니다.</h4>
-                         <button type="button" class="btn btn-success"style="float: right;">등록하기</button>
+                         <div class="container">  
+  <!-- 배송지등록 버튼-->
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+    배송지 등록
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- 배송지 등록 창 헤더 -->
+        <div class="modal-header">
+          <h4 class="modal-title">배송지 등록</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- 배송지 등록 창 바디 -->
+        <div class="modal-body">
+          <form action="">
+               <label class="col-sm-3 control-label">배송지명</label>
+               <input type="text" name="first" size=30 maxlength= 30 placeholder="ex)현관앞, 철제함, 직접수령..."><br><br>
+               <label class="col-sm-3 control-label">수령인</label>
+               <input type="text" name="last"size=30 maxlength= 30><br><br>
+             
+               <div class="input-group">
+               &nbsp;&nbsp;&nbsp;주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="last"size=10 maxlength= 10 placeholder="우편번호">
+                  <div class="input-group-append" size=10>
+                   <button class="btn btn-success" type="submit">주소찾기</button>  
+                  </div>
+                 </div><br>
+                 <label class="col-sm-3 control-label">      </label>
+               <input type="text" name="last"size=30 maxlength= 30 placeholder="상세주소"><br><br>
+               <label class="col-sm-3 control-label">연락처</label>
+               <input type="tel" name="phone" size= 30 maxlength=13 placeholder="-없이입력" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" /><br><br>
+               <label class="col-sm-3 control-label">기본배송지</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <input type="checkbox" background-color="black"> 기본배송지로 설정
+           </form>
+        </div>
+        
+        <!-- 배송지 등록 창 푸터 -->
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2">등록</button>
+        <div class="container">
+
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- 팝업 내용 -->
+        <div class="modal-body">
+          성공적으로 등록되었습니다.
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">확인</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+         
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
                         <br>
           </div>
         </div>

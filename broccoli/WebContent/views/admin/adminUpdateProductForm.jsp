@@ -31,15 +31,14 @@
     <!-- 대쉬보드 추가하기 -->
     <%@ include file="adminNav.jsp" %>
     
-   <div class="outer">
+   <div class="outer" style="margin-left:300px;">
 
        <select onchange="location.href=this.value" style="margin-left: 50px; margin-top: 50px;">
      
-           <option value="<%=broccoli%>/updateProduct.admin">상품수정</option>
+           <option value="<%=broccoli%>/updateProduct.admin">상품수정/삭제</option>
            <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
-           <option value="주소입력">상품삭제</option>
          
-         </select>
+       </select>
 
        &ensp;
        <button type="button" onclick="history.back() ">&lt 이전화면</button>
