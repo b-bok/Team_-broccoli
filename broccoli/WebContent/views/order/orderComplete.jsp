@@ -56,6 +56,8 @@
         <button onclick="이벤트" class="btn btn-lg">주문 내역 확인</button>
         
     </div>
+    
+    <%@ include file = "../common/footer.jsp" %>
 
 </body>
 </html>

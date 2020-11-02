@@ -60,5 +60,7 @@
 		<div class="col-sm-4"></div>
 	</div>
 </div>
+
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>
