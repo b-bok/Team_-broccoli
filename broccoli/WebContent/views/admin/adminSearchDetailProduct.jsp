@@ -43,7 +43,6 @@
         #productSelectList tbody tr:hover{
         background-color: greenyellow;
         cursor: pointer;
-    }
         }
         .paging-area a{
               text-decoration: none;  /* 및줄 없애기 */
@@ -210,7 +209,15 @@
                 
                 
             </table>
-
+            
+            
+			 <script>
+		       $(function(){
+		        $("#productSelectList>tbody>tr").click(function(){
+		            location.href= "<%=broccoli%>/productDetailResult.admin"
+		            });
+		       });
+      		</script>
           
         </div>
         <br>
