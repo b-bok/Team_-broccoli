@@ -158,7 +158,7 @@
    	 <script>
 	      $(function(){
 	          $("#pReviewList>tbody>tr").click(function(){
-	              location.href= "<%=broccoli%>/"
+	              location.href= "<%=broccoli%>/productAnswer.admin"
 	              });
 	      });
      </script>
