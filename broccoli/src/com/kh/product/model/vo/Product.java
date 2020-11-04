@@ -87,6 +87,14 @@ public class Product {
 		this.nation = nation;
 		this.packtype = packtype;
 		this.thumbnail = thumbnail;
+		
+    // 관리자 상품조회 리스트용 생성자	
+	public Product(int pno, String pName, int inventory, String company) {
+		super();
+		this.pno = pno;
+		this.pName = pName;
+		this.inventory = inventory;
+		this.company = company;
 	}
 
 	public int getPno() {

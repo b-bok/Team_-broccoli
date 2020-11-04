@@ -28,7 +28,7 @@
 	
 	
     <div style="margin-left: 300px; margin-top: 50px; margin-bottom: 0;">
-        <button><a href="<%= broccoli %>/selectProduct.admin">카테고리별 조회</a></button>
+        <button><a href="<%= broccoli %>/selectProduct.admin?currentPage=1">카테고리별 조회</a></button>
         <button><a href="<%= broccoli %>/selectDetailProduct.admin">상세 조회</a></button>
     </div>
 

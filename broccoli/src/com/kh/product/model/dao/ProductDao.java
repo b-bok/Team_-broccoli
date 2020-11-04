@@ -300,4 +300,45 @@ public class ProductDao {
 	}
 	
 	
+	public ArrayList<Product> selectAdminProductList(Connection conn,PageInfo pi){
+		      ArrayList<Product> list = new ArrayList<>();
+		      
+		      PreparedStatement pstmt = null;
+		      ResultSet rset = null;
+		      
+		      String sql = prop.getProperty("selectAdminProductList");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         
+		         int startRow = (pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+		         int endRow = startRow + pi.getBoardLimit()-1;
+		         
+		         pstmt.setInt(1, startRow);
+		         pstmt.setInt(2, endRow);
+		         
+		         rset = pstmt.executeQuery();
+		         
+		         while(rset.next()) {
+		            list.add(new Product(
+		                            rset.getInt("p_no"),
+		                            rset.getString("p_name"),
+		                            rset.getInt("p_inventory"),
+		                            rset.getString("p_company")));
+		         }
+		         
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(rset);
+		         close(pstmt);
+		      }
+		      
+		      return list;
+		      
+		   }
+
+	
+	
 }
+
