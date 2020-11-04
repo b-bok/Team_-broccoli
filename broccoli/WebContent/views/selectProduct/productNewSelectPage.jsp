@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ page import="java.util.*, com.kh.product.model.vo.*" %>	
+	
+
+<%
+	ArrayList<Product> list = (ArrayList)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+%>			
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,24 +45,14 @@
         #header_1{height: 50%; margin-top: 10px;}
         #header_2{height: 50%;}
 
-        #header>div>a {
-            text-decoration: none;
-            color: black;
-            font-size:15px;
-            border: 1px solid blue;
-            display: block;
-            display: table-cell;
-            width: 150px;
-        }
-
-        .thumbnail {
+        .thumbnails {
             border: 1px solid white;
             width: 220px;
             display:inline-block;
             margin: 10px;
         }
 
-        .thumbnail:hover {
+        .thumbnails:hover {
             cursor: pointer;
             opacity: 0.3;
         }
@@ -79,99 +79,55 @@
 
         <hr>
 
-        <div id="content">
+         <div id="content">
           
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+         <%for(Product p : list) { %>
+          	
+            <div class="thumbnails" align="center">
+                <img src="<%=broccoli %>/<%=p.getThumbnail() %>" width="200" height="200">
+   					<br />
+                    <%=p.getpName() %><br>
+                    <span style="text-decoration: line-through; color: gray;"><%=p.getPrice() %></span>
+                    <span style="color: green;">--> <%=p.getDiscount() %></span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666"><%=p.getSmallDetail() %></span>
               
             </div>
+            
+            <% } %>
 
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-        </div>
+        	</div>
 
         <div id="fotter">
-            <br><br>
+   <br><br>
             <div id="pagingBar" align="center">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul>
+                <%if(pi.getCurrentPage() != 1) { %>
+                	<li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/newProduct.pb?currentPage=<%=pi.getCurrentPage() -1%>">&lt;이전</a>
+                    </li>
+                <% } %> 
+                	
+                	
+                <%for(int p = pi.getStartPage(); p<pi.getEndPage(); p++) {%>
+                	<%if(pi.getCurrentPage() == p) { %>
+                	
+                  	<li class="page-item active">
+                    <a class="page-link" href="<%=broccoli%>/newProduct.pb?currentPage=<%=p%>"><%=p%></a>
+                  
+                  	<%}else { %>
+                  	<li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/newProduct.pb?currentPage=<%=p%>"><%=p%></a>
+                    </li>
+                    <% } %>
+                <% } %>
+                
+                
+                <%if(pi.getCurrentPage() != pi.getMaxPage())  {%>
+                   <li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/newProduct.pb?currentPage=<%=pi.getCurrentPage() +1%>">&gt;다음</a>
+                   </li>
+                 <% } %>   
+				</ul>
             </div>
             
         </div>
@@ -183,6 +139,6 @@
 
     </script>
 
-
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

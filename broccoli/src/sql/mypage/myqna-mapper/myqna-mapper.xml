@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key= "selectListCount">
+    
+     SELECT 
+            COUNT(*) LISTCOUNT
+       FROM QNA_BOARD
+      WHERE M_QNA_STATEMENT = 'Y'
+    
+    </entry>
+    
+    <entry key="selectList">
+    
+    SELECT *
+		  FROM(
+		    SELECT
+		        ROWNUM RNUM
+		        , A.*
+		        FROM(
+		       SELECT
+		               ORDER_NO
+		             , M_QNA_CATEGORY
+		             , M_QNA_TITLE
+		             , M_REG_DATE
+		          FROM QNA_BOARD 
+		         ORDER 
+		            BY QNA_NO DESC
+		            )A
+		            )
+   WHERE RNUM BETWEEN ? AND ?
+    
+    </entry>
+
+</properties>

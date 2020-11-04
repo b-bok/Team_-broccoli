@@ -41,6 +41,9 @@
             color: black;
             margin: 5px;
         }
+      #productList tbody tr:hover{
+        background-color: greenyellow;
+        cursor: pointer;  
   </style>   
 </head>
 <body>
@@ -49,8 +52,8 @@
     <%@ include file="adminNav.jsp" %>
 
     <div style="margin-left: 300px; margin-top: 50px; margin-bottom: 0;">
-        <button><a href="">카테고리별 조회</a></button>
-        <button><a href="">상세 조회</a></button>
+        <button><a href="<%= broccoli %>/selectProduct.admin">카테고리별 조회</a></button>
+        <button><a href="<%= broccoli %>/selectDetailProduct.admin"">상세 조회</a></button>
     </div>
 
     <div class="outer" style="margin-left:300px;">
@@ -145,11 +148,28 @@
                 
                 
             </table>
+			
+			 <script>
+			       $(function(){
+			        $("#productList>tbody>tr").click(function(){
+			            location.href= "<%=broccoli%>/productDetailResult.admin"
+			            });
+			       });
+      		</script>
+      		
+              <select style="margin-top: 20px; margin-left: 200px;">
+                  <option value="pProduct">카테고리</option>
+                  <option value="">과일,채소</option>
+                  <option value="">냉장식품</option>
+                  <option value="">간편식품</option>
+                  <option value="">수산물</option>
+                  <option value="">정육</option>
+              </select>
 
-            <select style="margin-top: 20px; margin-left: 200px;">
-                <option value="">상품명</option>
-                <option value="">업체명</option>
-            </select>
+              <select style="margin-top: 20px; ">
+                  <option value="pProduct">상품명</option>
+                  <option value="pCompany">업체명</option>
+              </select>
 
             <input type="text" name="searchProduct" placeholder="검색어를 입력하세요"> 
             <button>검색</button>

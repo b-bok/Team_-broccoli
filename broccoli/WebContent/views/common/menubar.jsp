@@ -19,86 +19,86 @@
 <!-- 정아씨 -->
 <link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
-<style>
 div {
-	box-sizing: border-box;
-	font-size: 12px;
-}
-
-a:hover {
-	text-decoration: none;
-	color: green;
-}
-
-a {
-	color: black;
-	font-weight: bold;
-}
-/* 최상단상단메뉴바 */
-#header {
-	height: 15%;
-}
-
-#header_1 {
-	height: 20%;
-	margin-right: 30px;
-}
-
-.list_menu {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	text-align: center;
-	height: 100%;
-	float: right;
-}
-
-.list_menu>li {
-	float: left;
-	width: 100px;
-	height: 100%;
-	cursor: pointer;
-	text-align: center;
-}
-
-.list_menu>li>a:hover+ul, .submenu:hover, .list_menu a {
-	display: block;
-}
-
-.submenu {
-	display: none;
-	padding: 0;
-	list-style-type: none;
-}
-/* 홈로고부분 */
-#header_2 {
-	height: 50%;
-	text-align: center;
-}
-/* 카테고리 메뉴 */
-#header_3 {
-	height: 30%;
-	width: 100%;
-	margin-left: 80px;
-}
-
-.allmenu>li {
-	list-style-type: none;
-	float: left;
-	width: 230px;
-	height: 40px;
-	line-height: 30px;
-	cursor: pointer;
-	text-align: center;
-}
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+        
+        a:hover {
+            text-decoration: none;
+            color: green;
+        }
+        
+        a {
+            color: black;
+            font-weight: bold;
+        }
+        /* 최상단상단메뉴바 */
+        #header {
+            height: 15%;
+        }
+        
+        #header_1 {
+            height: 20%;
+            margin-right: 30px;
+        }
+        
+        .list_menu {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+            height: 100%;
+            float: right;
+        }
+        
+        .list_menu>li {
+            float: left;
+            width: 100px;
+            height: 100%;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .list_menu>li>a:hover+ul, .submenu:hover, .list_menu a {
+            display: block;
+        }
+        
+        .submenu {
+            display: none;
+            padding: 0;
+            list-style-type: none;
+        }
+        /* 홈로고부분 */
+        #header_2 {
+            height: 50%;
+            text-align: center;
+        }
+        /* 카테고리 메뉴 */
+        #header_3 {
+            height: 30%;
+            width: 100%;
+            margin-left: 80px;
+        }
+        
+        .allmenu>li {
+            list-style-type: none;
+            float: left;
+            width: 230px;
+            height: 40px;
+            line-height: 30px;
+            cursor: pointer;
+            text-align: center;
+        }
+	
 </style>
 </head>
 <body>
-
 
 	<div id="header" style="height: 150px">
 		<div id="header_1">
@@ -143,25 +143,29 @@ a {
 				<!------------------------------------★★★★★신상품/베스트/이벤트/상품검색 jsp파일경로 넣어주세요 ★★★★★------------------------------------------->
 
 
-				<li><a href="<%= broccoli %>/allProduct.pb"><i class="fas fa-bars"></i>&nbsp;&nbsp;전체
+				<li><a href="<%= broccoli %>/allProduct.pb?currentPage=1"><i class="fas fa-bars"></i>&nbsp;&nbsp;전체
 						카테고리</a></li>
-				<li><a href="<%= broccoli %>/newProduct.pb">신상품</a></li>
-				<li><a href="<%= broccoli %>/bestProduct.pb">베스트</a></li>
+				<li><a href="<%= broccoli %>/newProduct.pb?currentPage=1">신상품</a></li>
+				<li><a href="<%= broccoli %>/bestProduct.pb?currentPage=1">베스트</a></li>
 				<li><a href="<%= broccoli%>/eventProduct.pb">이벤트</a></li>
 				<li>
 					<form class="form-inline" action="<%=broccoli %>/search.pb" method="GET">
 						<input name="search" class="form-control form-control-sm"
-							type="text" size="20px" placeholder="검색어를 입력하세요">
-						<button class="btn btn-secondary btn-sm" type="submit">
-							<i class="fas fa-search" style="font-size: 20px;"></i>
+							type="text" size="15px" placeholder="검색어를 입력하세요">
+						<button class="btn btn-secondary btn-sm" type="submit" style="padding:8px">
+							<i class="fas fa-search" style="font-size: 15px;"></i>
 						</button>
 					</form>
 				</li>
 				<!-- 장바구니 -->
-				<li><a href="★"><i class="fas fa-shopping-cart"
+				<li><a href="<%= broccoli %>/cart.or"><i class="fas fa-shopping-cart"
 						style="font-size: 30px;"></i></a></li>
 			</ul>
 		</div>
 	</div>
+
+
+
+
 </body>
 </html>
