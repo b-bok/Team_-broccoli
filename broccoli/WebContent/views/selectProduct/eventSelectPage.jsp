@@ -52,7 +52,7 @@
 			<!-- 과일 이벤트  -->
             <div id="eventPage_1">
                 <div class="eventThumbnail">
-				<input type="hidden" name="eno" value=7 />
+				<input type="hidden" name="eno" value=1 />
 				<img src="<%=broccoli %>/resources/event_upfiles/ef20201020.JPG">
 
 				</div>
@@ -60,7 +60,7 @@
 			<!-- 고기 이벤트  -->
             <div id="eventPage_2">
                 <div class="eventThumbnail">
-				<input type="hidden" name="eno" value=8 />
+				<input type="hidden" name="eno" value=2 />
 				<img src="<%=broccoli %>/resources/event_upfiles/ef20201021.JPG">
 
 				</div>
@@ -68,7 +68,7 @@
 			<!-- 해산물 이벤트  -->
             <div id="eventPage_3">
                 <div class="eventThumbnail">
-				<input type="hidden" name="eno" value=9 />
+				<input type="hidden" name="eno" value=3 />
 				<img src="<%=broccoli %>/resources/event_upfiles/ef20201022.JPG">
 
 				</div>
