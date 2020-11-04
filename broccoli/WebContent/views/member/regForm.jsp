@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,17 +122,31 @@ span {
 													var regEx = /^[a-z\d]{6,}$/i;
 													var result = regEx.exec(id);
 							
-													if(result != null){
-														$(".id.regEx").html("");
-														window.open("idCheck.jsp?memId="+memId,"","width=500px,height=300px,top=300px,left=200px, resizable=no,scrollbars=no")
-													}else{
-														$(".id.regEx").html("6자 이상의 영문 혹은 영문과 숫자를 조합");
-														$(".id.regEx").css("color","red").css("font-size","10px");
-													}
-												});
+													$.ajax({
+														//1. 유효성 성공 -> db 아이디체크 
+														if(result1 != null){
+															//db 체크시작 
+															url:"idCheck.me",
+															data:{checkId:id},
+															success:function(result2){
+																//체크 결과 1.
+																if(result2 == "fail"){//아이디있음
+																	$(".id.regEx").html("이미 존재하거나 탈퇴한 회원아이디입니다");
+																	$("#memId").focus();
+																	} else{//아이디없음 
+																		$(".id.regEx").html("사용가능한 아이디입니다"); 
+																	}
+															// 1.유효성 실패 	
+															}else{
+																$(".id.regEx").html("6자 이상의 영문 혹은 영문과 숫자를 조합");
+																$(".id.regEx").css("color","red").css("font-size","10px");
+														}
+													});//ajax 종료 
 												
 											});
-								</script>
+										});		
+										
+								 </script>
 							</td>
 						</tr>
 						<tr>
@@ -145,8 +158,8 @@ span {
 									//비밀번호유효성확인
 									$(function(){
 										$("#memPwd").keyup(function(){
-											
-											var regEx = /^[a-z\d]{8,14}$/i;
+											//최소 10글자 이상/영문, 숫자, 특수문자 2개이상 조합, 동일한 숫자 3개이상 연속 사용불가
+											var regEx = /^[a-z\d\!\@\#\$\%]{10,}$/i;
 											var result = regEx.exec($(this).val());
 											if(result!=null){
 												$(".pwd.regEx").html("유효한 비밀번호입니다");
@@ -225,7 +238,7 @@ span {
 												return;
 											 }
 											
-											var regEx = /^[a-z\d\_\.]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
+											var regEx = /^[a-z\d\_\.\-]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
 											var result = regEx.exec(email);
 					
 											if(result != null){
@@ -257,7 +270,7 @@ span {
 											if(result!=null){
 												$(".mobile.regEx").html("");
 											}else{
-												$(".mobile.regEx").html("올바르지 않은 형식입니다"); 
+												$(".mobile.regEx").html("-도 입력해주세요."); 
 												$(".mobile.regEx").css("color","red").css("font-size","10px");
 											}
 										});
@@ -268,10 +281,29 @@ span {
 						</tr>
 						<tr>
 							<td>
-								<!-- 마켓컬리 소스 별도로 뽑아놓음 >> api 불러올때 다시 정리해보기 --> 
 								<label for="address"><b>주소<span>*</span></b></label>
-								<button type="button" class="addressbtn">주소검색</button> <br>
+								<input type="button" class="addressbtn" id="addressbtn" value="주소검색"></input>
+								<input type="text" placeholder="우편번호" name="zipcode" id="zipcode">
+								<input type="text" placeholder="주소" name="address" id="address">
 								<input type="text" placeholder="상세주소" name="addrDetail" id="addrDetail">
+								<input type="text" placeholder="참고항목" name="addrExtra" id="addrExtra">
+								<!-- 주소검색 버튼 클릭시 다음 주소 API 팝업 -->
+								<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+								<script>
+								$(function(){
+									$("#addressbtn").click(function(){
+									    new daum.Postcode({
+									        oncomplete: function(data) {
+									            
+
+									        }
+									    }).open();
+										
+									})
+								})
+								</script>
+
+								
 							</td>
 							<td></td>
 						</tr>
@@ -312,9 +344,9 @@ span {
 					$(function() {
 						$("#terms").click(function() {
 							if ($("#terms").prop("checked")) {
-								$("input[name=chk]").prop("checked", true);
+								$("input[name=chk]").attr("checked", true);
 							} else {
-								$("input[name=chk]").prop("checked", false);
+								$("input[name=chk]").attr("checked", false);
 							}
 						})
 					});
