@@ -56,7 +56,7 @@
 			            , P_PRICE
 			            , P_DISCOUNT
 			            , P_DETAIL
-			            , P_THUMBNAIL "thumbnail"
+			            , P_THUMBNAIL
 			         FROM PRODUCT   
 			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
 			         WHERE 
@@ -87,12 +87,12 @@
 			            , P_PRICE
 			            , P_DISCOUNT
 			            , P_DETAIL
-			            , P_THUMBNAIL "thumbnail"
+			            , P_THUMBNAIL
 			         FROM PRODUCT   
 
 			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
 			         WHERE 
-			           AND  CATEGORY_1 = '신상품'
+			              CATEGORY_1 = '신상품'
 			         ORDER BY P_NO DESC  
 			           ) A
 			        )
@@ -109,13 +109,13 @@
 		            , P_PRICE
 		            , P_DISCOUNT
 		            , P_DETAIL
-		            , P_THUMBNAIL "thumbnail"
+		            , P_THUMBNAIL
 		            
 		         FROM PRODUCT   
 		         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
 		         WHERE 
-
-		           AND  E_NO = ?
+				      
+		               E_NO = ?
 		           
 		         ORDER BY P_NO DESC  
 	
