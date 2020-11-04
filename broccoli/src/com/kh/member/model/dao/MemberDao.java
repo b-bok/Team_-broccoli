@@ -165,31 +165,6 @@ public class MemberDao {
 		return list;
 	
 	}
-	
-	public int idCheck(Connection conn, String checkbtn1) {
-		
-		int count = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("idCheck");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, checkbtn1);
-			rset = pstmt.executeQuery();
-			
-			
-					
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		
-		return count;
-		
-	}
+
 
 }
