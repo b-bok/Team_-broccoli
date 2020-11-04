@@ -177,7 +177,7 @@
     </div>
 	
 
-	
+	<%-- 
 	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
 
@@ -185,6 +185,8 @@
 	
 	
 	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
+	
+	 --%>
 
 <%@ include file="../common/footer.jsp"%>
 </body>
