@@ -55,7 +55,16 @@
 			  <div class="result result1" align="center">
 			  	  고객님께서 입력하신 정보가 <br> 정확한지 확인 후 다시 시도해 주세요.
 			  </div> <br>
-			    <button type="submit" class="btn btn-success">아이디 다시 찾기</button>
+			    <button type="submit" class="btn btn-success" id="refindId">아이디 다시 찾기</button>
+			    <script>
+			    	$(function(){
+			    		$("#refindId").click(function(){
+			    			location.href= "<%= broccoli%>/findId.me";
+			    		})			    			
+		
+			    	})
+			    </script>
+			    	
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
