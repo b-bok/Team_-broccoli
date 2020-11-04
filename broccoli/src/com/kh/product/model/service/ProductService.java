@@ -73,5 +73,21 @@ public class ProductService {
 		return list;
 	}
 	
+	/**
+	 * 관리자 상품조회 리스트용 
+	 * @param pi 페이지정보
+	 * @return 상품전체조회 리스트
+	 */
+	public ArrayList<Product> selectAdminProductList(PageInfo pi){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new ProductDao().selectAdminProductList(conn, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+	
 	
 }

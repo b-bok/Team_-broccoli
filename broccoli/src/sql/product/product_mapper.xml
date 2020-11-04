@@ -127,6 +127,25 @@
 	
 	</entry>
 	
+	<entry key="selectAdminProductList">
+		SELECT *
+		  FROM (
+		       SELECT      
+		             ROWNUM RNUM
+		           , A.* 
+		       FROM (    
+		            SELECT 
+		                    P_NO
+		                 ,  P_NAME
+		                 ,  P_INVENTORY
+		                 ,  P_COMPANY
+		              FROM  PRODUCT P
+		              ORDER
+		                BY  P_NO DESC
+		            ) A
+		  )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 </properties>
