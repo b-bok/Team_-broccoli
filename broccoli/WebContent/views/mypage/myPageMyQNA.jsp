@@ -182,7 +182,7 @@
                         </tbody>
                     </table>
 
-                    <button id="qnaenroll-button" type="button" class="btn btn-success">1:1문의하기</button>
+                    <button id="qnaenroll-button" type="button" class="btn btn-success"><a href="<%= broccoli%>/MyQNAEnrollForm.my">1:1문의하기</a></button>
 
                     <div class="container">
                         <ul class="pagination justify-content-center">
