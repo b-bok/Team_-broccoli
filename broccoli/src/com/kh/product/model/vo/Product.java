@@ -52,6 +52,52 @@ public class Product {
 		this.thumbnail = thumbnail;
 		this.out = out;
 	}
+	
+	
+	
+	
+	
+	
+	public Product(int pno, String pName, int price, int discount, String smallDetail, String thumbnail) {
+		super();
+		this.pno = pno;
+		this.pName = pName;
+		this.price = price;
+		this.discount = discount;
+		this.smallDetail = smallDetail;
+		this.thumbnail = thumbnail;
+	}
+	
+	
+	
+
+	public Product(int pno, String pName, int price, int discount, String thumbnail, String img1, String img2, String unit, String weight,
+			String deli, String nation, String packtype, String detail) {
+		super();
+		this.pno = pno;
+		this.pName = pName;
+		this.price = price;
+		this.discount = discount;
+		this.img1 = img1;
+		this.img2 = img2;
+		this.unit = unit;
+		this.weight = weight;
+		this.detail = detail;
+		this.deli = deli;
+		this.nation = nation;
+		this.packtype = packtype;
+		this.thumbnail = thumbnail;
+	}
+		
+		
+    // 관리자 상품조회 리스트용 생성자	
+	public Product(int pno, String pName, int inventory, String company) {
+		super();
+		this.pno = pno;
+		this.pName = pName;
+		this.inventory = inventory;
+		this.company = company;
+	}
 
 	public int getPno() {
 		return pno;

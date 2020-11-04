@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -268,10 +267,76 @@ span {
 						</tr>
 						<tr>
 							<td>
-								<!-- 마켓컬리 소스 별도로 뽑아놓음 >> api 불러올때 다시 정리해보기 --> 
 								<label for="address"><b>주소<span>*</span></b></label>
-								<button type="button" class="addressbtn">주소검색</button> <br>
+								<input type="button" class="addressbtn" id="addressbtn" value="주소검색"></input>
+								<input type="text" placeholder="우편번호" name="zipcode" id="zipcode">
+								<input type="text" placeholder="주소" name="address" id="address">
 								<input type="text" placeholder="상세주소" name="addrDetail" id="addrDetail">
+								<input type="text" placeholder="참고항목" name="addrExtra" id="addrExtra">
+								<!-- 주소검색 버튼 클릭시 다음 주소 API 팝업 -->
+								<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+								<script>
+								$(function(){
+									$("#addressbtn").click(function(){
+									    new daum.Postcode({
+									        oncomplete: function(data) {
+									            
+									        	var addr = '';
+									        	var extraAddr = '';
+									        	
+									        	if(data.userSelectedType === 'R'){
+									        		addr = data.roadAddress;
+									        		
+									        	}else{
+									        		addr = data.jibunAddress;
+									        	}
+									        	
+
+								                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+								                if(data.userSelectedType === 'R'){
+								                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+								                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+								                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+								                        extraAddr += data.bname;
+								                    }
+								                    // 건물명이 있고, 공동주택일 경우 추가한다.
+								                    if(data.buildingName !== '' && data.apartment === 'Y'){
+								                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+								                    }
+								                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+								                    if(extraAddr !== ''){
+								                        extraAddr = ' (' + extraAddr + ')';
+								                    }
+								                    
+									                
+									                // 회원가입양식에 바로 넣기  (javascript to jquery)
+								                    // 조합된 참고항목을 해당 필드에 넣는다.
+								                    //document.getElementById("addrExtra").value = extraAddr;
+									                $("input[name=addrExtra]").first().val(extraAddr);
+								                
+								                } else {
+								                    //document.getElementById("addrExtra").value = '';
+								                    $("input[name=addrExtra]").first().val(extraAddr);
+								                }
+								                
+								                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+								                //document.getElementById('zipcode').value = data.zonecode;
+								                //document.getElementById("address").value = addr;
+								                $("input[name=zipcode]").first().val(data.zonecode);
+								                $("input[name=address]").first().val(addr);
+								                
+								                // 커서를 상세주소 필드로 이동한다.
+								                //document.getElementById("addrDetail").focus();
+								                $("input[name=addrDetail]").first().focus();
+								                
+									        }
+									    }).open();
+										
+									})
+								})
+								</script>
+
+								
 							</td>
 							<td></td>
 						</tr>

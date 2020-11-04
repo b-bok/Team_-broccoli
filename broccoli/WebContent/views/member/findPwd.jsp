@@ -50,7 +50,7 @@
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
 		  <h2 align="center">비밀번호 찾기</h2><br>
-		  <form action="/findPwd.me" class="was-validated" method="post">
+		  <form action="<%=broccoli%>/findPwdResult.me" class="was-validated" method="post">
 		    <div class="form-group">
 		      <input type="text" class="form-control" id="userName" placeholder="고객님의 이름을 입력해주세요" name="userName" required>
 		    </div>
@@ -66,5 +66,7 @@
   		<div class="col-sm-4"></div>
 	</div>
 </div>
+
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

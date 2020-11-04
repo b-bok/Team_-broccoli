@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="com.kh.product.model.vo.*" %>
+
+
+<%
+	Product p = (Product)request.getAttribute("p");
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +48,7 @@
         }
 
 
-        .productDetailImage{height: 15%;}
+        .productDetailImage{height: 25%;}
 
         .productDetailImage>img {
             width:60%;
@@ -88,46 +96,48 @@
         <div id="productCut">
 
             <div id="productThumbnail">
-                <img src="../resources/image/bgsample.PNG" >
+                <img src="<%=broccoli %>/<%=p.getThumbnail() %>" >
             </div>
             
             <div id="productExp" align="center">
             <form action="" method="post">  
                 <div id="productName">
-                    <h3 style="margin: 0;">상품 이름</h3>
+                    <h3 style="margin: 0;"><%=p.getpName() %></h3>
                 </div>
                 <div id="productPrice">
-                    <h3 style="margin: 0;">상품 가격</h3>
+                    <span style="text-decoration: line-through; color: gray; margin:0; font-size: large;"><%=p.getPrice() %></span>
+                    <span style="color: green; margin:0; font-size: large;">--> <%=p.getDiscount() %></span>
                 </div>
                 <div id="productDetails">
                     
                     <table >
                         <tr>
                             <th width="50">판매단위</th>
-                            <td width="200">1봉</td>
+                            <td width="200"><%=p.getUnit() %></td>
                         </tr>
                         <tr>
                             <th>중량/용량</th>
-                            <td>90g</td>
+                            <td><%=p.getWeight() %></td>
                         </tr>
                         <tr>
                             <th>배송구분</th>
-                            <td>샛별배송/택배배송</td>
+                            <td><%=p.getDeli() %></td>
                         </tr>
                         <tr>
                             <th>원산지</th>
-                            <td>국산</td>
+                            <td><%=p.getNation() %></td>
                         </tr>
                         <tr>
                             <th>포장타입</th>
-                            <td>종이포장</td>
+                            <td><%=p.getPacktype() %></td>
                         </tr>
                         <tr>
                             <th>구매수량</th>
                             <td><input type="number" max="50" name="amount"></td>
                         </tr>
                         <tr>
-                            <th>총 상품 금액 : 3700원</th>
+                            <th>총 상품 금액 :</th>
+                            
                             <td style="text-align: right;">
                             <button type="submit" class="btn btn-success btn-sm">장바구니 담기</button>
                             <button type="submit" class="btn btn-success btn-sm">바로 구매</button>
@@ -146,21 +156,18 @@
 
          	<%@ include file="../common/reviewMenubar.jsp" %>
 
-
+		<br />
         <div class="productDetailImage" align="center">
-            <img src="../resources/image/flower2.PNG" width="60%" height="100%" name="productImage1" >
+            <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="100%" name="productImage1" >
         </div>
 
         <div id="productDexp" align="center">
         
-            <h2 style="margin: 10;" id="list1">상품 이름</h2>
+            <h2 style="margin: 10;" id="list1"><%=p.getpName() %></h2>
         </div>
         <div id="productSexp">
-            <p >
-                뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
+            <p align="center">
+		                <%=p.getDetail() %>
     
             </p>
         </div>
@@ -168,16 +175,16 @@
 
             <%@ include file="../common/reviewMenubar.jsp" %>
 
-
+		<br />
         <div class="productDetailImage" align="center">
-            <img src="../resources/image/flower2.PNG" width="60%" height="100%" name="productImage1" id="list2" >
+            <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="100%" name="productImage1" id="list2" >
         </div>
 
 
     </div>
 	
 
-	
+	<%-- 
 	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
 
@@ -185,7 +192,9 @@
 	
 	
 	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
+	
+	 --%>
 
-
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

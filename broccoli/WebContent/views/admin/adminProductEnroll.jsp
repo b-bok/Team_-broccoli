@@ -16,7 +16,7 @@
     .outer{
       background-color: rgb(227, 245, 199);  /*배경색은 임의로 설정함*/
       width: 600px;
-      margin: auto;
+      margin-left:300px;
       margin-top: 50px;
     }
     #enrollPForm table{margin:auto;}

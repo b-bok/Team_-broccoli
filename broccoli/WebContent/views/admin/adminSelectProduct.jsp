@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.product.model.vo.*, java.util.ArrayList" %>    
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +46,9 @@
             color: black;
             margin: 5px;
         }
+      #productList tbody tr:hover{
+        background-color: greenyellow;
+        cursor: pointer;  
   </style>   
 </head>
 <body>
@@ -49,7 +57,7 @@
     <%@ include file="adminNav.jsp" %>
 
     <div style="margin-left: 300px; margin-top: 50px; margin-bottom: 0;">
-        <button><a href="<%= broccoli %>/selectProduct.admin">카테고리별 조회</a></button>
+        <button><a href="<%= broccoli %>/selectProduct.admin?currentPage=1">카테고리별 조회</a></button>
         <button><a href="<%= broccoli %>/selectDetailProduct.admin"">상세 조회</a></button>
     </div>
 
@@ -71,85 +79,48 @@
 
                 </thead>
                 <tbody>
+                <% if(list.isEmpty()) { %>
+ 	               <tr>
+         				<th colspan="6">조회된 게시글이 없습니다.</th>	       
+    	            </tr>
+ 				<% }else{ %>
+ 					
+ 					<% for(Product p : list){ %>
                     <tr>
-                        <td>100</td>
-                        <td>12</td>
-                        <td>하남쭈꾸미</td>
-                        <td>55</td>
-                        <td>하남식품</td>
+                        <td></td>
+                        <td><%= p.getPno() %></td>
+                        <td><%= p.getpName() %></td>
+                        <td><%= p.getPrice() %></td>
+                        <td><%= p.getCompany() %></td>
                     </tr>
-                    <tr>
-                        <td>99</td>
-                        <td>32</td>
-                        <td>사과 1봉</td>
-                        <td>102</td>
-                        <td>농협사과</td>
-                    </tr>
-                    <tr>
-                        <td>98</td>
-                        <td>523</td>
-                        <td>오렌지 1박스</td>
-                        <td>95</td>
-                        <td>제주식품</td>
-                    </tr>
-                    <tr>
-                        <td>97</td>
-                        <td>0148</td>
-                        <td>풀무원 냉면</td>
-                        <td>45</td>
-                        <td>풀무원</td>
-                    </tr>
-                    <tr>
-                        <td>96</td>
-                        <td>4213</td>
-                        <td>CJ 칼국수</td>
-                        <td>67</td>
-                        <td>CJ</td>
-                    </tr>
-                    <tr>
-                        <td>95</td>
-                        <td>12</td>
-                        <td>무농약 브로콜리</td>
-                        <td>45</td>
-                        <td>이천농협</td>
-                    </tr>
-                    <tr>
-                        <td>94</td>
-                        <td>45</td>
-                        <td>소불고기</td>
-                        <td>34</td>
-                        <td>한돈가든</td>
-                    </tr>
-                    <tr>
-                        <td>93</td>
-                        <td>5816</td>
-                        <td>오로라 생연어</td>
-                        <td>43</td>
-                        <td>쎌모네치킨</td>
-                    </tr>
-                    <tr>
-                        <td>92</td>
-                        <td>942</td>
-                        <td>유기농 배도라지즙</td>
-                        <td>78</td>
-                        <td>몸에쏙쏙</td>
-                    </tr>
-                    <tr>
-                        <td>91</td>
-                        <td>125</td>
-                        <td>옛날식 두부</td>
-                        <td>34</td>
-                        <td>두부나라</td>
-                    </tr>
+                    <% } %>
+                <% } %>    
                 </tbody>
                 
                 
             </table>
+			
+			 <script>
+			       $(function(){
+			        $("#productList>tbody>tr").click(function(){
+			            location.href= "<%=broccoli%>/productDetailResult.admin"
+			            });
+			       });
+      		</script>
+      		
+              <select style="margin-top: 20px; margin-left: 200px;">
+                  <option value="pProduct">카테고리</option>
+                  <option value="">과일,채소</option>
+                  <option value="">냉장식품</option>
+                  <option value="">간편식품</option>
+                  <option value="">수산물</option>
+                  <option value="">정육</option>
+              </select>
 
-            <select style="margin-top: 20px; margin-left: 200px;">
-                <option value="">상품명</option>
-                <option value="">업체명</option>
-            </select>
+              <select style="margin-top: 20px; ">
+                  <option value="pProduct">상품명</option>
+                  <option value="pCompany">업체명</option>
+              </select>
 
             <input type="text" name="searchProduct" placeholder="검색어를 입력하세요"> 
             <button>검색</button>
@@ -158,22 +129,17 @@
         </div>
         <br>
         <div class="paging-area" align="center">
-
-            <a href="">&lt; 이전</a>
-
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href="">6</a>
-            <a href="">7</a>
-            <a href="">8</a>
-            <a href="">9</a>
-            <a href="">10</a>
-
-            <a href="">다음 &gt;</a>
-
+		   <% if(pi.getCurrentPage() !=1 ){ %>
+            <a href="<%=broccoli%>/selectProduct.admin?currentPage=<%=pi.getCurrentPage()-1%>">&lt; 이전</a>
+		   <% } %>
+		   
+		   <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+            <a href="<%=broccoli%>/selectProduct.admin?currentPage=<%= p %>"><%= p %></a>
+		   <% } %>	
+		   
+		   <% if(pi.getCurrentPage() != pi.getMaxPage()){ %>
+            <a href="<%=broccoli%>/selectProduct.admin?currentPage=<%=pi.getCurrentPage()+1%>">다음 &gt;</a>
+		   <% } %>
         </div>
 
         <br>

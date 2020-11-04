@@ -241,6 +241,6 @@ margin-top: 5px;
 
 	</div>
 
-
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

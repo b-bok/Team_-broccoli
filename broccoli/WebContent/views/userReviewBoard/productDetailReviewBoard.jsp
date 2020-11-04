@@ -69,7 +69,9 @@ div {
 </head>
 <body>
 	<!-- 상품상세페이지 리뷰게시판 입니다. -->
-
+	
+	<%@ include file="../common/menubar.jsp"%>
+	
 	<div class="wrap">
 
 
@@ -134,83 +136,10 @@ div {
 						<td>500</td>
 						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-
-					<tr>
-						<td>6</td>
-						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-
-					<tr>
-						<td>7</td>
-						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-
-					<tr>
-						<td>8</td>
-						<td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
+					
 				</tbody>
 
 			</table>
-
 
 		</div>
 
@@ -239,16 +168,39 @@ div {
 	<script>
         
         $(function(){
-        	
+
         	$("#reviewTable>tbody>tr").click(function(){
         		
         		location.href = "<%=broccoli%>/detail.rv?rno="+ $(this).children().eq(0).text();
         		
         	});
         	
+        	selectUserReview();
+        	
         });
         
+        
+        function selectUserReview(){	// 리뷰 게시판 불러오는 ajax
+        	
+        	$.ajax({
+        		url:"selectReview.rv",
+        		type : "get",
+        		data :  {
+        			
+        			
+        		},
+        		success : function(result) {
+        			
+        		},
+        		error : function(){
+        			console.log("ajax통신실패");
+        		}
+        	})
+        	
+        }
+        
         </script>
+
 
 </body>
 </html>

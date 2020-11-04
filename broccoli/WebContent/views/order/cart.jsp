@@ -149,10 +149,12 @@
             <button type="submit" class="btn active" style="width: 150px;">주문하기</button> <br><br>
          	   ※ '입금확인' 상태일 때는 주문내역 상세 페이지에서 직접 주문 취소가 가능합니다. <br>
           	  '입금확인' 이후 상태일 때는 고객센터로 문의해주세요. <br><br>
-        </div>
-    </form>
+    	</form>
+	</div>
 	
-	
+    	<%@ include file = "../common/footer.jsp" %>
+
+
 
 </body>
 </html>

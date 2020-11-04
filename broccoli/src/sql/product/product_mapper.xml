@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	
+	<entry key="selectAllProduct">
+		SELECT *
+		
+		  FROM (
+		        SELECT
+		              ROWNUM RNUM
+		            , A.* 
+		        FROM
+		            (SELECT 
+		                  P_NO
+		                , P_NAME
+		                , P_PRICE
+		                , P_DISCOUNT
+		                , P_DETAIL
+		                , P_THUMBNAIL
+		             FROM PRODUCT   
+		             
+		             ORDER 
+		                BY P_NO DESC) A
+		                )       
+		                
+		WHERE RNUM BETWEEN ? AND ?
+		
+	</entry>
+	
+	
+	<entry key="selectListCount">
+		
+		SELECT 
+		       COUNT(*) LISTCOUNT
+		  FROM PRODUCT
+		 
+	
+	</entry>
+	
+	
+	<entry key="selectBestProduct">
+	
+		SELECT
+			      *
+		  FROM(   
+			   SELECT 
+			           ROWNUM RNUM
+			        , A.*
+			    
+			    FROM  
+			        (
+			        SELECT 
+			              P_NO
+			            , P_NAME
+			            , P_PRICE
+			            , P_DISCOUNT
+			            , P_DETAIL
+			            , P_THUMBNAIL
+			         FROM PRODUCT   
+			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
+			         WHERE 
+			              CATEGORY_1 = '베스트'
+			         ORDER BY P_NO DESC  
+			           ) A
+			        )
+			WHERE RNUM BETWEEN ? AND ?
+				
+	
+	
+	</entry>
+	
+	
+	<entry key="selectNewProduct">
+		SELECT
+			      *
+		  FROM(   
+			   SELECT 
+			           ROWNUM RNUM
+			        , A.*
+			    
+			    FROM  
+			        (
+			        SELECT 
+			              P_NO
+			            , P_NAME
+			            , P_PRICE
+			            , P_DISCOUNT
+			            , P_DETAIL
+			            , P_THUMBNAIL
+			         FROM PRODUCT   
+
+			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
+			         WHERE 
+			              CATEGORY_1 = '신상품'
+			         ORDER BY P_NO DESC  
+			           ) A
+			        )
+			WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+	
+	
+	<entry key="selectEventProduct">
+
+		        SELECT 
+		              P_NO
+		            , P_NAME
+		            , P_PRICE
+		            , P_DISCOUNT
+		            , P_DETAIL
+		            , P_THUMBNAIL
+		            
+		         FROM PRODUCT   
+		         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
+		         WHERE 
+				      
+		               E_NO = ?
+		           
+		         ORDER BY P_NO DESC  
+	
+	</entry>
+	
+	
+	<entry key="selectDetailProduct">
+	
+		SELECT 
+		       P_NO
+		     , P_NAME
+		     , P_PRICE
+		     , P_DISCOUNT
+		     , P_THUMBNAIL
+		     , P_IMAGE1
+		     , P_IMAGE2
+		     , P_UNIT
+		     , P_WEIGHT
+		     , P_DELI
+		     , P_NATION
+		     , P_PACKTYPE
+		     , P_DETAIL
+		FROM PRODUCT     
+		WHERE P_NO = ?
+	
+	</entry>
+	
+	
+	<entry key="selectAdminProductList">
+		SELECT *
+		  FROM (
+		       SELECT      
+		             ROWNUM RNUM
+		           , A.* 
+		       FROM (    
+		            SELECT 
+		                    P_NO
+		                 ,  P_NAME
+		                 ,  P_INVENTORY
+		                 ,  P_COMPANY
+		              FROM  PRODUCT P
+		              ORDER
+		                BY  P_NO DESC
+		            ) A
+		  )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+
+</properties>

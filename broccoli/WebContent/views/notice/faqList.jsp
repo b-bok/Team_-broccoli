@@ -200,6 +200,7 @@ margin-top: 50px;
 
 		</div>
 
+	<%@ include file="../common/footer.jsp"%>
 	</div>
 </body>
 </html>

@@ -58,10 +58,19 @@
 			  <div class="result result2" align="center">
 			     	아이디 : XXXXX
 			  </div><br>
-			    <button type="submit" class="btn btn-success">로그인하기</button>
+			    <button type="submit" class="btn btn-success" id="loginPage">로그인하기</button>
+			    <script>
+			    	$(function(){
+			    		$("#loginPage").click(function(){
+			    			location.href="<%=broccoli%>/login.me";
+			    		})
+			    	})
+			    </script>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
 </div>
+
+<%@ include file="../common/footer.jsp"%>
 </body>
 </html>
