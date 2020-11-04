@@ -36,7 +36,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 	}
 .wrap>div {width: 80%;float:right;}
 
-#noticeCategory {height: 5%; margin-top: 5px;}
+#noticeCategory {height: 5%; margin-top: 30px;}
 
 #fotter {height: 10%;}
 
@@ -89,9 +89,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
-						<th>작성자</th>
-                        <th>작성일</th>
                         <th>조회수</th>
+                        <th>작성일</th>
 					</tr>
 				</thead>
 			
@@ -106,10 +105,10 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></scri
 			<%for(Notice n : list) { %>
 				<tbody align="center">
 					<tr>
-						<td>안녕</td>
-						<td>나는</td>
-                        <td>2020-10-30</td>
-                        <td>10</td>
+						<td><%=n.getNoticeNo()%></td>
+						<td><%=n.getNoticeTitle()%></td>
+                        <td><%=n.getNoticeViews()%></td>
+                        <td><%=n.getNoticeEnroll() %></td>
 					</tr>
 				<%} %>
 				
