@@ -74,4 +74,15 @@ public class ProductService {
 	}
 	
 	
+	public Product selectDetailProduct(int pno) {
+		Connection conn = getConnection();
+		
+		Product p = new ProductDao().selectDetailProduct(conn, pno);
+		
+		close(conn);
+		
+		return p;
+	}
+	
+	
 }

@@ -98,7 +98,7 @@ public class ProductDao {
 									 , rset.getInt("p_price")
 									 , rset.getInt("p_discount")
 									 , rset.getString("p_detail")
-									 , rset.getString("thumbnail")
+									 , rset.getString("p_thumbnail")
 						             )
 						);
 				
@@ -146,7 +146,7 @@ public class ProductDao {
 									 , rset.getInt("p_price")
 									 , rset.getInt("p_discount")
 									 , rset.getString("p_detail")
-									 , rset.getString("thumbnail")
+									 , rset.getString("p_thumbnail")
 									)
 						);
 				
@@ -190,7 +190,7 @@ public class ProductDao {
 									 , rset.getInt("p_price")
 									 , rset.getInt("p_discount")
 									 , rset.getString("p_detail")
-									 , rset.getString("thumbnail")
+									 , rset.getString("p_thumbnail")
 									)
 						);
 				
@@ -232,7 +232,7 @@ public class ProductDao {
 									 , rset.getInt("p_price")
 									 , rset.getInt("p_discount")
 									 , rset.getString("p_detail")
-									 , rset.getString("thumbnail")
+									 , rset.getString("p_thumbnail")
 									)
 						);
 				
@@ -247,5 +247,57 @@ public class ProductDao {
 
 		return list;
 	}
+	
+	
+	public Product selectDetailProduct(Connection conn, int pno) {
+		
+		Product p = new Product();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectDetailProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				 		p = new Product(
+										  rset.getInt("p_no")
+										, rset.getString("p_name")
+										, rset.getInt("p_price")
+										, rset.getInt("p_discount")
+										, rset.getString("p_thumbnail")
+										, rset.getString("p_image1")
+										, rset.getString("p_image2")
+										, rset.getString("p_unit")
+										, rset.getString("p_weight")
+										, rset.getString("p_deli")
+										, rset.getString("p_nation")
+										, rset.getString("p_packtype")
+										, rset.getString("p_detail")
+										);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return p;
+
+	}
+	
 	
 }

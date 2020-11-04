@@ -67,6 +67,27 @@ public class Product {
 		this.smallDetail = smallDetail;
 		this.thumbnail = thumbnail;
 	}
+	
+	
+	
+
+	public Product(int pno, String pName, int price, int discount, String thumbnail, String img1, String img2, String unit, String weight,
+			String deli, String nation, String packtype, String detail) {
+		super();
+		this.pno = pno;
+		this.pName = pName;
+		this.price = price;
+		this.discount = discount;
+		this.img1 = img1;
+		this.img2 = img2;
+		this.unit = unit;
+		this.weight = weight;
+		this.detail = detail;
+		this.deli = deli;
+		this.nation = nation;
+		this.packtype = packtype;
+		this.thumbnail = thumbnail;
+	}
 
 	public int getPno() {
 		return pno;

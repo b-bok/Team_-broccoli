@@ -12,9 +12,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <style>
+  
+    .navwrap{
+    border : 1px solid green;
+    }
 
     .menu {
-        background: lightgray;
         display: table-cell; 
         /* 셀모양 처럼 옆으로 배열 */
         height: 50px;
@@ -22,7 +25,7 @@
     }
 
     .menu a {
-        color: black;
+        color: green;
         text-decoration: none;
         /* border: 1px solid red; */
         display: block;

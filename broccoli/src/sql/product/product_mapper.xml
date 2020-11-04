@@ -4,29 +4,27 @@
 
 	
 	<entry key="selectAllProduct">
-	SELECT *
-	
-	  FROM (
-	        SELECT
-	              ROWNUM RNUM
-	            , A.* 
-	        FROM
-	            (SELECT 
-	                  P_NO
-	                , P_NAME
-	                , P_PRICE
-	                , P_DISCOUNT
-	                , P_DETAIL
-	                , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
-	             FROM PRODUCT   
-	             JOIN P_ATTACH USING(P_NO)
-	             WHERE 
-	                    P_ATTACHTYPE = '썸네일'
-	             ORDER 
-	                BY P_NO DESC) A
-	                )       
-	                
-	WHERE RNUM BETWEEN ? AND ?
+		SELECT *
+		
+		  FROM (
+		        SELECT
+		              ROWNUM RNUM
+		            , A.* 
+		        FROM
+		            (SELECT 
+		                  P_NO
+		                , P_NAME
+		                , P_PRICE
+		                , P_DISCOUNT
+		                , P_DETAIL
+		                , P_THUMBNAIL
+		             FROM PRODUCT   
+		             
+		             ORDER 
+		                BY P_NO DESC) A
+		                )       
+		                
+		WHERE RNUM BETWEEN ? AND ?
 		
 	</entry>
 	
@@ -58,13 +56,11 @@
 			            , P_PRICE
 			            , P_DISCOUNT
 			            , P_DETAIL
-			            , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+			            , P_THUMBNAIL "thumbnail"
 			         FROM PRODUCT   
-			         LEFT JOIN P_ATTACH USING(P_NO)
 			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
 			         WHERE 
-			                P_ATTACHTYPE = '썸네일'
-			           AND  CATEGORY_1 = '베스트'
+			              CATEGORY_1 = '베스트'
 			         ORDER BY P_NO DESC  
 			           ) A
 			        )
@@ -91,12 +87,11 @@
 			            , P_PRICE
 			            , P_DISCOUNT
 			            , P_DETAIL
-			            , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+			            , P_THUMBNAIL "thumbnail"
 			         FROM PRODUCT   
-			         LEFT JOIN P_ATTACH USING(P_NO)
+
 			         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
 			         WHERE 
-			                P_ATTACHTYPE = '썸네일'
 			           AND  CATEGORY_1 = '신상품'
 			         ORDER BY P_NO DESC  
 			           ) A
@@ -114,18 +109,40 @@
 		            , P_PRICE
 		            , P_DISCOUNT
 		            , P_DETAIL
-		            , P_ATTACHIMG || P_ATTACHNAME "thumbnail"
+		            , P_THUMBNAIL "thumbnail"
 		            
 		         FROM PRODUCT   
-		         LEFT JOIN P_ATTACH USING(P_NO)
 		         LEFT JOIN P_CATEGORY USING(CATEGORY_NO)
 		         WHERE 
-		                P_ATTACHTYPE = '썸네일'
+
 		           AND  E_NO = ?
 		           
 		         ORDER BY P_NO DESC  
 	
 	</entry>
+	
+	
+	<entry key="selectDetailProduct">
+	
+		SELECT 
+		       P_NO
+		     , P_NAME
+		     , P_PRICE
+		     , P_DISCOUNT
+		     , P_THUMBNAIL
+		     , P_IMAGE1
+		     , P_IMAGE2
+		     , P_UNIT
+		     , P_WEIGHT
+		     , P_DELI
+		     , P_NATION
+		     , P_PACKTYPE
+		     , P_DETAIL
+		FROM PRODUCT     
+		WHERE P_NO = ?
+	
+	</entry>
+	
 	
 
 

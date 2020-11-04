@@ -79,7 +79,7 @@ public class ProductAllSelectController extends HttpServlet {
 		
 		  
 		  ArrayList<Product> list = new ProductService().selectAllProduct(pi);
-		  
+
 		  request.setAttribute("pi", pi);
 		  request.setAttribute("list", list);
 		  
