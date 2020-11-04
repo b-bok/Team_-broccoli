@@ -122,31 +122,17 @@ span {
 													var regEx = /^[a-z\d]{6,}$/i;
 													var result = regEx.exec(id);
 							
-													$.ajax({
-														//1. 유효성 성공 -> db 아이디체크 
-														if(result1 != null){
-															//db 체크시작 
-															url:"idCheck.me",
-															data:{checkId:id},
-															success:function(result2){
-																//체크 결과 1.
-																if(result2 == "fail"){//아이디있음
-																	$(".id.regEx").html("이미 존재하거나 탈퇴한 회원아이디입니다");
-																	$("#memId").focus();
-																	} else{//아이디없음 
-																		$(".id.regEx").html("사용가능한 아이디입니다"); 
-																	}
-															// 1.유효성 실패 	
-															}else{
-																$(".id.regEx").html("6자 이상의 영문 혹은 영문과 숫자를 조합");
-																$(".id.regEx").css("color","red").css("font-size","10px");
-														}
-													});//ajax 종료 
+													if(result != null){
+														$(".id.regEx").html("");
+														window.open("idCheck.jsp?memId="+memId,"","width=500px,height=300px,top=300px,left=200px, resizable=no,scrollbars=no")
+													}else{
+														$(".id.regEx").html("6자 이상의 영문 혹은 영문과 숫자를 조합");
+														$(".id.regEx").css("color","red").css("font-size","10px");
+													}
+												});
 												
 											});
-										});		
-										
-								 </script>
+								</script>
 							</td>
 						</tr>
 						<tr>
@@ -158,8 +144,8 @@ span {
 									//비밀번호유효성확인
 									$(function(){
 										$("#memPwd").keyup(function(){
-											//최소 10글자 이상/영문, 숫자, 특수문자 2개이상 조합, 동일한 숫자 3개이상 연속 사용불가
-											var regEx = /^[a-z\d\!\@\#\$\%]{10,}$/i;
+											
+											var regEx = /^[a-z\d]{8,14}$/i;
 											var result = regEx.exec($(this).val());
 											if(result!=null){
 												$(".pwd.regEx").html("유효한 비밀번호입니다");
@@ -238,7 +224,7 @@ span {
 												return;
 											 }
 											
-											var regEx = /^[a-z\d\_\.\-]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
+											var regEx = /^[a-z\d\_\.]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
 											var result = regEx.exec(email);
 					
 											if(result != null){
@@ -270,7 +256,7 @@ span {
 											if(result!=null){
 												$(".mobile.regEx").html("");
 											}else{
-												$(".mobile.regEx").html("-도 입력해주세요."); 
+												$(".mobile.regEx").html("올바르지 않은 형식입니다"); 
 												$(".mobile.regEx").css("color","red").css("font-size","10px");
 											}
 										});
@@ -295,7 +281,54 @@ span {
 									    new daum.Postcode({
 									        oncomplete: function(data) {
 									            
+									        	var addr = '';
+									        	var extraAddr = '';
+									        	
+									        	if(data.userSelectedType === 'R'){
+									        		addr = data.roadAddress;
+									        		
+									        	}else{
+									        		addr = data.jibunAddress;
+									        	}
+									        	
 
+								                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+								                if(data.userSelectedType === 'R'){
+								                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+								                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+								                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+								                        extraAddr += data.bname;
+								                    }
+								                    // 건물명이 있고, 공동주택일 경우 추가한다.
+								                    if(data.buildingName !== '' && data.apartment === 'Y'){
+								                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+								                    }
+								                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+								                    if(extraAddr !== ''){
+								                        extraAddr = ' (' + extraAddr + ')';
+								                    }
+								                    
+									                
+									                // 회원가입양식에 바로 넣기  (javascript to jquery)
+								                    // 조합된 참고항목을 해당 필드에 넣는다.
+								                    //document.getElementById("addrExtra").value = extraAddr;
+									                $("input[name=addrExtra]").first().val(extraAddr);
+								                
+								                } else {
+								                    //document.getElementById("addrExtra").value = '';
+								                    $("input[name=addrExtra]").first().val(extraAddr);
+								                }
+								                
+								                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+								                //document.getElementById('zipcode').value = data.zonecode;
+								                //document.getElementById("address").value = addr;
+								                $("input[name=zipcode]").first().val(data.zonecode);
+								                $("input[name=address]").first().val(addr);
+								                
+								                // 커서를 상세주소 필드로 이동한다.
+								                //document.getElementById("addrDetail").focus();
+								                $("input[name=addrDetail]").first().focus();
+								                
 									        }
 									    }).open();
 										
@@ -344,9 +377,9 @@ span {
 					$(function() {
 						$("#terms").click(function() {
 							if ($("#terms").prop("checked")) {
-								$("input[name=chk]").attr("checked", true);
+								$("input[name=chk]").prop("checked", true);
 							} else {
-								$("input[name=chk]").attr("checked", false);
+								$("input[name=chk]").prop("checked", false);
 							}
 						})
 					});
@@ -772,8 +805,6 @@ span {
 			</div>
 		</div>
 	</div>
-	
-	<%@ include file="../common/footer.jsp"%>
 
 </body>
 </html>
