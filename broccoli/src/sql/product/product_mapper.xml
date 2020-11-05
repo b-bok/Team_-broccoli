@@ -183,6 +183,30 @@
 	
 	</entry>
 	
+	
+	<entry key="selectPhotoReview">
+		
+		SELECT 
+		       R.review_board_no
+		     , review_rate
+		     , review_title
+		     , M.mem_id
+		     , R.reg_date
+		     , like_count
+		     , click_no
+		     
+		FROM REVIEW R
+		JOIN MEMBERS M ON(R.MEM_NO = M.MEM_NO)
+		JOIN RV_ATTACH A ON(R.REVIEW_BOARD_NO = a.review_board_no)
+		WHERE R.P_NO = ?
+		  AND A.RV_ATTACH_IMG != 'N'
+			
+	
+	</entry>
+	
+	
+	
+	
 	<entry key="selectAdminProductDetail">
 		SELECT 
 		       P_NO

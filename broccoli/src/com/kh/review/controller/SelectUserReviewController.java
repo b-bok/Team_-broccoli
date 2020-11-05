@@ -34,10 +34,23 @@ public class SelectUserReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int pno = Integer.parseInt(request.getParameter("pno"));
+		String yn = request.getParameter("yn");
 		
 		
-		ArrayList<Review> list = new ProductService().selectUserReview(pno);
 		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		if(yn.equals("all")) {
+			
+			list = new ProductService().selectUserReview(pno);
+			
+		}else {
+			
+			list = new ProductService().selectPhotoReview(pno);
+			
+		}
+		
+
 		response.setContentType("application/json; charset=utf-8");
 		
 		Gson gson = new Gson();

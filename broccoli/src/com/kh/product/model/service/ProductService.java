@@ -114,6 +114,21 @@ public class ProductService {
 	};
 	
 	
+	public ArrayList<Review> selectPhotoReview(int pno){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Review> list = new ProductDao().selectPhotoReview(conn, pno);
+		
+		close(conn);
+		
+		return list;
+		
+	};
+	
+	
+	
+	
 	
 	/**
 	 * 관리자 상품상세조회 페이지

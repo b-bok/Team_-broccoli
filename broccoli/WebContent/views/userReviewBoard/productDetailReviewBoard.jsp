@@ -84,7 +84,7 @@ div {
 
 			<select name="reviewSort" id="reviewSort">
 
-				<option value="lastPost" selected>최근등록 순</option>
+				<option value="lastPost">최근등록 순</option>
 				<option value="moreLike">좋아요 순</option>
 				<option value="moreView">조회 순</option>
 
@@ -105,7 +105,8 @@ div {
 
 		<div id="board">
 
-			<a href="">전체보기</a> <a href="">포토 리뷰</a> <br>
+			<button id="selectAll" class="btn btn-success btn-sm" value="all">전체보기</button> 
+			<button id="selectPhoto" class="btn btn-success btn-sm" value="photo">포토 리뷰</button> <br>
 
 
 
@@ -157,25 +158,42 @@ div {
         
         $(function(){
         	
-        	selectUserReview();
+        	var yn = "all";
         	
+        	selectUserReview(yn);
+        	
+
     		$("#reviewTable>tbody").on("click","tr",function(){
     			
-    			location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).children().eq(0).text();
+    			 location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).children().eq(0).text(); 
     			
+    		})
+    		
+    		$("#selectAll").click(function(){
+    			
+    			var yn = $(this).val();
+    			
+    			 selectUserReview(yn);
+    		})
+    		
+    		$("#selectPhoto").click(function(){
+    			
+    			var yn = $(this).val();
+    			
+    			selectUserReview(yn);
     		})
         		
         });
         
         
-        function selectUserReview(){	//상품에 맞는 리뷰를 불러오는 ajax
+        function selectUserReview(yn){	//상품에 맞는 리뷰를 불러오는 ajax
         	
         	$.ajax({
         		url:"selectReview.rv",
         		type : "get",
         		data :  {
-        			     pno : <%=p.getPno() %>
-
+        			     pno : <%=p.getPno() %>,
+						 yn : yn
         		},
         		success : function(list) {
         			
@@ -206,8 +224,6 @@ div {
    	        				"<td>" + list[i].clickNo + "</td>" +
    	        				"<td>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
    						 "</tr>";
-   						 
-   						 rate = "";
  
         			}
         			
@@ -221,6 +237,8 @@ div {
         	})
         	
         }
+        
+        
         
         </script>
 
