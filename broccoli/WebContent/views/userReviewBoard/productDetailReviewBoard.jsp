@@ -159,13 +159,12 @@ div {
         	
         	selectUserReview();
         	
-    		$("#reviewTable>tbody>tr").click(function(){
+    		$("#reviewTable>tbody").on("click","tr",function(){
+    			
+    			location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).children().eq(0).text();
+    			
+    		})
         		
-        		location.href = "<%=broccoli%>/detail.rv?rno="+ $("this").children().eq(0).text();
-        		
-        	});
-    
-        	
         });
         
         
@@ -184,9 +183,7 @@ div {
         			var str = "";
         			var rate = "";
 
-        			
-        		
-        			
+
  
         			for(var i in list) {
         				
@@ -194,8 +191,8 @@ div {
         				case 1 : rate = "<i class='fas fa-star'></i>"; break;
         				case 2 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
         				case 3 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
-        				case 4 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
-        				case 5 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
+        				case 4 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
+        				case 5 : rate = "</i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
         				}
         				
 
