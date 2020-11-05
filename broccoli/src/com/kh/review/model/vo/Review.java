@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Review {
 	private int reviewNo;	// 리뷰 번호
 	private int pno;		// 상품번호
-	private int memNo;		// 회원번호
+	private String mem;		// 회원번호 or 회원 아이디
 	private Date regDate;	// 등록일
 	private String reviewTitle;	// 리뷰제목
 	private String reviewContent;	// 리뷰 내용
@@ -17,12 +17,12 @@ public class Review {
 	public Review() {}
 
 
-	public Review(int reviewNo, int pno, int memNo, Date regDate, String reviewTitle, String reviewContent, int clickNo,
+	public Review(int reviewNo, int pno, String mem, Date regDate, String reviewTitle, String reviewContent, int clickNo,
 			int reviewRate, int like) {
 		super();
 		this.reviewNo = reviewNo;
 		this.pno = pno;
-		this.memNo = memNo;
+		this.mem = mem;
 		this.regDate = regDate;
 		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
@@ -30,7 +30,9 @@ public class Review {
 		this.reviewRate = reviewRate;
 		this.like = like;
 	}
-
+	
+	
+	
 
 	public int getReviewNo() {
 		return reviewNo;
@@ -52,13 +54,13 @@ public class Review {
 	}
 
 
-	public int getMemNo() {
-		return memNo;
+	public String getMem() {
+		return mem;
 	}
 
 
-	public void setMemNo(int memNo) {
-		this.memNo = memNo;
+	public void setMem(String mem) {
+		this.mem = mem;
 	}
 
 
@@ -124,7 +126,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [reviewNo=" + reviewNo + ", pno=" + pno + ", memNo=" + memNo + ", regDate=" + regDate
+		return "Review [reviewNo=" + reviewNo + ", pno=" + pno + ", mem=" + mem + ", regDate=" + regDate
 				+ ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent + ", clickNo=" + clickNo
 				+ ", reviewRate=" + reviewRate + ", like=" + like + "]";
 	};

@@ -1,11 +1,16 @@
 package com.kh.product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.product.model.service.ProductService;
+import com.kh.product.model.vo.Product;
 
 /**
  * 관리자 상품상세조회 결과 페이지
@@ -28,7 +33,25 @@ public class ProductAdminSelectResultDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/adminProductDetail.jsp").forward(request, response);
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		int listCount = new ProductService().selectListCount();
+		
+		if(0<pno && pno <= listCount) {
+		
+			Product p = new ProductService().selectAdminProductDetail(pno);
+		
+			request.setAttribute("p", p);
+			
+			request.getRequestDispatcher("views/admin/adminProductDetail.jsp").forward(request, response);
+		
+		}else { // 유효한 상품번호 x => 에러문구 담아서 포워딩
+			
+			request.setAttribute("errorMsg", "유효한 상품이 없습니다");
+			request.getRequestDispatcher("views/common/adminErrorPage.jsp").forward(request, response);
+			
+		}
+		
+		
 	}
 
 	/**

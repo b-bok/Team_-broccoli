@@ -3,13 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-     <title>Document</title>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
     div{ box-sizing:border-box;}
     #navigator, #content_1>div #content_2>div {border:1px solid lightgray;}
     a{text-decoration: none; color:black}
@@ -145,14 +141,13 @@
 </style>
 </head>
 <body>
-
 <%@ include file="../common/menubar.jsp"%>
 <br clear="both">
 
 <div class="wrap">
     <div id="navigator">
         <ul id="navi">
-            <li><a href="<%= broccoli%>/myPageMain.my">내 정보</a></li>
+           <li><a href="<%= broccoli%>/myPageMain.my">내 정보</a></li>
             <li><a href="<%= broccoli%>/myPagePoint.my">적립금</a></li>
             <li><a href="<%= broccoli%>/myPagePick.my">찜상품</a></li>
             <li><a href="">장바구니</a></li>
@@ -165,21 +160,21 @@
                 <br>
                 <h1 id = "topic">마이페이지</h1>
                 <br>
-                <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회</a></div><br>
+               <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPagePoint.my">적립금 조회</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my?currentPage=1">내 문의 조회</a></div><br>
-                <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회▶</a></div><br>
-                <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회▶</a></div><br>
             
            
         </div>
 
         <div id="content_2" ">
-       <h1>내 리뷰 조회 > 리뷰 가능한 상품 목록</h1>
+       <h1>내 레시피 조회 > 레시피 가능한 상품 목록</h1>
        <select id="dateoption">
            <option>전체기간</option>
            <option>2020년 </option>
@@ -197,7 +192,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
           </div>
@@ -208,7 +203,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
         </div>
@@ -218,7 +213,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
         </div>
@@ -229,7 +224,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
         </div>
