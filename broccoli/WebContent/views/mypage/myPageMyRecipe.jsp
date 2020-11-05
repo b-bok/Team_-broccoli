@@ -93,19 +93,10 @@
         border-bottom:2px solid rgba(128, 128, 128, 0.288);
     }
    
-    .btn1 {
-    
-    color:white;
-    background-color:green;
+  .btn {
+
     float:right;
 }
-.btn2{
-    color:green;
-    background-color:white;
-    border-color:green;
-    float:right;
-}
-    
 </style>
 </head>
 <body>
@@ -195,8 +186,8 @@
                     </tr>
                  </tbody>
             </table>
-            <button type="button" class="btn1" onclick="location.href=''">리뷰작성</button>
-            <button type="button" class="btn2" >리뷰삭제</button>
+            <button type="button" class="btn btn-success"><a href="<%= broccoli%>/MyRecipeEnrollPage.my">레시피작성</a></button>
+            <button type="button" class="btn2" >레시피삭제</button>
             
           
           
