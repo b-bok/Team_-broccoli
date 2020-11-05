@@ -4,6 +4,7 @@
 <% 
 	Member login = (Member) session.getAttribute("login"); 
 	String broccoli = request.getContextPath(); 
+	String alert = (String) session.getAttribute("alert");
 %>
 <!DOCTYPE html>
 <html>
@@ -106,6 +107,15 @@ div {
 
 
 				<!------------------------------------★★★★★회원가입/로그인/마이페이지/고객센터/공지사항/자주하는질문/1:1문의/신고하기 jsp파일경로 넣어주세요 ★★★★★------------------------------------------->
+				
+				
+				<!-- 회원가입 Alert -->
+				<% if(alert != null){ %>
+					<script>
+						alert("<%= alert %>"); 
+					</script>
+					<%	session.removeAttribute("alert"); //1회성 %>
+				<% } %>
 
 				<!-- 로그인 전  -->
 				<%
