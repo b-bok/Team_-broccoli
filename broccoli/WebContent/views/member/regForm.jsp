@@ -61,7 +61,7 @@ hr {
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
-	width: 98%;
+	width: 120%;
 	opacity: 0.9;
 }
 
@@ -90,7 +90,7 @@ span {
 		<div class="row">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6">
-				<form action="/regForm.me" method="post">
+				<form action="<%=broccoli %>/member.me" method="post">
 					<h2 align="center">회원가입</h2>
 					<div align="right">
 						<span>*필수입력사항</span>
@@ -105,9 +105,8 @@ span {
                         	</td>
 							<td>
 								<input type="button" class="checkbtn" id="checkbtn1" value="중복확인"></input>
-								<input type="hidden" name="idCheck" value="idUncheck"> <br>
 									<script>
-										//아이디중복확인 및 유효성검사 
+										//ID 유효성검사 
 											$(function(){
 												
 												$("#checkbtn1").click(function(){
@@ -118,23 +117,62 @@ span {
 														return false;
 													 }
 													
-													//6자 이상의 영문 혹은 영문과 숫자를 조합
-													var regEx = /^[a-z\d]{6,}$/i;
-													var result = regEx.exec(id);
-							
-													if(result != null){
-														$(".id.regEx").html("");
-														window.open("idCheck.jsp?memId="+memId,"","width=500px,height=300px,top=300px,left=200px, resizable=no,scrollbars=no")
-													}else{
-														$(".id.regEx").html("6자 이상의 영문 혹은 영문과 숫자를 조합");
-														$(".id.regEx").css("color","red").css("font-size","10px");
-													}
+													//1105 AJAX 중복체크 
+													$.ajax({
+														url:"idCheck.me",
+														type:"get",
+														data:{idCheck:$("#memId").val()},
+														success:function(result2){
+															
+																if(result2=="fail"){
+																	
+																	$(".id.regEx").html("사용할 수 없는 아이디입니다").css("color","red");
+																	$("#memId").focus();
+																
+																}else{
+																	
+																	var regEx = /^[a-z\d]{6,}$/i;
+																	var result1 = regEx.exec(id);
+																	
+																	if(result1 != null){																
+																		$(".id.regEx").html("사용할 수 있는 아이디입니다").css("color","green");
+																	}																	
+																}
+														}
+													});
+													
 												});
 												
 											});
 								</script>
 							</td>
 						</tr>
+						
+						<tr>
+							<td>
+								<label for="memName"><b>이름<span>*</span></b></label> 
+								<input type="text" placeholder="이름을 입력해 주세요" name="memName" id="memName" required>
+								<div class="name regEx"></div>
+								<script>
+									//이름 유효성확인
+									$(function(){
+										$("#memName").keyup(function(){
+											var regEx = /[가-힣]{2,}/;
+											var result = regEx.exec($(this).val());
+											if(result!=null){
+												$(".name.regEx").html("");
+											}else{
+												$(".name.regEx").html("한글만 입력가능합니다");
+												$(".name.regEx").css("color","red").css("font-size","10px");
+											}
+										}); 
+									});
+								</script>
+							</td>
+							<td></td>
+						</tr>
+						
+						
 						<tr>
 							<td>
 								<label for="memPwd"><b>비밀번호<span>*</span></b></label> 
@@ -148,7 +186,7 @@ span {
 											var regEx = /^[a-z\d]{8,14}$/i;
 											var result = regEx.exec($(this).val());
 											if(result!=null){
-												$(".pwd.regEx").html("유효한 비밀번호입니다");
+												$(".pwd.regEx").html("유효한 비밀번호입니다").css("color","green");
 											}else{
 												$(".pwd.regEx").html("영대소문자, 숫자, 8-15자리")
 												$(".pwd.regEx").css("color","red").css("font-size","10px");
@@ -181,29 +219,7 @@ span {
 			                </td>
 							<td></td>
 						</tr>
-						<tr>
-							<td>
-								<label for="memName"><b>이름<span>*</span></b></label> 
-								<input type="text" placeholder="이름을 입력해 주세요" name="memName" id="memName" required>
-								<div class="name regEx"></div>
-								<script>
-									//이름 유효성확인
-									$(function(){
-										$("#memName").keyup(function(){
-											var regEx = /[가-힣]{2,}/;
-											var result = regEx.exec($(this).val());
-											if(result!=null){
-												$(".name.regEx").html("");
-											}else{
-												$(".name.regEx").html("한글만 입력가능합니다");
-												$(".name.regEx").css("color","red").css("font-size","10px");
-											}
-										}); 
-									});
-								</script>
-							</td>
-							<td></td>
-						</tr>
+			
 						<tr>
 							<td>
 								<label for="email"><b>이메일<span>*</span></b></label> 
@@ -224,20 +240,36 @@ span {
 												return;
 											 }
 											
-											var regEx = /^[a-z\d\_\.]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
-											var result = regEx.exec(email);
+											
+											//1105 AJAX 중복체크 
+											$.ajax({
+												url:"emailCheck.me",
+												type:"get",
+												data:{emailCheck:$("#email").val()},
+												success:function(result2){
+													
+													if(result2=="fail"){
+														
+														$(".email.regEx").html("이미 등록된 이메일입니다").css("color","red");
+														$("#email").focus();
+													
+													}else{
+
+														var regEx = /^[a-z\d\_\.]+@[a-z\d\-]+\.[a-z\d\-]+$/i;
+														var result1 = regEx.exec(email);
 					
-											if(result != null){
-												$(".email.regEx").html("");
-												// db 연결하고 else 경우의 수에 따라 html에 입력될 메시지 작성하기 
-												window.open("emailCheck.jsp?email="+email,"","width=500px,height=300px,top=300px,left=200px");
-											}else{
-												$(".email.regEx").html("다시 이메일을 입력해주세요");
-												$(".email.regEx").css("color","red").css("font-size","10px");
-											}
-										});
+														if(result1 != null){
+															$(".email.regEx").html("사용할 수 있는 이메일입니다").css("color","green");
+														}else{
+															$(".email.regEx").html("다시 이메일을 입력해주세요");
+															$(".email.regEx").css("color","red").css("font-size","10px");
+														}
+													}
+												}
+											});
 									});
-								</script>
+								});
+							</script>
 							</td>
 						</tr>
 						<tr>
@@ -342,28 +374,26 @@ span {
 						</tr>
 						<tr>
 							<td colspan="2"><label for="gender"><b>성별</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-								<input type="radio" name="gender" id="male"><label for="male"> &nbsp;남자&nbsp;&nbsp;&nbsp; </label> 
-								<input type="radio" name="gender" id="female"><label for="female"> &nbsp;여자&nbsp;&nbsp;&nbsp; </label> 
-								<input type="radio" name="gender" id="na" checked><label for="na"> &nbsp;선택안함 </label></td>
+								<input type="radio" name="gender" id="male" value="male"><label for="male"> &nbsp;남자&nbsp;&nbsp;&nbsp; </label> 
+								<input type="radio" name="gender" id="female" value="female"><label for="female"> &nbsp;여자&nbsp;&nbsp;&nbsp; </label> 
+								<input type="radio" name="gender" id="na" value="na" checked><label for="na"> &nbsp;선택안함 </label></td>
 						</tr>
 					</table>
 					<hr>
 					<table id="additional">
 						<tr>
 							<th>이용약관<br>동의<span>*</span></th>
-							<td><input type="checkbox" id="terms"> <label
-								for="terms">전체 동의합니다</label><br> <input type="checkbox"
-								id="terms1" name="chk"> <label for="terms1">이용약관동의
-									<span>(필수)</span>
-							</label> <a href="#myModal1" data-toggle="modal">약관보기></a><br> <input
-								type="checkbox" id="terms2" name="chk"> <label
-								for="terms2">개인정보처리방침 동의 <span>(필수)</span></label> <a
-								href="#myModal2" data-toggle="modal">약관보기></a><br> <input
-								type="checkbox" id="terms3" name="chk"> <label
-								for="terms3">개인정보처리방침 동의 <span>(선택)</span></label> <a
-								href="#myModal3" data-toggle="modal">약관보기></a><br> <input
-								type="checkbox" id="terms4" name="chk"> <label
-								for="terms4">본인은 만14세 이상입니다 <span>(필수)</span></label></td>
+							<td>
+								<input type="checkbox" id="terms"> <label for="terms">전체 동의합니다</label><br> 
+								<input type="checkbox" id="terms1" name="chk"> <label for="terms1">이용약관동의<span>(필수)</span></label>
+								
+								<a href="#myModal1" data-toggle="modal">약관보기></a><br>
+							 	<input	type="checkbox" id="terms2" name="chk"> 
+							 	<label for="terms2">개인정보처리방침 동의 <span>(필수)</span></label>
+							 	<a href="#myModal2" data-toggle="modal">약관보기></a><br> 
+							 	<input type="checkbox" id="terms3" name="chk"> <label for="terms3">개인정보처리방침 동의 <span>(선택)</span></label> 
+							 	<a	href="#myModal3" data-toggle="modal">약관보기></a><br> 
+							 	<input type="checkbox" id="terms4" name="chk"> <label for="terms4">본인은 만14세 이상입니다 <span>(필수)</span></label></td>
 							<td></td>
 							<td></td>
 						</tr>

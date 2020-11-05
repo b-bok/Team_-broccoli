@@ -146,7 +146,7 @@
   <div class="topnav">
     <div class="topnav-right">
       <a href="#search"><a href="#"><span class="fa fa-fw fa-user" style="font-size: 24px;"></span> 관리자정보</a>
-      <a href="<%=broccoli%>/logout.me"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
+      <a href="<%=broccoli%>"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
     </div>
   </div>
   
