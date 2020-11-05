@@ -127,9 +127,14 @@ div {
 						<li><a href="<%= broccoli %>/list.no" class="dropdown-item" style="font-size: 11px;">공지사항</a></li>
 						<li><a href="<%= broccoli %>" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
 						
+						<%if(login == null){%>
 						<!-- 1:1 문의, 신고하기 클릭하면 로그인 페이지로 이동하도록  -->
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">신고하기</a></li>
+						<% }else{ %>
+						<li><a href="<%= broccoli %>/MyQNAEnrollForm.my" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>
+						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">신고하기</a></li>
+						<% } %>
 					</ul></li>
 			</ul>
 		</div>
