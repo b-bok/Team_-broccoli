@@ -114,4 +114,21 @@ public class ProductService {
 	};
 	
 	
+	
+	/**
+	 * 관리자 상품상세조회 페이지
+	 * @param pno 상품번호
+	 * @return 상품정보
+	 */
+	public Product selectAdminProductDetail(int pno) {
+		Connection conn = getConnection();
+		
+		Product p = new ProductDao().selectAdminProductDetail(conn, pno);
+		
+		close(conn);
+		
+		return p;
+	}
+	
+	
 }
