@@ -183,5 +183,34 @@
 	
 	</entry>
 	
+	<entry key="selectAdminProductDetail">
+		SELECT 
+		       P_NO
+		     , CATEGORY_1 || '/' || CATEGORY_2 || '/' || CATEGORY_3 AS "CATEGORY_NAME" 
+		     , E_TITLE
+		     , P_NAME
+		     , P_PRICE
+		     , P_DISCOUNT
+		     , P_IMAGE1
+		     , P_IMAGE2
+		     , P_INVENTORY
+		     , P_COMPANY
+		     , P_UNIT
+		     , P_WEIGHT
+		     , P_DETAIL
+		     , DIS_YN
+		     , E_YN
+		     , P_SMALLDETAIL
+		     , P_DELI
+		     , P_NATION
+		     , P_PACKTYPE
+		     , P_THUMBNAIL
+		     , P_OUT
+		FROM PRODUCT
+		JOIN P_CATEGORY USING(CATEGORY_NO)
+		LEFT JOIN EVENT USING(E_NO)
+		WHERE P_NO = ?
+	</entry>
+	
 	
 </properties>

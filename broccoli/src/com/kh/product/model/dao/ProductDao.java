@@ -385,5 +385,29 @@ public class ProductDao {
 	}
 	
 	
+	
+	public Product selectAdminProductDetail(Connection conn, int pno) {
+			
+			Product p = null;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectAdminProductDetail");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+	
+	
 }
 
