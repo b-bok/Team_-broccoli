@@ -84,12 +84,13 @@ div {
 
 			<select name="reviewSort" id="reviewSort">
 
-				<option value="lastPost">최근등록 순</option>
-				<option value="moreLike">좋아요 순</option>
-				<option value="moreView">조회 순</option>
+				<option value="reg_date">최근등록 순</option>
+				<option value="like_count">좋아요 순</option>
+				<option value="click_no">조회 순</option>
 
 			</select>
-
+			<button id="selectSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
+			
 		</div>
 
 		<div id="boardBrief">
@@ -158,9 +159,12 @@ div {
         
         $(function(){
         	
-        	var yn = "all";
+        	var sort = "all";
         	
-        	selectUserReview(yn);
+        	selectUserReview(sort);
+        	
+        	
+        	
         	
 
     		$("#reviewTable>tbody").on("click","tr",function(){
@@ -171,29 +175,40 @@ div {
     		
     		$("#selectAll").click(function(){
     			
-    			var yn = $(this).val();
+    			var sort = $(this).val();
     			
-    			 selectUserReview(yn);
+    			 selectUserReview(sort);
     		})
     		
     		$("#selectPhoto").click(function(){
     			
-    			var yn = $(this).val();
+    			var sort = $(this).val();
     			
-    			selectUserReview(yn);
+    			selectUserReview(sort);
     		})
+    		
+    		
+ 			$("#selectSort").click(function(){
+        		
+        		var sort = $("option:selected").val();
+				
+        		selectUserReview(sort);
+        		
+        	});
+    		
         		
         });
         
         
-        function selectUserReview(yn){	//상품에 맞는 리뷰를 불러오는 ajax
+        function selectUserReview(sort){	//상품에 맞는 리뷰를 불러오는 ajax
         	
         	$.ajax({
         		url:"selectReview.rv",
         		type : "get",
         		data :  {
         			     pno : <%=p.getPno() %>,
-						 yn : yn
+						 sort : sort
+						
         		},
         		success : function(list) {
         			
@@ -237,6 +252,7 @@ div {
         	})
         	
         }
+        
         
         
         

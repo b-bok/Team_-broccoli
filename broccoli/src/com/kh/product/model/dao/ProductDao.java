@@ -429,7 +429,50 @@ public class ProductDao {
 		return list;
 	}
 	
-	
+	public ArrayList<Review> selectSortReview(Connection conn, int pno, String sort) {
+		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectSortReview");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pno);
+			pstmt.setString(2, sort);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Review r = new Review();
+				
+				r.setReviewNo(rset.getInt("review_board_no"));
+				r.setReviewRate(rset.getInt("review_rate"));
+				r.setReviewTitle(rset.getString("review_title"));
+				r.setMem(rset.getString("mem_id"));
+				r.setRegDate(rset.getDate("reg_date"));
+				r.setLike(rset.getInt("like_count"));
+				r.setClickNo(rset.getInt("click_no"));
+				
+				list.add(r);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
 	
 	
 	public Product selectAdminProductDetail(Connection conn, int pno) {
