@@ -67,7 +67,7 @@
     .productname{
         height:25px;
         margin-left:10px;
-        border:1px solid red;
+        
         width:500px;
         width:50%;
         display:inline-block;
@@ -81,7 +81,7 @@
     .btn{float:right; margin-right:10px; margin-top:30px;}
     .detail{
         height:25px;
-        border:1px solid red;
+        
         width:30%;
         width:100px;
         margin-left:280px;
@@ -96,7 +96,7 @@
     .date{
         height:100%;
         height:170px;
-        border:1px solid red;
+        
         margin-top:15px;
         margin-left:50px;
         margin-right:150px;
@@ -115,25 +115,30 @@
     }
     .product>div{width:100%;}
     .product1{height:20%;
-      border:1px solid red;}
+      }
     .product2{height:80%;
-      border:1px solid red;}
+      }
     
     .product2_1{width:25%;height:95%;text-align: center;
         line-height:5.5;
-     border:1px solid red;  float:left;
+       float:left;
      margin-top:3px;
      margin-left:5px;
      margin-right:3px;}
      .product2_2{width:50%;height:95%; text-align: center;
      line-height:5.5;
-     border:1px solid red;  float:left;
+       float:left;
      margin-top:3px;
      margin-right:3px;}
      .product2_3{width:23%;height:95%;text-align: center;
         line-height:5.5;
-     border:1px solid red;  float:left;
+       float:left;
      margin-top:3px;}
+    
+    
+    
+    
+</style>
 </head>
 <body>
 <%@ include file="../common/menubar.jsp"%>
@@ -142,9 +147,9 @@
 <div class="wrap">
     <div id="navigator">
         <ul id="navi">
-            <li><a href="">내 정보</a></li>
-            <li><a href="">적립금</a></li>
-            <li><a href="">찜상품</a></li>
+           <li><a href="<%= broccoli%>/myPageMain.my">내 정보</a></li>
+            <li><a href="<%= broccoli%>/myPagePoint.my">적립금</a></li>
+            <li><a href="<%= broccoli%>/myPagePick.my">찜상품</a></li>
             <li><a href="">장바구니</a></li>
         </ul>
     </div>
@@ -155,20 +160,20 @@
                 <br>
                 <h1 id = "topic">마이페이지</h1>
                 <br>
-                <div class="menu"><a href="">주문 조회/ 배송 조회</a></div><br>
-                <div class="menu"><a href="">반품/ 교환 조회</a></div><br>
-                <div class="menu"><a href="">찜상품 조회</a></div><br>
-                <div class="menu"><a href="">내 정보 조회/ 수정/ 탈퇴</a></div><br>
-                <div class="menu"><a href="">배송지 등록</a></div><br>
-                <div class="menu"><a href="">적립금 조회</a></div><br>
-                <div class="menu"><a href="">내 문의 조회</a></div><br>
-                <div class="menu"><a href="">내 리뷰 조회</a></div><br>
-                <div class="menu"><a href="">내 레시피 조회▶</a></div>
+               <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPagePoint.my">적립금 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageMyQNA.my">내 문의 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageMyReview.my">내 리뷰 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageMyRecipe.my">내 레시피 조회▶</a></div><br>
             
            
         </div>
 
-        <div id="content_2" style="border:1px solid red">
+        <div id="content_2" ">
        <h1>내 레시피 조회 > 레시피 가능한 상품 목록</h1>
        <select id="dateoption">
            <option>전체기간</option>
@@ -179,7 +184,7 @@
 
         <hr style="background-color:rgba(128, 128, 128, 0.301); height:3px; border:none"> 
         <br>
-        <div id="productlist" style="border:1px solid red; height:800px">
+        <div id="productlist" style=" height:800px">
           
           <div class="date">2020.11.02
             <div class="product">
@@ -187,7 +192,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
           </div>
@@ -198,7 +203,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
         </div>
@@ -208,7 +213,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
         </div>
@@ -219,7 +224,7 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">리뷰작성하기</button></div>
+                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
                 </div>
             </div>
         </div>
@@ -241,3 +246,6 @@
 </div>
 </body>
 </html>
+
+
+    
