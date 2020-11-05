@@ -1,11 +1,17 @@
 package com.kh.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.kh.product.model.service.ProductService;
+import com.kh.review.model.vo.Review;
 
 /**
  * Servlet implementation class SelectUserReviewController
@@ -27,7 +33,17 @@ public class SelectUserReviewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int pno = Integer.parseInt(request.getParameter("pno"));
 		
+		
+		ArrayList<Review> list = new ProductService().selectUserReview(pno);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		Gson gson = new Gson();
+		
+		gson.toJson(list, response.getWriter());
+
 	}
 
 	/**

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.kh.product.model.dao.ProductDao;
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.review.model.vo.Review;
 
 public class ProductService {
 	
@@ -99,6 +100,18 @@ public class ProductService {
 		
 		return p;
 	}
+	
+	public ArrayList<Review> selectUserReview(int pno){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Review> list = new ProductDao().selectUserReview(conn, pno);
+		
+		close(conn);
+		
+		return list;
+		
+	};
 	
 	
 }

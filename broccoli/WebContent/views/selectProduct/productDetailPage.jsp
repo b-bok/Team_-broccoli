@@ -133,10 +133,12 @@
                         </tr>
                         <tr>
                             <th>구매수량</th>
-                            <td><input type="number" max="50" name="amount"></td>
+                            <td><input type="number" max="50" min="0" name="amount"></td>
                         </tr>
                         <tr>
-                            <th>총 상품 금액 :</th>
+                            <th>총 상품 금액 :
+                            <span>5000원</span>
+                            </th>
                             
                             <td style="text-align: right;">
                             <button type="submit" class="btn btn-success btn-sm">장바구니 담기</button>
@@ -158,7 +160,9 @@
 
 		<br />
         <div class="productDetailImage" align="center">
-            <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="100%" name="productImage1" >
+        <br />
+            <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="70%" name="productImage1" >
+        <br />
         </div>
 
         <div id="productDexp" align="center">
@@ -177,17 +181,19 @@
 
 		<br />
         <div class="productDetailImage" align="center">
-            <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="100%" name="productImage1" id="list2" >
+        <br />
+            <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="80%" name="productImage1" id="list2" >
+        <br />
         </div>
 
 
     </div>
 	
 
-	<%-- 
+	 
 	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
-
+	<%--
 	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
 	
 	

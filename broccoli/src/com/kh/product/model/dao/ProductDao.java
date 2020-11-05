@@ -1,6 +1,6 @@
 package com.kh.product.model.dao;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.review.model.vo.Review;
 
 
 public class ProductDao {
@@ -338,6 +339,50 @@ public class ProductDao {
 		      
 		   }
 
+	
+	public ArrayList<Review> selectUserReview(Connection conn, int pno) {
+		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectUserReview");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Review r = new Review();
+				
+				r.setReviewNo(rset.getInt("review_board_no"));
+				r.setReviewRate(rset.getInt("review_rate"));
+				r.setReviewTitle(rset.getString("review_title"));
+				r.setMem(rset.getString("mem_id"));
+				r.setRegDate(rset.getDate("reg_date"));
+				r.setLike(rset.getInt("like_count"));
+				r.setClickNo(rset.getInt("click_no"));
+				
+				list.add(r);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
 	
 	
 }
