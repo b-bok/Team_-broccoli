@@ -397,15 +397,43 @@ public class ProductDao {
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pno);
 				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					p = new Product(rset.getInt("p_no"),
+									rset.getString("category_name"),
+									rset.getString("e_title"),
+									rset.getString("p_name"),
+									rset.getInt("p_price"),
+									rset.getInt("p_discount"),
+									rset.getString("p_image1"),
+									rset.getString("p_image2"),
+									rset.getInt("p_inventory"),
+									rset.getString("p_company"),
+									rset.getString("p_unit"),
+									rset.getString("p_weight"),
+									rset.getString("p_detail"),
+									rset.getString("dis_yn"),
+									rset.getString("e_yn"),
+									rset.getString("p_smalldetail"),
+									rset.getString("p_deli"),
+									rset.getString("p_nation"),
+									rset.getString("p_packtype"),
+									rset.getString("p_thumbnail"),
+									rset.getInt("p_out"));
+				}
 				
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
 			}
 			
-			
-			
+			return p;
 		}
 	
 	

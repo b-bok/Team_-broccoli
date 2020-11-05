@@ -40,7 +40,7 @@ public class ProductAdminSelectResultDetailController extends HttpServlet {
 		
 			Product p = new ProductService().selectAdminProductDetail(pno);
 		
-			
+			request.setAttribute("p", p);
 			
 			request.getRequestDispatcher("views/admin/adminProductDetail.jsp").forward(request, response);
 		
