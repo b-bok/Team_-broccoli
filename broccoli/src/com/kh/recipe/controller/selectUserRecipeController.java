@@ -1,28 +1,29 @@
-package com.kh.member.controller;
+package com.kh.recipe.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
+import com.google.gson.Gson;
+import com.kh.recipe.model.service.RecipeService;
+import com.kh.recipe.model.vo.Recipe;
 
 /**
- * Servlet implementation class FindIdResultController
+ * Servlet implementation class selectUserRecipeController
  */
-@WebServlet("/idResult.me")
-public class FindIdResultController extends HttpServlet {
+@WebServlet("/selectRecipe.rc")
+public class selectUserRecipeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindIdResultController() {
+    public selectUserRecipeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,27 +33,27 @@ public class FindIdResultController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		String memName = request.getParameter("memName");
-		String email = request.getParameter("email");
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		String sort = request.getParameter("sort");
+
+		ArrayList<Recipe> list = new ArrayList<>();
 		
-		Member findId = new MemberService().findId(memName, email);
-		
-		if(findId == null) {//일치하는 아이디를 찾을 수 없음
+		if(sort.equals("all")) {
 			
-			request.getRequestDispatcher("views/member/findIdFail.jsp").forward(request, response);
+			list = new RecipeService().selectUserRecipe(pno);
 			
 		}else {
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("findId", findId);
-			
-			request.getRequestDispatcher("views/member/findIdSuccess.jsp").forward(request, response);
+			list = new RecipeService().selectSortRecipe(pno,sort);
 		}
 		
 
-
+		response.setContentType("application/json; charset=utf-8");
+		
+		Gson gson = new Gson();
+		
+		gson.toJson(list, response.getWriter());
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

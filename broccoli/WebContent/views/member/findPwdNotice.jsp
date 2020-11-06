@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	Member findPwd = (Member) session.getAttribute("findPwd");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +30,7 @@
 }
 
 .result2 {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 .btn-success {
@@ -64,7 +67,7 @@ p {
 					이메일로 인증 완료후 <br> 비밀번호를 재발급 받으세요!
 				</div>
 				<div class="result result2">
-					입력하신 XXXXX@XXXXX.com 으로 인증번호가 발송되어, <br>인증 후 비밀번호가 재발급됩니다.<br>
+					입력하신 <b> <%=findPwd.getEmail() %></b> 으로 인증번호가 발송되어, <br>인증 후 비밀번호가 재발급됩니다.<br>
 					전송량이 많은 경우 이메일 전송이 지연될 수 있습니다.
 				</div>
 				<button type="submit" class="btn btn-success" onclick="notice1();">인증번호받기</button>

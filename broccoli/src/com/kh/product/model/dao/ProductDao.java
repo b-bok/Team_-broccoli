@@ -433,7 +433,9 @@ public class ProductDao {
 		
 		ArrayList<Review> list = new ArrayList<>();
 		
-		String sql = prop.getProperty("selectSortReview");
+		String sql = prop.getProperty("selectSortReview") + " ORDER BY "+ sort + " DESC";
+		
+		
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -442,7 +444,6 @@ public class ProductDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, pno);
-			pstmt.setString(2, sort);
 			
 			rset = pstmt.executeQuery();
 			

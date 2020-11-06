@@ -12,8 +12,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.common.Pagination;
 import com.kh.member.model.vo.Member;
-import com.kh.member.model.vo.Pagination;
+
 
 
 public class MemberDao {
@@ -81,17 +82,7 @@ public class MemberDao {
 		
 	}
 	
-	//회원가입 
-	//아이디 중복확인
-//	public Member getMember(String memId) {
-//		Member m = null;
-//		Statement stmt = null;
-//		ResultSet rset = null; 
-//		
-//		String sql = prop.getProperty("");
-//		
-//		
-//	}
+
 	
 	//로그인 
 	public int selectListCount(Connection conn) {
@@ -168,6 +159,12 @@ public class MemberDao {
 	
 	}
 	
+	/**
+	 * 회원가입 아이디 중복체크 
+	 * @param conn
+	 * @param idCheck
+	 * @return
+	 */
 	public int idCheck(Connection conn, String idCheck) {
 		
 		int count = 0;
@@ -194,6 +191,13 @@ public class MemberDao {
 		return count;
 	}
 	
+	
+	/**
+	 * 회원가입 이메일 중복체크 
+	 * @param conn
+	 * @param emailCheck
+	 * @return
+	 */
 	public int emailCheck(Connection conn, String emailCheck) {
 		
 		int count =0;
@@ -223,6 +227,13 @@ public class MemberDao {
 		
 	}
 	
+	
+	/**
+	 * 회원가입용 
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
 	public int insertMember(Connection conn, Member m) {
 		
 		int result = 0;
@@ -252,11 +263,91 @@ public class MemberDao {
 		return result;
 		
 		
+	}
+	
+	public Member findId(Connection conn, String memName, String email) {
 		
+		Member findId = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null; 
+		
+		String sql = prop.getProperty("findId"); 
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memName);
+			pstmt.setString(2, email);
+			
+			rset = pstmt.executeQuery(); 
+			
+			
+			if(rset.next()) { 
+				findId = new Member(rset.getInt("MEM_NO")
+								   ,rset.getString("MEM_ID")
+								   ,rset.getString("MEM_NAME")
+								   ,rset.getString("MEM_PWD")
+								   ,rset.getString("EMAIL")
+								   ,rset.getString("MOBILE")
+								   ,rset.getString("ZIPCODE")
+								   ,rset.getString("ADDRESS1")
+								   ,rset.getString("ADDRESS2")
+								   ,rset.getString("ADDREXTRA")
+								   ,rset.getString("GENDER")
+								   ,rset.getDate("BIRTH_DATE")
+								   ,rset.getDate("REG_DATE")
+								   ,rset.getInt("POINT")
+								   ,rset.getString("STATUS")
+								   ,rset.getInt("ADDRESS_NO")
+								   ,rset.getString("MEM_CATEGORY")
+								  ); 
+				} 
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			close(rset);
+			close(pstmt); 
+		}
+		
+		return findId;
 		
 	}
 	
-	
+	public Member findPwd(Connection conn, String memName, String memId, String email) {
+		
+		Member findPwd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memName);
+			pstmt.setString(2, memId);
+			pstmt.setString(3, email);
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				findPwd = new Member(rset.getString("MEM_NAME")
+									 ,rset.getString("MEM_ID")
+									 ,rset.getString("EMAIL")
+									 );
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return findPwd;
+				
+	}
 
 
 }

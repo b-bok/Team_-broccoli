@@ -64,15 +64,25 @@ public class Member {
 		this.gender = gender;
 	}
 	
+	//아이디찾기용
+	public Member(String memName, String email) {
+		super();
+		this.memName = memName;
+		this.email = email;
+	}
+	
+	//비밀번호찾기용
+	public Member(String memId, String memName, String email) {
+		this.memId = memId;
+		this.memName = memName;
+		this.email = email;
+	}
 	
 	
-
 
 	public int getMemNo() {
 		return memNo;
 	}
-
-
 
 	public void setMemNo(int memNo) {
 		this.memNo = memNo;

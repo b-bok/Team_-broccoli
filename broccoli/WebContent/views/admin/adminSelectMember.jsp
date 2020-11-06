@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import = "com.kh.member.model.vo.*, java.util.ArrayList" %>
+<%@ page import = "com.kh.common.*, com.kh.member.model.vo.*, java.util.ArrayList" %>
 <%
 	Pagination p = (Pagination) request.getAttribute("p");
 	ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");

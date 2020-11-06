@@ -219,7 +219,6 @@
 		FROM REVIEW r
 		JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
 		WHERE r.P_NO = ?
-        ORDER BY ? DESC
 
 	</entry>
 	

@@ -41,17 +41,11 @@ div {
 	margin-top: 5px;
 }
 
-#boardBrief {
-	height: 10%;
-}
+#boardBrief {height: 10%;}
 
-#board {
-	height: 60%;
-}
+#board {height: 60%;}
 
-#fotter {
-	height: 10%;
-}
+#fotter {height: 10%;}
 
 #fotter>div {
 	width: 100%;
@@ -139,19 +133,10 @@ div {
 				<button class="btn btn-success btn-sm">후기 작성</button>
 			</div>
 
-			<div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul>
-            </div>
-
 		</div>
-
+	
 	</div>
+	
 	
 	<%@include file="../common/declarationModal.jsp" %>
 	
@@ -164,15 +149,13 @@ div {
         	selectUserReview(sort);
         	
         	
-        	
-        	
+    		$("#reviewTable>tbody").on("click","tr td:not(.dec)",function(){
 
-    		$("#reviewTable>tbody").on("click","tr",function(){
-    			
-    			 location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).children().eq(0).text(); 
+    		location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).parent().children().eq(0).text();
     			
     		})
     		
+	
     		$("#selectAll").click(function(){
     			
     			var sort = $(this).val();
@@ -237,7 +220,7 @@ div {
    	        				"<td>" + list[i].regDate + "</td>" +
    	        				"<td>" + "<i class='fas fa-thumbs-up'></i> " + list[i].like + "</td>" +
    	        				"<td>" + list[i].clickNo + "</td>" +
-   	        				"<td>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
+   	        				"<td class='dec'>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
    						 "</tr>";
  
         			}
