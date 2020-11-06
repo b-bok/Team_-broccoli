@@ -34,7 +34,7 @@
         }
 
 
-        #boardSorting{height: 5%;}
+        #boardSorting{height: 5%;margin-top: 5px;}
         #boardBrief{height: 10%;}
         #board{height: 60%;}
         #fotter{height: 10%;}
@@ -68,11 +68,12 @@
 
         <select name="recipeSort" id="recipeSort">
 
-            <option value="lastPost" selected>최근등록 순</option>
-            <option value="moreLike">좋아요 순</option>
-            <option value="moreView">조회 순</option>
+            <option value="reg_date">최근등록 순</option>
+            <option value="like_count">좋아요 순</option>
+            <option value="click_no">조회 순</option>
     
         </select>
+        <button id="selectSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
 
     </div>
 
@@ -92,113 +93,22 @@
 
     <div id="board">
         
-        <a href="">전체보기</a>
-        <a href="">포토 레시피</a> 
-        
         <br>
-
-        
 
          <table class="table table-hover" id="recipeTable">
             <thead>
                 <tr>
                     <th>번호</th>
-                    <th>고객만족도</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
-                    <th>좋아요</th>
                     <th>조회</th>
                     <th>신고하기</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-
-                <tr>
-                    <td>6</td>
-                    <td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-
-                <tr>
-                    <td>7</td>
-                    <td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
-
-                <tr>
-                    <td>8</td>
-                    <td><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                    <td>제목입니다1</td>
-                    <td>작성자아이디</td>
-                    <td>2020-10-30</td>
-                    <td><i class="fas fa-thumbs-up"></i></td>
-                    <td>500</td>
-                    <td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-                </tr>
+             
             </tbody>
 
         </table>
@@ -212,16 +122,6 @@
             <button class="btn btn-success btn-sm">레시피 작성</button>
         </div>
 
-       <br>
-
-       <div id="pagingBar" align="center" style="width: 250px; margin-left: 360px;">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
     </div>
 
     </div>
@@ -233,14 +133,73 @@
         
         $(function(){
         	
-        	$("#recipeTable>tbody>tr").click(function(){
+        	var sort = "all";
+        	
+        	selectUserRecipe(sort);
+        	
+        	
+    		$("#recipeTable>tbody").on("click","tr td:not(.dec)",function(){
+		
+    		location.href = "<%=broccoli%>/detail.rc?rco=" + $(this).parent().children().eq(0).text();
+    			
+    		})
+    		
+
+ 			$("#selectSort").click(function(){
         		
-        		location.href = "<%=broccoli%>/detail.rc?cno="+ $(this).children().eq(0).text();
+        		var sort = $("option:selected").val();
+				
+        		selectUserRecipe(sort);
         		
         	});
-        	
+    		
+        		
         });
         
+        
+        function selectUserRecipe(sort){	//상품에 맞는 리뷰를 불러오는 ajax
+        	
+        	$.ajax({
+        		url:"selectRecipe.rc",
+        		type : "get",
+        		data :  {
+        			     pno : <%=p.getPno() %>,
+						 sort : sort
+						
+        		},
+        		success : function(list) {
+        			
+        			console.log(list);
+        			
+        			var str = "";
+
+        			for(var i in list) {
+        				
+        				
+
+        				str += "<tr>" +
+	        				"<td>" + list[i].recipeNo + "</td>" +
+   	        				"<td>" + list[i].recipeTitle + "</td>" +
+   	        				"<td>" + list[i].mem + "</td>" +
+   	        				"<td>" + list[i].regDate + "</td>" +
+   	        				"<td>" + list[i].clickNo + "</td>" +
+   	        				"<td class='dec'>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
+   						 "</tr>";
+ 
+        			}
+        			
+        			$("#recipeTable tbody").html(str);
+        			
+        			
+        		},
+        		error : function(){
+        			console.log("ajax통신실패");
+        		}
+        	})
+        	
+        }
+        
+
         </script>
 	
 
