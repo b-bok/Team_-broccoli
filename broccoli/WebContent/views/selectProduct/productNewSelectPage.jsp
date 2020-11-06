@@ -84,6 +84,7 @@
          <%for(Product p : list) { %>
           	
             <div class="thumbnails" align="center">
+            	<input type="hidden" name="pno" id="pno" value="<%=p.getPno() %>" />
                 <img src="<%=broccoli %>/<%=p.getThumbnail() %>" width="200" height="200">
    					<br />
                     <%=p.getpName() %><br>
@@ -134,7 +135,19 @@
     </div>
 
     <script>
+		
+    $(function(){
+		
+		$(".thumbnails").click(function(){
+			
+			
+			location.href = "<%=broccoli%>/detail.pb?pno=" + $(this).children().eq(0).val();
+			
+		});
+	
+		
 
+	});
 
 
     </script>
