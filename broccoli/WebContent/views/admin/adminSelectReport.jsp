@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import = "com.kh.common.*, com.kh.report.model.vo.*, java.util.ArrayList" %>
+<% 
+	ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,106 +59,25 @@ a {
                 3) 구매후기 취지에 어긋난 내용
                 4) 기타 : (세부사항 영역있음)
               -->
-				<tr>
-					<td>16</td>
-					<td>2020-10-14</td>
-					<td>리뷰</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="adminReportDetail.html">기타</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="">검토중</a></td>
-				</tr>
-				<tr>
-					<td>15</td>
-					<td>2020-10-14</td>
-					<td>레시피</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">상품과 관련없는 비방내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="">접수완료</a></td>
-				</tr>
-				<tr>
-					<td>14</td>
-					<td>2020-10-13</td>
-					<td>리뷰</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">상품과 관련없는 비방내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="">검토중</a></td>
-				</tr>
-				<tr>
-					<td>13</td>
-					<td>2020-10-13</td>
-					<td>리뷰</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">구매후기 취지에 어긋난 내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">검토완료</a></td>
-				</tr>
-				<tr>
-					<td>12</td>
-					<td>2020-10-13</td>
-					<td>리뷰</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동"> 구매후기 취지에 어긋난 내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">검토완료</a></td>
-				</tr>
-				<tr>
-					<td>11</td>
-					<td>2020-10-12</td>
-					<td>리뷰</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">음란, 욕설 부적절한 내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">접수완료</a></td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>2020-10-12</td>
-					<td>레시피</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">상품과 관련없는 비방내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">접수완료</a></td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>2020-10-11</td>
-					<td>레시피</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">음란, 욕설 부적절한 내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">접수완료</a></td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>2020-10-11</td>
-					<td>리뷰</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">구매후기 취지에 어긋난 내용</td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">접수완료</a></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>2020-10-10</td>
-					<td>레시피</td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#신고내역 상세조회로 이동">구매후기 취지에 어긋난 내용 </td>
-					<td><a href="#어디로 이동하는게 나으려나??">user01</a></td>
-					<td><a href="#">접수완료</a></td>
-				</tr>
+              <% if(list.isEmpty()){ %>
+	              	<tr>
+	              		<td colspan="8">조회된 리스트가 없습니다</td>
+	              	</tr>
+              <% }else{ %>
+	              <% for(Report r :list) {%>
+						<tr>
+							<td><%=r.getReportNo() %></td>
+							<td><%=r.getReportDate() %></td>
+							<td><%=r.getReportCategory() %></td>
+							<td> 상품번호 -> product 조인확인 필요 XXXXXXXXXXXXXXXX</td>
+							<td><a href="#상품 세부페이지"> 상품명 -> product 상품명 조인확인필요 ; 유기농 브로콜리 1kg</a></td>
+							<td><a href="adminReportDetail.html"><%=r.getReportContent() %></td>
+							<td><a href="#어디로 이동하는게 나으려나??"><%=r.getMem() %>user01</a></td>
+							<td><a href=""><%=r.getReportResult() %></a></td>
+						</tr>
+					<%} %>
+				<%} %>
+
 			</tbody>
 		</table>
 		<script>

@@ -1,4 +1,4 @@
-package com.kh.notice.controller;
+package com.kh.mypage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class qnaListViewController
+ * Servlet implementation class OrderDetailPageController
  */
-@WebServlet("/list.qna")
-public class qnaListViewController extends HttpServlet {
+@WebServlet("/OrderDetailPage.my")
+public class OrderDetailPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public qnaListViewController() {
+    public OrderDetailPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +26,8 @@ public class qnaListViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/notice/faqList.jsp").forward(request, response);
-		
+		// TODO Auto-generated method stub
+				request.getRequestDispatcher("views/mypage/OrderDetailPage.jsp").forward(request, response);
 	}
 
 	/**

@@ -94,6 +94,12 @@ public class MemberService {
 		
 	}
 	
+	/**
+	 * 아이디찾기용
+	 * @param memName
+	 * @param email
+	 * @return
+	 */
 	public Member findId(String memName, String email) {
 		
 		Connection conn = getConnection();
@@ -102,6 +108,15 @@ public class MemberService {
 		return findId;
 	
 		
+	}
+	
+	public Member findPwd(String memName, String memId, String email) {
+		
+		Connection conn = getConnection();
+		
+		Member findPwd = new MemberDao().findPwd(conn,memName,memId,email);
+		close(conn);
+		return findPwd;
 	}
 	
 

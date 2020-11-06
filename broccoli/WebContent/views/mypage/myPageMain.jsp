@@ -303,7 +303,7 @@
               
               <div class="date">2020.11.02
                 <div class="product">
-                    <div class="product1"><div class="productname" >브로콜리</div><div class="detail"><a href="">상세조회 ></a></div><hr class="line"></div>
+                    <div class="product1"><div class="productname" >브로콜리</div><div class="detail"><a href="<%= broccoli%>/OrderDetailPage.my">상세조회 ></a></div><hr class="line"></div>
                     <div class="product2">
                         <div class="product2_1">사진</div>
                         <div class="product2_2">

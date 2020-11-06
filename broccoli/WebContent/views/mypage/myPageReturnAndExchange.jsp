@@ -272,10 +272,7 @@
             background-color:rgba(128, 128, 128, 0.685);
             color:rgba(255, 255, 255, 0.795);
         }
-        .cancel a:hover{
-            text-decoration:none;
-            color:green;
-        }
+        
         .return{
             padding-top:5px;
             padding-bottom:5px;
@@ -290,7 +287,7 @@
         }
         .return a:hover{
             text-decoration:none;
-            color:green;
+            
         }
         .exchange{
 
@@ -308,7 +305,7 @@
         }
         .exchange a:hover{
             text-decoration:none;
-            color:green;
+            
         }
         .product2_3>div{height:30px;
 
@@ -346,7 +343,7 @@
                     <h1 id = "topic">마이페이지</h1>
                     <br>
                     <div class="menu"><a href="<%= broccoli%>/myPageMain.my">주문 조회/ 배송 조회</a></div><br>
-                <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my▶">반품/ 교환 조회</a></div><br>
+                <div class="menu"><a href="<%= broccoli%>/myPageReturnAndExchange.my">반품/ 교환 조회▶</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPagePick.my">찜상품 조회</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPageInformChangeDelete.my">내 정보 조회/ 수정/ 탈퇴</a></div><br>
                 <div class="menu"><a href="<%= broccoli%>/myPageDeliverRegister.my">배송지 등록</a></div><br>
@@ -359,7 +356,7 @@
             </div>
     
             <div id="content_2" >
-           <h1>반품/ 교환 조회</h1>
+           <h1>반품/ 교환 조회 > 반품/ 교환 가능한 상품 목록</h1>
            <select id="dateoption">
                <option>전체기간</option>
                <option>2020년 </option>
@@ -379,7 +376,7 @@
               
               <div class="date">2020.11.02
                 <div class="product">
-                    <div class="product1"><div class="productname" >브로콜리</div><div class="detail"><a href="">상세조회 ></a></div><hr class="line"></div>
+                    <div class="product1"><div class="productname" >브로콜리</div><div class="detail"><a href="<%= broccoli%>/OrderDetailPage.my">상세조회 ></a></div><hr class="line"></div>
                     <div class="product2">
                         <div class="product2_1">사진</div>
                         <div class="product2_2">
