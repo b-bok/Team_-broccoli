@@ -52,10 +52,10 @@
 		  <h2 align="center">비밀번호 찾기</h2><br>
 		  <form action="<%=broccoli%>/findPwdResult.me" class="was-validated" method="post">
 		    <div class="form-group">
-		      <input type="text" class="form-control" id="userName" placeholder="고객님의 이름을 입력해주세요" name="userName" required>
+		      <input type="text" class="form-control" id="memName" placeholder="고객님의 이름을 입력해주세요" name="memName" required>
 		    </div>
 		    <div class="form-group">
-		      <input type="text" class="form-control" id="userId" placeholder="아이디를 입력해주세요" name="userPwd" required>
+		      <input type="text" class="form-control" id="memId" placeholder="아이디를 입력해주세요" name="memId" required>
 		    </div>
 		    <div class="form-group">
 		        <input type="text" class="form-control" id="email" placeholder="가입시 등록한 이메일을 입력해주세요" name="email" required>
@@ -66,6 +66,9 @@
   		<div class="col-sm-4"></div>
 	</div>
 </div>
+<script>
+
+</script>
 
 <%@ include file="../common/footer.jsp"%>
 </body>

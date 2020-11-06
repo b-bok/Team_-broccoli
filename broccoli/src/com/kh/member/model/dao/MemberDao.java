@@ -315,6 +315,39 @@ public class MemberDao {
 		
 	}
 	
+	public Member findPwd(Connection conn, String memName, String memId, String email) {
+		
+		Member findPwd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memName);
+			pstmt.setString(2, memId);
+			pstmt.setString(3, email);
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				findPwd = new Member(rset.getString("MEM_NAME")
+									 ,rset.getString("MEM_ID")
+									 ,rset.getString("EMAIL")
+									 );
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return findPwd;
+				
+	}
 
 
 }

@@ -1,11 +1,16 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class FindIdResultController
@@ -27,8 +32,23 @@ public class FindIdResultController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/member/findIdSuccess.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String memName = request.getParameter("memName");
+		String email = request.getParameter("email");
 		
+		Member findId = new MemberService().findId(memName, email);
+		
+		if(findId == null) {//일치하는 아이디를 찾을 수 없음
+			
+			request.getRequestDispatcher("views/member/findIdFail.jsp").forward(request, response);
+			
+		}else {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("findId", findId);
+			
+			request.getRequestDispatcher("views/member/findIdSuccess.jsp").forward(request, response);
+		}
 		
 
 
