@@ -145,9 +145,13 @@
     		
     		$(".thumbnails").click(function(){
     			
-    			location.href = "<%=broccoli%>/detail.pb?pno=" + $("#pno").val();
+    			
+    			location.href = "<%=broccoli%>/detail.pb?pno=" + $(this).children().eq(0).val();
+    			
     		});
+    	
     		
+   
     	});
 
 

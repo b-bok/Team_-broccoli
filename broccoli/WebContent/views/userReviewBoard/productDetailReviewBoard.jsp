@@ -164,14 +164,25 @@ div {
         	selectUserReview(sort);
         	
         	
-        	
-        	
-
-    		$("#reviewTable>tbody").on("click","tr",function(){
+    		$("#reviewTable>tbody").on("click","tr td:not(.dec)",function(){
     			
-    			 location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).children().eq(0).text(); 
+    			
+    			console.log($(this).parent().eq(0).text());
+    			console.log($(this).parent().children().eq(0).text());
+    			
+    		location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).parent().children().eq(0).text();
     			
     		})
+    		
+
+    		
+/*     		$("#reviewTable>tbody>tr").on("click","a",function(){
+    			
+    			event.stopPropagation();
+    			
+        	}) */
+        	
+
     		
     		$("#selectAll").click(function(){
     			
@@ -237,7 +248,7 @@ div {
    	        				"<td>" + list[i].regDate + "</td>" +
    	        				"<td>" + "<i class='fas fa-thumbs-up'></i> " + list[i].like + "</td>" +
    	        				"<td>" + list[i].clickNo + "</td>" +
-   	        				"<td>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
+   	        				"<td class='dec'>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
    						 "</tr>";
  
         			}

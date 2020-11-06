@@ -52,8 +52,7 @@ public class SelectUserReviewController extends HttpServlet {
 			list = new ProductService().selectSortReview(pno,sort);
 		}
 		
-		
-		
+
 		response.setContentType("application/json; charset=utf-8");
 		
 		Gson gson = new Gson();
