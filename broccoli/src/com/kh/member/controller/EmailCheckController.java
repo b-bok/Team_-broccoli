@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class IdCheckController
+ * Servlet implementation class EmailCheckController
  */
-@WebServlet("/idCheck.me")
-public class IdCheckController extends HttpServlet {
+@WebServlet("/emailCheck.me")
+public class EmailCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdCheckController() {
+    public EmailCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,13 +30,12 @@ public class IdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String idCheck = request.getParameter("idCheck");
+		String emailCheck = request.getParameter("emailCheck");
+		int count = new MemberService().emailCheck(emailCheck);
 		
-		int count = new MemberService().idCheck(idCheck);
-		
-		if(count>0) {//중복발생 -> 아이디사용불가
+		if(count>0) {
 			response.getWriter().print("fail");
-		}else { //중복없음 -> 아이디사용가능 
+		}else {
 			response.getWriter().print("success");
 		}
 		

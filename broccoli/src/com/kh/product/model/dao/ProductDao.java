@@ -1,6 +1,6 @@
 package com.kh.product.model.dao;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.review.model.vo.Review;
 
 
 public class ProductDao {
@@ -338,6 +339,191 @@ public class ProductDao {
 		      
 		   }
 
+	
+	public ArrayList<Review> selectUserReview(Connection conn, int pno) {
+		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectUserReview");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Review r = new Review();
+				
+				r.setReviewNo(rset.getInt("review_board_no"));
+				r.setReviewRate(rset.getInt("review_rate"));
+				r.setReviewTitle(rset.getString("review_title"));
+				r.setMem(rset.getString("mem_id"));
+				r.setRegDate(rset.getDate("reg_date"));
+				r.setLike(rset.getInt("like_count"));
+				r.setClickNo(rset.getInt("click_no"));
+				
+				list.add(r);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
+	
+	
+	public ArrayList<Review> selectPhotoReview(Connection conn, int pno) {
+		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectPhotoReview");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Review r = new Review();
+				
+				r.setReviewNo(rset.getInt("review_board_no"));
+				r.setReviewRate(rset.getInt("review_rate"));
+				r.setReviewTitle(rset.getString("review_title"));
+				r.setMem(rset.getString("mem_id"));
+				r.setRegDate(rset.getDate("reg_date"));
+				r.setLike(rset.getInt("like_count"));
+				r.setClickNo(rset.getInt("click_no"));
+				
+				list.add(r);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
+	
+	public ArrayList<Review> selectSortReview(Connection conn, int pno, String sort) {
+		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectSortReview");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pno);
+			pstmt.setString(2, sort);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Review r = new Review();
+				
+				r.setReviewNo(rset.getInt("review_board_no"));
+				r.setReviewRate(rset.getInt("review_rate"));
+				r.setReviewTitle(rset.getString("review_title"));
+				r.setMem(rset.getString("mem_id"));
+				r.setRegDate(rset.getDate("reg_date"));
+				r.setLike(rset.getInt("like_count"));
+				r.setClickNo(rset.getInt("click_no"));
+				
+				list.add(r);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
+	
+	
+	public Product selectAdminProductDetail(Connection conn, int pno) {
+			
+			Product p = null;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectAdminProductDetail");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pno);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					p = new Product(rset.getInt("p_no"),
+									rset.getString("category_name"),
+									rset.getString("e_title"),
+									rset.getString("p_name"),
+									rset.getInt("p_price"),
+									rset.getInt("p_discount"),
+									rset.getString("p_image1"),
+									rset.getString("p_image2"),
+									rset.getInt("p_inventory"),
+									rset.getString("p_company"),
+									rset.getString("p_unit"),
+									rset.getString("p_weight"),
+									rset.getString("p_detail"),
+									rset.getString("dis_yn"),
+									rset.getString("e_yn"),
+									rset.getString("p_smalldetail"),
+									rset.getString("p_deli"),
+									rset.getString("p_nation"),
+									rset.getString("p_packtype"),
+									rset.getString("p_thumbnail"),
+									rset.getInt("p_out"));
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return p;
+		}
 	
 	
 }

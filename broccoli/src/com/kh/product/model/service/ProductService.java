@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.kh.product.model.dao.ProductDao;
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.review.model.vo.Review;
 
 public class ProductService {
 	
@@ -94,6 +95,61 @@ public class ProductService {
 		Connection conn = getConnection();
 		
 		Product p = new ProductDao().selectDetailProduct(conn, pno);
+		
+		close(conn);
+		
+		return p;
+	}
+	
+	public ArrayList<Review> selectUserReview(int pno){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Review> list = new ProductDao().selectUserReview(conn, pno);
+		
+		close(conn);
+		
+		return list;
+		
+	};
+	
+	
+	public ArrayList<Review> selectPhotoReview(int pno){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Review> list = new ProductDao().selectPhotoReview(conn, pno);
+		
+		close(conn);
+		
+		return list;
+		
+	};
+	
+	public ArrayList<Review> selectSortReview(int pno, String sort){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Review> list = new ProductDao().selectSortReview(conn, pno, sort);
+		
+		close(conn);
+		
+		return list;
+		
+	};
+	
+	
+	
+	
+	/**
+	 * 관리자 상품상세조회 페이지
+	 * @param pno 상품번호
+	 * @return 상품정보
+	 */
+	public Product selectAdminProductDetail(int pno) {
+		Connection conn = getConnection();
+		
+		Product p = new ProductDao().selectAdminProductDetail(conn, pno);
 		
 		close(conn);
 		

@@ -7,11 +7,11 @@
 <title>Insert title here</title>
     <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
-</head>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -70,7 +70,7 @@ div {
 <body>
 	<!-- 상품상세페이지 리뷰게시판 입니다. -->
 	
-	<%@ include file="../common/menubar.jsp"%>
+	
 	
 	<div class="wrap">
 
@@ -84,12 +84,13 @@ div {
 
 			<select name="reviewSort" id="reviewSort">
 
-				<option value="lastPost" selected>최근등록 순</option>
-				<option value="moreLike">좋아요 순</option>
-				<option value="moreView">조회 순</option>
+				<option value="reg_date">최근등록 순</option>
+				<option value="like_count">좋아요 순</option>
+				<option value="click_no">조회 순</option>
 
 			</select>
-
+			<button id="selectSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
+			
 		</div>
 
 		<div id="boardBrief">
@@ -105,7 +106,8 @@ div {
 
 		<div id="board">
 
-			<a href="">전체보기</a> <a href="">포토 리뷰</a> <br>
+			<button id="selectAll" class="btn btn-success btn-sm" value="all">전체보기</button> 
+			<button id="selectPhoto" class="btn btn-success btn-sm" value="photo">포토 리뷰</button> <br>
 
 
 
@@ -124,19 +126,7 @@ div {
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-							class="fas fa-star"></i><i class="fas fa-star"></i><i
-							class="fas fa-star"></i></td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-						<td><i class="fas fa-thumbs-up"></i></td>
-						<td>500</td>
-						<td><a data-toggle="modal" data-target="#myModal">신고하기</a></td>
-					</tr>
-					
+			
 				</tbody>
 
 			</table>
@@ -168,28 +158,92 @@ div {
 	<script>
         
         $(function(){
+        	
+        	var sort = "all";
+        	
+        	selectUserReview(sort);
+        	
+        	
+        	
+        	
 
-        	$("#reviewTable>tbody>tr").click(function(){
+    		$("#reviewTable>tbody").on("click","tr",function(){
+    			
+    			 location.href = "<%=broccoli%>/detail.rv?rno=" + $(this).children().eq(0).text(); 
+    			
+    		})
+    		
+    		$("#selectAll").click(function(){
+    			
+    			var sort = $(this).val();
+    			
+    			 selectUserReview(sort);
+    		})
+    		
+    		$("#selectPhoto").click(function(){
+    			
+    			var sort = $(this).val();
+    			
+    			selectUserReview(sort);
+    		})
+    		
+    		
+ 			$("#selectSort").click(function(){
         		
-        		location.href = "<%=broccoli%>/detail.rv?rno="+ $(this).children().eq(0).text();
+        		var sort = $("option:selected").val();
+				
+        		selectUserReview(sort);
         		
         	});
-        	
-        	selectUserReview();
-        	
+    		
+        		
         });
         
         
-        function selectUserReview(){	// 리뷰 게시판 불러오는 ajax
+        function selectUserReview(sort){	//상품에 맞는 리뷰를 불러오는 ajax
         	
         	$.ajax({
         		url:"selectReview.rv",
         		type : "get",
         		data :  {
-        			
-        			
+        			     pno : <%=p.getPno() %>,
+						 sort : sort
+						
         		},
-        		success : function(result) {
+        		success : function(list) {
+        			
+        			
+        			var str = "";
+        			var rate = "";
+
+
+ 
+        			for(var i in list) {
+        				
+        				switch(list[i].reviewRate) {
+        				case 1 : rate = "<i class='fas fa-star'></i>"; break;
+        				case 2 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
+        				case 3 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
+        				case 4 : rate = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
+        				case 5 : rate = "</i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>"; break;
+        				}
+        				
+
+        				str += "<tr>" +
+	        				"<td>" + list[i].reviewNo + "</td>" +
+   	        				"<td>" + 	rate		+ "</td>" +
+   	        				"<td>" + list[i].reviewTitle + "</td>" +
+   	        				"<td>" + list[i].mem + "</td>" +
+   	        				"<td>" + list[i].regDate + "</td>" +
+   	        				"<td>" + "<i class='fas fa-thumbs-up'></i> " + list[i].like + "</td>" +
+   	        				"<td>" + list[i].clickNo + "</td>" +
+   	        				"<td>" + " <a data-toggle='modal' data-target='#myModal'>신고하기</a> " + "</td>" +
+   						 "</tr>";
+ 
+        			}
+        			
+        			$("#reviewTable tbody").html(str);
+        			
         			
         		},
         		error : function(){
@@ -198,6 +252,9 @@ div {
         	})
         	
         }
+        
+        
+        
         
         </script>
 

@@ -56,11 +56,12 @@ public class MemberDao {
 								   ,rset.getString("MEM_PWD")
 								   ,rset.getString("EMAIL")
 								   ,rset.getString("MOBILE")
+								   ,rset.getString("ZIPCODE")
 								   ,rset.getString("ADDRESS1")
 								   ,rset.getString("ADDRESS2")
-								   ,rset.getString("ZIPCODE")
-								   ,rset.getDate("BIRTH_DATE")
+								   ,rset.getString("ADDREXTRA")
 								   ,rset.getString("GENDER")
+								   ,rset.getDate("BIRTH_DATE")
 								   ,rset.getDate("REG_DATE")
 								   ,rset.getInt("POINT")
 								   ,rset.getString("STATUS")
@@ -141,11 +142,12 @@ public class MemberDao {
 									   ,rset.getString("MEM_PWD")
 									   ,rset.getString("EMAIL")
 									   ,rset.getString("MOBILE")
+									   ,rset.getString("ZIPCODE")
 									   ,rset.getString("ADDRESS1")
 									   ,rset.getString("ADDRESS2")
-									   ,rset.getString("ZIPCODE")
-									   ,rset.getDate("BIRTH_DATE")
+									   ,rset.getString("ADDREXTRA")
 									   ,rset.getString("GENDER")
+									   ,rset.getDate("BIRTH_DATE")
 									   ,rset.getDate("REG_DATE")
 									   ,rset.getInt("POINT")
 									   ,rset.getString("STATUS")
@@ -165,6 +167,96 @@ public class MemberDao {
 		return list;
 	
 	}
+	
+	public int idCheck(Connection conn, String idCheck) {
+		
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idCheck);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return count;
+	}
+	
+	public int emailCheck(Connection conn, String emailCheck) {
+		
+		int count =0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("emailCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, emailCheck);
+
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt(1);
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+				
+		return count;
+		
+	}
+	
+	public int insertMember(Connection conn, Member m) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMember");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemId());
+			pstmt.setString(2, m.getMemName());
+			pstmt.setString(3, m.getMemPwd());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getMobile());
+			pstmt.setString(6, m.getZipcode());
+			pstmt.setString(7, m.getAddress1());
+			pstmt.setString(8, m.getAddress2());
+			pstmt.setString(9, m.getAddrExtra());
+			pstmt.setString(10, m.getGender());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+		
+		
+	}
+	
+	
 
 
 }

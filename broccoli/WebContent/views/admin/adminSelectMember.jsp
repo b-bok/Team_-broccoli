@@ -17,6 +17,7 @@
 
 .table {
 	text-align: center;
+	font-size:10px;
 }
 a {
 	color: green;
@@ -67,6 +68,7 @@ a {
 					<th><center>적립금</center></th>
 					<th><center>가입일</center></th>
 					<th><center>탈퇴여부</center></th>
+					<th><center>멤버구분</center></th>
 				</tr>
 			</thead>
 			<tbody id="myTable">
@@ -91,6 +93,7 @@ a {
 						<td><%=m.getPoint()%></td>
 						<td><%=m.getRegDate()%></td>
 						<td><%=m.getStatus()%></td>
+						<td><%=m.getMemCategory()%>
 					</tr>
 					<%} %>
 				<%} %>

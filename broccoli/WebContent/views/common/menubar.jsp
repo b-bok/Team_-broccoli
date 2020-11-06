@@ -4,6 +4,7 @@
 <% 
 	Member login = (Member) session.getAttribute("login"); 
 	String broccoli = request.getContextPath(); 
+	String alert = (String) session.getAttribute("alert");
 %>
 <!DOCTYPE html>
 <html>
@@ -106,6 +107,15 @@ div {
 
 
 				<!------------------------------------★★★★★회원가입/로그인/마이페이지/고객센터/공지사항/자주하는질문/1:1문의/신고하기 jsp파일경로 넣어주세요 ★★★★★------------------------------------------->
+				
+				
+				<!-- 회원가입 Alert -->
+				<% if(alert != null){ %>
+					<script>
+						alert("<%= alert %>"); 
+					</script>
+					<%	session.removeAttribute("alert"); //1회성 %>
+				<% } %>
 
 				<!-- 로그인 전  -->
 				<%
@@ -127,9 +137,14 @@ div {
 						<li><a href="<%= broccoli %>/list.no" class="dropdown-item" style="font-size: 11px;">공지사항</a></li>
 						<li><a href="<%= broccoli %>" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
 						
+						<%if(login == null){%>
 						<!-- 1:1 문의, 신고하기 클릭하면 로그인 페이지로 이동하도록  -->
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">신고하기</a></li>
+						<% }else{ %>
+						<li><a href="<%= broccoli %>/MyQNAEnrollForm.my" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>
+						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">신고하기</a></li>
+						<% } %>
 					</ul></li>
 			</ul>
 		</div>

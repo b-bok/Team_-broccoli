@@ -1,26 +1,23 @@
-package com.kh.member.controller;
+package com.kh.mypage.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.service.MemberService;
-
 /**
- * Servlet implementation class IdCheckController
+ * Servlet implementation class MyReviewEnrollPageController
  */
-@WebServlet("/idCheck.me")
-public class IdCheckController extends HttpServlet {
+@WebServlet("/MyReviewEnrollPage.my")
+public class MyReviewEnrollPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdCheckController() {
+    public MyReviewEnrollPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,17 +26,8 @@ public class IdCheckController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String idCheck = request.getParameter("idCheck");
-		
-		int count = new MemberService().idCheck(idCheck);
-		
-		if(count>0) {//중복발생 -> 아이디사용불가
-			response.getWriter().print("fail");
-		}else { //중복없음 -> 아이디사용가능 
-			response.getWriter().print("success");
-		}
-		
+		// TODO Auto-generated method stub
+				request.getRequestDispatcher("views/mypage/MyReviewEnrollPage.jsp").forward(request, response);
 	}
 
 	/**
