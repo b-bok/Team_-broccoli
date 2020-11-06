@@ -1,4 +1,4 @@
-package com.kh.member.model.vo;
+package com.kh.common;
 
 public class Pagination {
 	

@@ -6,9 +6,9 @@ import static com.kh.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.common.Pagination;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
-import com.kh.member.model.vo.Pagination;
 
 
 public class MemberService {
@@ -75,6 +75,11 @@ public class MemberService {
 	}
 	
 	
+	/**
+	 * 회원가입용 
+	 * @param m
+	 * @return
+	 */
 	public int insertMember(Member m) {
 		
 		Connection conn = getConnection();
@@ -86,6 +91,16 @@ public class MemberService {
 		}
 		close(conn);
 		return result;
+		
+	}
+	
+	public Member findId(String memName, String email) {
+		
+		Connection conn = getConnection();
+		Member findId = new MemberDao().findId(conn, memName, email);
+		close(conn);
+		return findId;
+	
 		
 	}
 	
