@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectUserRecipe">
+	
+	SELECT 
+		       recipe_board_no
+		     , recipe_title
+		     , m.mem_id
+		     , r.reg_date
+		     , click_no
+		
+		FROM RECIPE r
+		JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
+		WHERE r.P_NO = ?
+	
+	
+	</entry>
+	
+	
+	
+	<entry key="selectSortRecipe">
+	
+		SELECT 
+			       recipe_board_no
+			     , recipe_title
+			     , m.mem_id
+			     , r.reg_date
+			     , click_no
+			
+			FROM RECIPE r
+			JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
+			WHERE r.P_NO = ?
+	</entry>
+	
+
+
+</properties>
