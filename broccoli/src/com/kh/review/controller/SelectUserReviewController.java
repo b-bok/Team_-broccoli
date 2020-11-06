@@ -34,9 +34,26 @@ public class SelectUserReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int pno = Integer.parseInt(request.getParameter("pno"));
+		String sort = request.getParameter("sort");
 		
 		
-		ArrayList<Review> list = new ProductService().selectUserReview(pno);
+		
+		ArrayList<Review> list = new ArrayList<>();
+		
+		if(sort.equals("all")) {
+			
+			list = new ProductService().selectUserReview(pno);
+			
+		}else if(sort.equals("photo")) {
+			
+			list = new ProductService().selectPhotoReview(pno);
+			
+		}else {
+			
+			list = new ProductService().selectSortReview(pno,sort);
+		}
+		
+		System.out.println(list);
 		
 		response.setContentType("application/json; charset=utf-8");
 		
