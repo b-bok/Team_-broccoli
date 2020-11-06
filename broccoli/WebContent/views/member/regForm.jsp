@@ -374,9 +374,9 @@ span {
 						</tr>
 						<tr>
 							<td colspan="2"><label for="gender"><b>성별</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-								<input type="radio" name="gender" id="male" value="male"><label for="male"> &nbsp;남자&nbsp;&nbsp;&nbsp; </label> 
-								<input type="radio" name="gender" id="female" value="female"><label for="female"> &nbsp;여자&nbsp;&nbsp;&nbsp; </label> 
-								<input type="radio" name="gender" id="na" value="na" checked><label for="na"> &nbsp;선택안함 </label></td>
+								<input type="radio" name="gender" id="male" value="M"><label for="male"> &nbsp;남자&nbsp;&nbsp;&nbsp; </label> 
+								<input type="radio" name="gender" id="female" value="F"><label for="female"> &nbsp;여자&nbsp;&nbsp;&nbsp; </label> 
+								<input type="radio" name="gender" id="na" value="NA" checked><label for="na"> &nbsp;선택안함 </label></td>
 						</tr>
 					</table>
 					<hr>
