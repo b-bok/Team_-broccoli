@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,44 +68,34 @@
 </head>
 <body>
 
-	<%@ include file="../common/menubar.jsp"%>
-
     <div id="titleEx">
-        <pre><b>공지사항</b></pre> 
+        <pre><b>자주묻는 질문 </b></pre> 
         <p>브로콜리의 새로운 소식과 유용한 정보들을 이곳에서 확인하세요 </p>
     </div>
     <br>
     <!-- 메뉴바 포함 할 것-->
     
     <div class="outer">
-        <hr style= "size:50" >
-        <form action="detail.no" method="POST">
+        <hr id="hr1">
+        
         <table id="detail-area" align="center">
             <tr>
                 <th width="100">제목</th>
-                <td colspan="3" width="500">해당 공지사항 제목 자리</td>
-            </tr>
-            <tr>
-                <th>작성자</th>
-                <td>작성자이름</td>
-            </tr>
-            <tr>
-                <th>작성일</th>
-                <td>해당 날짜 데이터</td> 
+                <td colspan="3" width="500">해당 FAQ 제목 자리</td>
             </tr>
             <tr>
                 <th>조회수</th>
                 <td>해당조회수자리</td>
             </tr>
             <tr>
-                <th>내용</th>
+                <th>답변</th>
                 <td colspan="2">
                     <br><br><br>
-                    <textarea id="textarea1" name="textarea1" style="resize: none;">해당 조회된 공지사항의 내용</textarea>
+                    <textarea id="textarea1" name="textarea1" style="resize: none;">해당 조회된 FAQ답변 내용</textarea>
                 </td>
             </tr>
         </table>
-		</form>
+
         <br><br>
 
         <hr width=80% color="green" align="center" size=50;/>
@@ -119,8 +108,7 @@
 
 
     </div>
-    
-<%@ include file="../common/footer.jsp"%>
+
 
 </body>
 </html>

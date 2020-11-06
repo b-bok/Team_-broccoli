@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>브로콜리 관리자 대쉬보드 메뉴바</title>
+<title>브로콜리 문의관리페이지 조회</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 대쉬보드에서 쓸 공통 css -->
@@ -16,45 +16,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 <!-- 엔딩 :  대쉬보드에서 쓸 공통 css --> 
-
-  <!-- 사이드바 css -->
-  <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
-
-
   <style>
-  
-/* 전체구조 */
-  .all{width:1000px; height:800px; box-sizing: border-box;}
-  .all div{width:100%;}
-  .header{height:15%;}
-  .neck{height:10%}
-  .nav{height:5%}
-  .body{height:60%; background-color:#f2f2f2;}
-  .footer{height:10%}
 
-/* 컨텐츠구조 */
-  .header > #searchA{width:30%; float:left;}
-  .header > #searchB{width:40%; float: right;}
-  .nav > div{padding:5px; text-align: center;}
-  .nav > #orderNo{width:25%; float: left;}
-  .nav > #mem_Id{width:25%; float: left;}
-  .nav > #payDay{width:25%; float:left;}
-  .nav > #shipping{width:25%; float: left;}
-  .nav > h4{margin: 10px;}
-  .nav > tr {width:100%;}
-  .body> tr {width:100%;}
-  
-
-
-/* 폼 버튼(submit) */
-  form button{
-    color:green;
-    margin: auto;
-  }
-  .list-area{
-    background-color:#f2f2f2;
-    width:100%;
-  }
+ 
+  /* 전체적인 ui */
   .list-area thead tr th{
     padding:10px;
     text-align: center;
@@ -63,65 +28,77 @@
     text-align: center;
     padding:10px;
   }
+  /* 전체적인 ui end -- */
+  /* 공지사항 제목만 클릭할 수 있게 포인터와 호버장착 */
   tbody tr #title:hover{
       background-color: honeydew;
       cursor: pointer;
   }
+  /*별다른 기능없음 css */
+  ul{list-style: none;}
+  #ok{text-align: center;}
+  hr{
+      background-color: greenyellow;
+      height:2px;
+  }
 
+  .all1{width:100%; height:400px; box-sizing: border-box;}
+  .all1 div{width:100%;}
+  .header{height:10%;}
+  .body{height:90%;}
+  .header2{height:100%;}
+  .header > #searchA{width:30%; float:left;}
+  .header > #searchB{width:40%; float:left;}
+  .all1 .header1{width:40%; float:left; padding: 5px;}
+  .all1 .header2{width:40%; float:right; padding: 5px; margin-right: 10px;}
+  
+  form> button{
+      display:flex;
+      justify-content: center;
+  }
+  #wrapper {
+  display: flex;
+  justify-content: center;
+  }
   </style>
 </head>
 <body>
 
-    
-    <%@ include file="adminNav.jsp" %>
+	<%@ include file="adminNav.jsp" %>
 
-
-    <br>
-
-    <form action="paymentManage.admin">
+<form action="contactManage.admin" method="POST">
 
     <div class=all style="margin-left: 300px;">
-
+        
+    <!-- 타이틀이요~ -->
     <div class="outer1">
-      <h3 id="titleText" style="float: left;">구매 및 결제내역관리 </h3>        
+      <h3 id="titleText" style="float: left;">고객문의 관리</h3>        
 
     </div>
-
-    
-      <select name="select" id="option" style="float: right; margin-top: 25px;" > 
-          <option><a href="checkAll">전체조회</a></option>
-          <option><a href="checkDetail">상세조회</a></option>
-      </select>  
     <br><br>
+    <br><br>
+    <p>ㅣ <b style="font-size: large;">1:1 문의 관리</b></p>
+    <br>
     <hr>
-     
-    <br>
     
+    <div class="outer">
     
-    <div class="header" >
-
-      <!-- 조회기간 및 검색기능 -->
-      <div id="searchA">
-         조회기간 : <input type="text" value="결제일" style="text-align: right;" disabled> 
-        </div>
-        <div id="searchB">
-          <input type="date" name="startDate"> ~ <input type="date" name="endDate">
-      </div>
-      <br>
-      <p style="text-align: right; font-size: x-small;">*최근 1년이내에 조회할 수 있습니다.</p>    
+    <!-- 문의 검색시 사용하는 카테고리 옵션입니다 -->
+    <div class="kind">  
+        문의유형 : 
+            <select name="">
+                <option value="" name="product">상품문의</option>
+                <option value="" name="delivery">배송문의</option>
+                <option value="" name="exchange">교환문의</option>
+                <option value="" name="refund">환불문의</option>
+            </select>
+            <input type="submit" value="검색" class="btn btn-success btn-sm" style="margin-left: 20px;">
     </div>
-    
-    <div class="neck">
-      상세조건 : <select name="condition">
-        <option value="select.*">전체</option>
-        <option value="mem_Id">구매자ID</option>
-        <option value="order_No">주문번호</option>
-      </select>
-      <button type="submit" class="btn btn-success btn-sm">검색</button>
-    <br>
 
+    <br><br>
 
-    </div>
+    <!-- 리스트 제목입니다. -->
+
     <table class="list-area">
       <thead>
           <tr>
@@ -196,13 +173,64 @@
         </tr>
       </tbody>
   </table>
-      
-     
-    
-    
-  </div>
-    
+<hr><br>
 
+<div class="all1">
+
+    <div class="header1">
+        <p>ㅣ <b>고객 문의내용 상세보기</b></p> 
+        <ul>
+            <li>
+                접수날짜 : 
+                <input type="text" name="enrollDate" value="enrollDate">
+            </li>
+
+        </ul>
+        <ul>
+            <li>
+                주문번호 :
+                <input type="text" name="order_No" value="order_No">
+            </li>
+
+        </ul>
+        <ul>
+            <li>
+                문의유형 : 
+                <input type="text" name="category" value="category">
+            </li>
+        </ul>
+        <ul>
+            <li>
+                질문자ID :
+                <input type="text" name="mem_Id" value="mem_Id">
+            </li>
+        </ul>
+    </div>
+    
+    <div class="header2">
+        <p>ㅣ <b>관리자 답변처리</b></p>
+        <ul>
+            <li >
+                문의유형  
+                <input type="text" name="category" value="category">
+            </li>
+
+        </ul>
+        <ul>
+            <li>
+                답변 작성 
+                <textarea name="" cols="50" rows="13" style="resize: none;"></textarea>
+            </li>
+            <br>
+            <button type="submit" class="btn btn-success">확인</button>
+            <button type="reset" class="btn btn-dark">초기화</button>
+        </div>
+
+</div>
+
+  </div>
+
+  
 </form>
 </body>
 </html>

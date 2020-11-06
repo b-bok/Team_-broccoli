@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자주하는 질문 (FAQ)</title>
+
+    
 <link rel="stylesheet"
 href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
 href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 crossorigin="anonymous">
-</head>
 <script
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -52,35 +53,40 @@ margin-top: 50px;
 	width:20%;
 	padding-right: 10px;
 }
+#gogaek{height:10%; padding-left:40px;}
 </style>
-</head>
 
+
+</head>
 <body>
- <%@ include file="../common/menubar.jsp"%>
+
+    <%@ include file="../common/menubar.jsp"%>
 
 	
     <!-- QNA페이지입니다.. -->
     
     <div class="wrap">
 		
+		<div id="titleEx">
+			<pre><b>자주하는 질문</b></pre> 
+			<p>고객님들이 가장 자주하시는 질문을 모았습니다.</p>
+		</div>
+		<h3 align="left" id="gogaek"><b>고객센터</b></h3>
+		
 		<!-- 좌측 버튼태그 (경로) -->
 		<div class="btn-group-vertical" id="btn-group">
-			<a href="<%=broccoli%>/list.no" class="btn btn-outline-primary btn-lg">공지사항</a>
-			<a href="" class="btn btn-outline-primary btn-lg">1:1문의</a>
-			<a href="" class="btn btn-outline-primary btn-lg">자주하는 질문</a>
+			<a href="" class="btn btn-outline-light text-dark">공지사항</a>
+			<a href="" class="btn btn-outline-light text-dark">1:1문의</a>
+			<a href="" class="btn btn-outline-light text-dark">자주하는 질문</a>
 		</div>
-		
-        <div id="titleEx">
-            <pre><b>자주하는 질문</b></pre> 
-            <p>고객님들이 가장 자주하시는 질문을 모았습니다.</p>
-        </div>
+
 
 
 		<div id="qnaCategory" align="left">
 
 			<select name="qCategory" id="qCategory">
 
-                <!-- Member, Payment, Cancel, Delivery  -->
+                <!-- Member, Payment, Cencle, Delivery  -->
                 <option value="select" selected>선택</option>
 				<option value="aboutM">회원 문의</option>
 				<option value="aboutP">주문/결제</option>
@@ -91,8 +97,9 @@ margin-top: 50px;
 		</div>
 
         <!-- 게시판리스트 -->
+        <form action="list.faq" method="POST">
 		<div id="qnaListBoard">
-
+		
 			<table class="table table-hover" id="qnaeList" >
 				<thead align="center">
 					<tr>
@@ -167,21 +174,21 @@ margin-top: 50px;
 				</tbody>
 
 			</table>
-
+	
 
 		</div>
-
+		</form>
         <!-- 키워드검색 -->
 		<div id="footer">
 
 			<div id="searchForm" align="left">
 
-                <form action ="test" method ="get">
+                <form action ="test" method ="post">
 
                     * 검색어
 
-                    <input type="checkbox" id="checkbox" value=""> ID &nbsp 
-                    <input type="checkbox" id="checkbox" value=""> 제목
+                    &nbsp;
+                    <input type="checkbox" id="checkbox" value="title"> 제목
 
                     <input type="text" name="keyword" id="qna_Keyword"> 
                     <input type="submit" value ="검색" name="qna_SearchList" id="qna_SearchList">
@@ -200,7 +207,8 @@ margin-top: 50px;
 
 		</div>
 
-	<%@ include file="../common/footer.jsp"%>
 	</div>
+    
+
 </body>
 </html>
