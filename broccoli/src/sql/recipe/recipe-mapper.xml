@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*) LISTCOUNT
+		  FROM RECIPE
+		 <!-- WHERE STATUS = 'Y' STATUS 가 없어서 일단 다른거 조인시키지 않고 요걸로 우선 진행 -->
+	</entry>
+	
+	<entry key="selectList">
+			  SELECT *
+				FROM 
+				    (SELECT ROWNUM RNUM
+				           , A.*
+				    FROM 
+				         (SELECT
+				                  RECIPE_BOARD_NO
+				                 ,P_NO
+				                 ,MEM_NO
+				                 ,REG_DATE
+				                 ,RECIPE_TITLE
+				                 ,RECIPE_ING
+				                 ,CLICK_NO
+				                 ,RECIPE_MAIN_IMG
+				            FROM RECIPE
+				        ORDER BY REG_DATE DESC) A)
+				  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	
+	
+</properties>
