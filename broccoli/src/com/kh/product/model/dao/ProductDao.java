@@ -527,5 +527,45 @@ public class ProductDao {
 		}
 	
 	
+	public int insertProduct(Connection conn, Product p) {
+		//insert 처리문 => 처리된 행수
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getCategory());
+			pstmt.setInt(2, Integer.parseInt(p.getEno()));
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getPrice());
+			pstmt.setInt(5, p.getDiscount());
+			pstmt.setString(6, p.getImg1());
+			pstmt.setString(7, p.getImg2());
+			pstmt.setInt(8, p.getInventory());
+			pstmt.setString(9, p.getCompany());
+			pstmt.setString(10, p.getUnit());
+			pstmt.setString(11, p.getWeight());
+			pstmt.setString(12, p.getDetail());
+			pstmt.setString(13, p.getDisYn());
+			pstmt.setString(14, p.geteYn());
+			pstmt.setString(15, p.getSmallDetail());
+			pstmt.setString(16, p.getDeli());
+			pstmt.setString(17, p.getNation());
+			pstmt.setString(18, p.getPacktype());
+			pstmt.setString(19, p.getThumbnail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	
 }
 

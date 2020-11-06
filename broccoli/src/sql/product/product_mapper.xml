@@ -253,5 +253,55 @@
 		WHERE P_NO = ?
 	</entry>
 	
+	<entry key="insertProduct">
+		INSERT
+		  INTO PRODUCT
+		  (
+		       P_NO
+		    ,  CATEGORY_NO
+		    ,  E_NO
+		    ,  P_NAME
+		    ,  P_PRICE
+		    ,  P_DISCOUNT
+		    ,  P_IMAGE1
+		    ,  P_IMAGE2
+		    ,  P_INVENTORY
+		    ,  P_COMPANY
+		    ,  P_UNIT
+		    ,  P_WEIGHT
+		    ,  P_DETAIL
+		    ,  DIS_YN
+		    ,  E_YN
+		    ,  P_SMALLDETAIL
+		    ,  P_DELI
+		    ,  P_NATION
+		    ,  P_PACKTYPE
+		    ,  P_THUMBNAIL
+		  )
+		  VALUES
+		  (
+		      SEQ_PNO.NEXTVAL
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		  )
+	</entry>
+	
 	
 </properties>

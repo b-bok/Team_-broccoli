@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.common.MyFileRenamePolicy;
+import com.kh.product.model.service.ProductService;
+import com.kh.product.model.vo.Product;
+import com.oreilly.servlet.MultipartRequest;
+
 /**
  * 관리자 상품등록 프로세스(DB에 저장후 리스트로 가기)
  * Servlet implementation class ProductInsertController
@@ -44,8 +49,7 @@ public class ProductInsertController extends HttpServlet {
 			int maxSize = 10*1024*1024;
 			
 			// 1_2. 전달되는 파일을 저장할 서버의 폴더 물리적인 경로 알아내기 (String savePath)
-			String savePath1 = request.getSession().getServletContext().getRealPath("/resources/product_upfiles/");
-			String savePath2 = request.getSession().getServletContext().getRealPath("/resources/thumbnail_upfiles/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/product_upfiles/");
 			
 			// 2. 전달되는 파일명 수정작업 및 서버에 업로드 작업
 			/*
@@ -53,7 +57,67 @@ public class ProductInsertController extends HttpServlet {
 			 * cos에서 제공하는 DefaultFileRenamePolicy객체 사용해서 저장할 이름 수정
 			 */
 			
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
+			String category = multiRequest.getParameter("category");
+			String eno = multiRequest.getParameter("eNo");
+			String pName = multiRequest.getParameter("pName");
+			int pPrice = Integer.parseInt(multiRequest.getParameter("pPrice"));
+			int discount = Integer.parseInt(multiRequest.getParameter("discount"));
+			int inventory = Integer.parseInt(multiRequest.getParameter("inventory"));
+			String company = multiRequest.getParameter("company");
+			String unit = multiRequest.getParameter("unit");
+			String weight = multiRequest.getParameter("weight");
+			String detail = multiRequest.getParameter("detail");
+			String disYn = multiRequest.getParameter("disYn");
+			String eYn = multiRequest.getParameter("eYn");
+			String smallDetail = multiRequest.getParameter("smallDetail");
+			String deli = multiRequest.getParameter("deli");
+			String nation = multiRequest.getParameter("nation");
+			String packtype = multiRequest.getParameter("packtype");
+			
+
+			Product p = new Product();
+			p.setCategory(category);
+			p.setEno(eno);
+			p.setpName(pName);
+			p.setPrice(pPrice);
+			p.setDiscount(discount);
+			p.setInventory(inventory);
+			p.setCompany(company);
+			p.setUnit(unit);
+			p.setWeight(weight);
+			p.setDetail(detail);
+			p.setDisYn(disYn);
+			p.seteYn(eYn);
+			p.setSmallDetail(smallDetail);
+			p.setDeli(deli);
+			p.setNation(nation);
+			p.setPacktype(packtype);
+			
+			for(int i=1; i<=3; i++) {
+				
+				String key = "file"+i;
+				
+				if(multiRequest.getOriginalFileName(key) != null) {
+					switch(key) {
+					case "file1":p.setImg1(multiRequest.getFilesystemName(key));
+					case "file2":p.setImg2(multiRequest.getFilesystemName(key));
+					case "file3":p.setThumbnail(multiRequest.getFilesystemName(key));
+					}
+				}
+			}
+			
+			int result = new ProductService().insertProduct(p);
+			
+			if(result >0) {
+				request.getSession().setAttribute("alertMsg", "상품 등록 성공!");
+				response.sendRedirect(request.getContextPath()+ "/selectProduct.admin?currentPage=1");
+			}else {
+				
+				request.setAttribute("errorMsg", "상품등록 실패!");
+				request.getRequestDispatcher("views/common/adminErrorPage.jsp").forward(request, response);
+			}
 			
 		}
 		

@@ -2,6 +2,7 @@ package com.kh.product.model.service;
 
 import static com.kh.common.JDBCTemplate.close;
 import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -154,6 +155,29 @@ public class ProductService {
 		close(conn);
 		
 		return p;
+	}
+	
+	
+	
+	/**
+	 * 상품등록하기용 서비스
+	 * @param p 상품정보담은 상품객체
+	 * @return 실행결과
+	 */
+	public int insertProduct(Product p) {
+		Connection conn = getConnection();
+		
+		int result = new ProductDao().insertProduct(conn, p);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 	
 	
