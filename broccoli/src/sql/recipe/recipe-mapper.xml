@@ -5,16 +5,16 @@
 
 	<entry key="selectUserRecipe">
 	
-	SELECT 
-		       recipe_board_no
-		     , recipe_title
-		     , m.mem_id
-		     , r.reg_date
-		     , click_no
-		
-		FROM RECIPE r
-		JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
-		WHERE r.P_NO = ?
+		SELECT 
+			       recipe_board_no
+	             , recipe_main_img 
+			     , recipe_title
+			     , m.mem_id
+			     , r.reg_date
+			     , click_no 
+			FROM RECIPE r
+			JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
+			WHERE r.P_NO = ?
 	
 	
 	</entry>
@@ -23,13 +23,13 @@
 	
 	<entry key="selectSortRecipe">
 	
-		SELECT 
+			SELECT 
 			       recipe_board_no
+	             , recipe_main_img 
 			     , recipe_title
 			     , m.mem_id
 			     , r.reg_date
-			     , click_no
-			
+			     , click_no 
 			FROM RECIPE r
 			JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
 			WHERE r.P_NO = ?

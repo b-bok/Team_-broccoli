@@ -83,7 +83,7 @@ div {
 				<option value="click_no">조회 순</option>
 
 			</select>
-			<button id="selectSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
+			<button id="selectReviewSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
 			
 		</div>
 
@@ -171,9 +171,9 @@ div {
     		})
     		
     		
- 			$("#selectSort").click(function(){
+ 			$("#selectReviewSort").click(function(){
         		
-        		var sort = $("option:selected").val();
+        		var sort = $("#reviewSort option:selected").val();
 				
         		selectUserReview(sort);
         		

@@ -54,6 +54,7 @@ public class RecipeDao {
 				Recipe r = new Recipe();
 				
 				r.setRecipeNo(rset.getInt("Recipe_board_no"));
+				r.setRecipeMainImg(rset.getString("recipe_main_img"));
 				r.setRecipeTitle(rset.getString("Recipe_title"));
 				r.setMem(rset.getString("mem_id"));
 				r.setRegDate(rset.getDate("reg_date"));
@@ -99,6 +100,7 @@ public class RecipeDao {
 				Recipe r = new Recipe();
 				
 				r.setRecipeNo(rset.getInt("Recipe_board_no"));
+				r.setRecipeMainImg(rset.getString("recipe_main_img"));
 				r.setRecipeTitle(rset.getString("Recipe_title"));
 				r.setMem(rset.getString("mem_id"));
 				r.setRegDate(rset.getDate("reg_date"));

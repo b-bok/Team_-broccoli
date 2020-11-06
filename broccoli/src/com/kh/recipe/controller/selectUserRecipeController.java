@@ -43,6 +43,7 @@ public class selectUserRecipeController extends HttpServlet {
 			list = new RecipeService().selectUserRecipe(pno);
 			
 		}else {
+			System.out.println(sort);
 			list = new RecipeService().selectSortRecipe(pno,sort);
 		}
 		

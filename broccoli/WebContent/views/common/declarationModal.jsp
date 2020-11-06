@@ -41,15 +41,15 @@
 			  신고하신 사유가 무엇인가요?
 			  <br><br>
 			  <form action="">
-					<input type="radio" name="productX" id="productX"><label for="productX">상품과 관련없는 비방내용</label> <br>
-					<input type="radio" name="genderX" id="genderX"><label for="genderXX">음란, 욕설 부적절한 내용</label>  <br>
-					<input type="radio" name="reviewX" id="reviewX"><label for="reviewX">구매후기 취지와 어긋난 내용</label>  <br>
-					<input type="radio" name="elseX" id="elseX"><label for="elseX">기타</label>  <br>
-					<textarea name="elseText" id="elseText" cols="60" rows="5" style="resize: none;"></textarea>
+					<input type="radio" name="productX" class="productX"><label for="productX">상품과 관련없는 비방내용</label> <br>
+					<input type="radio" name="genderX" class="genderX"><label for="genderXX">음란, 욕설 부적절한 내용</label>  <br>
+					<input type="radio" name="reviewX" class="reviewX"><label for="reviewX">구매후기 취지와 어긋난 내용</label>  <br>
+					<input type="radio" name="elseX" class="elseX"><label for="elseX">기타</label>  <br>
+					<textarea name="elseText" class="elseText" cols="60" rows="5" style="resize: none;"></textarea>
 
 				<hr>
 
-				<button type="submit" class="btn btn-danger" id="sucessD">신고하기</button>
+				<button type="submit" class="btn btn-danger" class="sucessD">신고하기</button>
 
 			  </form>
 			</div>
