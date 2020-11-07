@@ -35,9 +35,7 @@ public class SelectUserReviewController extends HttpServlet {
 		
 		int pno = Integer.parseInt(request.getParameter("pno"));
 		String sort = request.getParameter("sort");
-		
-		
-		
+
 		ArrayList<Review> list = new ArrayList<>();
 		
 		if(sort.equals("all")) {

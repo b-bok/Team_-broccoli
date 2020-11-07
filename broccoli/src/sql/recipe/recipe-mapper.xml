@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
 <properties>
 	
 	<entry key="selectListCount">
@@ -27,8 +28,8 @@
 				        ORDER BY REG_DATE DESC) A)
 				  WHERE RNUM BETWEEN ? AND ?
 
+	</entry>
 
-<properties>
 
 	<entry key="selectUserRecipe">
 	

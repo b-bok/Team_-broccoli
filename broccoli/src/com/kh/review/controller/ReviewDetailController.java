@@ -1,11 +1,14 @@
 package com.kh.review.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.review.model.service.ReviewService;
 
 /**
  * Servlet implementation class ReviewDetailController
@@ -26,6 +29,14 @@ public class ReviewDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		int rno = Integer.parseInt(request.getParameter("rno"));
+		
+		int result = new ReviewService().increaseCount(rno);
+		
+		if(result > 0) {
+			System.out.println("조회수 증가");
+		}
 
 		request.getRequestDispatcher("views/userReviewBoard/reviewDetailPage.jsp").forward(request, response);
 	}
