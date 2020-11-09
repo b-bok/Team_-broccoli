@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ page import="com.kh.qna.model.vo.*" %>    
-
-<%
-	Qna q = (Qna)request.getAttribute("q");
-
-%>    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,40 +96,23 @@
                 <table  id="qnaTable">
                     <tr>
                         <th class="table-success" width="150">작성자</th>
-                        <td>&nbsp; <%=q.getMemId() %></td>
+                        <td>&nbsp; 작성자아이디</td>
                     </tr>
                     <tr>
                         <th class="table-success">이메일</th>
-                        <td>&nbsp; <%=q.getEmail() %></td>
+                        <td>&nbsp; 작성자 이메일</td>
                     </tr>
                     <tr>
                         <th class="table-success">핸드폰</th>
-                        <td>&nbsp; <%=q.getMobile() %></td>
+                        <td>&nbsp; 작성자 핸드폰 번호</td>
                     </tr>
                     <tr>
-                    	<%if(q.getNoticeYn().equals("Y")) { %>
-                    	<th class="table-success">공지여부</th>
-                    	<%}else { %>
                         <th class="table-success">비밀글</th>
-                        <%} %>
-                        
-                        <%if(q.getNoticeYn().equals("Y")) {  %>
-                        <td><input type="checkbox" name="noticeYn" id="noticeYn" checked disabled>
-                        		<label for="noticeYn">공지사항</label>
-                        </td>
-                        <%}else if(q.getSecret().equals("Y")) { %>
-                        <td><input type="checkbox" name="secretYn" id="secretYn" checked disabled >
-                        		<label for="secretYn">비밀글</label>
-                        </td>
-                        <% }else { %>
-                        <td><input type="checkbox" name="secretYn" id="secretYn"disabled >
-                        		<label for="secretYn">비밀글</label>
-                        </td>
-                        <% } %>
+                        <td><input type="checkbox" name="secretYn" id="secretYn" ><label for="secretYn">비밀글</label></td>
                     </tr>
                     <tr>
                         <th class="table-success">제목</th>
-                        <td>&nbsp; <%=q.getQnaTitle() %></td>
+                        <td>&nbsp; 문의내역 제목 맛이 이상하네요?</td>
                     </tr>
                 </table>
 
@@ -147,8 +122,12 @@
         <div id="qnaContent">
             <br><br>
             <p name="qnaText">
-			             
-			             <%=q.getQnaDetail() %>
+                뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 
+                커다란 역사를 청춘의
+                방황하였으며, 우리는 교향악이다. 새 이는 같이,
+                기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
+                얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
+ 
     
             </p>
             
@@ -164,6 +143,4 @@
     
 <%@ include file="../common/footer.jsp"%>
 </body>
-
-
 </html>

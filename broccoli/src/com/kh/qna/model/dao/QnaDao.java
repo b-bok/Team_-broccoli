@@ -119,50 +119,10 @@ public class QnaDao {
 
 		return list;
 	}
-
-
-	public Qna selectDetailQna(Connection conn, int qno) {
 	
-		Qna q = new Qna();
-		
-		ResultSet rset = null;
-		
-		PreparedStatement pstmt = null;
-		
-		String sql = prop.getProperty("selectDetailQna");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, qno);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				
-				q.setMemId(rset.getString("mem_id"));
-				q.setEmail(rset.getString("email"));
-				q.setMobile(rset.getString("mobile"));
-				q.setSecret(rset.getString("secret"));
-				q.setQnaTitle(rset.getString("qna_title"));
-				q.setQnaDetail(rset.getString("qna_detail"));
-				q.setNoticeYn(rset.getString("notice_yn"));
 
-			}
-			
-			
-		} catch (SQLException e) {
-			
-			
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		
-		return q;
-	}
-
+	
+	
+	
 
 }

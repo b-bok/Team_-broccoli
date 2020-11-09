@@ -18,23 +18,5 @@
 	</entry>
 
 
-	<entry key="selectDetailQna">
-		
-		SELECT
-		       MEM_ID
-		     , EMAIL
-		     , MOBILE
-		     , SECRET
-		     , QNA_TITLE
-		     , QNA_DETAIL
-			 , NOTICE_YN
-			 
-		FROM PRODUCT_QNA Q     
-		LEFT JOIN MEMBERS M ON (Q.MEM_NO = M.MEM_NO)
-		WHERE QNA_NO = ?
-				
-		
-		</entry>
-
 
 </properties>

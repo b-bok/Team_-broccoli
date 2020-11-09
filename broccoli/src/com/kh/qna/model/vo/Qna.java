@@ -15,10 +15,7 @@ public class Qna {
 	private String qnaYn;		// 답변여부
 	private String noticeYn;	// 공지사항여부
 	private String secret;		// 비밀글여부
-	
-	private String email;		// 이메일
-	private String mobile;		// 전화번호
-	
+
 	
 	public Qna() {}
 
@@ -37,31 +34,6 @@ public class Qna {
 		this.qnaYn = qnaYn;
 		this.noticeYn = noticeYn;
 		this.secret = secret;
-	}
-
-	
-	
-	
-	
-	
-	
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getMobile() {
-		return mobile;
-	}
-
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
 	}
 
 
