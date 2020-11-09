@@ -9,11 +9,12 @@
 		     ,MEM_PWD
 		     ,EMAIL
 		     ,MOBILE
+		     ,ZIPCODE
 		     ,ADDRESS1
 		     ,ADDRESS2
-		     ,ZIPCODE
+			 ,ADDREXTRA
+			 ,GENDER
 		     ,BIRTH_DATE
-		     ,GENDER
 		     ,REG_DATE
 		     ,POINT
 		     ,STATUS
@@ -44,11 +45,12 @@
 		                 ,MEM_PWD
 		                 ,EMAIL
 		                 ,MOBILE
+		                 ,ZIPCODE
 		                 ,ADDRESS1
 		                 ,ADDRESS2
-		                 ,ZIPCODE
+						 ,ADDREXTRA
+						 ,GENDER
 		                 ,BIRTH_DATE
-		                 ,GENDER
 		                 ,REG_DATE
 		                 ,POINT
 		                 ,STATUS
@@ -58,7 +60,105 @@
 		        ORDER BY REG_DATE DESC) A)
 		  WHERE RNUM BETWEEN ? AND ?
 	</entry>
-
+	<entry key="idCheck">
+		SELECT COUNT(*)
+		  FROM MEMBERS
+		 WHERE MEM_ID=? 
+	</entry>
+	<entry key="emailCheck">
+		SELECT COUNT(*)
+		  FROM MEMBERS
+		 WHERE EMAIL=? 
+	</entry>
+	<entry key="insertMember">
+		INSERT INTO MEMBERS(MEM_NO,
+                    MEM_ID,
+                    MEM_NAME,
+                    MEM_PWD,
+                    EMAIL,
+                    MOBILE,
+                    ZIPCODE,
+                    ADDRESS1,
+                    ADDRESS2,
+                    ADDREXTRA,
+                    GENDER,
+                    REG_DATE,
+                    POINT,
+                    STATUS,
+                    ADDRESS_NO,
+                    MEM_CATEGORY
+                    ) 
+            VALUES(SEQ_MEM.NEXTVAL,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   ?,
+                   SYSDATE,
+                   5000,
+                   'Y',
+                   1,
+                   'USER' 
+                   )
+	</entry>
+	
+	<entry key="findId">
+		SELECT 
+		      MEM_NO
+		     ,MEM_ID
+		     ,MEM_NAME
+		     ,MEM_PWD
+		     ,EMAIL
+		     ,MOBILE
+		     ,ZIPCODE
+		     ,ADDRESS1
+		     ,ADDRESS2
+			 ,ADDREXTRA
+			 ,GENDER
+		     ,BIRTH_DATE
+		     ,REG_DATE
+		     ,POINT
+		     ,STATUS
+		     ,ADDRESS_NO
+		     ,MEM_CATEGORY
+		  FROM MEMBERS
+		 WHERE MEM_NAME = ?
+		   AND EMAIL = ?
+		   AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="findPwd">
+			SELECT 
+			      MEM_NO
+			     ,MEM_ID
+			     ,MEM_NAME
+			     ,MEM_PWD
+			     ,EMAIL
+			     ,MOBILE
+			     ,ZIPCODE
+			     ,ADDRESS1
+			     ,ADDRESS2
+				 ,ADDREXTRA
+				 ,GENDER
+			     ,BIRTH_DATE
+			     ,REG_DATE
+			     ,POINT
+			     ,STATUS
+			     ,ADDRESS_NO
+			     ,MEM_CATEGORY
+			  FROM MEMBERS
+			 WHERE MEM_NAME = ?
+			   AND MEM_ID = ?
+			   AND EMAIL = ?
+			   AND STATUS = 'Y'
+	
+	
+	</entry>
 
 
 </properties>

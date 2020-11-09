@@ -90,7 +90,7 @@
                         <td></td>
                         <td><%= p.getPno() %></td>
                         <td><%= p.getpName() %></td>
-                        <td><%= p.getPrice() %></td>
+                        <td><%= p.getInventory() %></td>
                         <td><%= p.getCompany() %></td>
                     </tr>
                     <% } %>
@@ -100,34 +100,41 @@
                 
             </table>
 			
+			<!-- 리스트 중 상품 클릭시 이동 -->
 			 <script>
 			       $(function(){
 			        $("#productList>tbody>tr").click(function(){
-			            location.href= "<%=broccoli%>/productDetailResult.admin"
+			            location.href= "<%=broccoli%>/productDetailResult.admin?pno=" + $(this).children().eq(1).text();
 			            });
 			       });
       		</script>
       		
-              <select style="margin-top: 20px; margin-left: 200px;">
-                  <option value="pProduct">카테고리</option>
-                  <option value="">과일,채소</option>
-                  <option value="">냉장식품</option>
-                  <option value="">간편식품</option>
-                  <option value="">수산물</option>
-                  <option value="">정육</option>
-              </select>
-
-              <select style="margin-top: 20px; ">
-                  <option value="pProduct">상품명</option>
-                  <option value="pCompany">업체명</option>
-              </select>
-
-            <input type="text" name="searchProduct" placeholder="검색어를 입력하세요"> 
-            <button>검색</button>
+      		<!-- 검색조건 폼 -->
+      		<form action="" method="post">
+	              <select style="margin-top: 20px; margin-left: 200px;">
+	                  <option value="pProduct">카테고리</option>
+	                  <option value="">과일,채소</option>
+	                  <option value="">냉장식품</option>
+	                  <option value="">간편식품</option>
+	                  <option value="">수산물</option>
+	                  <option value="">정육</option>
+	              </select>
+	
+	              <select style="margin-top: 20px; ">
+	                  <option value="pProduct">상품명</option>
+	                  <option value="pCompany">업체명</option>
+	              </select>
+	
+	            <input type="text" name="searchProduct" placeholder="검색어를 입력하세요"> 
+	            <button type="submit">검색</button>
+            </form>
+            
             <br>
             <br>
         </div>
         <br>
+        
+        <!-- 페이징 처리 부분 -->
         <div class="paging-area" align="center">
 		   <% if(pi.getCurrentPage() !=1 ){ %>
             <a href="<%=broccoli%>/selectProduct.admin?currentPage=<%=pi.getCurrentPage()-1%>">&lt; 이전</a>

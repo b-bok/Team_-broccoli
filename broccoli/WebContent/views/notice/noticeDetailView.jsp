@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>공지사항 상세페이지</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
     <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -18,8 +21,11 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 <style>
     .outer{
+
     background: white;
     width:1000px;
     height:800px;
@@ -53,24 +59,28 @@
         height:600px;
         border: 0.5px solid #f2f2f2;
     }
+    #hr1{
+        border:0;
+        height:3px;
+        background:greenyellow;
+    }
 
 </style>
 </head>
-
 <body>
 
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../common/menubar.jsp"%>
 
-
-	<div id="titleEx">
+    <div id="titleEx">
         <pre><b>공지사항</b></pre> 
         <p>브로콜리의 새로운 소식과 유용한 정보들을 이곳에서 확인하세요 </p>
     </div>
     <br>
     <!-- 메뉴바 포함 할 것-->
-
+    
     <div class="outer">
-        
+        <hr style= "size:50" >
+        <form action="detail.no" method="POST">
         <table id="detail-area" align="center">
             <tr>
                 <th width="100">제목</th>
@@ -96,7 +106,7 @@
                 </td>
             </tr>
         </table>
-
+		</form>
         <br><br>
 
         <hr width=80% color="green" align="center" size=50;/>
@@ -109,6 +119,8 @@
 
 
     </div>
+    
 <%@ include file="../common/footer.jsp"%>
+
 </body>
 </html>

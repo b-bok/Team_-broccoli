@@ -1,11 +1,15 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class FindPwdResultController
@@ -27,7 +31,23 @@ public class FindPwdResultController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/member/findPwdNotice.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String memName = request.getParameter("memName");
+		String memId = request.getParameter("memId");
+		String email = request.getParameter("email");
+		
+		Member findPwd = new MemberService().findPwd(memName,memId, email);
+		if(findPwd == null) {
+			
+			request.getSession().setAttribute("alert", "일치하는 내용을 찾지 못하였습니다.다시 입력해 주세요!");
+			request.getRequestDispatcher("views/member/findPwd.jsp").forward(request, response);
+			
+		}else {
+			
+			request.getSession().setAttribute("findPwd", findPwd);
+			request.getRequestDispatcher("views/member/findPwdNotice.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**

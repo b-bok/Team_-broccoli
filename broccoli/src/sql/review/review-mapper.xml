@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*) LISTCOUNT
+		  FROM REVIEW
+		 <!-- WHERE STATUS = 'Y' STATUS 가 없어서 일단 다른거 조인시키지 않고 요걸로 우선 진행 -->
+	</entry>
+	
+	<entry key="selectList">
+			  SELECT *
+				FROM 
+				    (SELECT ROWNUM RNUM
+				           , A.*
+				    FROM 
+				         (SELECT
+				                  REVIEW_BOARD_NO
+				                 ,P_NO
+				                 ,MEM_NO
+				                 ,REG_DATE
+				                 ,REVIEW_TITLE
+				                 ,REVIEW_CONTENT
+				                 ,CLICK_NO
+				                 ,REVIEW_RATE
+				                 ,LIKE
+				            FROM REVIEW
+				        ORDER BY REG_DATE DESC) A)
+				  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	<entry key="increaseCount">
+	
+		update
+		      review
+		set   click_no = click_no + 1
+		where review_board_no = ?
+
+	</entry>
+	
+	
+	
+</properties>

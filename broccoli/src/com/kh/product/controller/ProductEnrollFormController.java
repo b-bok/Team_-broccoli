@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 관리자 상품등록하기 화면
  * Servlet implementation class ProductEnrollFormController
  */
 @WebServlet("/enrollProduct.admin")

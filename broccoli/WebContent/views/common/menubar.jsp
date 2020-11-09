@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.kh.member.model.vo.Member"%>
 <% 
-	Member login = (Member) session.getAttribute("login"); 
+	Member login = (Member)session.getAttribute("login"); 
 	String broccoli = request.getContextPath(); 
+	String alert = (String) session.getAttribute("alert");
 %>
 <!DOCTYPE html>
 <html>
@@ -39,11 +40,11 @@ div {
             font-weight: bold;
         }
         /* 최상단상단메뉴바 */
-        #header {
+        #head {
             height: 15%;
         }
         
-        #header_1 {
+        #head_1 {
             height: 20%;
             margin-right: 30px;
         }
@@ -75,12 +76,12 @@ div {
             list-style-type: none;
         }
         /* 홈로고부분 */
-        #header_2 {
+        #head_2 {
             height: 50%;
             text-align: center;
         }
         /* 카테고리 메뉴 */
-        #header_3 {
+        #head_3 {
             height: 30%;
             width: 100%;
             margin-left: 80px;
@@ -100,12 +101,21 @@ div {
 </head>
 <body>
 
-	<div id="header" style="height: 150px">
-		<div id="header_1">
+	<div id="head" style="height: 150px">
+		<div id="head_1">
 			<ul class="list_menu">
 
 
 				<!------------------------------------★★★★★회원가입/로그인/마이페이지/고객센터/공지사항/자주하는질문/1:1문의/신고하기 jsp파일경로 넣어주세요 ★★★★★------------------------------------------->
+				
+				
+				<!-- 회원가입 Alert -->
+				<% if(alert != null){ %>
+					<script>
+						alert("<%= alert %>"); 
+					</script>
+					<%	session.removeAttribute("alert"); //1회성 %>
+				<% } %>
 
 				<!-- 로그인 전  -->
 				<%
@@ -125,18 +135,23 @@ div {
 					style="font-size: 12px; padding: 0px;">고객센터</a>
 					<ul class="submenu">
 						<li><a href="<%= broccoli %>/list.no" class="dropdown-item" style="font-size: 11px;">공지사항</a></li>
-						<li><a href="<%= broccoli %>" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
+						<li><a href="<%= broccoli %>/list.faq" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
 						
+						<%if(login == null){%>
 						<!-- 1:1 문의, 신고하기 클릭하면 로그인 페이지로 이동하도록  -->
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>
 						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">신고하기</a></li>
+						<% }else{ %>
+						<li><a href="<%= broccoli %>/MyQNAEnrollForm.my" class="dropdown-item" style="font-size: 11px;">1:1 문의</a></li>
+						<li><a href="<%= broccoli %>/login.me" class="dropdown-item" style="font-size: 11px;">신고하기</a></li>
+						<% } %>
 					</ul></li>
 			</ul>
 		</div>
-		<div id="header_2">
+		<div id="head_2">
 			<a href="<%= broccoli %>" style="margin: 100px;"><h3>브로콜리</h3></a>
 		</div>
-		<div id="header_3" align="center">
+		<div id="head_3" align="center">
 			<ul class="allmenu" style="font-size: 17px; font-weight: bold;">
 
 
@@ -158,8 +173,13 @@ div {
 					</form>
 				</li>
 				<!-- 장바구니 -->
-				<li><a href="<%= broccoli %>/cart.or"><i class="fas fa-shopping-cart"
-						style="font-size: 30px;"></i></a></li>
+				<li>
+				<% if(login != null) { %>
+					<a href="<%= broccoli %>/cart.or"><i class="fas fa-shopping-cart" style="font-size: 30px;"></i></a>
+				<%} else { %>
+					<a href="<%= broccoli %>/login.me"><i class="fas fa-shopping-cart" style="font-size: 30px;"></i></a>
+				<% } %>	
+				</li>
 			</ul>
 		</div>
 	</div>

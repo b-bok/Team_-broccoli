@@ -35,7 +35,7 @@
             </div>
             <div class="footline">
                 <div class="lf1">
-                    <button class="btn" onclick="location.href='';">1:1 문의</button>
+                   <button class="btn" onclick="location.href='';">1:1 문의</button>
                 </div>
                 <div class="lf2">
                     <dt>24시간 접수가능</dt>

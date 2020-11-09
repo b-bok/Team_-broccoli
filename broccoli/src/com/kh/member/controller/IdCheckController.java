@@ -30,12 +30,13 @@ public class IdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String checkbtn1 = request.getParameter("checkbtn1");
+		String idCheck = request.getParameter("idCheck");
 		
-		int count = new MemberService().idCheck(checkbtn1);
-		if(count>0) {
+		int count = new MemberService().idCheck(idCheck);
+		
+		if(count>0) {//중복발생 -> 아이디사용불가
 			response.getWriter().print("fail");
-		}else {
+		}else { //중복없음 -> 아이디사용가능 
 			response.getWriter().print("success");
 		}
 		

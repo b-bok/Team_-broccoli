@@ -4,7 +4,7 @@ public class Product {
 	
 	private int pno;			// 상품번호
 	private String category;	// 카테고리 번호 (번호로도, 문자로도 사용가능할것 같아 String으로)
-	private int eno;			// 이벤트 번호
+	private String eno;			// 이벤트 번호 ( 이벤트명 받을 경우 대비해서 String으로)
 	private String pName;		// 상품명
 	private int price;			// 상품가격
 	private int discount;		// 할인가격
@@ -26,7 +26,7 @@ public class Product {
 	
 	public Product() {}
 
-	public Product(int pno, String category, int eno, String pName, int price, int discount, String img1, String img2,
+	public Product(int pno, String category, String eno, String pName, int price, int discount, String img1, String img2,
 			int inventory, String company, String unit, String weight, String detail, String disYn, String eYn,
 			String smallDetail, String deli, String nation, String packtype, String thumbnail, int out) {
 		super();
@@ -115,11 +115,11 @@ public class Product {
 		this.category = category;
 	}
 
-	public int getEno() {
+	public String getEno() {
 		return eno;
 	}
 
-	public void setEno(int eno) {
+	public void setEno(String eno) {
 		this.eno = eno;
 	}
 

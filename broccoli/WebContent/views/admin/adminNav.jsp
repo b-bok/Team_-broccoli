@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <% 
 	String broccoli = request.getContextPath();
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -146,7 +147,7 @@
   <div class="topnav">
     <div class="topnav-right">
       <a href="#search"><a href="#"><span class="fa fa-fw fa-user" style="font-size: 24px;"></span> 관리자정보</a>
-      <a href="<%=broccoli%>/logout.me"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
+      <a href="<%=broccoli%>"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
     </div>
   </div>
   
@@ -207,8 +208,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 문의관리</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 공지사항</a>
+      <a href="<%=broccoli%>/contactManage.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 문의관리</a>
+      <a href="<%=broccoli%>/noticeListView.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 공지사항</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> FAQ 관리</a>
     </div>
     

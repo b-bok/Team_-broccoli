@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.product.model.vo.*" %>    
+<%
+	Product p = (Product)request.getAttribute("p");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,32 +45,32 @@
         <table border="1px">
            
                 <tr>
-                    <td style="width: 40%;"  rowspan="3" colspan="4"> <img src="" alt="">기본 이미지</td>
+                    <td style="width: 40%;"  rowspan="3" colspan="4"> <img src="<%= broccoli %>/<%= p.getThumbnail() %>" width="500" height="300">썸네일 이미지</td>
                     <td style="width: 10%;">상품코드 </td>
-                    <td style="width: 20%;"> 상품코드 보여짐</td>
+                    <td style="width: 20%;"> <%= p.getPno() %></td>
                     <td style="width: 10%;">카테고리</td>
-                    <td style="width: 20%;">카테고리 번호 보여짐</td>
+                    <td style="width: 20%;"><%= p.getCategory() %></td>
                 </tr>
                 <tr>
                     <td>상품명</td>
-                    <td> 씨없는 세척대추 </td>
-                    <td>이벤트번호 </td>
-                    <td>이벤트번호 보여짐</td>
+                    <td> <%= p.getpName() %> </td>
+                    <td>이벤트명 </td>
+                    <td><%= p.getEno() %></td>
                 </tr>
                 <tr>
                     <td>판매가격 </td>
-                    <td>9000 원</td>
+                    <td><%= p.getPrice() %>원</td>
                     <td>할인가격</td>
-                    <td>8000 원 </td>
+                    <td><%= p.getDiscount() %>원 </td>
                 </tr>
             
                 <tr>
                     <td rowspan="3">상품상세정보</td>
-                    <td rowspan="3" colspan="3">정보 보여짐</td>
+                    <td rowspan="3" colspan="3"><%= p.getDetail() %></td>
                     <td>업체명</td>
-                    <td>*식품</td>
+                    <td><%= p.getCompany() %></td>
                     <td >재고</td>
-                    <td >56</td>
+                    <td ><%= p.getInventory() %></td>
                 
                     
                 </tr>
@@ -89,19 +93,19 @@
                 </tr>
                 <tr>
                     <td>원산지</td>
-                    <td>대한민국</td>
+                    <td><%= p.getNation() %></td>
                     <td>포장타입</td>
-                    <td>종이상자</td>
+                    <td><%= p.getPacktype() %></td>
                 </tr>
              
            
                 <tr>
                     <td>상품간단설명</td>
-                    <td colspan="3">상품 설명 보여짐</td> </td>
-                    <td>추가이미지1</td>
-                    <td>추가이미지2</td>
-                    <td>썸네일 <br>이미지</td>
-                    <td>썸네일 이미지 뜸</td>
+                    <td colspan="3"><%= p.getSmallDetail() %></td> </td>
+                    <td>이미지1</td>
+                    <td><img src="<%=broccoli %>/<%= p.getImg1() %>" width="100" width="80"></td>
+                    <td>이미지2</td>
+                    <td><img src="<%=broccoli %>/<%= p.getImg2() %>" width="100" width="80"></td>
                 </tr>
              
         </table>
