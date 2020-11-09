@@ -174,11 +174,12 @@
 
 		<br />
         <div class="productDetailImage" align="center">
+
             <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="100%" name="productImage1" >
         </div>
 
         <div id="productDexp" align="center">
-        
+        <br />
             <h2 style="margin: 10;" id="list1"><%=p.getpName() %></h2>
         </div>
         <div id="productSexp">
@@ -193,11 +194,23 @@
 
 		<br />
         <div class="productDetailImage" align="center">
+        
             <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="100%" name="productImage1" id="list2" >
+       
         </div>
 
+			<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
-      
+
+			<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
+	
+
+			<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
+	 
+		
+		
+		
+       
 		</div>
 		
 		
@@ -207,6 +220,8 @@
             <h4 style="margin-top:20px"><strong>장바구니 담기 성공!</strong></h4><br> <h4>장바구니로 이동하시겠습니까?</h4> <br><br>
             <button type="button" class="btn btn-secondary" id="keepshop">계속 쇼핑할래요</button>  <button type="button" class="btn btn-success" id="goToCart">장바구니로 이동</button>
         </div>
+        
+        
         <script>
 	    	$("#amount").change(function(){
 	    		var totalprice = $(this).val() * <%= p.getDiscount()%>;
@@ -267,15 +282,8 @@
 		
 		
 
-	
-	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
 
-	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
-	
-	
-<%-- 	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
-	 --%>
 
 
 <%@ include file="../common/footer.jsp"%>
