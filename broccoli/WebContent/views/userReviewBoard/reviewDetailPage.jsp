@@ -153,15 +153,18 @@
 		$(function(){
 			
     		$("#getLike").click(function(){
+    			
     			if(count <= 0) {
     				
     				selectUserLike();
     				count += 1;
     				alert("좋아요를 눌렀습니다!");
+    				selectLikeList();
     				
     			}else {
-    				
+    				selectLikeList();
     				alert("이미 좋아요를 눌렀네요!");
+    				
     			}
     			
 
@@ -181,7 +184,7 @@
 				},
 				success: function(result){
 	
-						$("#getLike").html("좋아요(<%=r.getLike() %>)");
+						$("#getLike").html("좋아요("+ result.like + ")");
 					
 				},
 				error : function(){
@@ -190,6 +193,25 @@
 			})
 			
 			
+		}
+		
+		function selectLikeList(){
+			
+			$.ajax({
+				
+				url : "likeList.rv",
+				type : "get",
+				data : {
+					rno : <%=r.getReviewNo()%>
+				},
+				success : function(result){
+					
+					$("#getLike").html("좋아요("+ result.like + ")");
+				},
+				error : function(){
+					console.log("ajax실패!");
+				}
+			})
 		}
 	
 	
