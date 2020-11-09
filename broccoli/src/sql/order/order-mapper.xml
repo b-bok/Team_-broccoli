@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectOrderList">
+	SELECT 
+	       *
+	  FROM ORDER_LIST
+	 WHERE MEM_NO = ?
+	   AND P_NO = ?
+	</entry>
+	
+	<entry key="insertOrderList">
+		INSERT 
+		  INTO ORDER_LIST
+		    (
+		       MEM_NO
+		     , P_NO
+		     , TOTAL_AMT
+		     , P_PRICE
+		     , QUANTITY
+		     , ORDER_NO
+		     , ORDER_CONDITION
+		     )
+		VALUES
+		    (
+		       ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , NULL
+		     , '주문전'
+		     )
+	</entry>
+	
+	<entry key="updateOrderList">
+		UPDATE 
+		       ORDER_LIST
+		   SET QUANTITY = QUANTITY + ?
+		     , TOTAL_AMT = TOTAL_AMT + (P_PRICE * ?) 
+		 WHERE ORDER_CONDITION = '주문전'
+		   AND MEM_NO = ?
+		   AND P_NO = ?
+	</entry>
+	
+	<entry key="selectOrder">
+		SELECT 
+		       O.MEM_NO
+		     , P_NO
+		     , P_NAME          
+		     , P_THUMBNAIL      
+		     , O.TOTAL_AMT
+		     , O.P_PRICE
+		     , O.QUANTITY
+		     , ORDER_NO
+		  FROM ORDER_LIST O
+		  JOIN PRODUCT USING (P_NO)
+		 WHERE MEM_NO = ?
+		   AND ORDER_CONDITION = '주문전'
+	</entry>
+	
+	<entry key="updateOrder">
+		UPDATE 
+			   ORDER_LIST
+		   SET QUANTITY = ?
+		     , TOTAL_AMT = ?
+		 WHERE MEM_NO = ?
+		   AND P_NO = ?
+		   AND ORDER_CONDITION = '주문전'
+	</entry>
+
+</properties>

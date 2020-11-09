@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectUserQna">
+	
+				SELECT
+				       QNA_NO
+				     , QNA_TITLE
+				     , M.MEM_ID
+				     , QNA_DATE
+				
+				FROM PRODUCT_QNA Q
+				JOIN MEMBERS M ON(Q.MEM_NO = M.MEM_NO)
+				WHERE P_NO = ?
+					
+	</entry>
+
+
+
+</properties>

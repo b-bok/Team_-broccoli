@@ -87,7 +87,7 @@
  					
  					<% for(Product p : list){ %>
                     <tr>
-                        <td></td>
+                        <td onclick="event.cancelBubble=true"><input type="radio" name="radioChecked"></td>
                         <td><%= p.getPno() %></td>
                         <td><%= p.getpName() %></td>
                         <td><%= p.getInventory() %></td>

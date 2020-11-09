@@ -47,9 +47,6 @@
 
 	</entry>
 	
-	
-
-	
 
 	<entry key="selectSortRecipe">
 	
@@ -64,5 +61,43 @@
 			JOIN MEMBERS m ON(r.MEM_NO = m.MEM_NO)
 			WHERE r.P_NO = ?
 	</entry>
+	
+	
+	<entry key="increaseCount">
+	
+		update
+		      recipe
+		set   click_no = click_no + 1
+		where recipe_board_no = ?
+		
+	</entry>
+	
+	<entry key="selectDetailRecipe">
+		
+		SELECT
+		      R.RECIPE_BOARD_NO
+		    , RECIPE_TITLE
+		    , M.MEM_ID
+		    , R.REG_DATE
+		    , CLICK_NO
+		    , R.RECIPE_ING
+		FROM RECIPE R
+		JOIN MEMBERS M ON(R.MEM_NO = M.MEM_NO)
+		WHERE R.RECIPE_BOARD_NO = ?
 
+	</entry>
+	
+	
+	<entry key="selectRecipeSequence">
+		
+		SELECT
+		       RECIPE_ATTACH_IMG
+		     , SEQUENCE_CONTENT
+		FROM RECIPE_SEQUENCE R
+		JOIN RECIPE S ON (R.RECIPE_BOARD_NO = S.RECIPE_BOARD_NO)
+		WHERE
+		      S.RECIPE_BOARD_NO = ?
+	
+	</entry>
+	
 </properties>

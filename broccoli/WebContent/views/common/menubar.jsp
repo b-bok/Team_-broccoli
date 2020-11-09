@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.kh.member.model.vo.Member"%>
 <% 
-	Member login = (Member) session.getAttribute("login"); 
+	Member login = (Member)session.getAttribute("login"); 
 	String broccoli = request.getContextPath(); 
 	String alert = (String) session.getAttribute("alert");
 %>
@@ -40,11 +40,11 @@ div {
             font-weight: bold;
         }
         /* 최상단상단메뉴바 */
-        #header {
+        #head {
             height: 15%;
         }
         
-        #header_1 {
+        #head_1 {
             height: 20%;
             margin-right: 30px;
         }
@@ -76,12 +76,12 @@ div {
             list-style-type: none;
         }
         /* 홈로고부분 */
-        #header_2 {
+        #head_2 {
             height: 50%;
             text-align: center;
         }
         /* 카테고리 메뉴 */
-        #header_3 {
+        #head_3 {
             height: 30%;
             width: 100%;
             margin-left: 80px;
@@ -101,8 +101,8 @@ div {
 </head>
 <body>
 
-	<div id="header" style="height: 150px">
-		<div id="header_1">
+	<div id="head" style="height: 150px">
+		<div id="head_1">
 			<ul class="list_menu">
 
 
@@ -148,10 +148,10 @@ div {
 					</ul></li>
 			</ul>
 		</div>
-		<div id="header_2">
+		<div id="head_2">
 			<a href="<%= broccoli %>" style="margin: 100px;"><h3>브로콜리</h3></a>
 		</div>
-		<div id="header_3" align="center">
+		<div id="head_3" align="center">
 			<ul class="allmenu" style="font-size: 17px; font-weight: bold;">
 
 
@@ -173,8 +173,13 @@ div {
 					</form>
 				</li>
 				<!-- 장바구니 -->
-				<li><a href="<%= broccoli %>/cart.or"><i class="fas fa-shopping-cart"
-						style="font-size: 30px;"></i></a></li>
+				<li>
+				<% if(login != null) { %>
+					<a href="<%= broccoli %>/cart.or"><i class="fas fa-shopping-cart" style="font-size: 30px;"></i></a>
+				<%} else { %>
+					<a href="<%= broccoli %>/login.me"><i class="fas fa-shopping-cart" style="font-size: 30px;"></i></a>
+				<% } %>	
+				</li>
 			</ul>
 		</div>
 	</div>

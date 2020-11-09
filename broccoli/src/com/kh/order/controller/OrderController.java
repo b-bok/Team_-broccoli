@@ -1,11 +1,17 @@
 package com.kh.order.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.member.model.vo.Member;
+import com.kh.order.model.service.OrderService;
+import com.kh.order.model.vo.OrderList;
 
 /**
  * Servlet implementation class OrderController
@@ -28,7 +34,37 @@ public class OrderController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		request.getRequestDispatcher("views/order/orderPage.jsp").forward(request, response);
+		Member mem = (Member)request.getSession().getAttribute("login");
+		int mno = mem.getMemNo();
+		int totalamt = Integer.parseInt(request.getParameter("totalamt"));
+		
+		int[] quantity = Arrays.stream(request.getParameterValues("quantity")).mapToInt(Integer::parseInt).toArray();
+		int[] pno = Arrays.stream(request.getParameterValues("pno")).mapToInt(Integer::parseInt).toArray();
+		int[] price = Arrays.stream(request.getParameterValues("price")).mapToInt(Integer::parseInt).toArray();
+		
+		
+		if(quantity.length == pno.length && pno.length == price.length) {
+			
+			for(int i=0; i<pno.length; i++) {
+				OrderList olist = new OrderList();
+				olist.setQuantity(quantity[i]);
+				olist.setpNo(pno[i]);
+				olist.setpPrice(price[i]);
+				int result = new OrderService().updateOrder(olist, mno);
+				
+				if(result > 0) {
+					
+					request.getRequestDispatcher("views/order/orderPage.jsp").forward(request, response);
+					
+				}
+			}
+		}
+		
+			
+			
+		
+		
+		
 	}
 
 	/**
