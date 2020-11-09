@@ -17,13 +17,13 @@ import com.kh.notice.model.vo.Notice;
  * Servlet implementation class noticeListView
  */
 @WebServlet("/list.no")
-public class noticeListViewController extends HttpServlet {
+public class NoticeListViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noticeListViewController() {
+    public NoticeListViewController() {
         super();
         // TODO Auto-generated constructor stub
     }

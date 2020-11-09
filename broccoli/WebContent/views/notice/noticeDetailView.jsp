@@ -64,7 +64,9 @@
         height:3px;
         background:greenyellow;
     }
-
+	body{
+    font-size:14px;
+	}
 </style>
 </head>
 <body>
@@ -112,7 +114,7 @@
         <hr width=80% color="green" align="center" size=50;/>
         <div class="submitBtn"align="right">
 
-            <a href="" class="btn btn-basic btn-sm" style="background-color: green; color:white;">목록가기</a>
+            <a href="<%=broccoli%>/noticeListView.jsp" class="btn btn-basic btn-sm" style="background-color: green; color:white;">목록가기</a>
 
         </div>
         

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class noticeDetailViewController
+ * Servlet implementation class FaqListViewController
  */
-@WebServlet("/detail.no")
-public class noticeDetailViewController extends HttpServlet {
+@WebServlet("/list.faq")
+public class FaqListViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noticeDetailViewController() {
+    public FaqListViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +26,9 @@ public class noticeDetailViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		
-		
-		
+		request.getRequestDispatcher("views/notice/faqList.jsp").forward(request, response);
+
 	}
 
 	/**
