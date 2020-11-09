@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <% 
 	String broccoli = request.getContextPath();
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -207,8 +208,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 문의관리</a>
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 공지사항</a>
+      <a href="<%=broccoli%>/contactManage.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 문의관리</a>
+      <a href="<%=broccoli%>/noticeListView.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 공지사항</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> FAQ 관리</a>
     </div>
     

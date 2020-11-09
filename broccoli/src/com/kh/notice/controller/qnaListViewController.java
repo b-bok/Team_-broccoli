@@ -27,7 +27,7 @@ public class qnaListViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		request.getRequestDispatcher("views/notice/faqList.jsp").forward(request, response);
 		
 	}
 

@@ -49,6 +49,13 @@
         #recipeForm, #pagingBar {height: 50%;}
 
         #pagingBar{margin: 0;}
+        
+        .rThumb{
+         	width:50px;
+         	height:50px;
+
+        }
+        
 
     </style>
 
@@ -68,12 +75,11 @@
 
         <select name="recipeSort" id="recipeSort">
 
-            <option value="reg_date">최근등록 순</option>
-            <option value="like_count">좋아요 순</option>
+            <option value="reg_date">최근등록 순</option> 
             <option value="click_no">조회 순</option>
     
         </select>
-        <button id="selectSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
+        <button id="selectRecipeSort" class="btn btn-success btn-sm" style="padding:2px;">정렬</button>
 
     </div>
 
@@ -99,6 +105,7 @@
             <thead>
                 <tr>
                     <th>번호</th>
+                    <th>썸네일</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
@@ -145,11 +152,11 @@
     		})
     		
 
- 			$("#selectSort").click(function(){
+ 			$("#selectRecipeSort").click(function(){
         		
-        		var sort = $("option:selected").val();
-				
-        		selectUserRecipe(sort);
+        		var sort = $("#recipeSort option:selected").val();
+
+        		 selectUserRecipe(sort); 
         		
         	});
     		
@@ -168,9 +175,7 @@
 						
         		},
         		success : function(list) {
-        			
-        			console.log(list);
-        			
+        					
         			var str = "";
 
         			for(var i in list) {
@@ -179,6 +184,7 @@
 
         				str += "<tr>" +
 	        				"<td>" + list[i].recipeNo + "</td>" +
+	        				"<td>" + "<img class='rThumb' src=" + '<%=broccoli %>/' + list[i].recipeMainImg +  ">" + "</td>" +
    	        				"<td>" + list[i].recipeTitle + "</td>" +
    	        				"<td>" + list[i].mem + "</td>" +
    	        				"<td>" + list[i].regDate + "</td>" +

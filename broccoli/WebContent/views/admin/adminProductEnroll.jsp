@@ -51,7 +51,7 @@
           </tr>
           <tr>
             <td>* 카테고리 : </td>
-            <td colspan="2"><input type="text" name="catetory" required placeholder="ex) 10A1"></td>           
+            <td colspan="2"><input type="text" name="category" required placeholder="ex) 10A1"></td>           
           </tr>     
           <tr>
             <td>* 이벤트번호 :</td>
@@ -71,12 +71,12 @@
           </tr>
           <tr>
             <td>* 기본이미지 :</td>
-            <td><img id="img1Preview" width="100" heigth="80"></td>
+            <td><img id="img1Preview" width="100" heigth="80" alt="파일명앞에 f를 입력 후 입력"></td>
             <td><input type="file" name="file1" id="img1" onchange="loadImg(this, 1);" required></td>
           </tr>
           <tr>
             <td>추가이미지 : </td>
-            <td><img id="img2Preview" width="100" heigth="80"></td>
+            <td><img id="img2Preview" width="100" heigth="80" alt="파일명앞에  s를 입력 후 입력"></td>
             <td><input type="file" name="file2" id="img2" onchange="loadImg(this, 2);"></td>
           </tr>
           <tr>
@@ -125,7 +125,7 @@
           </tr>
           <tr>
             <td>썸네일이미지 :</td>
-            <td><img id="thumbnailPreview" width="100" heigth="80"></td>
+            <td><img id="thumbnailPreview" width="100" heigth="80" alt="파일명앞에 th를 입력 후 입력"></td>
             <td><input type="file" name="file3" id="thumbnail" onchange="loadImg(this, 3);"></td>
           </tr>
 

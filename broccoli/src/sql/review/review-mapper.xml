@@ -30,6 +30,15 @@
 	</entry>
 	
 	
+	<entry key="increaseCount">
+	
+		update
+		      review
+		set   click_no = click_no + 1
+		where review_board_no = ?
+
+	</entry>
+	
 	
 	
 </properties>
