@@ -1,16 +1,18 @@
 package com.kh.notice.model.dao;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.notice.model.vo.Faq;
 import com.kh.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -59,5 +61,43 @@ public class NoticeDao {
 		}
 		return list;
 		
+	}
+	
+	public ArrayList<Faq> selectFaqList(Connection conn,String num1) {
+		
+		ArrayList<Faq> list = new ArrayList<Faq>();
+		
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectFaqList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num1);
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				Faq q = new Faq();
+				q.setFaqNo(rset.getInt("faq_no"));
+				q.setFaqTitle(rset.getString("faq_title"));
+				q.setFaqContent(rset.getString("faq_content"));
+				q.setFaqEnroll(rset.getDate("faqEnroll"));
+				q.setGrFaqName(rset.getInt("grFaqName"));
+				list.add(q);
+						
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
 	}
 }

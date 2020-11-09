@@ -9,12 +9,18 @@
 	     , NOTICE_VIEWS
 	     , NOTICE_ENROLL
 	  FROM NOTICE
-	 WHERE NOTICE_NO >= 0;
+	 WHERE NOTICE_NO >= 0
 	 ORDER
 	    BY NOTICE_NO DESC
 	
 	</entry>
-
+	<entry key="selectFaqList">
+	SELECT *
+	FROM FAQ_TABLE
+	WHERE GR_FAQ_NAME = ?
+	ORDER
+	BY GR_FAQ_NAME DESC
+	</entry>
 
 
 </properties>

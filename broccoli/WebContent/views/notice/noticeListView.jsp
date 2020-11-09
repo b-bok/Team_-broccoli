@@ -54,7 +54,7 @@ margin-top: 50px;
 	padding-right: 10px;
 }
 #gogaek{height:10%; padding-left:40px;}
-body{font-size:14px;}
+body{font-size:18px;}
 </style>
 </head>
 <body>

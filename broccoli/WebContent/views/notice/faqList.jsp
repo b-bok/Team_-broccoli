@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import = "java.util.ArrayList, com.kh.notice.model.vo.Faq" %>
+<%
+	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +57,15 @@ margin-top: 50px;
 
 .none{ display:none; }
 .pointer{ cursor:pointer; }
- body{font-size:14px;}
+ body{font-size:18px;}
+#submit{
+    margin-left:20px;
+    margin-bottom:3px;
+    padding:2px;
+    width:50px;
+    height:25px;
+    text-align: center;
+   }
 </style>
 </head>
 <body>
@@ -77,20 +89,23 @@ margin-top: 50px;
 			<a href="" class="btn btn-outline-light text-dark">1:1 문의</a>
 		</div>
         
+        <form action="category.faq" method="post">
         <div id="qnaCategory" align="left">
 				
             <select name="qCategory" id="qCategory">
 
             <!-- Member, Payment, Cencle, Delivery  -->
-            <option value="select" selected>선택</option>
-            <option value="aboutM">회원 문의</option>
-            <option value="aboutP">주문/결제</option>
-            <option value="aboutC">취소/교환/환불</option>
-            <option value="aboutD">배송문의</option>
+            <option value="select" name="0" selected>선택</option>
+            <option value="aboutM" name="1">회원 문의</option>
+            <option value="aboutP" name="2">주문/결제</option>
+            <option value="aboutC" name="3">취소/교환/환불</option>
+            <option value="aboutD" name="4">배송문의</option>
         </select>
+
+        <button type="submit" class="btn btn-outline-success btn-sm" id="submit">검색</button>
         <br><br>
         </div>
-        
+        </form>
 
 		<!-- 게시판 리스트 -->
 		<div class="wrap2" id="noticeListBoard">
@@ -110,208 +125,32 @@ margin-top: 50px;
 				<tbody align="center">
 					<!-- 
                     <div align="center">
-                        없음 페이지
+                        	없음 페이지
                     </div> -->
+                <%if(list.isEmpty()) {%>
+                <!-- 조회된 리스트가 없을 경우 -->
+                <tr>
+                    <th colspan="6">조회된 게시글이 없습니다.</th>
+                </tr>
+                <%}else{ %>
+                	<%for(Faq f : list) { %>
 				<form action="list.faq" method="post">
 		
                     <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_1' )">
-                        <td>1</td>
+                        <td><%=f.getFaqNo()%></td>
                         <td>
-                        <span id="td_row_1">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
+                        <span id="td_row_1"><%=f.getGrFaqName()%></span></td>
+                        <td><%=f.getFaqTitle()%></td>
+                        <td><%=f.getFaqEnroll()%></td>
                     </tr>
                     <tr class="none" id="row_1">
                         <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                            
+                            <%=f.getFaqContent() %>
                         </td>
                     </tr>
-                    
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_2' )">
-                        <td>2</td>
-                        <td>
-                        <span id="td_row_2">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_2">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                            
-                        </td>
-                    </tr>
-                    
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_3' )">
-                        <td>3</td>
-                        <td>
-                        <span id="td_row_3">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_3">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                            
-                        </td>
-                    </tr>
-                    
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_4' )">
-                        <td>4</td>
-                        <td>
-                        <span id="td_row_4">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_4">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_5' )">
-                        <td>5</td>
-                        <td>
-                        <span id="td_row_5">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_5">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_6' )">
-                        <td>6</td>
-                        <td>
-                        <span id="td_row_6">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_6">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_7' )">
-                        <td>7</td>
-                        <td>
-                        <span id="td_row_7">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_7">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_8' )">
-                        <td>8</td>
-                        <td>
-                        <span id="td_row_8">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_8">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_9' )">
-                        <td>9</td>
-                        <td>
-                        <span id="td_row_9">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_9">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_10' )">
-                        <td>10</td>
-                        <td>
-                        <span id="td_row_10">회원문의</span></td>
-                        <td>아이디와 비밀번호가 생각나지 않아요 어떻게 하면 좋을까요?</td>
-                        <td>2020-10-30</td>
-
-                    </tr>
-                    <tr class="none" id="row_10">
-                        <td colspan="6" style="border:1px solid #000000;">
-                            PC오른쪽 위 의 로그인 > 화면 아래 [아이디찾기] [비밀번호 찾기]가 있습니다. 그걸 통해 확인할 수 있으며 
-                            임시 비밀번호의 경우 회원가입시 등록하신 이메일로 발송됩니다.
-                            <br>
-                            가입시 기재한 메일주소가 기억나지 않으시거나 오류가 발생하는 경우 고객행복센터[1577-1577] 또는 카카오톡으로 문의를 주시면
-                            신속하게 도움 드리겠습니다. 
-                            <br>
-                            상담시에는 고객님의 개인정보보호를 위해 기존에 사용하던 비밀번호는 안내가 불가하며, 개인정보 확인 후 임시 비밀번호를 지정해드립니다.
-                        </td>
-                    </tr>
-
-                    
-			</form>
+                    <%} %>
+          		<%} %>
+				</form>
           </tbody>
 			</table>
 

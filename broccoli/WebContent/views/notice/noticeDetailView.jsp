@@ -65,7 +65,7 @@
         background:greenyellow;
     }
 	body{
-    font-size:14px;
+    font-size:18px;
 	}
 </style>
 </head>
