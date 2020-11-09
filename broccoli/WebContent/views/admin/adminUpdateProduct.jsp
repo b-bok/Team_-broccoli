@@ -107,11 +107,11 @@
  					
  					<% for(Product p : list){ %>
                     <tr>
-                        <td><input type="radio"></td>
-                        <td><%= p.getPno() %></td>
-                        <td><%= p.getpName() %></td>
-                        <td><%= p.getInventory() %></td>
-                        <td><%= p.getCompany() %></td>
+                        <td onclick="event.cancelBubble=true"><input type="radio" name="radioChecked"></td>
+                        <td id="tds"><%= p.getPno() %></td>
+                        <td id="tds"><%= p.getpName() %></td>
+                        <td id="tds"><%= p.getInventory() %></td>
+                        <td id="tds"><%= p.getCompany() %></td>
                     </tr>
                     <% } %>
                 <% } %>    
@@ -121,7 +121,9 @@
              <br>
 
               <div align="center">
-                 <button class="btn btn-warning btn-sm"><a href="<%= broccoli %>/updateProductForm.admin">상품 선택시 수정양식으로 이동(임의로 만든 버튼)</a></button>
+                 <!-- 
+                  <button class="btn btn-warning btn-sm"><a href="<%= broccoli %>/updateProductForm.admin">상품 선택시 수정양식으로 이동(임의로 만든 버튼)</a></button>
+                  -->
                  <button class="btn btn-danger btn-sm" onclick="deleteProduct();">삭제하기</button>
             </div>
              <br>
@@ -130,7 +132,7 @@
              <!-- 상품 선택시 수정양식으로 이동 -->
 			$(function(){
 				$(".list-area>tbody>tr").click(function(){
-					location.href = "<%=broccoli%>/updateProductForm.admin"
+					location.href = "<%=broccoli%>/updateProductForm.admin?pno=" + $(this).children().eq(1).text();
 				});
 			});
              
