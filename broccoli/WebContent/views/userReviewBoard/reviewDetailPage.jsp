@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="com.kh.review.model.vo.*" %>    
+
+
+<%
+	Review r = (Review)request.getAttribute("r");
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,17 +89,17 @@
         <table  id="headerTable">
             <tr>
                 <th class="table-success" width="150" style="text-align: center;">제목</th>
-                <td colspan="3" width="600px">&nbsp; 황태양념구이</td>
+                <td colspan="3" width="600px">&nbsp; <%=r.getReviewTitle() %></td>
             </tr>
             <tr>
                 <th class="table-success" style="text-align: center;">작성자</th>
-                <td colspan="3" width="600px">&nbsp; 브로콜리</td>
+                <td colspan="3" width="600px">&nbsp; <%=r.getMem() %></td>
             </tr>
             <tr>
                 <th class="table-success" style="text-align: center;">작성일</th>
-                <td width="200px"> &nbsp; 2020-10-31</td>
+                <td width="200px"> &nbsp; <%=r.getRegDate() %></td>
                 <th class="table-success" style="text-align: center;">조회수</th>
-                <td> &nbsp; 7700</td>
+                <td> &nbsp; <%=r.getClickNo() %></td>
             </tr>
 
         </table>
@@ -104,15 +112,15 @@
 
         <div id="reviewImage" align="center" >
 
-            <h2 align="center">리뷰상세페이지</h2>
-
+            <h2 align="center"><%=r.getReviewTitle() %></h2>
+			<%if(!r.getReviewAttach().equals("N")) { %>
             <div id="image1" >
-                <img src="../resources/image/bgsample.PNG" name="reviewImage1">
+                <img src="<%=broccoli %>/<%=r.getReviewAttach() %>" name="reviewImage1">
             </div>
-            <div id="image2">
+<!--             <div id="image2">
                 <img src="../resources/image/city1.PNG"   name="reviewImage2">
-            </div>
-   
+            </div> -->
+   			<% } %>
   
   
         </div>
@@ -120,11 +128,9 @@
 
         <div id="reviewContent">
 
-            <p >
-                뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
+            <p align="center">
+                	
+                	<%=r.getReviewContent() %>
     
             </p>
 
@@ -132,13 +138,64 @@
         <div id="reviewfooter">
 
             <div id="like" align="right">
-                <button name="likeCount" >좋아요</button>
+                <button name="likeCount" id="getLike">좋아요(<%=r.getLike() %>)</button>
             </div>    
         </div>
 
 
 <%@ include file="../common/footer.jsp"%>
     </div>
+	
+	
+	<script>
+		 var count = 0;
+		 
+		$(function(){
+			
+    		$("#getLike").click(function(){
+    			if(count <= 0) {
+    				
+    				selectUserLike();
+    				count += 1;
+    				alert("좋아요를 눌렀습니다!");
+    				
+    			}else {
+    				
+    				alert("이미 좋아요를 눌렀네요!");
+    			}
+    			
 
+    		})
+    		
+
+		})
+		
+		function selectUserLike(){
+			
+			$.ajax({
+				
+				url : "selectLike.rv",
+				type : "get",
+				data : {
+					rno : <%=r.getReviewNo()%>
+				},
+				success: function(result){
+	
+						$("#getLike").html("좋아요(<%=r.getLike() %>)");
+					
+				},
+				error : function(){
+					console.log("ajax연결실패");
+				}
+			})
+			
+			
+		}
+	
+	
+	
+	</script>
+	
+	
 </body>
 </html>

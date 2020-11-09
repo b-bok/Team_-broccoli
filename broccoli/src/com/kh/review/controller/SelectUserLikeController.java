@@ -1,7 +1,6 @@
 package com.kh.review.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +12,16 @@ import com.kh.review.model.service.ReviewService;
 import com.kh.review.model.vo.Review;
 
 /**
- * Servlet implementation class ReviewDetailController
+ * Servlet implementation class SelectUserLikeController
  */
-@WebServlet("/detail.rv")
-public class ReviewDetailController extends HttpServlet {
+@WebServlet("/selectLike.rv")
+public class SelectUserLikeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewDetailController() {
+    public SelectUserLikeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,24 +30,24 @@ public class ReviewDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		int rno = Integer.parseInt(request.getParameter("rno"));
 		
-		int result = new ReviewService().increaseCount(rno);
+		int result = new ReviewService().increaseLike(rno);
 		
-		if(result > 0) {
-			//System.out.println("조회수 증가");
+		if(result> 0) {
 			
 			Review r = new ReviewService().selectUserReview(rno);
 			
-			request.setAttribute("r", r);
+			response.setContentType("application/json; charset=utf-8");
+			Gson gson = new Gson();
 			
-			//System.out.println(r);
+			gson.toJson(r,response.getWriter());
 			
-
 		}
-
-		request.getRequestDispatcher("views/userReviewBoard/reviewDetailPage.jsp").forward(request, response);
+		
+		
+		
 	}
 
 	/**
