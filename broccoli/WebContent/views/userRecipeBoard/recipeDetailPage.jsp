@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.kh.recipe.model.vo.*, java.util.*" %>   
+
+<%
+	Recipe r = (Recipe)request.getAttribute("r");
+	ArrayList<RecipeAttach> list = (ArrayList<RecipeAttach>)request.getAttribute("list");
+
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,17 +98,17 @@
         <table  id="headerTable">
             <tr>
                 <th class="table-success" width="150" style="text-align: center;">제목</th>
-                <td colspan="3" width="600px">&nbsp; 황태양념구이</td>
+                <td colspan="3" width="600px">&nbsp; <%=r.getRecipeTitle() %></td>
             </tr>
             <tr>
                 <th class="table-success" style="text-align: center;">작성자</th>
-                <td colspan="3" width="600px">&nbsp; 브로콜리</td>
+                <td colspan="3" width="600px">&nbsp; <%=r.getMem() %></td>
             </tr>
             <tr>
                 <th class="table-success" style="text-align: center;">작성일</th>
-                <td width="200px"> &nbsp; 2020-10-31</td>
+                <td width="200px"> &nbsp; <%=r.getRegDate() %></td>
                 <th class="table-success" style="text-align: center;">조회수</th>
-                <td> &nbsp; 7700</td>
+                <td> &nbsp; <%=r.getClickNo() %></td>
             </tr>
 
         </table>
@@ -110,81 +119,25 @@
 
     <div class="wrap">
 
-        <h3 align="center" style="margin: 5px;">레시피 페이지 제목</h3>
+        <h3 align="center" style="margin: 5px;"><%=r.getRecipeTitle() %></h3>
         <hr>
         <div id="recipeImage">
 
             <table id="recipeStep">
+            	<%for(RecipeAttach ra : list) { %>
                 <tr>
                     <th>
-                        <img src="../resources/image/bgsample.PNG" name="recipeImage1">
+                        <img src="<%=broccoli %>/<%=ra.getRecipeAttachImg() %>" name="recipeImage1">
                     </th>
                     <td>
                         <p name="recipeStepDetail1">
-                            뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                            방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                            기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                            얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
+                            
+                            <%=ra.getSequenceContent() %>
                 
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        <img src="../resources/image/bgsample.PNG" name="recipeImage2">
-                    </th>
-                    <td>
-                        <p name="recipeStepDetail2">
-                            뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                            방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                            기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                            얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
-                
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <img src="../resources/image/bgsample.PNG" name="recipeImage3">
-                    </th>
-                    <td>
-                        <p name="recipeStepDetail3">
-                            뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                            방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                            기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                            얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
-                
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <img src="../resources/image/bgsample.PNG" name="recipeImage4">
-                    </th>
-                    <td>
-                        <p name="recipeStepDetail4">
-                            뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                            방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                            기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                            얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
-                
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <img src="../resources/image/bgsample.PNG" name="recipeImage5">
-                    </th>
-                    <td>
-                        <p name="recipeStepDetail5">
-                            뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                            방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                            기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                            얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
-                
-                        </p>
-                    </td>
-                </tr>
+               	<% } %>
             </table>
 
   
@@ -194,33 +147,10 @@
             <div id="recipeIngredient">
                 <div align="left" style="margin-left: 20px;">재료</div>
 
-                <ul style="margin: 0;">
-                    <li>자른 황태포</li>
-                    <li>고추장</li>
-                    <li>고춧가루</li>
-                    <li>올리고당</li>
-                    <li>설탕</li>
+                <ul style="margin: 0;" id="Ing">
+					
                 </ul>
 
-            </div>
-
-            <div id="recipeDetail">
-                <p>
-                    뜨고, 생명을 심장은 영원히 같이, 있다. 청춘의 뜨고, 커다란 역사를 청춘의
-                    방황하였으며, 우리는 교향악이다. 새 이는 같이,
-                    기쁘며, 현저하게 위하여, 남는 광야에서 청춘의 끓는다.
-                    얼마나 길을 주는 쓸쓸하랴? 예가 거선의 밥을 꽃이 우리는 군영과 눈이 것이다.
-        
-                </p>
-            </div>
-
-
-
-        </div>
-        <div id="footer">
-
-            <div id="like" align="right">
-                <button name="likeCount">도움이돼요</button>
             </div>
 
         </div>
@@ -228,6 +158,32 @@
 
 		<%@ include file="../common/footer.jsp"%>
 	</div>
+    
+    <script>
+    
+    
+    $(function(){
+    	splitIng();
+
+    })
+
+    function splitIng(){
+    	
+    	var allIng = "<%=r.getRecipeIng()%>";
+    	
+    	var ing = allIng.split(",");
+    	
+    	var str = "";
+    	
+    	for(var i in ing) {
+    		
+    	 	str +=	"<li>" + ing[i] + "</li> <br>";
+    	}
+
+		$("#Ing").html(str);  	
+    }
+    
+    </script>
     
     
 </body>
