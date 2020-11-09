@@ -1,14 +1,13 @@
 package com.kh.qna.model.service;
 
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.*;
+
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.qna.model.dao.QnaDao;
 import com.kh.qna.model.vo.Qna;
-import com.kh.recipe.model.dao.RecipeDao;
 
 
 public class QnaService {
@@ -36,13 +35,19 @@ public class QnaService {
 		close(conn);
 		
 		return list;
-		
-
-		
-		
 	}
 	
-	
+	public Qna selectDetailQna(int qno) {
+		
+		Connection conn = getConnection();
+		
+		Qna q = new QnaDao().selectDetailQna(conn, qno);
+		
+		close(conn); 
+		
+		return q;
+		
+	}
 	
 	
 	
