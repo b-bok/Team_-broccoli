@@ -9,21 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.vo.Member;
-import com.kh.order.model.service.OrderService;
 import com.kh.order.model.vo.OrderList;
 
 /**
- * Servlet implementation class CartController
+ * Servlet implementation class CartDeleteController
  */
-@WebServlet("/cart.or")
-public class CartController extends HttpServlet {
+@WebServlet("/deleteCart.or")
+public class CartDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartController() {
+    public CartDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +31,7 @@ public class CartController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Member mem = (Member)request.getSession().getAttribute("login");
-		int mno = mem.getMemNo();
-		
-		ArrayList<OrderList> list = new OrderService().selectOrder(mno);
-		
-		
-		request.setAttribute("olist", list);
-		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
+		int i = Integer.parseInt(request.getParameter("i"));
 		
 	}
 

@@ -89,7 +89,12 @@
 </head>
 <body>
 
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file= "../common/menubar.jsp" %>
+	
+		
+        
+	
+
 
     <div class="wrap">
         
@@ -100,7 +105,7 @@
             </div>
             
             <div id="productExp" align="center">
-            <form action="" method="post">  
+            <form name="form1" method="post">
                 <div id="productName">
                     <h3 style="margin: 0;"><%=p.getpName() %></h3>
                 </div>
@@ -110,7 +115,7 @@
                 </div>
                 <div id="productDetails">
                     
-                    <table >
+                    <table id="table1">
                         <tr>
                             <th width="50">판매단위</th>
                             <td width="200"><%=p.getUnit() %></td>
@@ -133,26 +138,35 @@
                         </tr>
                         <tr>
                             <th>구매수량</th>
-                            <td><input type="number" max="50" min="0" name="amount"></td>
+                            <td><input type="number" min="1" max="50" name="amount" id="amount" value="1"></td>
                         </tr>
+                        <tfoot>
                         <tr>
-                            <th>총 상품 금액 :
-                            <span>5000원</span>
-                            </th>
+                            <th>총 상품 금액 : </th>
+                            
                             
                             <td style="text-align: right;">
-                            <button type="submit" class="btn btn-success btn-sm">장바구니 담기</button>
-                            <button type="submit" class="btn btn-success btn-sm">바로 구매</button>
+                            <strong><span style="font-size:18px"><%= p.getDiscount() %></span><span style="margin-right:50px;"> 원</span></strong>
+                            <% if(login != null) { %>
+                            	<input type="hidden" name="mno" id="mno" value="<%= login.getMemNo() %>">
+                            	<button type="button" class="btn btn-success btn-sm" id="goCart">장바구니 담기</button>
+                            	<button type="button" class="btn btn-success btn-sm" id="goOrder">바로 구매</button>
+                            <% } else { %>
+                            	<button type="button" class="btn btn-success" onclick="location.href='<%= broccoli %>/login.me'; return false;">로그인 하고 구입하기</button>
+                            <% } %>
                             </td>
-                        
                         </tr>
+                        </tfoot>
                     </table>
-                
                 </div>
-            </form>
+         
+				</form>
             </div>
-
         </div>
+        
+        
+      	
+     
 
     
 
@@ -160,9 +174,7 @@
 
 		<br />
         <div class="productDetailImage" align="center">
-        <br />
-            <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="70%" name="productImage1" >
-        <br />
+            <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="100%" name="productImage1" >
         </div>
 
         <div id="productDexp" align="center">
@@ -181,25 +193,90 @@
 
 		<br />
         <div class="productDetailImage" align="center">
-        <br />
-            <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="80%" name="productImage1" id="list2" >
-        <br />
+            <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="100%" name="productImage1" id="list2" >
         </div>
 
 
-    </div>
-	
+      
+		</div>
+		
+		
+		
+		<div id="div3" class="alert alert-light alert-dismissible" style="border:3px solid green; padding-right:13px; width:350px; height:200px; position: absolute; display: none; z-index: 10;" align="center">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 style="margin-top:20px"><strong>장바구니 담기 성공!</strong></h4><br> <h4>장바구니로 이동하시겠습니까?</h4> <br><br>
+            <button type="button" class="btn btn-secondary" id="keepshop">계속 쇼핑할래요</button>  <button type="button" class="btn btn-success" id="goToCart">장바구니로 이동</button>
+        </div>
+        <script>
+	    	$("#amount").change(function(){
+	    		var totalprice = $(this).val() * <%= p.getDiscount()%>;
+	    		$("#table1>tfoot>tr>td>strong").children().eq(0).text(totalprice);
+	    	})
+	    
+        	function submitForm(index){
+        		if(index == 1){
+        			document.form1.action = "<%= broccoli %>/cart.or" ;
+        		}
+        		if(index == 2){
+        			document.form1.action = "<%= broccoli %>/order.or";
+        		}
+        		document.form1.submit();
+        	}
+            $("#goCart").click(function(){					// 장바구니 담기 클릭시
+                
+     			
+                $("#div3").css({
+                "top": (($(window).height()-$("#div3").outerHeight())/2+$(window).scrollTop())+"px",
+                "left": (($(window).width()-$("#div3").outerWidth())/2+$(window).scrollLeft())+"px"})
+            	
+                
+                $.ajax({
+            		url:"ajaxCart.or",				// CartInsertController
+            		type:"post",
+            		data:{pno:<%= p.getPno()%>,
+            			  quantity: $("#amount").val(),
+            			  price: <%= p.getDiscount()%>
+            			  },
+            		success: function(result){
+            			if(result == "중복"){
+            				alert("장바구니에 이미 같은 상품이 있어서 추가했습니다.");
+            			} else{
+            				 $("#div3").show(); 
+            	             $(".wrap ").css("opacity", "0.3")
+            			}
+            		},error: function(){
+            			console.log("통신실패");
+            		}
+            	});
+                
+                
+            });
+            
+            $("#goToCart").click(function(){
+            	submitForm(1);
+            });
+            $("#goOrder").click(function(){
+            	submitForm(2);
+            });
+            $("#keepshop, .close").click(function(){
+            	$("#div3").hide();
+            	$(".wrap ").css("opacity", "");
+            });
+            
+        </script>
+		
+		
 
-	 
+	
 	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
-	
+
 	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
 	
-	<%--
-	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
 	
+<%-- 	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
 	 --%>
+
 
 <%@ include file="../common/footer.jsp"%>
 </body>

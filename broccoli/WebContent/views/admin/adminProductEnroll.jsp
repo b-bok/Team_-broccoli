@@ -36,7 +36,7 @@
     
     <select onchange="location.href=this.value"  style="margin-left: 50px; margin-top: 50px;">
       <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
-      <option value="<%=broccoli%>/updateProduct.admin">상품수정/삭제</option>
+      <option value="<%=broccoli%>/updateProduct.admin?currentPage=1">상품수정/삭제</option>
     </select>
 
     <form action="<%= broccoli %>/insertProduct.admin" id="enrollPForm"

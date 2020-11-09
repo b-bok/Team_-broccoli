@@ -14,17 +14,17 @@ import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
 
 /**
- * 상품 수정하기 페이지로
- * Servlet implementation class ProductUpdateController
+ * 상품수정 검색결과 페이지
+ * Servlet implementation class ProductUpdateController2
  */
-@WebServlet("/updateProduct.admin")
-public class ProductUpdateController extends HttpServlet {
+@WebServlet("/updateProduct2.admin")
+public class ProductUpdateController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductUpdateController() {
+    public ProductUpdateController2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,6 +33,11 @@ public class ProductUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String searchCat = request.getParameter("searchCategory");
+		String searchWord = request.getParameter("searchWord");
 		
 		int listCount;		// 현재 일반게시판 총 상품 갯수
 		int currentPage;	// 사용자가 요청한 페이지(즉, 현재페이지)
@@ -48,6 +53,7 @@ public class ProductUpdateController extends HttpServlet {
 		
 		// *currentPage : 사용자가 요청한 현재 페이지
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+
 		
 		// * pageLimit : 한 페이지 하단에 보여질 페이지 최대갯수(몇 개 단위씩 보여지게 할 건지)
 		pageLimit = 10;
@@ -69,17 +75,20 @@ public class ProductUpdateController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		
-		// 사용자가 요청한 페이지에 뿌려줄 게시글 리스트
-		ArrayList<Product> list = new ProductService().selectAdminProductList(pi);
 		
-		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
+			ArrayList<Product> list = new ProductService().selectAdminProductBySearch(pi,searchCat, searchWord);
+			
+			request.setAttribute("searchCat", searchCat);
+			request.setAttribute("searchWord", searchWord);
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);
+			
+			request.getRequestDispatcher("views/admin/adminUpdateProduct.jsp").forward(request, response);
+			
 		
-		request.getRequestDispatcher("views/admin/adminUpdateProduct.jsp").forward(request, response);
-		
-		
+			
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

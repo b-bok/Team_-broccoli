@@ -48,6 +48,7 @@ public class ProductSelectListController extends HttpServlet {
 		
 		// *currentPage : 사용자가 요청한 현재 페이지
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+
 		
 		// * pageLimit : 한 페이지 하단에 보여질 페이지 최대갯수(몇 개 단위씩 보여지게 할 건지)
 		pageLimit = 10;

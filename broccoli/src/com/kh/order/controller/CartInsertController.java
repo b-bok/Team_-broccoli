@@ -1,7 +1,6 @@
 package com.kh.order.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,18 +13,17 @@ import com.kh.order.model.service.OrderService;
 import com.kh.order.model.vo.OrderList;
 
 /**
- * Servlet implementation class CartController
+ * Servlet implementation class CartInsertController
  */
-@WebServlet("/cart.or")
-public class CartController extends HttpServlet {
+@WebServlet("/ajaxCart.or")
+public class CartInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartController() {
+    public CartInsertController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -35,12 +33,35 @@ public class CartController extends HttpServlet {
 		
 		Member mem = (Member)request.getSession().getAttribute("login");
 		int mno = mem.getMemNo();
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		int totalamount = quantity * price;
 		
-		ArrayList<OrderList> list = new OrderService().selectOrder(mno);
+		OrderList olist = new OrderList();
+		olist.setpNo(pno);
+		olist.setMemNo(mno);
+		olist.setQuantity(quantity);
+		olist.setpPrice(price);
+		olist.setTotalAmt(totalamount);;
+		
+//		System.out.println(olist);
+		String str = "";
+		int result = new OrderService().selectOrderList(pno, mno);
+		
+		if(result > 0) {	// 중복인경우
+			str = new OrderService().updateOrderList(olist);
+		}else {				// 아닌경우
+			str = new OrderService().insertOrderList(olist);
+		}
 		
 		
-		request.setAttribute("olist", list);
-		request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(str);
+		
+		
+		
+		
 		
 	}
 

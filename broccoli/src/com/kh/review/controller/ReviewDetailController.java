@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.review.model.service.ReviewService;
+import com.kh.review.model.vo.Review;
 
 /**
  * Servlet implementation class ReviewDetailController
@@ -35,7 +37,15 @@ public class ReviewDetailController extends HttpServlet {
 		int result = new ReviewService().increaseCount(rno);
 		
 		if(result > 0) {
-			System.out.println("조회수 증가");
+			//System.out.println("조회수 증가");
+			
+			Review r = new ReviewService().selectUserReview(rno);
+			
+			request.setAttribute("r", r);
+			
+			//System.out.println(r);
+			
+
 		}
 
 		request.getRequestDispatcher("views/userReviewBoard/reviewDetailPage.jsp").forward(request, response);
