@@ -1,10 +1,14 @@
 package com.kh.qna.model.service;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.product.model.vo.PageInfo;
 import com.kh.qna.model.dao.QnaDao;
 import com.kh.qna.model.vo.Qna;
 
@@ -72,6 +76,31 @@ public class QnaService {
 		close(conn); 
 		
 		return result;
+		
+	}
+
+	public ArrayList<Qna> selectAllQna(PageInfo pi) {
+		
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Qna> list = new QnaDao().selectAllQna(conn, pi);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+
+	public int selectListCount() {
+	
+		Connection conn = getConnection();
+		
+		int listCount = new QnaDao().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
 		
 	}
 	

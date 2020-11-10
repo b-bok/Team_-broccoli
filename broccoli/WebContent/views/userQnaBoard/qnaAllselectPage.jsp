@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
+<%@ page import="java.util.*, com.kh.qna.model.vo.*, com.kh.product.model.vo.*" %>	
+	
+
+<%
+	ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	int pno = (int)request.getAttribute("pno");
+
+%>	
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,19 +91,6 @@ margin-top: 5px;
 
 	<div class="wrap">
 
-
-		<div id="qnaBoardSorting" align="right">
-
-			<select name="qnaSort" id="qnaSort">
-
-				<option value="lastPost" selected>최근등록 순</option>
-				<option value="moreLike">좋아요 순</option>
-				<option value="moreView">조회 순</option>
-
-			</select>
-
-		</div>
-
 		<div id="qnaBoardBrief">
 
 			<h5>PRODUCT Q&A</h5>
@@ -103,10 +104,6 @@ margin-top: 5px;
 
 		<div id="qnaBoard" >
 
-			<a href="">전체보기</a> <a href="">포토 리뷰</a> <br>
-
-
-
 			<table class="table table-hover" id="qnaTable">
 				<thead align="center">
 					<tr>
@@ -119,65 +116,16 @@ margin-top: 5px;
 				</thead>
 
 				<tbody align="center">
+					<%for(Qna q : list) { %>
 					<tr>
-                        <td>1</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
-					<tr>
-                        <td>2</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
-					<tr>
-                        <td>3</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
-					<tr>
-                        <td>4</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
-					<tr>
-                        <td>5</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
+        				<td>  <%=q.getQnaNo() %>  </td> 
+        				<td>  <%=q.getpName() %>  </td> 
+        				<td>  <%=q.getQnaTitle() %>  </td>
+	        			<td>  <%=q.getMemId() %> </td>
+	        			<td>  <%=q.getQnaDate() %>  </td>
 					</tr>
 
-					<tr>
-                        <td>6</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
-
-					<tr>
-                        <td>7</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
-
-					<tr>
-                        <td>8</td>
-                        <td>브로콜리</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-						<td>2020-10-30</td>
-					</tr>
+					<%} %>
 				</tbody>
 
 			</table>
@@ -186,21 +134,44 @@ margin-top: 5px;
 		</div>
 
 		<div id="fotter">
-
+			            <div id="pagingBar" align="center">
+                <ul class="pagination">
+                <%if(pi.getCurrentPage() != 1) { %>
+                	<li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/qnaAll.pq?currentPage=<%=pi.getCurrentPage() -1%>&pno=<%=pno %>">&lt;이전</a>
+                    </li>
+                <% } %> 
+                	
+                	
+                <%for(int p = pi.getStartPage(); p<pi.getEndPage(); p++) {%>
+                	<%if(pi.getCurrentPage() == p) { %>
+                	
+                  	<li class="page-item active">
+                    <a class="page-link" href="<%=broccoli%>/qnaAll.pq?currentPage=<%=p%>&pno=<%=pno %>"><%=p%></a>
+                  
+                  	<%}else { %>
+                  	<li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/qnaAll.pq?currentPage=<%=p%>&pno=<%=pno %>"><%=p%></a>
+                    </li>
+                    <% } %>
+                <% } %>
+                
+                
+                <%if(pi.getCurrentPage() != pi.getMaxPage())  {%>
+                   <li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/qnaAll.pq?currentPage=<%=pi.getCurrentPage() +1%>&pno=<%=pno %>">&gt;다음</a>
+                   </li>
+                 <% } %>   
+				</ul>
+            </div>
+		
+			
+			<%if(login != null) { %>
 			<div id="qnaForm" align="right">
-				<a href="<%=broccoli%>/enroll.qp" class="btn btn-success btn-sm">문의하기</a>
+                <a href="<%=broccoli %>/qnaAll.pq" class="btn btn-success btn-sm">전체보기</a>
+				<a href="<%=broccoli %>/enroll.pq?pno=<%=pno %>" class="btn btn-success btn-sm">문의하기</a>
 			</div>
-
-			<div id="qnaPagingBar" align="center" style="width: 250px; margin-left: 360px;">
-				<ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item active"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				  </ul>
-			</div>
-
+			<%} %>
 		</div>
 
         <div id="qnaSearchbar" >
@@ -240,6 +211,10 @@ margin-top: 5px;
         </div>
 
 	</div>
+
+
+
+
 
 <%@ include file="../common/footer.jsp"%>
 </body>
