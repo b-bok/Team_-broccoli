@@ -3,7 +3,7 @@
 
 <properties>
 
-	<entry key="selectOrderList">
+	<entry key="selectCart">
 	SELECT 
 	       *
 	  FROM ORDER_LIST
@@ -11,7 +11,7 @@
 	   AND P_NO = ?
 	</entry>
 	
-	<entry key="insertOrderList">
+	<entry key="insertCart">
 		INSERT 
 		  INTO ORDER_LIST
 		    (
@@ -35,7 +35,7 @@
 		     )
 	</entry>
 	
-	<entry key="updateOrderList">
+	<entry key="updateCart">
 		UPDATE 
 		       ORDER_LIST
 		   SET QUANTITY = QUANTITY + ?
@@ -45,7 +45,7 @@
 		   AND P_NO = ?
 	</entry>
 	
-	<entry key="selectOrder">
+	<entry key="selectCartList">
 		SELECT 
 		       O.MEM_NO
 		     , P_NO
@@ -69,6 +69,28 @@
 		 WHERE MEM_NO = ?
 		   AND P_NO = ?
 		   AND ORDER_CONDITION = '주문전'
+	</entry>
+	
+	<entry key="deleteCart">
+		UPDATE ORDER_LIST
+		   SET ORDER_CONDITION = '장바구니삭제'
+		 WHERE MEM_NO = ?
+		   AND P_NO = ?
+	</entry>
+	
+	<entry key="selectOrder">
+		SELECT 		
+		     , P.P_NO
+		     , P.P_NAME           
+		     , P.P_THUMBNAIL      
+		     , M.MEM_NAME         
+		     , M.MOBILE           
+		     , M.ADDRESS1         
+		     , M.ADDRESS2         
+		     , M.POINT            
+		  FROM MEMBERS M, PRODUCT P
+		 WHERE MEM_NO = ?
+		   AND P_NO = ?
 	</entry>
 
 </properties>

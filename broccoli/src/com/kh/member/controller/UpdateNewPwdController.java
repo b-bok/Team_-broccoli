@@ -1,0 +1,62 @@
+package com.kh.member.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
+
+/**
+ * Servlet implementation class RegDone
+ */
+@WebServlet("/regDone.me")
+public class UpdateNewPwdController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UpdateNewPwdController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		String memId = request.getParameter("memId");
+		String memName = request.getParameter("memName");
+		String memNewPwd = request.getParameter("memNewPwd");
+		System.out.println("컨트롤러단: " + memId + memName + memNewPwd);
+		
+		Member updateMem = new MemberService().updatePwdMember(memNewPwd, memId, memName);
+		System.out.println(updateMem);		
+		if(updateMem == null) {
+			request.setAttribute("errorMsg", "비밀번호가 변경되지 못했습니다. 다시 시도해주세요!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}else {
+			request.getSession().setAttribute("login", updateMem);
+			//request.setAttribute("alert", "비밀번호가 변경되었습니다.");
+			request.getRequestDispatcher("views/member/regDoneNotice.jsp").forward(request, response);
+		}
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

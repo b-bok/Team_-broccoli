@@ -21,10 +21,11 @@
 	    <!-- 대쉬보드 추가-->
     <%@ include file="../admin/adminNav.jsp" %>
 	
-	<div align="center" style="margin-left:300px;">
+	<div align="center" style="margin-left:300px; margin-top:200px;">
 	<img src = "<%=broccoli %>/resources/image/clipart-of-the-Oops-sign.jpg" width="200px;">
 	<br><br>
 	<h4><%=errorMsg %></h4>
+	<h4><button onclick="history.back();" class="btn btn-primary btn-sm">뒤로 돌아가기</button></h4>
 	
 	</div>
 </body>

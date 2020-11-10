@@ -36,11 +36,11 @@ public class OrderDao {
 	 * @param mno
 	 * @return
 	 */
-	public int selectOrderList(Connection conn, int pno, int mno) {
+	public int selectCart(Connection conn, int pno, int mno) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = prop.getProperty("selectOrderList");
+		String sql = prop.getProperty("selectCart");
 		int result = 0;
 		
 		try {
@@ -67,10 +67,10 @@ public class OrderDao {
 	}
 	
 	
-	public int insertOrderList(Connection conn, OrderList olist) {
+	public int insertCart(Connection conn, OrderList olist) {
 		
 		PreparedStatement ps = null;
-		String sql = prop.getProperty("insertOrderList");
+		String sql = prop.getProperty("insertCart");
 		int result = 0;
 		
 		try {
@@ -97,10 +97,10 @@ public class OrderDao {
 	}
 	
 	
-	public int updateOrderList(Connection conn, OrderList olist) {
+	public int updateCart(Connection conn, OrderList olist) {
 		
 		PreparedStatement ps = null;
-		String sql = prop.getProperty("updateOrderList");
+		String sql = prop.getProperty("updateCart");
 		int result = 0;
 		
 		
@@ -129,12 +129,12 @@ public class OrderDao {
 	
 	
 	
-	public ArrayList<OrderList> selectOrder(Connection conn, int mno) {
+	public ArrayList<OrderList> selectCartList(Connection conn, int mno) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<OrderList> list = new ArrayList<>();
-		String sql = prop.getProperty("selectOrder");
+		String sql = prop.getProperty("selectCartList");
 		
 		try {
 
@@ -184,6 +184,60 @@ public class OrderDao {
 		}
 		
 		return result;
+	}
+	
+	
+	public int deleteCart(Connection conn, int mno, int pno) {
+		
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteCart");
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			
+			result = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+		
+	}
+	
+	
+	public void selectOrder(Connection conn, int mno, int pno) {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectOrder");
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }

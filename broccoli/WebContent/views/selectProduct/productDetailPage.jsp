@@ -148,7 +148,8 @@
                             <td style="text-align: right;">
                             <strong><span style="font-size:18px"><%= p.getDiscount() %></span><span style="margin-right:50px;"> 원</span></strong>
                             <% if(login != null) { %>
-                            	<input type="hidden" name="mno" id="mno" value="<%= login.getMemNo() %>">
+                            	<input type="hidden" name="pno" value="<%= p.getPno() %>">
+                            	<input type="hidden" name="totalamt" id="totalamt" value="<%= p.getDiscount() %>">
                             	<button type="button" class="btn btn-success btn-sm" id="goCart">장바구니 담기</button>
                             	<button type="button" class="btn btn-success btn-sm" id="goOrder">바로 구매</button>
                             <% } else { %>
@@ -166,19 +167,18 @@
         
         
       	
-     
-
     
 
          	<%@ include file="../common/reviewMenubar.jsp" %>
 
 		<br />
         <div class="productDetailImage" align="center">
+
             <img src="<%=broccoli %>/<%=p.getImg1() %>" width="60%" height="100%" name="productImage1" >
         </div>
 
         <div id="productDexp" align="center">
-        
+        <br />
             <h2 style="margin: 10;" id="list1"><%=p.getpName() %></h2>
         </div>
         <div id="productSexp">
@@ -193,24 +193,39 @@
 
 		<br />
         <div class="productDetailImage" align="center">
+        
             <img src="<%=broccoli %>/<%=p.getImg2() %>" width="60%" height="100%" name="productImage1" id="list2" >
+       
         </div>
 
+			<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
-      
+
+			<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
+	
+
+			<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
+	 
+		
+		
+		
+       
 		</div>
 		
 		
-		
+		<!-------------------------------장바구니 담기 버튼 클릭시 나오는 알림창 -------------------------------------------->
 		<div id="div3" class="alert alert-light alert-dismissible" style="border:3px solid green; padding-right:13px; width:350px; height:200px; position: absolute; display: none; z-index: 10;" align="center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <h4 style="margin-top:20px"><strong>장바구니 담기 성공!</strong></h4><br> <h4>장바구니로 이동하시겠습니까?</h4> <br><br>
             <button type="button" class="btn btn-secondary" id="keepshop">계속 쇼핑할래요</button>  <button type="button" class="btn btn-success" id="goToCart">장바구니로 이동</button>
         </div>
+        
+        
         <script>
 	    	$("#amount").change(function(){
 	    		var totalprice = $(this).val() * <%= p.getDiscount()%>;
 	    		$("#table1>tfoot>tr>td>strong").children().eq(0).text(totalprice);
+	    		$("#totalamt").val(totalprice);
 	    	})
 	    
         	function submitForm(index){
@@ -218,7 +233,7 @@
         			document.form1.action = "<%= broccoli %>/cart.or" ;
         		}
         		if(index == 2){
-        			document.form1.action = "<%= broccoli %>/order.or";
+        			document.form1.action = "<%= broccoli %>/dOrder.or";
         		}
         		document.form1.submit();
         	}
@@ -264,18 +279,11 @@
             });
             
         </script>
+		<!------------------------------------------------------------------------------------------------->
 		
-		
-
-	
-	<%@ include file="../userReviewBoard/productDetailReviewBoard.jsp" %>
 
 
-	<%@ include file="../userRecipeBoard/productDetailRecipeBoard.jsp" %>
-	
-	
-<%-- 	<%@ include file="../userQnaBoard/productDetailQnaBoard.jsp" %>
-	 --%>
+
 
 
 <%@ include file="../common/footer.jsp"%>

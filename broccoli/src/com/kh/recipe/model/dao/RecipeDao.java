@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.qna.model.vo.Qna;
 import com.kh.recipe.model.vo.*;
 
 public class RecipeDao {
@@ -224,5 +225,5 @@ public class RecipeDao {
 		
 		return list;
 	}
-	
+
 }

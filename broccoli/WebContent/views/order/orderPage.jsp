@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,12 +103,72 @@
                         <div style="border: 1px solid green; display: inline-block; border-radius: 13px; 
                         padding: 3px; margin-left: 5px; margin-top: 0px; font-size: 8px;">기본 배송지</div> <br>
                         <div class="address">
-                            15151 경기도 용인시 처인구 포곡읍 <br>
-				                           수지아파트 103동 1192호 <br>
-				                           홍길동, 010-1111-1111
+                            <span id="zip"> </span> 
+                            <span id="add1"> </span> <br>
+                            <input type="hidden" name="addinput" id="addinput" value="">
+                            <span id="add2"> </span>
+                            <span id="extra"> </span>
+                            <input type="hidden" name="addinput2" id="addinput2" value="">
                         </div>
                     </td>
-                    <td><button class="btn btn-sm" type="button" data-toggle="modal" data-target="#myModal1">변경</button></td>
+                    <td><button class="btn btn-sm" type="button" onclick="changeAdd();">변경</button></td>
+                    <script>
+                    	function changeAdd(){
+                    		window.open("<%= broccoli%>/changeAdd.or?mno=<%= login.getMemNo()%>","changeaddress","width=500, height=600, location=no, menubar=no, scrollbars=no, status=no, toolbar=no, resizable=no");
+                    	}
+                    	function postcode(){
+                    		new daum.Postcode({
+                                oncomplete: function(data) {
+
+                                    var addr = ''; // 주소 변수
+                                    var extraAddr = ''; // 참고항목 변수
+
+                                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                                        addr = data.roadAddress;
+                                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                                        addr = data.jibunAddress;
+                                    }
+
+                                    if(data.userSelectedType === 'R'){
+                                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                            extraAddr += data.bname;
+                                        }
+                                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                        }
+                                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                        if(extraAddr !== ''){
+                                            extraAddr = ' (' + extraAddr + ')';
+                                        }
+                                        // 조합된 참고항목을 해당 필드에 넣는다.
+                                        document.getElementById("add2").innerHTML = extraAddr;
+                                    
+                                    } else {
+                                        document.getElementById("add2").innerHTML = '';
+                                    }
+
+                                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                    document.getElementById('zip').innerHTML = data.zonecode;
+                                    document.getElementById("add1").innerHTML = addr;
+                                    // 인풋히든박스
+                                    document.getElementById("addinput").value = data.zonecode + addr;
+                                    document.getElementById("addinput2").value = extraAddr;
+                                },
+                    		onclose : function(state){
+                    			if(state === 'FORCE_CLOSE'){
+                    				$("#myModal1").modal();
+                    				
+                    	        } else if(state === 'COMPLETE_CLOSE'){
+                    	        	$("#myModal1").modal();
+                    	        }
+                    		}
+                            }).open();
+                    	}
+                    	
+					</script>
                 </tr>
                 <tr>
                     <th>수령방법</th>
@@ -228,34 +288,41 @@
             <br><br><br><br><br>
         </div>
     </form>
-
-
-
-
-    <!-- 배송지 모달 -->
-    <div class="modal" id="myModal1">
+	
+	 <!----------------- 추가주소 모달 ----------------------->
+     <div class="modal" id="myModal1">
         <div class="modal-dialog">
         <div class="modal-content">
     
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">배송지 입력</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">상세주소 입력</h4>
+            <button type="button" class="close" data-dismiss="modal" onclick="extraAdd();">&times;</button>
             </div>
     
             <!-- Modal body -->
             <div class="modal-body">
-            Modal body..
+            	<input type="text" class="form-control" id="extraadd" placeholder="나머지 주소를 입력해주세요">
             </div>
     
             <!-- Modal footer -->
             <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="extraAdd();">확인</button>
             </div>
+            <script>
+            	function extraAdd(){
+            		var extra = document.getElementById("extraadd").value;
+            		document.getElementById("extra").innerHTML = extra;
+            	}
+            </script>
     
         </div>
         </div>
     </div>
+
+
+
+    
      <!-- 수령방법 모달 -->
      <div class="modal" id="myModal2">
         <div class="modal-dialog">

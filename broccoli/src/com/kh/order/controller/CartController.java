@@ -36,7 +36,7 @@ public class CartController extends HttpServlet {
 		Member mem = (Member)request.getSession().getAttribute("login");
 		int mno = mem.getMemNo();
 		
-		ArrayList<OrderList> list = new OrderService().selectOrder(mno);
+		ArrayList<OrderList> list = new OrderService().selectCartList(mno);
 		
 		
 		request.setAttribute("olist", list);

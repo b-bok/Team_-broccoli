@@ -540,8 +540,8 @@ public class ProductDao {
 			pstmt.setString(3, p.getpName());
 			pstmt.setInt(4, p.getPrice());
 			pstmt.setInt(5, p.getDiscount());
-			pstmt.setString(6, p.getImg1());
-			pstmt.setString(7, p.getImg2());
+			pstmt.setString(6,"resources/product_upfiles/"+ p.getImg1());  // 상품저장경로와 합쳐서 저장
+			pstmt.setString(7, "resources/product_upfiles/" + p.getImg2());  // 상품저장경로와 합쳐서 저장
 			pstmt.setInt(8, p.getInventory());
 			pstmt.setString(9, p.getCompany());
 			pstmt.setString(10, p.getUnit());
@@ -553,7 +553,7 @@ public class ProductDao {
 			pstmt.setString(16, p.getDeli());
 			pstmt.setString(17, p.getNation());
 			pstmt.setString(18, p.getPacktype());
-			pstmt.setString(19, p.getThumbnail());
+			pstmt.setString(19,"resources/product_upfiles/" + p.getThumbnail());   // 상품저장경로와 합쳐서 저장
 			
 			result = pstmt.executeUpdate();
 			
