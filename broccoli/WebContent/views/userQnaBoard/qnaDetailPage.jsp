@@ -122,6 +122,7 @@
                         	<%if(q.getNoticeYn().equals("Y")) { %>
                     	<th class="table-success">공지여부</th>
                     	<%}else { %>
+                        <th class="table-success">비밀글여부</th>          
                                               <%} %>
                         
                         <%if(q.getNoticeYn().equals("Y")) {  %>
@@ -157,7 +158,7 @@
         </div>
 
         <div id="qnaFotter" align="center" style="margin-top: 10px;">
-            <button type="button" onclick="history.back();">뒤로가기</button>
+             <a class="btn btn-success btn-sm" href="<%=broccoli%>/detail.pb?pno=<%=q.getpName() %>" >뒤로가기 </a>
         </div>
 
         

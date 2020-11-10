@@ -36,13 +36,9 @@ public class QnaEnrollFormController extends HttpServlet {
 		
 		  int pno = Integer.parseInt(request.getParameter("pno"));
 		  
-		  System.out.println(pno);
-		  
 		  Product p = new ProductService().selectDetailProduct(pno);
 		  
 		  String pname = p.getpName();
-		  
-		  System.out.println(p);
 		  
 		  request.setAttribute("pname",pname);
 		  request.setAttribute("pno", pno);
