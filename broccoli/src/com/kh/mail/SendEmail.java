@@ -53,8 +53,8 @@ public class SendEmail extends HttpServlet {
 		
 		//mail server 설정
 		String host = "smtp.gmail.com";
-		String admin = "kim.joelle@gmail.com";
-		String adminPwd = "qmfhzhfflwkqk";		//password(한글로) 브로콜리자바 
+		String admin = "broccolijava2@gmail.com";
+		String adminPwd = "qmfhzhfflwkqk2";		//password(한글로) 브로콜리자바 
 		
 		//메일 받을 주소
 		String toEmail = email;
