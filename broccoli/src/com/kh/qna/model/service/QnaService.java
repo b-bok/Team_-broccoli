@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import com.kh.qna.model.dao.QnaDao;
 import com.kh.qna.model.vo.Qna;
-import com.kh.recipe.model.dao.RecipeDao;
+
 
 
 public class QnaService {
@@ -42,6 +42,19 @@ public class QnaService {
 		
 	}
 	
+	
+	public Qna selectDetailQna(int qno) {
+		
+
+		Connection conn = getConnection();
+		
+		Qna q = new QnaDao().selectDetailQna(conn, qno);
+		
+		close(conn); 
+		
+		return q;
+		
+	}
 	
 	
 	

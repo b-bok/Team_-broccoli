@@ -16,12 +16,15 @@ public class Qna {
 	private String noticeYn;	// 공지사항여부
 	private String secret;		// 비밀글여부
 
+	private String email;		// 이메일
+	private String mobile;		// 전화번호
+	
 	
 	public Qna() {}
 
 
 	public Qna(int qnaNo, int pno, String memId, String pName, String qnaTitle, String qnaDetail, String qnaAnswer,
-			Date qnaDate, String qnaYn, String noticeYn, String secret) {
+			Date qnaDate, String qnaYn, String noticeYn, String secret, String email, String mobile) {
 		super();
 		this.qnaNo = qnaNo;
 		this.pno = pno;
@@ -34,9 +37,34 @@ public class Qna {
 		this.qnaYn = qnaYn;
 		this.noticeYn = noticeYn;
 		this.secret = secret;
+		this.email = email;
+		this.mobile = mobile;
 	}
 
 
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getMobile() {
+		return mobile;
+	}
+
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	
+	
 	public int getQnaNo() {
 		return qnaNo;
 	}
@@ -151,10 +179,9 @@ public class Qna {
 	public String toString() {
 		return "Qna [qnaNo=" + qnaNo + ", pno=" + pno + ", memId=" + memId + ", pName=" + pName + ", qnaTitle="
 				+ qnaTitle + ", qnaDetail=" + qnaDetail + ", qnaAnswer=" + qnaAnswer + ", qnaDate=" + qnaDate
-				+ ", qnaYn=" + qnaYn + ", noticeYn=" + noticeYn + ", secret=" + secret + "]";
-	};
-	
-	
-	
-	
+				+ ", qnaYn=" + qnaYn + ", noticeYn=" + noticeYn + ", secret=" + secret + ", email=" + email
+				+ ", mobile=" + mobile + "]";
+	}
+
+
 }
