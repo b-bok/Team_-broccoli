@@ -33,6 +33,7 @@ public class FaqCategoryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("컨트롤러1차 접근");
 		System.out.println("카테고리값은 : " + request.getParameter("qCategory"));
+		
 		int num1 = Integer.parseInt(request.getParameter("qCategory"));
 		ArrayList<Faq> list = new NoticeService().selectFaqList(num1);
 		

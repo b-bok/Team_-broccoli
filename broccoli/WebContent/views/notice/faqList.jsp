@@ -130,19 +130,20 @@ margin-top: 50px;
                 <%if(list.isEmpty()) {%>
                 <!-- 조회된 리스트가 없을 경우 -->
                 <tr>
-                    <th colspan="6">조회된 게시글이 없습니다.</th>
+                    <th colspan="6" align="center">조회된 게시글이 없습니다.</th>
                 </tr>
                 <%}else{ %>
                 	<%for(Faq f : list) { %>
 				<form action="list.faq" method="post">
 		
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_1' )">
+                    <tr align="center" class="pointer" onclick="FaqToggleDetail('row_1')">
                         <td><%=f.getFaqNo()%></td>
                         <td>
                         <span id="td_row_1"><%=f.getGrFaqName()%></span></td>
                         <td><%=f.getFaqTitle()%></td>
                         <td><%=f.getFaqEnroll()%></td>
                     </tr>
+                    
                     <tr class="none" id="row_1">
                         <td colspan="6" style="border:1px solid #000000;">
                             <%=f.getFaqContent() %>

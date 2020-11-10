@@ -66,17 +66,14 @@ public class NoticeDao {
 	public ArrayList<Faq> selectFaqList(Connection conn,int num1) {
 		
 		ArrayList<Faq> list = new ArrayList<Faq>();
-		
 		System.out.println("어레이리스트 num1값:"+num1);
-		
 		PreparedStatement pstmt = null;
-		
 		ResultSet rset = null;
+		String sql = prop.getProperty("selectFaqList");
 		
-		String sql = "SELECT* FROM TEST WHERE gr_faq_name = ?";
+		System.out.println(sql);
 		
 		try {
-			System.out.println("hello");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num1);
 
