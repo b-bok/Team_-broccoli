@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  import="com.kh.notice.model.vo.Notice"%>
+
+<%
+	Notice n = (Notice)request.getAttribute("n");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +31,11 @@
     .outer{
 
     background: white;
-    width:1000px;
+    width:1200px;
     height:800px;
     margin:auto;
     margin-top:100px;
+    box-sizing: border-box;
 }
     #detail-area tr td{
     border-color:white;
@@ -41,18 +46,22 @@
     margin-bottom: 30px;
 
 }
-    #titleEx pre{
+    #titleEx #bgspan{
     float: left;
-    font-size: x-large;
     margin-top: 50px;
     padding-left: 30px;
+    text-align: center;
+    font-size:30px;
+
 }
-    #titleEx p{
+    #titleEx #smspan{
     float: left;
-    margin-left: 30px;
-    line-height: 250%;
+    margin-left: 100px;
+    line-height: 500%;
     margin-top: 50px;
     padding-left: 30px;
+    text-align: center;
+
 }
     #textarea1{
         width:700px;
@@ -62,61 +71,65 @@
     #hr1{
         border:0;
         height:3px;
-        background:greenyellow;
+        background:#3cb371;
     }
-	body{
-    font-size:18px;
-	}
+
+    body{
+    font-size:16px;
+    }
 </style>
 </head>
 <body>
 
 	<%@ include file="../common/menubar.jsp"%>
 
-    <div id="titleEx">
-        <pre><b>공지사항</b></pre> 
-        <p>브로콜리의 새로운 소식과 유용한 정보들을 이곳에서 확인하세요 </p>
-    </div>
-    <br>
-    <!-- 메뉴바 포함 할 것-->
     
     <div class="outer">
-        <hr style= "size:50" >
+    <div id="titleEx">
+        <span id="bgspan"><b>공지사항</b></span> 
+        <span id="smspan">브로콜리의 새로운 소식과 유용한 정보들을 이곳에서 확인하세요 </span>
+    </div>
+    <br><br><br><br><br><br>
+    <!-- 메뉴바 포함 할 것-->
+        
+        <hr id="hr1">
         <form action="detail.no" method="POST">
+        
         <table id="detail-area" align="center">
             <tr>
                 <th width="100">제목</th>
-                <td colspan="3" width="500">해당 공지사항 제목 자리</td>
+                <td colspan="3" width="500"><%= n.getNoticeTitle() %></td>
             </tr>
             <tr>
                 <th>작성자</th>
-                <td>작성자이름</td>
+                <td><b>브로콜리</b></td>
             </tr>
             <tr>
                 <th>작성일</th>
-                <td>해당 날짜 데이터</td> 
+                <td><%=n.getNoticeEnroll() %></td> 
             </tr>
             <tr>
                 <th>조회수</th>
-                <td>해당조회수자리</td>
+                <td><%=n.getNoticeViews() %></td>
             </tr>
             <tr>
                 <th>내용</th>
                 <td colspan="2">
                     <br><br><br>
-                    <textarea id="textarea1" name="textarea1" style="resize: none;">해당 조회된 공지사항의 내용</textarea>
+                    <textarea id="textarea1" name="textarea1" style="resize: none; border:none" readonly><%=n.getNoticeContent() %></textarea>
                 </td>
             </tr>
         </table>
 		</form>
-        <br><br>
+        <div class="submitBtn"align="right">
+         
+			<button onclick="history.back()" class="btn btn-basic btn-sm" style="background-color: green; color:white;">목록가기</button>
+        </div>
+        
+        <br><br><br><br>
+        <br><br><br><br>
 
         <hr width=80% color="green" align="center" size=50;/>
-        <div class="submitBtn"align="right">
-
-            <a href="<%=broccoli%>/noticeListView.jsp" class="btn btn-basic btn-sm" style="background-color: green; color:white;">목록가기</a>
-
-        </div>
         
 
 

@@ -2,6 +2,7 @@ package com.kh.notice.model.service;
 
 import static com.kh.common.JDBCTemplate.close;
 import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class NoticeService {
 	}
 	
 	
-	public ArrayList<Faq> selectFaqList(String num1) {
+	public ArrayList<Faq> selectFaqList(int num1) {
 		
 		Connection conn = getConnection();
 		
@@ -36,6 +37,38 @@ public class NoticeService {
 		
 		return list;
 		
+		
+		
 	}
 	
+	public int increaseCount(int nno) {
+		
+		Connection conn = getConnection();
+		
+		
+		int result = new NoticeDao().increaseCount(conn, nno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else { //실패
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+		
+	}
+
+
+	public Notice selectNotice(int nno) {
+		
+		Connection conn = getConnection();
+		
+		Notice n = new NoticeDao().selectNotice(conn, nno);
+		
+		close(conn);
+		
+		return n;
+	
+	}
 }

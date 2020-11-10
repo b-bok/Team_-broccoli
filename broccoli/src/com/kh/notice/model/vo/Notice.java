@@ -30,6 +30,15 @@ public class Notice {
 		this.noticeEnroll = noticeEnroll;
 		this.noticeViews = noticeViews;
 	}
+	
+
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeEnroll) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeEnroll = noticeEnroll;
+	}
 
 	public int getNoticeNo() {
 		return noticeNo;

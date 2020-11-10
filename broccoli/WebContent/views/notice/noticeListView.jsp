@@ -55,6 +55,12 @@ margin-top: 50px;
 }
 #gogaek{height:10%; padding-left:40px;}
 body{font-size:18px;}
+.table tbody >tr:hover{
+	background: #f2f2f2;
+	cursor:pointer;
+}
+
+
 </style>
 </head>
 <body>
@@ -81,7 +87,7 @@ body{font-size:18px;}
 		<!-- 게시판 리스트 -->
 		<div class="wrap2" id="noticeListBoard">
 			
-			<table class="table table-hover" id="noticeList" >
+			<table class="table" id="noticeList" >
   
 				<thead align="center">
 					
@@ -162,6 +168,23 @@ body{font-size:18px;}
 				</tbody>
 			</form>
 			</table>
+			
+			
+		<script>
+	    	$(function() {
+	    		$(".table>tbody>tr").click(function() {
+
+					//클릭했을 때의 행의 존재하는 글 번호
+					var nno = $(this).children().eq(0).text();
+	    			
+					//console.log(nno);
+	    			
+					// 쿼리스트링으로 만들어서 요청시 어떤 값을 전달할 수 있다.
+	    			location.href="<%=broccoli%>/detail.no?nno=" + nno;
+	    			
+	    		})
+	    	});
+	    </script>
 
 
 		</div>

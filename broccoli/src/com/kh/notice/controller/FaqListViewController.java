@@ -29,7 +29,7 @@ public class FaqListViewController extends HttpServlet {
 		
 		request.getRequestDispatcher("views/notice/faqList.jsp").forward(request, response);
 		
-
+		
 
 	}
 
