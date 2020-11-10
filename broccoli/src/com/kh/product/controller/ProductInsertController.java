@@ -101,9 +101,9 @@ public class ProductInsertController extends HttpServlet {
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
 					switch(key) {
-					case "file1":p.setImg1(multiRequest.getFilesystemName(key));
-					case "file2":p.setImg2(multiRequest.getFilesystemName(key));
-					case "file3":p.setThumbnail(multiRequest.getFilesystemName(key));
+					case "file1":p.setImg1(multiRequest.getFilesystemName(key)); break;
+					case "file2":p.setImg2(multiRequest.getFilesystemName(key)); break;
+					case "file3":p.setThumbnail(multiRequest.getFilesystemName(key)); break;
 					}
 				}
 			}

@@ -20,9 +20,9 @@ public class MyFileRenamePolicy implements FileRenamePolicy {
 		String cat = null; // 카테고리 분류 (f : 기본이미지, s:추가이미지, th: 썸네일이미지
 		
 		 switch(originName.charAt(0)) {
-		 case 'f': cat = "f";
-		 case 's': cat = "s";
-		 case 't': cat = "th";
+		 case 'f': cat = "f"; break;
+		 case 's': cat = "s"; break;
+		 case 't': cat = "th"; break;
 		 }
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");

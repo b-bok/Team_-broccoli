@@ -34,11 +34,10 @@ public class ProductAdminSelectResultDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		int listCount = new ProductService().selectListCount();
 		
-		if(0<pno && pno <= listCount) {
+		Product p = new ProductService().selectAdminProductDetail(pno);
 		
-			Product p = new ProductService().selectAdminProductDetail(pno);
+		if(p != null) {
 		
 			request.setAttribute("p", p);
 			

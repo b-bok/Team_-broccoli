@@ -35,9 +35,18 @@ public class ProductUpdateFormController extends HttpServlet {
 		
 		Product p = new ProductService().selectAdminProductDetail(pno);
 		
-		request.setAttribute("p", p);
-		
-		request.getRequestDispatcher("views/admin/adminUpdateProductForm.jsp").forward(request, response);
+		if(p != null) {
+			
+			request.setAttribute("p", p);
+			
+			request.getRequestDispatcher("views/admin/adminUpdateProductForm.jsp").forward(request, response);
+	
+		}else { // 유효한 상품번호 x => 에러문구 담아서 포워딩
+			
+			request.setAttribute("errorMsg", "유효한 상품이 없습니다");
+			request.getRequestDispatcher("views/common/adminErrorPage.jsp").forward(request, response);
+			
+		}
 	}
 
 	/**
