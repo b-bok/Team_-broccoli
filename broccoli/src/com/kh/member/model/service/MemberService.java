@@ -110,6 +110,13 @@ public class MemberService {
 		
 	}
 	
+	/**
+	 * 비밀번호 찾기용
+	 * @param memName
+	 * @param memId
+	 * @param email
+	 * @return
+	 */
 	public Member findPwd(String memName, String memId, String email) {
 		
 		Connection conn = getConnection();
@@ -117,6 +124,31 @@ public class MemberService {
 		Member findPwd = new MemberDao().findPwd(conn,memName,memId,email);
 		close(conn);
 		return findPwd;
+	}
+	
+	public Member updatePwdMember(String memNewPwd, String memId, String memName) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().updatePwdMember(conn, memNewPwd, memId, memName);
+		
+		System.out.println("서비스단 : "+ memId + memName + memNewPwd);
+		
+		Member updateMem = null;
+		
+		if(result > 0) {
+			commit(conn);
+			//업데이트된 회원정보 가져오기 
+			updateMem = new MemberDao().reselectMember(conn, memId);	
+			
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMem;
+		
 	}
 	
 

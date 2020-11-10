@@ -349,5 +349,82 @@ public class MemberDao {
 				
 	}
 
+	public int updatePwdMember(Connection conn, String memNewPwd, String memId, String memName) {
+		//결과->1행 
+		
+		System.out.println("다오단 : "+ memId + memName + memNewPwd);
+		int result = 0;		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwd");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNewPwd);
+			pstmt.setString(2, memId);
+			pstmt.setString(3, memName);
+			
+			result = pstmt.executeUpdate();
+			System.out.println("여기선 값이 얼마야?" + result);		//왜 자꾸 여기서 0 이 나오지??
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+	
+	public Member reselectMember(Connection conn, String memId) {
+		
+		Member m = null; 
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql= prop.getProperty("reselectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				m = new Member(rset.getInt("MEM_NO")
+						   ,rset.getString("MEM_ID")
+						   ,rset.getString("MEM_NAME")
+						   ,rset.getString("MEM_PWD")
+						   ,rset.getString("EMAIL")
+						   ,rset.getString("MOBILE")
+						   ,rset.getString("ZIPCODE")
+						   ,rset.getString("ADDRESS1")
+						   ,rset.getString("ADDRESS2")
+						   ,rset.getString("ADDREXTRA")
+						   ,rset.getString("GENDER")
+						   ,rset.getDate("BIRTH_DATE")
+						   ,rset.getDate("REG_DATE")
+						   ,rset.getInt("POINT")
+						   ,rset.getString("STATUS")
+						   ,rset.getInt("ADDRESS_NO")
+						   ,rset.getString("MEM_CATEGORY")
+						  ); 
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+		
+	}
+
 
 }

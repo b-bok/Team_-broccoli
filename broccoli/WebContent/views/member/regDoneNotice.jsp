@@ -4,7 +4,7 @@
 <html>
 <meta charset="utf-8">
 <head>
-<title>회원가입완료안내</title>
+<title>비밀번호완료안내</title>
 <style>
     .container{
         font-size: 15px;
@@ -17,8 +17,8 @@
 </head>
 <body>
 <%@ include file="../common/menubar.jsp" %>
-    <div class=container><img src="<%=broccoli %>/resources/image/pngkey.com-broccoli-png-1490408.png" width="300px" alt="logo"></div>
-    <div class=container>회원가입이 완료되었습니다. <br>회원인증을 위해 등록한 이메일을 확인부탁드리겠습니다..</div>
+    <div class=container><span class="glyphicon glyphicon-ok-sign" style="font-size:80px;color:green;text-shadow:2px 2px 4px #000000;"></div>
+    <div class=container>비밀번호가 변경되었습니다. 다시 로그인해주세요</div>
     
     <%@ include file="../common/footer.jsp"%>
 </body>

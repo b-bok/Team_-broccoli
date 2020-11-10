@@ -7,21 +7,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class FindPwdResultController
+ * Servlet implementation class RegDone
  */
-@WebServlet("/findPwdResult.me")
-public class FindPwdResultController extends HttpServlet {
+@WebServlet("/regDone.me")
+public class UpdateNewPwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindPwdResultController() {
+    public UpdateNewPwdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,23 +33,22 @@ public class FindPwdResultController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-		String memName = request.getParameter("memName");
 		String memId = request.getParameter("memId");
-		String email = request.getParameter("email");
+		String memName = request.getParameter("memName");
+		String memNewPwd = request.getParameter("memNewPwd");
+		System.out.println("컨트롤러단: " + memId + memName + memNewPwd);
 		
-		
-		Member findPwd = new MemberService().findPwd(memName,memId, email);
-		if(findPwd == null) {
-			
-			request.getSession().setAttribute("alert", "일치하는 내용을 찾지 못하였습니다.다시 입력해 주세요!");
-			request.getRequestDispatcher("views/member/findPwd.jsp").forward(request, response);
-			
+		Member updateMem = new MemberService().updatePwdMember(memNewPwd, memId, memName);
+		System.out.println(updateMem);		
+		if(updateMem == null) {
+			request.setAttribute("errorMsg", "비밀번호가 변경되지 못했습니다. 다시 시도해주세요!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}else {
-			
-			request.getSession().setAttribute("findPwd", findPwd);
-			request.getRequestDispatcher("views/member/findPwdNotice.jsp").forward(request, response);
+			request.getSession().setAttribute("login", updateMem);
+			//request.setAttribute("alert", "비밀번호가 변경되었습니다.");
+			request.getRequestDispatcher("views/member/regDoneNotice.jsp").forward(request, response);
 		}
-		
+	
 	}
 
 	/**
