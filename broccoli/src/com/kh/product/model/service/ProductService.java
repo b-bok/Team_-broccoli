@@ -180,6 +180,13 @@ public class ProductService {
 		return result;
 	}
 	
+	/**
+	 * 관리자 상품검색 결과리스트
+	 * @param pi 페이지정보
+	 * @param searchCat 검색할 카테고리
+	 * @param searchWord 검색어
+	 * @return 상품정보 리스트
+	 */
 	public ArrayList<Product> selectAdminProductBySearch(PageInfo pi, String searchCat, String searchWord){
 		Connection conn = getConnection();
 		
@@ -188,6 +195,27 @@ public class ProductService {
 		close(conn);
 		
 		return list;
+	}
+	
+	
+	/**
+	 * 상품수정하기
+	 * @param p 수정할 상품정보
+	 * @return 실행결과
+	 */
+	public int updateProduct(Product p) {
+		Connection conn = getConnection();
+		
+		int result = new ProductDao().updateProduct(conn,p);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 	
 	

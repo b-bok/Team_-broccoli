@@ -360,4 +360,30 @@
 		LEFT JOIN EVENT USING(E_NO)
 		WHERE P_COMPANY LIKE  '%' || ? || '%'
 	</entry>
+	
+	<entry key="updateProduct">
+		UPDATE
+		       PRODUCT
+		  SET
+		       CATEGORY_NO =?
+		    ,  E_NO =?
+		    ,  P_NAME =?
+		    ,  P_PRICE =?
+		    ,  P_DISCOUNT =?
+		    ,  P_IMAGE1 =?
+		    ,  P_IMAGE2 =?
+		    ,  P_INVENTORY =?
+		    ,  P_COMPANY =?
+		    ,  P_UNIT =? 
+		    ,  P_WEIGHT =?
+		    ,  P_DETAIL =?
+		    ,  DIS_YN =?
+		    ,  E_YN =?
+		    ,  P_SMALLDETAIL =?
+		    ,  P_DELI =?
+		    ,  P_NATION =?
+		    ,  P_PACKTYPE =?
+		    ,  P_THUMBNAIL =?
+		 WHERE P_NO = ?
+	</entry>
 </properties>
