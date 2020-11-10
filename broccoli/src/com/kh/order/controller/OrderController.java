@@ -16,7 +16,7 @@ import com.kh.order.model.vo.OrderList;
 /**
  * Servlet implementation class OrderController
  */
-@WebServlet("/order.or")
+@WebServlet("/dOrder.or")
 public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,34 +34,24 @@ public class OrderController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		// 상품상세페이지에서 바로 구매 클릭 후 주문페이지로 넘기기
 		Member mem = (Member)request.getSession().getAttribute("login");
 		int mno = mem.getMemNo();
 		int totalamt = Integer.parseInt(request.getParameter("totalamt"));
+		int pno = Integer.parseInt(request.getParameter("pno"));
 		
-		int[] quantity = Arrays.stream(request.getParameterValues("quantity")).mapToInt(Integer::parseInt).toArray();
-		int[] pno = Arrays.stream(request.getParameterValues("pno")).mapToInt(Integer::parseInt).toArray();
-		int[] price = Arrays.stream(request.getParameterValues("price")).mapToInt(Integer::parseInt).toArray();
+//		멤버 정보, 상품 정보
+		new OrderService().selectOrder(mno, pno);
 		
 		
-		if(quantity.length == pno.length && pno.length == price.length) {
-			
-			for(int i=0; i<pno.length; i++) {
-				OrderList olist = new OrderList();
-				olist.setQuantity(quantity[i]);
-				olist.setpNo(pno[i]);
-				olist.setpPrice(price[i]);
-				int result = new OrderService().updateOrder(olist, mno);
-				
-				if(result > 0) {
-					
-					request.getRequestDispatcher("views/order/orderPage.jsp").forward(request, response);
-					
-				}
-			}
-		}
 		
-			
-			
+		
+		
+		request.getRequestDispatcher("views/order/orderPage.jsp").forward(request, response);
+		
+		
+		
 		
 		
 		

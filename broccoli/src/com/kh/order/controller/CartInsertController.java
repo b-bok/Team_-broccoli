@@ -47,12 +47,12 @@ public class CartInsertController extends HttpServlet {
 		
 //		System.out.println(olist);
 		String str = "";
-		int result = new OrderService().selectOrderList(pno, mno);
+		int result = new OrderService().selectCart(pno, mno);
 		
 		if(result > 0) {	// 중복인경우
-			str = new OrderService().updateOrderList(olist);
+			str = new OrderService().updateCart(olist);
 		}else {				// 아닌경우
-			str = new OrderService().insertOrderList(olist);
+			str = new OrderService().insertCart(olist);
 		}
 		
 		
