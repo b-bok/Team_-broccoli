@@ -51,21 +51,18 @@
 		<div class="col-sm-4">
 		  <h2 align="center">아이디 찾기</h2><br>
 		  
-		  <form action="<%=broccoli %>/idResult.me" class="was-validated" method="post">
+		  <form action="<%=broccoli %>/idResult.me" class="was-validated" id="findId" method="post">
 		    <div class="form-group">
 		      <input type="text" class="form-control" id="name" placeholder="고객님의 이름을 입력해주세요" name="memName" required>
 		      <div class="name regEx"></div>
 		    </div>
-
 		    
 		    <div class="form-group">
 		      <input type="email" class="form-control" id="email" placeholder="가입시 등록한 이메일을 입력해주세요" name="email" required>
 		      <div class="email regEx"></div>
 		    </div>
-
 		    
-		    
-		    <button type="submit" class="btn btn-success">확인</button>
+		    <button type="submit" class="btn btn-success" id="checkbtn">확인</button>
 		  </form>
 		  
 		</div>
@@ -73,6 +70,8 @@
   		<div class="col-sm-4"></div>
   		</div>
   	</div>
+  	
+  	
   	
   	<%@ include file="../common/footer.jsp"%>
 </body>

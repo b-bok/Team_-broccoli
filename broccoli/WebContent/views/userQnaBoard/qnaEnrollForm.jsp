@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="com.kh.product.model.vo.*" %>
+
+<%
+	int pno = (int)request.getAttribute("pno");
+	String pName = (String)request.getAttribute("pname");
+%>
+
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,6 +86,7 @@
 </head>
 <body>
 <%@ include file="../common/menubar.jsp" %>	
+	<form action="<%=broccoli %>/qnaInsert.qa" method="POST">
      <div class="wrap">
         <div id="qnaHeader">
             
@@ -88,20 +99,25 @@
                 </ul>
 
             </div>
-            <form action="" method="POST">
+            
+           
             <div id="qnaHeader_2" >
+            	<input type="hidden" name="pno" value="<%=pno %>" />
+            	<input type="hidden" name="pName" value="<%=pName %>" />
+				<input type="hidden" name="mem" value="<%=login.getMemNo() %>" />
                 <table  id="qnaTable">
                     <tr>
                         <th class="table-success" width="150">작성자</th>
-                        <td><input type="text" name="userName" style="width: 40%;" value="작성자" readonly></td>
+                        
+                        <td><input type="text" name="userId" style="width: 40%;" value="<%=login.getMemId() %>" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">이메일</th>
-                        <td><input type="email" name="userEmail" style="width: 40%;" value="이메일" readonly></td>
+                        <td><input type="email" name="userEmail" style="width: 40%;" value="<%=login.getEmail() %>" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">핸드폰</th>
-                        <td><input type="phone" name="phone" style="width: 40%;" value="핸드폰번호" readonly></td>
+                        <td><input type="phone" name="phone" style="width: 40%;" value="<%=login.getMobile() %>" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">비밀글</th>
@@ -118,20 +134,20 @@
 
         <div id="qnaContent">
 
-            <textarea name="qnaText" id="qnaText"  style="resize: none;">
+            <textarea name="qnaDetail" id="qnaText"  style="resize: none;">
             
             </textarea>
             
         </div>
-
+		
         <div id="qnaFotter" align="center" style="margin-top: 10px;">
             <button type="submit" class="btn btn-success btn-sm">등록하기</button>
             <button type="button" onclick="history.back();" class="btn btn-secondary btn-sm" >뒤로가기</button>
         </div>
-
-        </form>
+		
+   
     </div>
-    
+     </form>
     
 <%@ include file="../common/footer.jsp"%>
 </body>

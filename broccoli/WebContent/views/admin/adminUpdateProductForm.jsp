@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.product.model.vo.*"%>
+<%
+	Product p = (Product)request.getAttribute("p");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +23,7 @@
       margin-top: 50px;
     }
     #updatePForm table{margin:auto;}
-    #updatePForm input:not(#radio), #updatePForm textarea{
+    #updatePForm input:not([type=radio]), #updatePForm textarea{
       width: 100%;
      box-sizing: border-box;
     }
@@ -36,7 +39,7 @@
        <select onchange="location.href=this.value" style="margin-left: 50px; margin-top: 50px;">
      
            <option value="<%=broccoli%>/updateProduct.admin">상품수정/삭제</option>
-           <option value="<%=broccoli%>/enrollProduct.admin">상품등록</option>
+           <option value="<%=broccoli%>/enrollProduct.admin?currentPage=1">상품등록</option>
          
        </select>
 
@@ -51,82 +54,108 @@
                <table align="center">
                    <tr>
                    <td width="110">* 상품번호 :</td> <!-- db로 자동부여하면 뺄 예정입니다. -->
-                   <td colspan="2" width="300">시퀀스로 부여된 번호</td>
+                   <td colspan="2" width="300"><%= p.getPno() %></td>
                    </tr>
                    <tr>
                    <td>* 카테고리 : </td>
-                   <td colspan="2"><input type="text" name="catetoryNo" required value="부여된 카테고리번호"></td>           
+                   <td colspan="2"><input type="text" name="catetoryNo" required value="<%= p.getCategory() %> ***카테고리번호로 입력하시오***"></td>           
                    </tr>     
                    <tr>
                    <td>* 이벤트번호 :</td>
-                   <td colspan="2"><input type="number" name="eNo" required value="12"></td>
+                   <td colspan="2"><input type="number" name="eNo" required value="<%= p.getEno() %>"></td>
                    </tr>
                    <tr>
                    <td>* 상품명 :</td>
-                   <td colspan="2"> <input type="text" name="pName" required value="기존의 상품명"></td>
+                   <td colspan="2"> <input type="text" name="pName" required value="<%= p.getpName() %>"></td>
                    </tr>
                    <tr>
                    <td>* 판매가격 :</td>
-                   <td colspan="2"><input type="number" name="pPrice" required value="7500"></td>
+                   <td colspan="2"><input type="number" name="pPrice" required value="<%= p.getPrice() %>"></td>
                    </tr>
                    <tr>
                    <td>* 할인가격 : </td>
-                   <td colspan="2"><input type="number" name="pDiscount" required value="6000"></td>
+                   <td colspan="2"><input type="number" name="pDiscount" required value="<%= p.getDiscount()%>"></td>
                    </tr>
                    <tr>
+                   <% if(p.getImg1() != null){ %>
                    <td>* 기본이미지 :</td>
-                   <td><img src="파일경로G" alt="기존 상품 기본이미지""></td>
-                   <td><button type="button" class="btn btn-secondary btn-sm" >파일추가</button></td>
+                   <td><img src="<%= broccoli %>/<%= p.getImg1() %>" width="100" height="80"></td>
+                   <td><input type="file" name="reUpfile1"></td>
+                   <% } %>
                    </tr>
                    <tr>
+                   <% if(p.getImg2() != null){ %>
                    <td>추가이미지 : </td>
-                   <td><img src="파일경로G" alt="기존 상품 추가이미지""></td>
-                   <td><button  type="button" class="btn btn-secondary btn-sm"  >파일추가</button></td>
+                   <td><img src="<%= broccoli %>/<%= p.getImg2() %>" width="100" height="80"></td>
+                   <td><input type="file" name="reUpfile2"></td>
+                   <% } %>
                    </tr>
                    <tr>
                    <td>* 재고 :</td>
-                   <td colspan="2"><input type="number" name="pInventory" required value="12"></td>
+                   <td colspan="2"><input type="number" name="pInventory" required value="<%= p.getInventory()%>"></td>
                    </tr>
                    <tr>
                    <td>업체명 :</td>
-                   <td colspan="2"><input type="text" name="pCompany" value="기존의 업체명" ></td>
+                   <td colspan="2"><input type="text" name="pCompany" value="<%= p.getCompany() %>" ></td>
                    </tr>
                    <tr>
                    <td>판매단위 :</td>
-                   <td colspan="2"><input type="text" name="pUnit"value="기존의 단위"></td>
+                   <td colspan="2"><input type="text" name="pUnit"value="<%= p.getUnit() %>"></td>
                    </tr>
                    <tr>
                    <td>중량 :</td>
-                   <td colspan="2"><input type="text" name="pWeight" value="기존의 중량"></td>
+                   <td colspan="2"><input type="text" name="pWeight" value="<%= p.getWeight()%>"></td>
                    </tr>
                    <tr>
                    <td>상품상세정보 :</td>
-                   <td colspan="2"> <textarea name="pDetail" cols="20" rows="10" style="resize: none;">기존 상품상세정보</textarea> </td>
+                   <td colspan="2"> <textarea name="pDetail" cols="20" rows="10" style="resize: none;"><%= p.getDetail() %></textarea> </td>
                    </tr>
+                   <script>
+                   	<% if(p.getDisYn().equals("N") || p.getDisYn().equals("n") || p.getDisYn() == null){ %>
+	                   	$(function(){
+                   			$("input:radio[id=disN]").prop("checked",true);
+	                   	})
+                   	<% }else{ %>
+                   	$(function(){
+	                   		$("input:radio[id=disY]").prop("checked",true);
+                   	<%  }%>
+                   </script>
                    <tr>
                    <td>할인여부 :</td>
-                   <td colspan="2">&ensp; &ensp;<input type="radio" id="radio" name="disYn"" value="Y" >예 &ensp; &ensp; &ensp; &ensp;<input type="radio" id="radio" name="disYn" value="N" checked>아니오</td>
+                   <td colspan="2">&ensp; &ensp;<input type="radio" id="disY" name="disYn"" value="Y" >예 &ensp; &ensp; &ensp; &ensp;<input type="radio" id="disN" name="disYn" value="N">아니오</td>
                    </tr>
+                    <script>
+                   	<% if(p.geteYn().equals("N") || p.geteYn().equals("n") || p.geteYn() == null){ %>
+	                   	$(function(){
+                   			$("input:radio[id=eN]").prop("checked",true);
+	                   	})
+                   	<% }else{ %>
+                   	$(function(){
+	                   		$("input:radio[id=eY]").prop("checked",true);
+                   	<%  }%>
+                   </script>
                    <tr>
                    <td>이벤트 여부 :</td>
-                   <td colspan="2">&ensp; &ensp;<input type="radio" id="radio" name="eYn" value="Y">예 &ensp; &ensp; &ensp; &ensp;<input type="radio" id="radio" name="eYn" value="N" checked>아니오</td>           
+                   <td colspan="2">&ensp; &ensp;<input type="radio" id="eY" name="eYn" value="Y">예 &ensp; &ensp; &ensp; &ensp;<input type="radio" id="eN" name="eYn" value="N">아니오</td>           
                    </tr>
                    <tr>
                    <td>상품간단설명 :</td>
-                   <td colspan="2"><textarea name="pSmallDetail" cols="20" rows="5" style="resize: none;">기존의 상품간단설명</textarea></td> 
+                   <td colspan="2"><textarea name="pSmallDetail" cols="20" rows="5" style="resize: none;"><%= p.getSmallDetail() %></textarea></td> 
                    </tr>
                    <tr>
                    <td>원산지 :</td>
-                   <td colspan="2"><input type="text" name="pNation" value="기존 원산지"></td>           
+                   <td colspan="2"><input type="text" name="pNation" value="<%= p.getNation()%>"></td>           
                    </tr>
                    <tr>
                    <td>포장타입 :</td>
-                   <td colspan="2"><input type="text" name="pPacktype" value="기존 포장타입"></td>         
+                   <td colspan="2"><input type="text" name="pPacktype" value="<%= p.getPacktype()%>"></td>         
                    </tr>
                    <tr>
+                   <% if(p.getThumbnail() != null){ %>
                    <td>썸네일이미지 :</td>
-                   <td><input type="image" alt="기존 썸네일이미지"name="pThumbnail"></td>
-                   <td><button  type="button" class="btn btn-secondary btn-sm"  >파일추가</button></td>
+                   <td><img src="<%= broccoli %>/<%= p.getThumbnail() %>" width="100" height="80"></td>
+                   <td><input type="file" name="reUpfile3"></td>
+                   <% } %>
                    </tr>
        
                <br><br>

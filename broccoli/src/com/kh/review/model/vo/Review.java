@@ -12,13 +12,13 @@ public class Review {
 	private int clickNo;			// 조회수
 	private int reviewRate;			//평점
 	private int like;
-	
+	private String reviewAttach;	// 리뷰첨부파일 ex 이미지
 	
 	public Review() {}
 
 
 	public Review(int reviewNo, int pno, String mem, Date regDate, String reviewTitle, String reviewContent, int clickNo,
-			int reviewRate, int like) {
+			int reviewRate, int like, String reviewAttach) {
 		super();
 		this.reviewNo = reviewNo;
 		this.pno = pno;
@@ -29,10 +29,21 @@ public class Review {
 		this.clickNo = clickNo;
 		this.reviewRate = reviewRate;
 		this.like = like;
+		this.reviewAttach = reviewAttach;
 	}
 	
 	
 	
+
+	public String getReviewAttach() {
+		return reviewAttach;
+	}
+
+
+	public void setReviewAttach(String reviewAttach) {
+		this.reviewAttach = reviewAttach;
+	}
+
 
 	public int getReviewNo() {
 		return reviewNo;
@@ -128,8 +139,11 @@ public class Review {
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", pno=" + pno + ", mem=" + mem + ", regDate=" + regDate
 				+ ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent + ", clickNo=" + clickNo
-				+ ", reviewRate=" + reviewRate + ", like=" + like + "]";
-	};
+				+ ", reviewRate=" + reviewRate + ", like=" + like + ", reviewAttach=" + reviewAttach + "]";
+	}
+
+
+
 	
 	
 	

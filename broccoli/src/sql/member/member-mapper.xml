@@ -156,8 +156,38 @@
 			   AND MEM_ID = ?
 			   AND EMAIL = ?
 			   AND STATUS = 'Y'
+	</entry>
 	
+	<entry key="updatePwd">
+		UPDATE MEMBERS 
+		   SET MEM_PWD = ?
+		 WHERE MEM_ID = ?
+		   AND MEM_NAME = ?
+		   AND STATUS = 'Y'
+	</entry>
 	
+		<entry key="reselectMember">
+		SELECT 
+		      MEM_NO
+		     ,MEM_ID
+		     ,MEM_NAME
+		     ,MEM_PWD
+		     ,EMAIL
+		     ,MOBILE
+		     ,ZIPCODE
+		     ,ADDRESS1
+		     ,ADDRESS2
+			 ,ADDREXTRA
+			 ,GENDER
+		     ,BIRTH_DATE
+		     ,REG_DATE
+		     ,POINT
+		     ,STATUS
+		     ,ADDRESS_NO
+		     ,MEM_CATEGORY
+		FROM MEMBERS
+		WHERE MEM_ID = ?
+		AND STATUS = 'Y'
 	</entry>
 
 

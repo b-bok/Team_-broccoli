@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectUserQna">
+	
+				SELECT
+				       QNA_NO
+				     , QNA_TITLE
+				     , M.MEM_ID
+				     , QNA_DATE
+				
+				FROM PRODUCT_QNA Q
+				JOIN MEMBERS M ON(Q.MEM_NO = M.MEM_NO)
+				WHERE P_NO = ?
+					
+	</entry>
+
+
+	<entry key="selectDetailQna">
+		
+		SELECT
+		       MEM_ID
+		     , EMAIL
+		     , MOBILE
+		     , SECRET
+		     , QNA_TITLE
+		     , QNA_DETAIL
+			 , NOTICE_YN
+			 
+		FROM PRODUCT_QNA Q     
+		LEFT JOIN MEMBERS M ON (Q.MEM_NO = M.MEM_NO)
+		WHERE QNA_NO = ?
+				
+		
+		</entry>
+	
+	
+	<entry key="insertQna">
+	
+			INSERT
+			      INTO PRODUCT_QNA 
+			      (
+			         QNA_NO
+			       , P_NO 
+			       , MEM_NO
+			       , P_NAME
+			       , QNA_TITLE
+			       , QNA_DETAIL
+			       , SECRET
+			      )
+			      VALUES
+			      (
+			        ?
+			      , ?
+			      , ?
+			      , ?
+			      , ?
+			      , ?
+			      , ?
+			      )
+
+	
+	</entry>
+
+
+</properties>

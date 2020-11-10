@@ -180,5 +180,15 @@ public class ProductService {
 		return result;
 	}
 	
+	public ArrayList<Product> selectAdminProductBySearch(PageInfo pi, String searchCat, String searchWord){
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new ProductDao().selectAdminProductBySearch(conn, pi,searchCat, searchWord);
+		
+		close(conn);
+		
+		return list;
+	}
+	
 	
 }

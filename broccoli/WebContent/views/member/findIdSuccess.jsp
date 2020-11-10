@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Member findId = (Member) session.getAttribute("findId");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>아이디 찾기 성공</title>
+<% %>
 <style>
 .container {
 	padding: 16px;
@@ -25,6 +29,12 @@
 	{
 	background-color: #dddddd;
 	outline: none;
+}
+
+.result2{
+	font-weight: 800;
+	font-size: 15px;
+	color:green;
 }
 
 .btn-dark, .btn-success {
@@ -56,8 +66,23 @@
 			   	 고객님의 <br> 아이디 찾기가 완료되었습니다. 
 			  </div>
 			  <div class="result result2" align="center">
-			     	아이디 : XXXXX
+			     	아이디 : <%=findId.getMemId()%>
 			  </div><br>
+			  
+			  <!-- 별표처리하기  -->
+			  <script>
+			  	$(function(){
+			  		
+			  		var str = $(".result2").children()
+			  		
+			  		$view['name'] = str;
+			  		mb_internal_encoding(mb_detect_encoding($view['name'],'UTF-8,EUC-KR'));
+			  		echo ($len=mb_strlen($view['name']))>2 ? mb_substr($view['name'],0,1).str_repeat('*',$len-2).mb_substr($view['name'],-1,1) : $view['name']; 
+			  		
+
+
+			  	});
+			  </script>
 			    <button type="submit" class="btn btn-success" id="loginPage">로그인하기</button>
 			    <script>
 			    	$(function(){
