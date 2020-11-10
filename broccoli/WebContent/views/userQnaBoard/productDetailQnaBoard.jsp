@@ -122,12 +122,12 @@ float: left;
 		</div>
 
 		<div id="fotter">
-
+			<%if(login != null) { %>
 			<div id="qnaForm" align="right">
                 <a href="<%=broccoli %>/qnaAll.pq" class="btn btn-success btn-sm">전체보기</a>
-				<a href="<%=broccoli %>/enroll.pq" class="btn btn-success btn-sm">문의하기</a>
+				<a href="<%=broccoli %>/enroll.pq?pno=<%=p.getPno() %>" class="btn btn-success btn-sm">문의하기</a>
 			</div>
-
+			<%} %>
 		</div>
 
 	</div>

@@ -165,6 +165,39 @@ public class QnaDao {
 		
 		return q;
 	}
+
+
+	public int insertQna(Connection conn, Qna q) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertQna");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setInt(1, q.getQnaNo());
+			pstmt.setInt(2, q.getPno());
+			pstmt.setInt(3, Integer.parseInt(q.getMemId()));
+			pstmt.setString(4, q.getpName());
+			pstmt.setString(5, q.getQnaTitle());
+			pstmt.setString(6, q.getQnaDetail());
+			pstmt.setString(7, q.getSecret());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally  {
+			close(pstmt);
+		}
+		
+
+		return result;
+	}
 	
 	
 

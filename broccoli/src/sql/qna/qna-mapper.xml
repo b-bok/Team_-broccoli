@@ -35,7 +35,34 @@
 				
 		
 		</entry>
+	
+	
+	<entry key="insertQna">
+	
+			INSERT
+			      INTO PRODUCT_QNA 
+			      (
+			         QNA_NO
+			       , P_NO 
+			       , MEM_NO
+			       , P_NAME
+			       , QNA_TITLE
+			       , QNA_DETAIL
+			       , SECRET
+			      )
+			      VALUES
+			      (
+			        ?
+			      , ?
+			      , ?
+			      , ?
+			      , ?
+			      , ?
+			      , ?
+			      )
 
+	
+	</entry>
 
 
 </properties>

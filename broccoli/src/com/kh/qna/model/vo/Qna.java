@@ -42,7 +42,22 @@ public class Qna {
 	}
 
 
+	
+	
+	
 
+
+	public Qna(int qnaNo, int pno, String pName, String memId,  String qnaTitle, String qnaDetail, String secret) {
+		super();
+		this.qnaNo = qnaNo;
+		this.pno = pno;
+		this.memId = memId;
+		this.pName = pName;
+		this.qnaTitle = qnaTitle;
+		this.qnaDetail = qnaDetail;
+		this.secret = secret;
+
+	}
 
 
 	public String getEmail() {

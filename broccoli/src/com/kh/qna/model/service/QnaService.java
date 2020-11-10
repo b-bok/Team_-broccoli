@@ -1,7 +1,6 @@
 package com.kh.qna.model.service;
 
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -56,6 +55,25 @@ public class QnaService {
 		
 	}
 	
+	
+	public int insertQna(Qna q) {
+		
+		Connection conn = getConnection();
+		
+		int result = new QnaDao().insertQna(conn, q);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		
+		close(conn); 
+		
+		return result;
+		
+	}
 	
 	
 	

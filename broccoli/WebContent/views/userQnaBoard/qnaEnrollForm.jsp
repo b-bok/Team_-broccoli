@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="com.kh.product.model.vo.*" %>
+
+<%
+	int pno = (int)request.getAttribute("pno");
+	String pName = (String)request.getAttribute("pname");
+%>
+
+
     
 <!DOCTYPE html>
 <html>
@@ -78,7 +86,7 @@
 </head>
 <body>
 <%@ include file="../common/menubar.jsp" %>	
-	<form action="<%=broccoli %>/qnaEnroll.qa" method="POST">
+	<form action="<%=broccoli %>/qnaInsert.qa" method="POST">
      <div class="wrap">
         <div id="qnaHeader">
             
@@ -94,12 +102,14 @@
             
            
             <div id="qnaHeader_2" >
-
+            	<input type="hidden" name="pno" value="<%=pno %>" />
+            	<input type="hidden" name="pName" value="<%=pName %>" />
+				<input type="hidden" name="mem" value="<%=login.getMemNo() %>" />
                 <table  id="qnaTable">
                     <tr>
                         <th class="table-success" width="150">작성자</th>
                         
-                        <td><input type="text" name="userName" style="width: 40%;" value="<%=login.getMemId() %>" readonly></td>
+                        <td><input type="text" name="userId" style="width: 40%;" value="<%=login.getMemId() %>" readonly></td>
                     </tr>
                     <tr>
                         <th class="table-success">이메일</th>
