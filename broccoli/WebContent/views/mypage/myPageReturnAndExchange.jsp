@@ -317,10 +317,10 @@
              margin:2px;
         }
         
-       
-        
-        
+
+   
     </style>
+    
     </head>
     <body>
     <%@ include file="../common/menubar.jsp"%>
@@ -389,7 +389,7 @@
                             <a class="qnabutton" href ="">1:1문의하기</a>
                         </div>
                         <div class="product2_4">
-                            <a class="return" href ="">반품</a>
+                            <a class="return" href ="<%= broccoli%>/myPageReturnDetailPage.my">반품</a>
                             <a class="exchange" href ="">교환</a>
                         </div>
                     </div>
@@ -477,7 +477,7 @@
         </div>
         
         
-    </div>
+   
     <%@ include file="../common/footer.jsp"%>
     </body>
     </html>
