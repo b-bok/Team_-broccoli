@@ -50,7 +50,7 @@ public class ProductMainController extends HttpServlet {
 		listCount = new ProductService().selectListCount();
 	
 		// * currentPage : 사용자가 요청한 페이지 (현재 페이지)
-		currentPage = 1;
+		currentPage =  Integer.parseInt(request.getParameter("currentPage"));
 		
 		
 		

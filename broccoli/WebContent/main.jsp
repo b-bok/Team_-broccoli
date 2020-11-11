@@ -105,13 +105,11 @@
             
          
         </div>
-        
+        	<br /><br />
            <div id="footer">
             		<div id="pagingBar" align="center">
                 <ul class="pagination">
-            			
-            			
-            			
+           			
             		</ul>
             </div>
         
@@ -125,6 +123,19 @@
 		$(function(){
 		
 			selectProductlist();
+			
+			
+			$("#content_2").on("click","div",function(){
+				
+				var pno = $(this).children().val();
+				
+				 location.href = "<%=broccoli%>/detail.pb?pno=" + parseInt(pno);
+				
+			})
+			
+			
+			
+			
 
 		})
 			
@@ -136,7 +147,7 @@
 				url : "main.do",
 				type : "post",
 				data : {
-					
+						currentPage : 1
 				},
 				success : function(object) {
 					console.log(object);
@@ -172,17 +183,53 @@
 					
 					$(".thumbmenu").html(str);
 					
+					var page = "";
+					
 					
 					if(pageInfo.currentPage != 1) {
 						
-						var before = "<li class='page-item'>" +
-						"<a class='page-link' href='<%=broccoli%>/allProduct.pb?currentPage='+ (pageInfo.currentPage-1) + '>' + ">"	
-						+ &lt;이전 + "</a>" + "</li>";
+						page += "<li class='page-item'>" +
+						 "<a class='page-link'" + "href='<%=broccoli %>/' + ''" + ">"	
+						+ "이전"  + "</a>" + "</li>";
+						
+						
 						
 						
 					}
 					
 					
+					
+					for(var i = pageInfo.startPage; i<pageInfo.endPage; i++) {
+						
+						if(pageInfo.currentPage == i) {
+							
+							
+							page += "<li class='page-item active'>" +
+										"<a class='page-link'" + "href=''" + ">" + i + "</a>" + "</li>"
+							
+							
+						}else {
+							
+							page += "<li class='page-item'>" +
+							"<a class='page-link'" + "href=''" + ">" + i + "</a>" + "</li>"
+	
+						}
+
+					}
+					
+					
+					
+					if(pageInfo.currentPage != pageInfo.maxPage) {
+						
+						page += "<li class='page-item'>" +
+						 "<a class='page-link'" + "href=''" + ">"	
+						+ "다음"  + "</a>" + "</li>";
+						
+					}
+					
+					
+					
+					$(".pagination").html(page);
 					
 					
 				},
