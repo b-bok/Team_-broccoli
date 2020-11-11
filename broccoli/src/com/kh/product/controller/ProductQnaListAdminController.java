@@ -65,6 +65,12 @@ public class ProductQnaListAdminController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<ProductQna> list = new ProductService().selectProductQnaList(pi);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		System.out.println(list);
+		
 		request.getRequestDispatcher("views/admin/adminProductQnaList.jsp").forward(request, response);
 		
 		
