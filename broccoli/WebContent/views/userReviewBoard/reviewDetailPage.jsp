@@ -138,7 +138,7 @@
         <div id="reviewfooter">
 
             <div id="like" align="right">
-                <button name="likeCount" id="getLike">좋아요(<%=r.getLike() %>)</button>
+                <button name="likeCount" class="btn btn-success btn-sm" id="getLike">좋아요(<%=r.getLike() %>)</button>
             </div>    
         </div>
 
