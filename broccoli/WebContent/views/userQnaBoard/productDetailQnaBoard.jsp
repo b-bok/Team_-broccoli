@@ -60,6 +60,13 @@ float: left;
 #qnaSort {margin-top: 5px;}
 
 #qnaForm, #pagingBar {height: 50%;}
+
+a {
+            color: black;
+            font-weight: bold;
+        }
+
+
 </style>
 
 
