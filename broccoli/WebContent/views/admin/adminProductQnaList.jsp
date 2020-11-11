@@ -62,9 +62,9 @@
         <table border="1" id="pReviewList" class="table table-striped table-bordered dataTable no-footer">
             <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>상품정보</th>
-                    <th>제목</th>
+                    <th>문의번호</th>
+                    <th>상품명</th>
+                    <th>문의제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>답변 여부</th>

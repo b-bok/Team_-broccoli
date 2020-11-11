@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductQna;
 import com.kh.review.model.vo.Review;
 
 
@@ -660,6 +661,24 @@ public class ProductDao {
 		}
 		
 		return result;
+	}
+	
+	
+	public ArrayList<ProductQna> selectProductQnaList(Connection conn, PageInfo pi){
+		// select문 => 여러행 ArrayList
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	
