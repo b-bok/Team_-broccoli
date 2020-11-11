@@ -229,6 +229,29 @@ public class ProductService {
 		
 		return list;
 	}
+
+	public ArrayList<Product> selectSearchList(String keyword,PageInfo pi) {
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new ProductDao().selectSearchList(conn, keyword, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int selectSearchCount(String keyword) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new ProductDao().selectSearchCount(conn, keyword);
+		
+		close(conn);
+		
+		return listCount;
+		
+		
+	}
 	
 	
 }

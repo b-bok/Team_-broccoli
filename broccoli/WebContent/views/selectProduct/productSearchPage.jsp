@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<%@ page import="java.util.*, com.kh.product.model.vo.*" %>	
+	
+
+<%
+	ArrayList<Product> list = (ArrayList)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	String keyword = (String)request.getAttribute("keyword");
+%>	
+
+ 
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,14 +61,14 @@
         #searchbarForm input {width: 100%; height: 100%;}
 
 
-        .thumbnail {
+        .thumbnails {
             border: 1px solid white;
             width: 220px;
             display:inline-block;
             margin: 10px;
         }
 
-        .thumbnail:hover {
+        .thumbnails:hover {
             cursor: pointer;
             opacity: 0.3;
         }
@@ -80,10 +93,10 @@
 
         <div id="searcbar">
             <hr>
-            <form action="<%=broccoli %>/search.pb" id="searchbarForm" method="get">
-
+            <form action="<%=broccoli %>/search.pb?" id="searchbarForm" method="get">
+			<input type="hidden" name="currentPage" value=1 />
             <div id="search_text">
-                <input type="text" class="form-control form-control-sm" name="keyword">
+                <input type="text" class="form-control form-control-sm" name="search">
             </div>
             
             <div id="search_btn">
@@ -97,109 +110,69 @@
         </div>
         <hr>
         <div id="searchSorting">
-            총 68개의 상품이 검색되었습니다.
+            총 <%=pi.getListCount() %>개의 상품이 검색되었습니다.
 
-            <form action="">
+<!--             <form action="">
             <input type="radio" name="searchSorting" id="standard" value="standard"><label for="standard">기본</label>
             <input type="radio" name="searchSorting" id="lowPrice" value="lowPrice"><label for="lowPrice">낮은가격순</label> 
             <input type="radio" name="searchSorting" id="highPrice" value="highPrice"><label for="highPrice">높은가격순</label>
             <input type="radio" name="searchSorting" id="bestRanking" value="bestRanking"><label for="bestRanking">판매량순</label>
             <input type="radio" name="searchSorting" id="newProduct" value="newProduct"><label for="newProduct">신상품순</label>
             </form>
+ -->
+			
 
         </div>
         <div id="content">
           
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
+			<%for(Product p : list) { %>
+          	
+            <div class="thumbnails" align="center">
+            	<input type="hidden" name="pno" id="pno" value="<%=p.getPno() %>">
+                <img src="<%=broccoli %>/<%=p.getThumbnail() %>" width="200" height="200">
+   					<br />
+                    <%=p.getpName() %><br>
+                    <span style="text-decoration: line-through; color: gray;"><%=p.getPrice() %></span>
+                    <span style="color: green;">--> <%=p.getDiscount() %></span> <br>
+                    <span style="font-size: 13px; font-weight: lighter; color: #666"><%=p.getSmallDetail() %></span>
               
             </div>
+            
+            <% } %>
 
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
-
-            <div class="thumbnail" align="center">
-                <img src="/jsp/resources/thumbnail_upfiles/실제서버에업로드할이름" width="200" height="200">
-   
-                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                    <span style="color: green;">--> 14,310원</span> <br>
-                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-              
-            </div>
         </div>
         <div id="fotter">
+        
             <br><br>
             <div id="pagingBar" align="center">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul>
+                <%if(pi.getCurrentPage() != 1) { %>
+                	<li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/search.pb?currentPage=<%=pi.getCurrentPage() -1%>&search=<%=keyword%>">&lt;이전</a>
+                    </li>
+                <% } %> 
+                	
+                	
+                <%for(int p = pi.getStartPage(); p<pi.getEndPage(); p++) {%>
+                	<%if(pi.getCurrentPage() == p) { %>
+                	
+                  	<li class="page-item active">
+                    <a class="page-link" href="<%=broccoli%>/search.pb?currentPage=<%=p%>&search=<%=keyword%>"><%=p%></a>
+                  
+                  	<%}else { %>
+                  	<li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/search.pb?currentPage=<%=p%>&search=<%=keyword%>"><%=p%></a>
+                    </li>
+                    <% } %>
+                <% } %>
+                
+                
+                <%if(pi.getCurrentPage() != pi.getMaxPage())  {%>
+                   <li class="page-item">
+                    <a class="page-link" href="<%=broccoli%>/search.pb?currentPage=<%=pi.getCurrentPage() +1%>&search=<%=keyword%>">&gt;다음</a>
+                   </li>
+                 <% } %>   
+				</ul>
             </div>
             
         </div>

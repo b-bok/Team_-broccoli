@@ -707,6 +707,93 @@ public class ProductDao {
 		
 		return list;
 	}
+
+	public ArrayList<Product> selectSearchList(Connection conn, String keyword, PageInfo pi) {
+		
+		ArrayList<Product> list = new ArrayList<>();
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectSearchList");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+
+			pstmt.setString(1, keyword);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+
+			
+			
+			while(rset.next()) {
+				
+				list.add(new Product(
+									   rset.getInt("p_no")
+									 , rset.getString("p_name")
+									 , rset.getInt("p_price")
+									 , rset.getInt("p_discount")
+									 , rset.getString("p_detail")
+									 , rset.getString("p_thumbnail")
+						             )
+						);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+		
+		
+	}
+
+	public int selectSearchCount(Connection conn, String keyword) {
+		
+		
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearchCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, keyword);
+						
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				listCount = rset.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		
+		return listCount;
+	}
 	
 	
 	
