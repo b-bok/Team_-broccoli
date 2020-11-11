@@ -222,7 +222,7 @@ margin-top: 5px;
 								
 					var qno = $(this).children().eq(0).text();
 
-				 location.href = "<%=broccoli%>/detail.qna?qno=" + Number(qno);
+				 location.href = "<%=broccoli%>/detail.qna?qno=" + parseInt(qno);
 					
 				})
 			

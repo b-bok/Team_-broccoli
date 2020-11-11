@@ -21,7 +21,7 @@
 		             FROM PRODUCT   
 		             
 		             ORDER 
-		                BY P_NO DESC) A
+		                BY P_NO ASC) A
 		                )       
 		                
 		WHERE RNUM BETWEEN ? AND ?
