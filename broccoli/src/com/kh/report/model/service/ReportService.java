@@ -26,5 +26,28 @@ public class ReportService {
 		close(conn);
 		return list;
 	}
+	
+	public int increaseCount(int repno) {
+		
+		Connection conn = getConnection();
+		int result = new ReportDao().increaseCount(conn, repno);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+	
+	
+	public Report selectReport(int repno) {
+		
+		Connection conn = getConnection();
+		Report rp = new ReportDao().selectReport(conn, repno);
+		close(conn);
+		return rp;
+	}
 
 }

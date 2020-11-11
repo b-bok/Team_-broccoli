@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="com.kh.member.model.vo.*" %>    
 <%
-	Member login = (Member) session.getAttribute("login");
+	Member loginAdmin = (Member) session.getAttribute("loginAdmin");
 	String broccoli = request.getContextPath();
 %>
 <!DOCTYPE html>
@@ -98,6 +98,7 @@ function deleteCookie(cookieName){
   <p align="center">관리자 로그인</p>
   <form action="<%= broccoli %>/adminLogin.me" class="was-validated" method="post">
     <div class="form-group">
+    	
       <input type="text" class="form-control" id="memId" placeholder="아이디를 입력해주세요" name="memId" required>
     </div>
     <div class="form-group">

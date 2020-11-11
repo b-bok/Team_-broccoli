@@ -72,8 +72,8 @@ a {
 							<td><%=r.getReportCategory() %></td>
 							<td> 상품번호 -> product 조인확인 필요 XXXXXXXXXXXXXXXX</td>
 							<td><a href="#상품 세부페이지"> 상품명 -> product 상품명 조인확인필요 ; 유기농 브로콜리 1kg</a></td>
-							<td><a href="adminReportDetail.html"><%=r.getReportContent() %></td>
-							<td><a href="#어디로 이동하는게 나으려나??"><%=r.getMem() %>user01</a></td>
+							<td><a href="#"><%=r.getReportContent() %></a></td>
+							<td><a href="#어디로 이동하는게 나으려나??"><%=r.getMem() %></a></td>
 							<td><a href=""><%=r.getReportResult() %></a></td>
 						</tr>
 					<%} %>
@@ -92,14 +92,42 @@ a {
 					});
 			});
 		</script>
-
-		<ul class="pager">
-			<li><a href="#">이전</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">다음</a></li>
-		</ul>
+	
+	   <!-- 상세페이지이동 -->
+	   <script>
+        	$(function(){
+        		$(".table>tbody>tr").click(function(){
+        			location.href = "<%= broccoli%>/detail.rep?repno="+ $(this).parent().children().eq(0).text();
+        		});
+        	});
+        </script>
+	
+		<!-- 페이징바 -->
+		<div  class="paging-area" align="center">
+	
+			<ul class="pager">
+			<% if(p.getCurrentPage()!= 1){ %>
+				<li><a href="<%=broccoli %>/selectReport.admin?currentPage=<%=p.getCurrentPage()-1%>">이전</a></li>
+			<% } %>
+			
+			<% for(int i = p.getStartPage();i<=p.getEndPage();i++){ %>
+				<li><a href="<%=broccoli%>/selectReport.admin?currentPage=<%=i%>" class="btn btn-sm"> <%=i%></a></li>
+			<%} %>
+			
+			<% if(p.getCurrentPage() != p.getMaxPage()){ %>
+				<li><a href="<%=broccoli%>/selectReport.admin?currentPage=<%=p.getCurrentPage()+1%>">다음</a></li>
+			<%} %>
+			</ul>
+		</div>
+		
+		<script>
+			$(function(){
+				$(".btn-sm").click(function(){
+					$(this).attr(active);
+				})
+			})
+		</script>
+		
 	</div>
 
 </body>
