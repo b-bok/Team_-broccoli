@@ -83,6 +83,11 @@
             height: 100%;
             font-size: small;
         }
+        
+        a {
+            color: black;
+            font-weight: bold;
+        }
 
     </style>
 

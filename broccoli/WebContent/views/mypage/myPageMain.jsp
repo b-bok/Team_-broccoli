@@ -313,7 +313,7 @@
                             <h7 class="detailstatus"><a href="">배송상세조회 ></a></h7>
                         </div>
                         <div class="product2_3"> 
-                            <a class="qnabutton" href ="">1:1문의하기</a>
+                            <a class="qnabutton" href ="<%= broccoli%>/MyQNAEnrollForm.my">1:1문의하기</a>
                             <a class="qnadelete-blind" href ="">삭제</a>
                         </div>
                     </div>

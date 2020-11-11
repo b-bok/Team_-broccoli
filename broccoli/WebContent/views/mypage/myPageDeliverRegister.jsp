@@ -5,100 +5,91 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
-        div, form, input{
-            box-sizing:border-box;
-        }
-        #navigator, #content_1>div #content_2>div {border:1px solid lightgray;}
-        a{text-decoration: none; color:black; font-size:12px;}
-        
-        .wrap{width:1300px;height:2000px;margin:auto;}
+  
+     div, form, input{box-sizing:border-box;}
+     
+     #navigator, #content_1>div #content_2>div {border:1px solid lightgray;}
+     
+     a{text-decoration: none; color:black; font-size:12px;}
+     
+     .wrap{width:1300px;height:2000px;margin:auto;}
 
-        
-        .wrap>div{width:100%;}
-        #navigator{height:7.5%; margin:10px 0px;}
-        #content{height:85%;}
+     .wrap>div{width:100%;}
+     
+     #navigator{height:7.5%; margin:10px 0px;}
+     
+     #content{height:85%;}
 
-        #navi{
-            list-style-type: none;
-            margin: 0;
-            padding:0;
-            height:100%;
-            width:100%;
-        }
-        #navi>li{
-            float:left;
-            height:100%;
-            width:25%;
-            text-align:center;
-            background:rgba(192, 190, 190, 0.301);
-        }
-        #navi a{
-        
-            font-size:16px;
-            font-weight:600;
-            color:rgba(56, 56, 100, 0.774);
-            display: block;
-            height:100%;
-            line-height:140px;
-        }
-        #navi a:hover{color:rgb(13, 23, 77);}
-        #navi a:hover{background:rgba(15, 153, 61, 0.445);}
+     #navi{list-style-type: none;
+           margin: 0;
+           padding:0;
+           height:100%;
+           width:100%;}
+           
+     #navi>li{float:left;
+              height:100%;
+              width:25%;
+              text-align:center;
+              background:rgba(192, 190, 190, 0.301);}
+     
+     #navi a{font-size:16px;
+             font-weight:600;
+             color:rgba(56, 56, 100, 0.774);
+             display: block;
+             height:100%;
+             line-height:140px;}
+             
+     #navi a:hover{color:rgb(13, 23, 77);
+                   background:rgba(15, 153, 61, 0.445);}
        
-        .menu{
-            display:table-cell;
-            height:30px;
-            width:220px;
-        }
-        .menu a{
-            text-decoration:none;
-            color:black;
-            font-weight:bold;
-            display:block;
-            width:100%;
-            height:100%;
-            font-size:20px;
-            line-height:50px;
-        }
-        .menu a:hover{
-            background:rgba(15, 153, 61, 0.445);
-        }
+     .menu{display:table-cell;
+           height:30px;
+           width:220px;}
+           
+     .menu a{text-decoration:none;
+             color:black;
+             font-weight:bold;
+             display:block;
+             width:100%;
+             height:100%;
+             font-size:20px;
+             line-height:50px;}
+             
+     .menu a:hover{background:rgba(15, 153, 61, 0.445);}
 
-        #content>div{height:100%; float:left;}
-        #content_1{width:20%;}
-        #content_2{width:80%;}
-
-      
-        #content_1>div{width:98%; height:100%
+     #content>div{height:100%; float:left;}
+     
+     #content_1{width:20%;}
         
-        }
+     #content_2{width:80%;}
+
+     #content_1>div{width:98%; height:100%;}
         
-        
+     #content_2>div{width:100%; height:100%;}
 
-        #content_2>div{width:100%; height:100%;
+     #p1{height:80%; padding:15px;}
+     
+     #p2{height:20%; text-align:center;}
 
-        
-        }
-
-       #p1{height:80%; padding:15px;}
-        #p2{height:20%; text-align:center;}
-
-        #topic{color:green;
-        font-weight:bold;
-        }
-
-        #topic1{
-            text-align: center;
-        }
-       #deliver{
-          float:right;
-        }
+     #topic{color:green;
+            font-weight:bold;}
+    
+     #topic1{text-align: center;}
+     
+     #deliver{float:right;}
         
 </style>
+
 </head>
+
 <body>
+
 <%@ include file="../common/menubar.jsp"%>
+
  <br clear="both">
+ 
     <div class="wrap">
       <div id="navigator">
             <ul id="navi">
