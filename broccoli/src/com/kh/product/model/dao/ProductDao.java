@@ -121,6 +121,7 @@ public class ProductDao {
 
 	
 	public ArrayList<Product> selectBestProduct(Connection conn, PageInfo pi) {
+		
 		ArrayList<Product> list = new ArrayList<>();
 		
 		PreparedStatement pstmt  = null;
@@ -163,6 +164,8 @@ public class ProductDao {
 
 		return list;
 	}
+	
+	
 	
 	public ArrayList<Product> selectNewProduct(Connection conn, PageInfo pi) {
 		ArrayList<Product> list = new ArrayList<>();
