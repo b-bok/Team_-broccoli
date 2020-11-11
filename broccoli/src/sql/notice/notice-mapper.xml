@@ -39,5 +39,21 @@
 		  FROM NOTICE 
 		 WHERE NOTICE_NO = ? 
 	</entry>
+	<entry key="insertNotice">
+	INSERT 
+		  INTO NOTICE
+		  (
+		    NOTICE_NO
+		  , NOTICE_TITLE
+		  , NOTICE_CONTENT
+		  )
+		  VALUES
+		  (
+		    SEQ_NNO.NEXTVAL
+		  , ?
+		  , ?
+		  )
+	
+	</entry>
 
 </properties>

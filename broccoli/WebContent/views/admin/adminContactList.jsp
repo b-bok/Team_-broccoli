@@ -56,7 +56,7 @@
 	
 	<%@ include file="adminNav.jsp" %>
 
-    <form action="ContactList.admin">
+    <form action="insert.no">
 
     <div class=all style="margin-left: 300px;">
 
@@ -102,6 +102,7 @@
         <br><br><br>
           <input type="submit" id="ok" value="검색" class="btn btn-success">
           <input type="reset" id="notOk" value="초기화" class="btn btn-secondary">
+          <button type="button" onclick="history.back();">뒤로가기</button>
       </ul>
     </div>
     
