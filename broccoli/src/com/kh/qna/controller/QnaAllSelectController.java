@@ -83,11 +83,6 @@ public class QnaAllSelectController extends HttpServlet {
 	
 	  
 	  ArrayList<Qna> list = new QnaService().selectAllQna(pi);
-
-	  System.out.println(pno);
-
-	  System.out.println(list);
-	  
 	  
 	  request.setAttribute("pi", pi);
 	  request.setAttribute("list", list);

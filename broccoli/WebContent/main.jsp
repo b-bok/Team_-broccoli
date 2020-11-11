@@ -44,7 +44,7 @@
 	
     <div class="wrap">	
 	<%@ include file = "views/common/menubar.jsp" %>
-
+	
         <div id="demo" class="carousel slide" data-ride="carousel">
             <ul class="carousel-indicators">
                 <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -58,24 +58,20 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="★"><img src="img/forest1.PNG" alt="이벤트상품썸네일"></a>
+                    <a href="<%=broccoli%>/eventEachProduct.pb?eno=1"><img src="<%=broccoli %>/resources/event_upfiles/ef20201020.JPG" alt="이벤트상품썸네일"></a>
                     <div class="carousel-caption">
-                        <h4>이벤트명</h4>
-                        <p>이벤트설명</p>
+                       
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <a href="★"><img src="img/flower3.PNG" alt="이벤트상품썸네일"></a>
+                    <a href="<%=broccoli%>/eventEachProduct.pb?eno=2"><img src="<%=broccoli %>/resources/event_upfiles/ef20201021.JPG" alt="이벤트상품썸네일"></a>
                     <div class="carousel-caption">
-                        <h4>이벤트명</h4>
-                        <p>이벤트설명</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <a href="★"><img src="img/river1.PNG" alt="이벤트상품썸네일"></a>
+                	<input type="hidden" name="eno" value=3 />
+                    <a href="<%=broccoli%>/eventEachProduct.pb?eno=3"><img src="<%=broccoli %>/resources/event_upfiles/ef20201022.JPG" alt="이벤트상품썸네일"></a>
                     <div class="carousel-caption">
-                        <h4>이벤트명</h4>
-                        <p>이벤트설명</p>
                     </div>
                 </div>
             </div>
@@ -159,6 +155,9 @@
   		<%@ include file = "views/common/footer.jsp" %>
         
     </div>
+    
+    
+    
 	
 	
 </body>
