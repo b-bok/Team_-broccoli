@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.common.Pagination;
 import com.kh.review.model.vo.Review;
 
 public class ReviewDao {
@@ -128,6 +131,85 @@ public class ReviewDao {
 
 		
 		return result;
+	}
+	
+	
+	/**
+	 * 김근희 작성 : 관리자(admin) 리뷰 카운트 
+	 * @param conn
+	 * @return
+	 */
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
+		
+	}
+	
+	/**
+	 * 김근희 작성 - 관리자(admin)단 리뷰조회
+	 * @param conn
+	 * @param p
+	 * @return
+	 */
+	public ArrayList<Review> selectList(Connection conn, Pagination p){
+		
+		ArrayList<Review> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow = (p.getCurrentPage() -1)*p.getBoardLimit() + 1;
+			int endRow = startRow + p.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Review(rset.getInt("review_board_no")
+									,rset.getInt("p_no")
+									,rset.getString("mem_no")
+									,rset.getDate("reg_date")
+									,rset.getString("review_title")
+									,rset.getString("review_content")
+									,rset.getInt("click_no")
+									,rset.getInt("review_rate")
+									,rset.getInt("like")
+									));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
 	}
 	
 }

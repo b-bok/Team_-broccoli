@@ -199,9 +199,9 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="<%=broccoli%>/selectReview.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 리뷰 전체조회</a>
-      <a href="<%=broccoli%>/selectRecipe.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 레시피 전체조회</a>
-      <a href="<%=broccoli%>/selectReport.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 신고 전체조회</a>
+      <a href="<%=broccoli%>/selectReview.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 리뷰 전체조회</a>
+      <a href="<%=broccoli%>/selectRecipe.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 레시피 전체조회</a>
+      <a href="<%=broccoli%>/selectReport.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 신고 전체조회</a>
     </div>
           
     <button class="dropdown-btn"><i class="fa fa-feed"></i> &nbsp; CS관리 

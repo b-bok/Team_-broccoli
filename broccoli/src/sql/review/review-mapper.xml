@@ -23,7 +23,7 @@
 				                 ,REVIEW_CONTENT
 				                 ,CLICK_NO
 				                 ,REVIEW_RATE
-				                 ,LIKE
+				                 ,"LIKE"
 				            FROM REVIEW
 				        ORDER BY REG_DATE DESC) A)
 				  WHERE RNUM BETWEEN ? AND ?
