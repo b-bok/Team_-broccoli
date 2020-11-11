@@ -1,10 +1,14 @@
 package com.kh.recipe.model.service;
 
-import static com.kh.common.JDBCTemplate.*;
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.common.Pagination;
 import com.kh.recipe.model.dao.RecipeDao;
 import com.kh.recipe.model.vo.Recipe;
 import com.kh.recipe.model.vo.RecipeAttach;
@@ -76,6 +80,37 @@ public class RecipeService {
 		close(conn);
 		
 		return list;
+	}
+	
+	
+	/**
+	 * 김근희 작성 관리자(admin)단 레시지 조회 카운트용 
+	 * @return
+	 */
+	public int selectListCount(){
+		
+		Connection conn = getConnection();
+		int listCount = new RecipeDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+		
+	}
+	
+	/**
+	 * 김근희 작성  : 관리자(admin)단 레시피 조회
+	 * @param p
+	 * @return
+	 */
+	public ArrayList<Recipe> selectList(Pagination p){
+		
+		Connection conn = getConnection();
+		ArrayList<Recipe> list = new RecipeDao().selectList(conn, p);
+		close(conn);
+		return list;
+		
+		
+		
+		
 	}
 	
 }

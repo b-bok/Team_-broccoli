@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import = "com.kh.common.*, com.kh.report.model.vo.*, java.util.ArrayList" %>
 <% 
+	Pagination p = (Pagination) request.getAttribute("p");
 	ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("list");
 %>
 <!DOCTYPE html>

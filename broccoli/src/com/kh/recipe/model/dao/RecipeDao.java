@@ -8,11 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.qna.model.vo.Qna;
-import com.kh.recipe.model.vo.*;
+import com.kh.common.Pagination;
+import com.kh.recipe.model.vo.Recipe;
+import com.kh.recipe.model.vo.RecipeAttach;
 
 public class RecipeDao {
 	
@@ -225,5 +227,78 @@ public class RecipeDao {
 		
 		return list;
 	}
+	
+	/**
+	 * 김근희 작성 - 어드민 레시피 조회 카운트 
+	 * @param conn
+	 * @return
+	 */
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT");
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
+	}
+	
+	
+	public ArrayList<Recipe> selectList(Connection conn, Pagination p){
+		
+		ArrayList<Recipe> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow = (p.getCurrentPage() -1)*p.getBoardLimit() +1 ;
+			int endRow = startRow + p.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Recipe(rset.getInt("recipe_board_no")
+									,rset.getInt("p_no")
+									,rset.getString("mem_no")
+									,rset.getDate("reg_date")
+									,rset.getString("recipe_title")
+									,rset.getString("recipe_ing")
+									,rset.getInt("click_no")
+									,rset.getString("recipe_main_img")
+									));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+	}
+	
 
 }

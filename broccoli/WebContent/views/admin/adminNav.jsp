@@ -162,7 +162,7 @@
     </button>
     <div class="dropdown-container"> 
       <a href="<%=broccoli%>/members.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 회원리스트</a>
-      <a href="<%=broccoli%>/selectBlackCon.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 블랙컨슈머리스트</a>
+      <a href="<%=broccoli%>/selectBlackCon.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 블랙컨슈머리스트</a>
     </div>
     
     <button class="dropdown-btn"><i class="fa fa-product-hunt"></i>&nbsp; 상품관리 
