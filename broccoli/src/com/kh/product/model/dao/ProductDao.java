@@ -121,6 +121,7 @@ public class ProductDao {
 
 	
 	public ArrayList<Product> selectBestProduct(Connection conn, PageInfo pi) {
+		
 		ArrayList<Product> list = new ArrayList<>();
 		
 		PreparedStatement pstmt  = null;
@@ -163,6 +164,8 @@ public class ProductDao {
 
 		return list;
 	}
+	
+	
 	
 	public ArrayList<Product> selectNewProduct(Connection conn, PageInfo pi) {
 		ArrayList<Product> list = new ArrayList<>();
@@ -666,19 +669,43 @@ public class ProductDao {
 	
 	public ArrayList<ProductQna> selectProductQnaList(Connection conn, PageInfo pi){
 		// select문 => 여러행 ArrayList
+		ArrayList<ProductQna> list = new ArrayList<>();
 		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
+		String sql = prop.getProperty("selectProductQnaList");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset= pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new ProductQna(
+										rset.getInt("qna_no"),
+										rset.getString("mem_name"),
+										rset.getString("p_name"),
+										rset.getString("qna_title"),
+										rset.getString("yes_no"),
+										rset.getDate("qna_date"),
+										rset.getString("notice_yn")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		return list;
 	}
 	
 	

@@ -13,7 +13,7 @@ public class ProductQna {
 	private String qnaAnswer;	// 답변내용
 	private String yesNo;		// 답변여부
 	private Date qnaDate;		// 작성일
-	private String npticeYn;	// 공지여부
+	private String noticeYn;	// 공지여부
 	private String secret;		// 비밀글여부
 	
 	public ProductQna() {}
@@ -30,8 +30,24 @@ public class ProductQna {
 		this.qnaAnswer = qnaAnswer;
 		this.yesNo = yesNo;
 		this.qnaDate = qnaDate;
-		this.npticeYn = npticeYn;
+		this.noticeYn = npticeYn;
 		this.secret = secret;
+	}
+
+	
+	
+	
+	
+	public ProductQna(int qnaNo, String memNo, String pName, String qnaTitle, String yesNo, Date qnaDate,
+			String noticeYn) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.pName = pName;
+		this.qnaTitle = qnaTitle;
+		this.yesNo = yesNo;
+		this.qnaDate = qnaDate;
+		this.noticeYn = noticeYn;
 	}
 
 	public int getQnaNo() {
@@ -106,12 +122,12 @@ public class ProductQna {
 		this.qnaDate = qnaDate;
 	}
 
-	public String getNpticeYn() {
-		return npticeYn;
+	public String getNoticeYn() {
+		return noticeYn;
 	}
 
-	public void setNpticeYn(String npticeYn) {
-		this.npticeYn = npticeYn;
+	public void setNoticeYn(String noticeYn) {
+		this.noticeYn = noticeYn;
 	}
 
 	public String getSecret() {
@@ -126,7 +142,7 @@ public class ProductQna {
 	public String toString() {
 		return "ProductQna [qnaNo=" + qnaNo + ", pNo=" + pNo + ", memNo=" + memNo + ", pName=" + pName + ", qnaTitle="
 				+ qnaTitle + ", qnaDetail=" + qnaDetail + ", qnaAnswer=" + qnaAnswer + ", yesNo=" + yesNo + ", qnaDate="
-				+ qnaDate + ", npticeYn=" + npticeYn + ", secret=" + secret + "]";
+				+ qnaDate + ", noticeYn=" + noticeYn + ", secret=" + secret + "]";
 	}
 	
 	

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.product.model.vo.*, java.util.ArrayList" %>    
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<ProductQna> list = (ArrayList<ProductQna>)request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,85 +76,32 @@
                 </tr>
             </thead>
             <tbody>
+            	<% if(list.isEmpty()) { %>
+                <!-- 조회된 리스트가 없을 경우-->
+                
                 <tr>
-                    <td>120</td>
-                    <td>[우리농]햅쌀</td>
-                    <td>[공지]판매 중단 제품 안내</td>
-                    <td>broccoli</td>
-                    <td>2020-10-01</td>
-                    <td>공지중</td>
+                    <th colspan="6">조회된 게시글이 없습니다.</th>
                 </tr>
+                <% }else{ %>
+	                <!-- 조회된 리스트가 있을 경우 -->
+	                <% for(ProductQna pq : list){ %>
                 <tr>
-                    <td>119</td>
-                    <td>[소이연남]소고기쌀국수</td>
-                    <td>면발의 중요성</td>
-                    <td>김슬아</td>
-                    <td>2020-09-01</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>118</td>
-                    <td>썬키스트 레몬 1개</td>
-                    <td>맛있나요?</td>
-                    <td>김봉진</td>
-                    <td>2020-08-23</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>117</td>
-                    <td>썬키스트 레몬 1개</td>
-                    <td>맛있나요?</td>
-                    <td>김봉진</td>
-                    <td>2020-08-23</td>
-                    <td>답변 완료</td>
-                </tr>
-                <tr>
-                    <td>116</td>
-                    <td>[소이연남]소고기쌀국수</td>
-                    <td>면발의 중요성</td>
-                    <td>김슬아</td>
-                    <td>2020-09-01</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>115</td>
-                    <td>썬키스트 레몬 1개</td>
-                    <td>맛있나요?</td>
-                    <td>김봉진</td>
-                    <td>2020-08-23</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>114</td>
-                    <td>[소이연남]소고기쌀국수</td>
-                    <td>면발의 중요성</td>
-                    <td>김슬아</td>
-                    <td>2020-09-01</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>113</td>
-                    <td>썬키스트 레몬 1개</td>
-                    <td>맛있나요?</td>
-                    <td>김봉진</td>
-                    <td>2020-08-23</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>112</td>
-                    <td>[소이연남]소고기쌀국수</td>
-                    <td>면발의 중요성</td>
-                    <td>김슬아</td>
-                    <td>2020-09-01</td>
-                    <td>미답변</td>
-                </tr>
-                <tr>
-                    <td>111</td>
-                    <td>썬키스트 레몬 1개</td>
-                    <td>맛있나요?</td>
-                    <td>김봉진</td>
-                    <td>2020-08-23</td>
-                    <td>미답변</td>
+                    <td><%= pq.getQnaNo() %></td>
+                    <td><%= pq.getpName() %></td>
+	                    <% if(pq.getNoticeYn().equals("Y")){ %>
+	                    	<td>[공지]<%= pq.getQnaTitle() %></td>
+	                    <% }else{ %>	
+	                    	<td><%= pq.getQnaTitle() %></td>
+	                    <% } %>	
+                    <td><%= pq.getMemNo() %></td>
+                    <td><%= pq.getQnaDate() %></td>
+                    	<% if(pq.getYesNo().equals("Y")){ %>	
+                    		<td>답변완료</td> 
+                    	<% }else{ %>	
+                    		<td><h4>미답변</h4></td>
+						<% } %>
+	                 <%  } %>
+	            <% } %>                      
                 </tr>
             </tbody>
         </table>
@@ -158,7 +110,7 @@
    	 <script>
 	      $(function(){
 	          $("#pReviewList>tbody>tr").click(function(){
-	              location.href= "<%=broccoli%>/productAnswer.admin"
+	              location.href= "<%= broccoli%>/productAnswer.admin"
 	              });
 	      });
      </script>
