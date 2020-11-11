@@ -1,7 +1,6 @@
 package com.kh.report.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.common.Pagination;
 import com.kh.report.model.service.ReportService;
 import com.kh.report.model.vo.Report;
+import com.sun.xml.internal.ws.api.message.Attachment;
 
 /**
- * Servlet implementation class SelectReportController
+ * Servlet implementation class ReportDetailController
  */
-@WebServlet("/selectReport.admin")
-public class SelectReportController extends HttpServlet {
+@WebServlet("/detail.rep")
+public class ReportDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectReportController() {
+    public ReportDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +32,23 @@ public class SelectReportController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 김근희 작성 - 어드민 레시피 페이징바 
-		int listCount = new ReportService().selectListCount();
+		int repno = Integer.parseInt(request.getParameter("repno"));
 		
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		int pageLimit = 10;
-		int boardLimit = 10;
-		int maxPage = (int) Math.ceil((double)listCount/boardLimit);
-		int startPage = ((currentPage - 1)/pageLimit) * pageLimit + 1; 
-		int endPage = startPage + pageLimit -1 ;
-		if(endPage > maxPage) {
-			endPage = maxPage;
+		int result = new ReportService().increaseCount(repno);
+		
+		if(result > 0) {
+			
+			Report rp = new ReportService().selectReport(repno);
+			
+			request.setAttribute("rp", rp);
+			request.getRequestDispatcher("views/admin/adminSelectReportMore.jsp").forward(request, response);
+			
+		}else {
+			
+			request.setAttribute("errorMsg", "연결이 실패했습니다. 다시 시도해주세요!");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 		
-		Pagination p = new Pagination(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Report> list = new ReportService().selectList(p);
-		
-		request.setAttribute("p", p);
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/admin/adminSelectReport.jsp").forward(request, response);
 	}
 
 	/**

@@ -50,8 +50,7 @@
 					<th class="table-success">카테고리</th>
 					<td>리뷰</td>
 					<th class="table-success">리뷰제목</th>
-					<td><a href=""> 음식이 상해서 왔어요!</a> <br>리뷰한 글로 링크! 단, 상품카테고리
-						DB 컬럼값 확인하기</td>
+					<td><a href=""> 음식이 상해서 왔어요!</a> <br>리뷰한 글로 링크! 단, 상품카테고리 DB 컬럼값 확인하기</td>
 				</tr>
 				<tr>
 					<th class="table-success">신고자</th>
