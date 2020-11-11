@@ -6,132 +6,104 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-        div, form, input{
-            box-sizing:border-box;
-        }
-        #navigator, #content_1>div #content_2>div {border:1px solid lightgray;}
-        a{text-decoration: none; color:black; font-size:12px;}
+div, form, input{box-sizing:border-box;}
+
+#navigator, #content_1>div #content_2>div {border:1px solid lightgray;}
+
+a{text-decoration: none; color:black; font-size:12px;}
         
-        .wrap{width:1300px;height:2000px;margin:auto;}
+.wrap{width:1300px;height:2000px;margin:auto;}
 
         
-        .wrap>div{width:100%;}
-        #navigator{height:7.5%; margin:10px 0px;}
-        #content{height:85%;}
+.wrap>div{width:100%;}
 
-        #navi{
-            list-style-type: none;
-            margin: 0;
-            padding:0;
-            height:100%;
-            width:100%;
-            
-        }
-        #navi>li{
-            float:left;
-            height:100%;
-            width:25%;
-            text-align:center;
-            background:rgba(192, 190, 190, 0.301);
-            
-            
-        }
-        #navi a{
-        
-            font-size:16px;
-            font-weight:600;
-            color:rgba(56, 56, 100, 0.774);
-            display: block;
-            height:100%;
-            line-height:140px;
-            text-decoration:none;
-        }
-        #navi a:hover{color:rgb(13, 23, 77);}
-        #navi a:hover{background:rgba(15, 153, 61, 0.445);}
-       
-        .menu{
-            display:table-cell;
-            height:30px;
-            width:240px;
-        }
-        .menu a{
-            text-decoration:none;
-            color:black;
-            font-weight:bold;
-            display:block;
-            width:100%;
-            height:100%;
-            font-size:20px;
-            line-height:50px;
-        }
-        .menu a:hover{
-            background:rgba(15, 153, 61, 0.445);
-        }
+#navigator{height:7.5%; margin:10px 0px;}
 
-        #content>div{height:100%; float:left;}
-        #content_1{width:20%;}
-        #content_2{width:80%;}
+#content{height:85%;}
 
+#navi{list-style-type: none;
+      margin: 0;
+      padding:0;
+      height:100%;
+      width:100%;}
       
-        #content_1>div{width:98%; height:100%
+#navi>li{float:left;
+         height:100%;
+         width:25%;
+         text-align:center;
+         background:rgba(192, 190, 190, 0.301);}
+         
+#navi a{font-size:16px;
+        font-weight:600;
+        color:rgba(56, 56, 100, 0.774);
+        display: block;
+        height:100%;
+        line-height:140px;
+        text-decoration:none;}
         
-        }
+#navi a:hover{color:rgb(13, 23, 77);
+              background:rgba(15, 153, 61, 0.445);}
         
-        
-
-        #content_2>div{width:100%; height:100%;}
-       
-        #p1{height:80%; padding:15px;}
-        #p2{height:20%; text-align:center;}
-
-        #topic{color:green;
+.menu{display:table-cell;
+      height:30px;
+      width:240px;}
+      
+.menu a{text-decoration:none;
+        color:black;
         font-weight:bold;
-        }
+        display:block;
+        width:100%;
+        height:100%;
+        font-size:20px;
+        line-height:50px;}
+        
+.menu a:hover{background:rgba(15, 153, 61, 0.445);}
 
-        #topic1{
-            font-weight:bold;
-        }
+#content>div{height:100%; float:left;}
 
-        .container{
-            float:left;
-        }
-        #container{
-            font-weight:bold;
-        }
+#content_1{width:20%;}
 
-        #form-group{
-            font-weight:bold;
-        }
+#content_2{width:80%;}
+
+#content_1>div{width:98%; height:100%}
+        
+#content_2>div{width:100%; height:100%;}
        
+#p1{height:80%; padding:15px;}
+
+#p2{height:20%; text-align:center;}
+
+#topic{color:green;
+       font-weight:bold;}
+
+ #topic1{font-weight:bold;}
+
+.container{float:left;}
+
+#container{font-weight:bold;}
+
+#form-group{font-weight:bold;}
        
-       
-    input[type='radio'] {
-    -webkit-appearance:none;
-    width:16px;
-    height:16px;
-    border:1px solid darkgray;
-     border-radius:50%;
-    outline:none;
-    background:#e6e6e6;
-  }
-  input[type='radio']:before {
-    content:'';
-    display:block;
-    width:60%;
-    height:60%;
-    margin: 20% auto;  
-    border-radius:50%;  
-  }
-  input[type='radio']:checked:before {
-  	background:#04ce25;
-  }
+input[type='radio'] {-webkit-appearance:none;
+                      width:16px;
+                      height:16px;
+                      border:1px solid darkgray;
+                      border-radius:50%;
+                      outline:none;
+                      background:#e6e6e6;}
+                      
+input[type='radio']:before {content:'';
+                            display:block;
+                            width:60%;
+                            height:60%;
+                            margin: 20% auto;  
+                            border-radius:50%;}
+                            
+input[type='radio']:checked:before {background:#04ce25;}
         
        
 
-        
-
-        
-    </style>
+  </style>
 </head>
 <body>
 
@@ -260,7 +232,7 @@
                           </button>
                         
                           <!-- The Modal -->
-                          <div class="modal fade" id="myModal">
+                          <div class="modal" id="myModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
                               
@@ -272,7 +244,7 @@
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-success" data-dismiss="modal"style="background-color:#04ce25">예</button>
-                                  <button type="button" class="btn btn-danger" data-dismiss="modal">아니요</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">아니요</button>
                                 </div>
                                 
                               </div>
@@ -280,12 +252,12 @@
                           </div>
                           <!-- 회원탈퇴하기 -->
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
                             회원탈퇴하기
                           </button>
                         
                           <!-- The Modal -->
-                          <div class="modal fade1" id="myModal1">
+                          <div class="modal" id="myModal1">
                             <div class="modal-dialog">
                               <div class="modal-content">
                               
@@ -296,8 +268,35 @@
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-success" data-dismiss="modal">예</button>
-                                  <button type="button" class="btn btn-danger" data-dismiss="modal">아니요</button>
+                                
+                                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">예</button>
+                                  
+
+                        <!-- The Modal -->
+                                <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+
+                        <!-- Modal Header -->
+                                  <div class="modal-header">
+                                        <h4 class="modal-title">회원정보가 변경되었습니다.</h4>
+                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                   </div>
+
+					      <!-- Modal body -->
+					      <div class="modal-body">
+					      </div>
+					
+					      <!-- Modal footer -->
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-success" data-dismiss="modal">확인</button>
+					      </div>
+					
+					    </div>
+					  </div>
+					</div>
+                              
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">아니요</button>
                                 </div>
                                 
                               </div>
