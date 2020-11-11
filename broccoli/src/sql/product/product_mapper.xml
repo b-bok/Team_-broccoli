@@ -386,4 +386,28 @@
 		    ,  P_THUMBNAIL =?
 		 WHERE P_NO = ?
 	</entry>
+	
+	<entry key="selectProductQnaList">
+		SELECT *
+		  FROM (
+		       SELECT      
+		             ROWNUM RNUM
+		           , A.* 
+		       FROM (     
+		            SELECT
+		               QNA_NO
+		             , P_NAME  
+		             , QNA_TITLE
+		             , MEM_NAME
+		             , QNA_DATE     
+		             , YES_NO
+		             , NOTICE_YN
+		            FROM PRODUCT_QNA
+		            JOIN MEMBERS USING(MEM_NO)
+		            ORDER
+		                BY  QNA_NO DESC
+		            ) A
+		  )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

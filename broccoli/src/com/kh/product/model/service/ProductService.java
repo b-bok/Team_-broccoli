@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.kh.product.model.dao.ProductDao;
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductQna;
 import com.kh.review.model.vo.Review;
 
 public class ProductService {
@@ -216,6 +217,17 @@ public class ProductService {
 		close(conn);
 		
 		return result;
+	}
+	
+	
+	public ArrayList<ProductQna> selectProductQnaList(PageInfo pi) {
+		Connection conn = getConnection();
+		
+		ArrayList<ProductQna> list = new ProductDao().selectProductQnaList(conn, pi);
+		
+		close(conn);
+		
+		return list;
 	}
 	
 	

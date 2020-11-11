@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="java.util.*, com.kh.product.model.vo.*" %>	
+	
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +38,7 @@
         .thumbmenu{display: block; padding:0;list-style-type:none; height: 100%;}
         .thumbmenu>li{float: left;  margin-right: 15px; width: 285px; height: 100%;}
         .thumbnail{width:100%; height: 80%;}
-        .p_info{height:20%; padding: 10px;}
+        .p_info{height:20%; padding: 10px; text-align:center;}
         /* 이미지 */
         img{width:100%; height:100%}
 
@@ -88,73 +92,158 @@
         
         <div id="content">
             <div id="content_1">
-                <div id="title_goods" align="center" style="margin-top:20px; font-size: 30px;"><a href="★">이 상품 어때요?</a></div>
+                <div id="title_goods" align="center" style="margin-top:20px; font-size: 30px;"><a href="<%=broccoli %>/bestProduct.pb?currentPage=1">이 상품 어때요?</a></div>
             </div>
 
 <!------------------------------------------------------★★★★★상품 썸네일/정보 넣는 곳 ★★★★★ ------------------------------------------->
-            <div id="content_2">
-                <div class="thumbgroup">
-                    <ul class="thumbmenu">
-                        <li>
-                            <a href="<%= broccoli%>/detail.pb">
-                                <div class="thumbnail">
-                                    <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
-                                </div>
-                                <div class="p_info" style="font-size: 15px;">
-                                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                                    <span style="color: green;">--> 14,310원</span> <br>
-                                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<%= broccoli%>/detail.pb">
-                                <div class="thumbnail">
-                                    <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
-                                </div>
-                                <div class="p_info" style="font-size: 15px;">
-                                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                                    <span style="color: green;">--> 14,310원</span> <br>
-                                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<%= broccoli%>/detail.pb">
-                                <div class="thumbnail">
-                                    <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
-                                </div>
-                                <div class="p_info" style="font-size: 15px;">
-                                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                                    <span style="color: green;">--> 14,310원</span> <br>
-                                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<%= broccoli%>/detail.pb">
-                                <div class="thumbnail">
-                                    <img src="https://img-cf.kurly.com/shop/data/goods/1570437357849l0.jpg" alt="상품썸네일">
-                                </div>
-                                <div class="p_info" style="font-size: 15px;">
-                                    [몸에쏙쏙] 유기농 어린이 배도라지즙 2종 <br>
-                                    <span style="text-decoration: line-through; color: gray;">15,900원</span>
-                                    <span style="color: green;">--> 14,310원</span> <br>
-                                    <span style="font-size: 13px; font-weight: lighter; color: #666">달콤하게 시작하는 우리 아이 건강즙</span>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div id="content_2" >
+				 <ul class="thumbmenu">
+							
+							
+					</ul>
             </div>
+            
+         
         </div>
-        <hr>
+        	<br /><br />
+           <div id="footer">
+            		<div id="pagingBar" align="center">
+                <ul class="pagination">
+           			
+            		</ul>
+            </div>
+        
+   </div>
+       
   		<%@ include file = "views/common/footer.jsp" %>
         
-    </div>
+	
+	<script>
+	
+		$(function(){
+		
+			selectProductlist();
+			
+			
+			$("#content_2").on("click","div",function(){
+				
+				var pno = $(this).children().val();
+				
+				 location.href = "<%=broccoli%>/detail.pb?pno=" + parseInt(pno);
+				
+			})
+			
+			
+			
+			
+
+		})
+			
+			
+		function selectProductlist() {
+			
+			$.ajax({
+				
+				url : "main.do",
+				type : "post",
+				data : {
+						currentPage : 1
+				},
+				success : function(object) {
+					console.log(object);
+					console.log(object.pageInfo);
+					
+					var list = object.list;
+					
+					var pageInfo = object.pageInfo;
+					
+					var str ="";
+					
+					for(var i in list) {
+						
+						
+						str += "<li>" +
+										"<div class='thumbnail'>" +
+								
+									"<input type='hidden' name='pno' id='pno' value="+ list[i].pno +" />" +
+									"<img src=" + '<%=broccoli %>/' + list[i].thumbnail +  ">" 
+								+ "</div>" +	
+								
+								 "<div class='p_info' style='font-size: 15px;'>" + "<br />" +
+								 						
+								 list[i].pName + "<br>" +
+								 "<span style='text-decoration: line-through; color: gray;'>" + list[i].price + "</span>" +
+								 "<span style='color: green;'>" + "-->" + list[i].discount + "</span>" +  "<br>" +
+								 "<span style='font-size: 13px; font-weight: lighter; color: #666'>" + list[i].smallDetail + "</span>" +
+						
+								 "</div>" +
+								 "</li>"
+	
+					}
+					
+					$(".thumbmenu").html(str);
+					
+					var page = "";
+					
+					
+					if(pageInfo.currentPage != 1) {
+						
+						page += "<li class='page-item'>" +
+						 "<a class='page-link'" + "href='<%=broccoli %>/' + ''" + ">"	
+						+ "이전"  + "</a>" + "</li>";
+						
+						
+						
+						
+					}
+					
+					
+					
+					for(var i = pageInfo.startPage; i<pageInfo.endPage; i++) {
+						
+						if(pageInfo.currentPage == i) {
+							
+							
+							page += "<li class='page-item active'>" +
+										"<a class='page-link'" + "href=''" + ">" + i + "</a>" + "</li>"
+							
+							
+						}else {
+							
+							page += "<li class='page-item'>" +
+							"<a class='page-link'" + "href=''" + ">" + i + "</a>" + "</li>"
+	
+						}
+
+					}
+					
+					
+					
+					if(pageInfo.currentPage != pageInfo.maxPage) {
+						
+						page += "<li class='page-item'>" +
+						 "<a class='page-link'" + "href=''" + ">"	
+						+ "다음"  + "</a>" + "</li>";
+						
+					}
+					
+					
+					
+					$(".pagination").html(page);
+					
+					
+				},
+				error : function(){
+					console.log("ajax통신실패");
+				}
+
+			});
+		
+		}	
+
+
+	
+	</script>
     
     
     

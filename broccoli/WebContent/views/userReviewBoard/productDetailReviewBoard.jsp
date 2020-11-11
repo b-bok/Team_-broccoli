@@ -58,6 +58,12 @@ div {
 
 #pagingBar{margin: 0;}
 
+a {
+            color: black;
+            font-weight: bold;
+        }
+
+
 </style>
 
 </head>

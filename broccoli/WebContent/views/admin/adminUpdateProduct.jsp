@@ -101,7 +101,7 @@
                  <tbody>
                 <% if(list.isEmpty()) { %>
  	               <tr>
-         				<th colspan="6"><h4 align="center">조회된 게시글이 없습니다.</h4></th>	       
+         				<th colspan="6" onclick="event.cancelBubble=true"><h4 align="center">조회된 게시글이 없습니다.</h4></th>	       
     	            </tr>
  				<% }else{ %>
  					
