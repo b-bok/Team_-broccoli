@@ -213,6 +213,24 @@ margin-top: 5px;
 	</div>
 
 
+	<script>
+	
+		$(function(){
+			
+			
+			$("#qnaTable>tbody").on("click","tr",function(){
+								
+					var qno = $(this).children().eq(0).text();
+
+				 location.href = "<%=broccoli%>/detail.qna?qno=" + Number(qno);
+					
+				})
+			
+		})	
+	
+
+	</script>
+
 
 
 

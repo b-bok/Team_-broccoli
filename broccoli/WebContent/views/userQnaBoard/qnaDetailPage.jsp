@@ -158,7 +158,7 @@
         </div>
 
         <div id="qnaFotter" align="center" style="margin-top: 10px;">
-             <a class="btn btn-success btn-sm" href="<%=broccoli%>/detail.pb?pno=<%=q.getpName() %>" >뒤로가기 </a>
+             <button class="btn btn-success btn-sm" onclick="history.back();">뒤로가기</button>
         </div>
 
         
