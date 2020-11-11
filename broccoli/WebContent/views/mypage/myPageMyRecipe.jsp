@@ -187,7 +187,7 @@
                  </tbody>
             </table>
             <button type="button" class="btn btn-success"><a href="<%= broccoli%>/MyRecipeEnrollPage.my">레시피작성</a></button>
-            <button type="button" class="btn2" >레시피삭제</button>
+            <button type="button" class="btn btn-secondary" >레시피삭제</button>
             
           
           

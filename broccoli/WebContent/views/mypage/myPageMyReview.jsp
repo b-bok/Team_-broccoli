@@ -63,13 +63,21 @@
         display:block;
     }
     #content>div{height:100%; float:left;}
+    
     #content_1{width:20%;}
+    
     #content_2{width:80%;}
+    
     #content_1>div{width:98%; height:100%}
+    
     #content_2>div{width:100%; height:100%;}
+    
     #p1{height:80%; padding:15px;}
+    
     #p2{height:20%; text-align:center;}
+    
     #topic{color:green;}
+    
     #dateoption{
         float:right;
         margin-right:40px;
