@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import = "com.kh.report.model.vo.*,com.kh.common.*,java.util.ArrayList" %>
+<%
+	Pagination p = (Pagination) request.getAttribute("p");
+	ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,162 +86,54 @@ a {
                 4) 기타 : (세부사항 영역있음)
               -->
 				<!-- 체크박스 선택하고 블랙컨슈머 해지 버튼 만들기 작업해야함 -->
+				<% if(list.isEmpty()){ %>
+					<!-- 조회된 리스트가 없는 경우 -->
+					<tr>
+						<td colspan = "7">리스트가 존재하지 않습니다!</td>
+					</tr>
+				<%}else{ %>
+					<!-- 리스트가 있는 경우 -->
+					<% for(Report r : list){ %>
+					<tr>
+						<td><input type="checkbox" name="chk"></td>
+						<td class="sorting_1"><%=r.getReportNo() %></td>
+						<td><%=r.getMem() %>user01</td>
+						<td><%=r.getReportCategory() %></td>
+						<td><%=r.getReportDate() %>2020-10-13</td>
+						<td><%=r.getReportContent() %>구매후기 취지에 어긋난 내용</td>
+						<td><%=r.getReportResult() %>2</td>
+					</tr>
+					<%} %>
+				<%} %>
 
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">1</td>
-					<td>user01</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-13</td>
-					<td>2</td>
-					<td>구매후기 취지에 어긋난 내용</td>
-
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">2</td>
-					<td>user02</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>13</td>
-					<td>구매후기 취지에 어긋난 내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">3</td>
-					<td>user03</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>13</td>
-					<td>상품과 관련없는 비방내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">4</td>
-					<td>user04</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>13</td>
-					<td>상품과 관련없는 비방내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">5</td>
-					<td>user05</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>13</td>
-					<td>구매후기 취지에 어긋난 내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">6</td>
-					<td>user06</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>13</td>
-					<td>음란, 욕설 부적절한 내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">7</td>
-					<td>user07</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>13</td>
-					<td>음란, 욕설 부적절한 내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">8</td>
-					<td>user08</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-05</td>
-					<td>10</td>
-					<td>제품하자</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">9</td>
-					<td>user09</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-02</td>
-					<td>12</td>
-					<td>음란, 욕설 부적절한 내용</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">10</td>
-					<td>user10</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-03</td>
-					<td>12</td>
-					<td><a href="#신고내역 상세조회로 이동">기타</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">11</td>
-					<td>broccoli</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-03</td>
-					<td>12</td>
-					<td><a href="#신고내역 상세조회로 이동">기타</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">12</td>
-					<td>calliflower</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-03</td>
-					<td>12</td>
-					<td><a href="#신고내역 상세조회로 이동">기타</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">13</td>
-					<td>carrot</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-10</td>
-					<td>5</td>
-					<td><a href="#신고내역 상세조회로 이동">기타</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">14</td>
-					<td>onion</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-01</td>
-					<td>15</td>
-					<td><a href="#신고내역 상세조회로 이동">기타</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">15</td>
-					<td>spinach</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-01</td>
-					<td>15</td>
-					<td>구매후기 취지에 어긋난 내용</td>
-				</tr>
-				<tr role="row" class="even">
-					<td><input type="checkbox" name="chk"></td>
-					<td class="sorting_1">16</td>
-					<td>shallot</td>
-					<td>XXXXXXXXXXXXXX</td>
-					<td>2020-10-01</td>
-					<td>15</td>
-					<td>구매후기 취지에 어긋난 내용</td>
-				</tr>
 			</tbody>
 		</table>
 
+	<!-- 페이징바 -->
+	<div  class="paging-area" align="center">
+
 		<ul class="pager">
-			<li><a href="#">이전</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">다음</a></li>
+		<% if(p.getCurrentPage()!= 1){ %>
+			<li><a href="<%=broccoli %>/selectBlackCon.admin?currentPage=<%=p.getCurrentPage()-1%>">이전</a></li>
+		<% } %>
+		
+		<% for(int i = p.getStartPage();i<=p.getEndPage();i++){ %>
+			<li><a href="<%=broccoli%>/selectBlackCon.admin?currentPage=<%=i%>" class="btn btn-sm"> <%=i%></a></li>
+		<%} %>
+		
+		<% if(p.getCurrentPage() != p.getMaxPage()){ %>
+			<li><a href="<%=broccoli%>/selectBlackCon.admin?currentPage=<%=p.getCurrentPage()+1%>">다음</a></li>
+		<%} %>
 		</ul>
+	</div>
+	<script>
+		$(function(){
+			$(".btn-sm").click(function(){
+				$(this).attr(active);
+			})
+		})
+	</script>
+	
 	</div>
 </body>
 </html>

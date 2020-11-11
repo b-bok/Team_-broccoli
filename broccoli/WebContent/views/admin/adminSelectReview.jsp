@@ -84,14 +84,13 @@ a {
 					<tr>
 						<td><%=r.getReviewNo() %></td>
 						<td><%=r.getRegDate() %></td>
-						<td>사용자 주문내역페이지(페이지지정못함) </td>
+						<td> 사용자 주문내역페이지 </td>
 						<td><%=r.getPno() %></td>
 						<!--  상품제목이 보일려면 join 하고 클래스 별도로 불러야하는데 있는지 파악해야함  -->
 						<td>유기농 브로콜리 1kg</td> 
 						<td id="revDetail"><b><%=r.getReviewTitle() %></b></td>
 						<!-- 등급 쿼리로 작성하기 -->
-						<td>
-							<%=r.getReviewRate() %>
+						<td><%=r.getReviewRate() %>
 						
 							<!-- 아이콘 실행관련 보류 
 							<span class="glyphicon glyphicon-star checked"></span>
