@@ -54,7 +54,7 @@
 			  <div class="result result1">이메일 주소인증</div><br>
 			  <form action="findId.me" class="was-validated" method="post">
 			    <div class="form-group">
-			      <input type="number" class="form-control" id="approvalNo" placeholder="전송된 인증번호를 입력해 주세요" name="approvalNo" required style="width:100%;">
+			      <input type="text" class="form-control" id="approvalNo" placeholder="전송된 인증번호를 입력해 주세요" name="approvalNo" required style="width:100%;">
 			    </div>
 			    <div class="result result2">
 			        	인증번호를 못받았다면? <a href="">인증번호 재전송></a>  

@@ -15,7 +15,7 @@ public class DeliverRegister {
 	public DeliverRegister() {}
 
 	public DeliverRegister(int deliverNo, int memNo, String address, String address2, String deliverName,
-			String receiveHow, String receiver, String addressYN) {
+			String receiveHow, String receiver, String addressYN, String mobile) {
 		super();
 		this.deliverNo = deliverNo;
 		this.memNo = memNo;
@@ -25,6 +25,40 @@ public class DeliverRegister {
 		this.receiveHow = receiveHow;
 		this.receiver = receiver;
 		this.addressYN = addressYN;
+		this.mobile = mobile;
+	}
+	
+	public DeliverRegister(int deliverNo, int memNo, String address, String address2, String deliverName,
+			String receiver, String addressYN, String mobile) {
+		super();
+		this.deliverNo = deliverNo;
+		this.memNo = memNo;
+		this.address = address;
+		this.address2 = address2;
+		this.deliverName = deliverName;
+		this.receiver = receiver;
+		this.addressYN = addressYN;
+		this.mobile = mobile;
+	}
+
+	public DeliverRegister(int memNo, String address, String address2, String deliverName, String receiver,
+			String mobile, String addressYN) {
+		super();
+		this.memNo = memNo;
+		this.address = address;
+		this.address2 = address2;
+		this.deliverName = deliverName;
+		this.receiver = receiver;
+		this.mobile = mobile;
+		this.addressYN = addressYN;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 	public int getDeliverNo() {

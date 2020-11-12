@@ -79,18 +79,153 @@
 	</entry>
 	
 	<entry key="selectOrder">
-		SELECT 		
-		     , P.P_NO
-		     , P.P_NAME           
-		     , P.P_THUMBNAIL      
-		     , M.MEM_NAME         
+		SELECT
+		       P.P_NO
+		     , P.P_NAME         
+		     , P.P_THUMBNAIL
+	         , P_DISCOUNT             
+		     , M.MEM_NAME        
 		     , M.MOBILE           
 		     , M.ADDRESS1         
-		     , M.ADDRESS2         
-		     , M.POINT            
+		     , M.ADDRESS2       
+		     , M.ADDREXTRA       
+		     , M.POINT     
+		     , M.ZIPCODE       
 		  FROM MEMBERS M, PRODUCT P
 		 WHERE MEM_NO = ?
 		   AND P_NO = ?
+	</entry>
+	
+	<entry key="selectDeliveryList">
+		SELECT 
+		       *
+		  FROM DELIVER_REGISTER
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="selectAddressNo">
+		SELECT 
+		       ADDRESS_NO
+		  FROM MEMBERS
+		 WHERE MEM_NO = ?
+	
+	</entry>
+	
+	<entry key="updateAddressNo">
+		UPDATE
+		       MEMBERS
+		   SET ADDRESS_NO = ADDRESS_NO + 1
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="insertDeliverRegister">
+		INSERT 
+		  INTO DELIVER_REGISTER
+		    (
+		       DELIVER_NO
+		     , MEM_NO
+		     , DELIVER_ADDRESS
+		     , DELIVER_ADDRESS2
+		     , DELIVER_NAME
+		     , RECEIVER
+		     , ADDRESS_YN
+		     , MOBILE
+		     )
+		VALUES
+		    (
+		       SEQ_DEL.NEXTVAL
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     )
+	</entry>
+	
+	<entry key="deleteDeliverRegister">
+		DELETE FROM DELIVER_REGISTER
+			   WHERE DELIVER_NO = ?
+	</entry>
+	
+	<entry key="minusAddressNo">
+		UPDATE
+		       MEMBERS
+		   SET ADDRESS_NO = ADDRESS_NO - 1
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="selectOrderList">
+		SELECT 
+		       MEM_NO
+		     , P_NO  
+		     , O.TOTAL_AMT
+		     , O.P_PRICE
+		     , O.QUANTITY
+		     , P.P_NAME
+		     , P.P_THUMBNAIL
+		     , M.MEM_NAME
+		     , M.MOBILE 
+		     , M.ZIPCODE          
+		     , M.ADDRESS1         
+		     , M.ADDRESS2         
+		     , M.ADDREXTRA        
+		     , M.POINT            
+		  FROM ORDER_LIST O
+		  JOIN PRODUCT P USING (P_NO) 
+		  JOIN MEMBERS M USING (MEM_NO)
+		 WHERE MEM_NO = ?
+		   AND ORDER_CONDITION = '주문전'
+	
+	</entry>
+	
+	<entry key="insertOrder">
+		INSERT 
+		  INTO "BROCCOLI"."ORDER"
+		    (
+		       ORDER_NO
+		     , MEM_NO
+		     , ORDER_CONDITION
+		     ,  MEM_NAME
+		     ,  ADDRESS1
+		     ,  ADDRESS2
+		     ,  MOBILE
+		     ,  RECEIVER
+		     ,  RECEIVER_PHONE
+		     ,  RECEIVE
+		     ,  DELIVERYFEE
+		     ,  PAYMENT
+		     ,  TOTAL_AMT
+		     ,  POINT_YN
+		     ,  ORDER_DATE
+		    )
+		VALUES
+		     (
+		        SEQ_ORDER.NEXTVAL
+		     , ?
+		     , '결제완료'
+		     ,  ?
+		     ,  ?
+		     ,  ?
+		     ,  ?
+		     ,  ?
+		     ,  ?
+		     ,  ?
+		     ,  ?
+		     ,  '카드결제'
+		     ,  ?
+		     ,  ?
+		     , SYSDATE
+		     )
+	
+	</entry>
+	
+	<entry key="orderComplete">
+		SELECT *
+		  FROM "BROCCOLI"."ORDER"
+		 WHERE MEM_NO = ?
+	
 	</entry>
 
 </properties>

@@ -263,5 +263,15 @@ public class ProductService {
 		return pq;
 	}
 	
+	public int selectPdtQnaListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new ProductDao().selectPdtQnaListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	
 	
 }

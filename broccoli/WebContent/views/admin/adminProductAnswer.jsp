@@ -38,7 +38,7 @@
             <table id="pAnswerForm" border="1">
                 <tr>
                     <td>번호</td>
-                    <td><%= pq.getQnaNo() %></td>
+                    <td> 문의번호</td>
                     <td>상품번호</td>
                     <td><%= pq.getpNo() %></td>
                 </tr>

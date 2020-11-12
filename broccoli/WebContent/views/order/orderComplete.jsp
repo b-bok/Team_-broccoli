@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.order.model.vo.*"%>
+<%  Order order = (Order)request.getAttribute("order"); %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,16 +45,15 @@
             <div>
                 <ul class="check">
                     <li class="fas fa-check-circle" style="font-size: 35px; margin: 8px;"></li>
-                    <li><h5><b>홍길동 님 주문해주셔서 감사합니다.</b></h5></li> <br>
-                    <li>[몸에쏙쏙] 유기농 어린이 배도라지즙 2종 외</li>
-                    <li>결제금액 : 25,000 원</li>
-                    <li>주문번호 : 564513551</li>
+                    <li><h5><b><%= order.getMemName() %>님 주문해주셔서 감사합니다.</b></h5></li> <br>
+                    <li>결제금액 : <%= order.getTotalAmt() %> 원</li>
+                    <li>주문번호 : <%= order.getOrderNo() %></li>
                 </ul>
             </div>
         </div>
         <br><br><br><br>
-        <button onclick="이벤트" class="btn btn-lg" style="background-color: gray;">홈으로 이동</button>
-        <button onclick="이벤트" class="btn btn-lg">주문 내역 확인</button>
+        <button onclick="location.href='<%= broccoli %>/'" class="btn btn-lg" style="background-color: gray;">홈으로 이동</button>
+        <button onclick="location.href='<%= broccoli %>/myPageMain.my'" class="btn btn-lg">주문 내역 확인</button>
         
     </div>
     

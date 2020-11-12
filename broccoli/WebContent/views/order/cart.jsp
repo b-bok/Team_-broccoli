@@ -125,7 +125,6 @@
 		                        </td>
 		                        <td width="300" style="vertical-align: middle;">
 		                            <button type="button" class="btn btn-secondary btn-sm del">선택 삭제</button>
-		                            <button type="button" class="btn btn-secondary btn-sm">품절 상품 삭제</button>
 		                        </td>
 		                        <td width="100" colspan="2" style="vertical-align: middle;">※ 적립금은 다음화면인 '주문서'에서 확인가능합니다.</td>
 		                    </tr>
