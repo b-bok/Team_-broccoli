@@ -182,27 +182,27 @@
         <ul>
             <li>
                 접수날짜 : 
-                <input type="text" name="enrollDate" value="enrollDate">
+                <input type="text" name="enrollDate" value="2020-11-12" readonly disabled>
             </li>
 
         </ul>
         <ul>
             <li>
                 주문번호 :
-                <input type="text" name="order_No" value="order_No">
+                <input type="text" name="order_No" value="14-73033440" readonly disabled>
             </li>
 
         </ul>
         <ul>
             <li>
                 문의유형 : 
-                <input type="text" name="category" value="category">
+                <input type="text" name="category" value="회원문의" readonly disabled>
             </li>
         </ul>
         <ul>
             <li>
                 질문자ID :
-                <input type="text" name="mem_Id" value="mem_Id">
+                <input type="text" name="mem_Id" value="wlsdnjs123" readonly disabled>
             </li>
         </ul>
     </div>
@@ -210,9 +210,9 @@
     <div class="header2">
         <p>ㅣ <b>관리자 답변처리</b></p>
         <ul>
-            <li >
+            <li>
                 문의유형  
-                <input type="text" name="category" value="category">
+                <input type="text" name="category" value="회원문의" readonly disabled>
             </li>
 
         </ul>
