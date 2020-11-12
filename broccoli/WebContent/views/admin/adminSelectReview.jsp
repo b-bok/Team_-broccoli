@@ -111,8 +111,9 @@ a {
 	   <!-- 상세페이지이동 -->
 	   <script>
         	$(function(){
-        		$(".table>tbody>tr").click(function(){
-        			location.href = "<%= broccoli%>/detail.rv?rno="+ $(this).parent().children().eq(0).text();
+        		$(".table>tbody>tr>td").click(function(){
+		
+        			 location.href = "<%= broccoli%>/detail.rv?rno="+ $(this).parent().children().eq(0).text();
         		});
         	});
         </script>
