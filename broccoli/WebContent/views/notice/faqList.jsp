@@ -4,7 +4,6 @@
 <%
 	ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
 %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +22,6 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script src="faqsteop.js" type="text/javascript"></script>
     <style>
 div {box-sizing: border-box;}
 
@@ -89,10 +86,11 @@ margin-top: 50px;
 			<a href="" class="btn btn-outline-light text-dark">1:1 문의</a>
 		</div>
         
-        <form action="category.faq" method="post">
+        <form action="category.faq" method="POST">
+        
         <div id="qnaCategory" align="left">
 				
-            <select name="qCategory" id="qCategory">
+           <select name="qCategory" id="qCategory">
 
             <!-- Member, Payment, Cencle, Delivery  -->
             <option value="0" >선택</option>
@@ -106,7 +104,7 @@ margin-top: 50px;
         <button type="submit" class="btn btn-outline-success btn-sm" id="submit">검색</button>
         <br><br>
         </div>
-        </form>
+        
 
 		<!-- 게시판 리스트 -->
 		<div class="wrap2" id="noticeListBoard">
@@ -135,9 +133,8 @@ margin-top: 50px;
                 </tr>
                 <%}else{ %>
                 	<%for(Faq f : list) { %>
-				<form action="list.faq" method="post">
-		
-                    <tr align="center" class="pointer" onclick="FaqToggleDetail('row_1')">
+
+                    <tr align="center" class="pointer" onclick="FaqToggleDetail( 'row_1' )">
                         <td><%=f.getFaqNo()%></td>
                         <td>
                         <span id="td_row_1"><%=f.getGrFaqName()%></span></td>
@@ -150,9 +147,11 @@ margin-top: 50px;
                             <%=f.getFaqContent() %>
                         </td>
                     </tr>
+         </form>	
+
                     <%} %>
           		<%} %>
-			</form>
+
           </tbody>
 			</table>
 
@@ -186,7 +185,7 @@ margin-top: 50px;
 
 			<div id="searchForm" align="left">
 
-                <form action ="test" method ="get">
+                
 
                     * 검색 &nbsp; &nbsp; 
 
@@ -196,7 +195,6 @@ margin-top: 50px;
                     <input type="text" name="keyword" id="notice_Keyword"> 
                     <input type="submit" value ="검색" name="notice_SearchList" id="notice_SearchList">
                     
-                </form>
                  
 			</div>
 

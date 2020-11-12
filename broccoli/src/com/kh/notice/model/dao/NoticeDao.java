@@ -45,6 +45,7 @@ public class NoticeDao {
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(sql);
 			
+			
 			while(rset.next()) {
 				list.add(new Notice(rset.getInt("notice_no"),
 									rset.getString("notice_title"),
@@ -70,8 +71,8 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectFaqList");
-		
 		System.out.println(sql);
+		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
