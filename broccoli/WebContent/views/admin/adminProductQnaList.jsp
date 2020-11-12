@@ -110,28 +110,24 @@
    	 <script>
 	      $(function(){
 	          $("#pReviewList>tbody>tr").click(function(){
-	              location.href= "<%= broccoli%>/productAnswer.admin"
+	              location.href= "<%= broccoli%>/productAnswer.admin?qnaNo=" + + $(this).children().eq(0).text();
 	              });
 	      });
      </script>
 
+  
     <div class="paging-area" align="center">
-
-        <a href="">&lt; 이전</a>
-
-        <a href="">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">7</a>
-        <a href="">8</a>
-        <a href="">9</a>
-        <a href="">10</a>
-
-        <a href="">다음 &gt;</a>
-    
-    </div>
+		   <% if(pi.getCurrentPage() !=1 ){ %>
+            <a href="<%=broccoli%>/productQnaList.admin?currentPage=<%=pi.getCurrentPage()-1%>">&lt; 이전</a>
+		   <% } %>
+		   
+		   <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+            <a href="<%=broccoli%>/productQnaList.admin?currentPage=<%= p %>"><%= p %></a>
+		   <% } %>	
+		   
+		   <% if(pi.getCurrentPage() != pi.getMaxPage()){ %>
+            <a href="<%=broccoli%>/productQnaList.admin?currentPage=<%=pi.getCurrentPage()+1%>">다음 &gt;</a>
+		   <% } %>
+     </div>
 </body>
 </html>
