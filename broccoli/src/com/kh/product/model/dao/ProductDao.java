@@ -835,5 +835,38 @@ public class ProductDao {
 		return pq;
 	}
 	
+	
+	public int selectPdtQnaListCount(Connection conn) {
+		
+		int listCount = 0;
+
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPdtQnaListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				
+				listCount = rset.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+
+		
+		return listCount;
+	}
+	
 }
 

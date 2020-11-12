@@ -46,7 +46,7 @@ public class ProductQnaListAdminController extends HttpServlet {
 		
 		
 		// * listCount : 현재 일반 게시판 총 게시글 갯수
-		listCount = new ProductService().selectListCount();
+		listCount = new ProductService().selectPdtQnaListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		

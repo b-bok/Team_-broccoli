@@ -465,7 +465,11 @@
 		WHERE QNA_NO =?
 	</entry>
 	
-	
+	<entry key="selectPdtQnaListCount">
+		SELECT 
+		      COUNT(*) LISTCOUNT
+		 FROM PRODUCT_QNA
+	</entry>
 	
 	
 	
