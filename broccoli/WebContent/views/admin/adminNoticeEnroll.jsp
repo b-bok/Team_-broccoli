@@ -63,9 +63,9 @@
 </head>
 <body>
 
-    <%@include file =adminNav.jsp %>
+    <%@include file ="adminNav.jsp"%>
 
-	<form action="enrollNotice.admin">
+	<form action="enrollNotice.admin" method="POST">
 
     <div class=all style="margin-left: 300px;">
         

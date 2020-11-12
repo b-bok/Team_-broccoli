@@ -67,9 +67,9 @@
 </head>
 <body>
 
-    <%@include file =adminNav.jsp %>
+    <%@ include file = "adminNav.jsp"%>
 
-	<form action="noticeListView.admin">
+	<form action="noticeListView.admin" method="POST">
 
     <div class=all style="margin-left: 300px;">
         
@@ -124,9 +124,9 @@
     <table class="list-area">
         <thead>
             <tr>
-              <th width="100">글번호</th>
-              <th width="200">분류</th>
-              <th width="500">제목</th>
+              <th width="100">번호</th>
+              <th width="200">제목</th>
+              <th width="500">작성자</th>
               <th width="300">작성일</th>
               <th width="300">조회수</th>           
           </tr>
@@ -228,7 +228,7 @@
     </div>
     <br>
     <div id="wright">
-        <button type="submit" class="btn btn-success" class="btn"><a href="" style="text-decoration: none; color:white;">글쓰기</a></button>
+        <button type="submit" class="btn btn-success" class="btn"><a href="enrollNotice.admin" style="text-decoration: none; color:white;">글쓰기</a></button>
 
     </div>
             

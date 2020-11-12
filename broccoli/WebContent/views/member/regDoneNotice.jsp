@@ -18,7 +18,7 @@
 <body>
 <%@ include file="../common/menubar.jsp" %>
     <div class=container><span class="glyphicon glyphicon-ok-sign" style="font-size:80px;color:green;text-shadow:2px 2px 4px #000000;"></div>
-    <div class=container>비밀번호가 변경되었습니다. 다시 로그인해주세요</div>
+    <div class=container>비밀번호가 변경되었습니다. 로그인도 동시에 되었습니다.</div>
     
     <%@ include file="../common/footer.jsp"%>
 </body>

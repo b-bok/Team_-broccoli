@@ -54,6 +54,7 @@
   .list-area{
     background-color:#f2f2f2;
     width:100%;
+    height:70%;
   }
   .list-area thead tr th{
     padding:10px;
@@ -78,7 +79,7 @@
 
     <br>
 
-    <form action="paymentManage.admin">
+    <form action="paymentManage.admin" method="POST">
 
     <div class=all style="margin-left: 300px;">
 
@@ -89,8 +90,8 @@
 
     
       <select name="select" id="option" style="float: right; margin-top: 25px;" > 
-          <option><a href="checkAll">전체조회</a></option>
-          <option><a href="checkDetail">상세조회</a></option>
+          <option><a href="paymentManage.admin">전체조회</a></option>
+          <option><a href="paymentDetail.admin">상세조회</a></option>
       </select>  
     <br><br>
     <hr>

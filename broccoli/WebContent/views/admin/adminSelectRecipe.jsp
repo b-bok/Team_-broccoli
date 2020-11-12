@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.kh.common.*, com.kh.recipe.model.vo.*,java.util.ArrayList" %>
+<%
+	Pagination p = (Pagination) request.getAttribute("p");
+	ArrayList<Recipe> list = (ArrayList<Recipe>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,9 +33,19 @@ a {
 			</div>
 			<div class="col"></div>
 			<div class="col">
-				<input class="form-control input-lg" id="myInput" type="text"
-					placeholder="레시피 전체검색">
+				<input class="form-control input-lg" id="myInput" type="text" placeholder="레시피 전체검색">
 			</div>
+			<script>
+			// 테이블 검색 
+				$(document).ready(function() {
+					$("#myInput").on("keyup",function() {
+						var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(function() {
+								$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+							});
+						});
+				});
+			</script>
 		</div>
 		<br> <br>
 		<table class="table table-hover" style="width: 100%;">
@@ -48,189 +63,63 @@ a {
 			</thead>
 			<tbody id="myTable">
 				<!-- 각 항목별 링크할 페이지 정해얌! 그 중 리뷰제목클릭시 리뷰상세피이지로 이동 -->
-				<!-- 레시피 카테고리 종류  1) 매일밥상 2) 특별한날 3) 간단요리 -->
-				<tr>
-					<td>1</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>국내산 오징어 1kg</td>
-					<td><a href="adminRecipeDetail.html">해물파전</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user01</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">2</td>
-					<td>2020-10-02</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#리뷰상세페이지로 이동">브로콜리 데치기</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user02</a></td>
-					<td>100</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">3</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#리뷰상세페이지로 이동">야채볶음</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user03</a></td>
-					<td>99</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">4</td>
-					<td>2020-10-02</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>냉동 블루베리 500g</td>
-					<td><a href="#리뷰상세페이지로 이동">까페 와플만들기</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user02</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">5</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#리뷰상세페이지로 이동">크림스튜</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user01</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">6</td>
-					<td>2020-10-02</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>냉동 블루베리 500g</td>
-					<td><a href="#리뷰상세페이지로 이동">블루베리 요루르트</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user02</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">7</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#리뷰상세페이지로 이동">크림스튜</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user01</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">8</td>
-					<td>2020-10-02</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#리뷰상세페이지로 이동">브로콜리 데치기</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user02</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">9</td>
-					<td>2020-10-04</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>노르웨이산 연어 400g</td>
-					<td><a href="#리뷰상세페이지로 이동">연어스테이크</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user05</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">10</td>
-					<td>2020-10-02</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>유기농 브로콜리 1kg</td>
-					<td><a href="#리뷰상세페이지로 이동">브로콜리 데치기</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user02</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">11</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>노르웨이산 연어 400g</td>
-					<td><a href="#리뷰상세페이지로 이동"> 연어초밥</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user06</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">12</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>생갈치 2마리(사가제</td>
-					<td><a href="#리뷰상세페이지로 이동">갈치구이</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user03</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">13</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>냉동굴 800g</td>
-					<td><a href="#리뷰상세페이지로 이동">오이스터 파스터</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user01</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">14</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>송이버섯 1팩</td>
-					<td><a href="#리뷰상세페이지로 이동">버섯리조또</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user08</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="odd">
-					<td class="sorting_1">15</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>충주 사과 3kg</td>
-					<td><a href="#리뷰상세페이지로 이동">까나페</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user10</a></td>
-					<td>XXXX</td>
-				</tr>
-				<tr role="row" class="even">
-					<td class="sorting_1">16</td>
-					<td>2020-10-01</td>
-					<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
-					<td><a href="#상품 세부페이지">XXXXXXXXXXXXXXXX</a></td>
-					<td>팬케이크 파우더 2인분</td>
-					<td><a href="#리뷰상세페이지로 이동">팬케이크</td>
-					<td><a href="#댓글달기로 이동하는게 나으려나??">user16</a></td>
-					<td>XXXX</td>
-				</tr>
+				<% if(list.isEmpty()){ %>
+					<tr>
+						<td colspan="8">리스트가 존재하지 않습니다</td>
+					</tr>
+				<%}else{ %>
+					<%for(Recipe r : list){ %>
+					<tr>
+						<td><%=r.getRecipeNo() %></td>
+						<td><%=r.getRegDate() %></td>
+						<td><a href="#사용자 주문내역페이지로 이동하나? ">XXXXXXXXXXXXXXXX</a></td>
+						<td><%=r.getPno() %></td>
+						<td><a href="#상품 세부페이지">국내산 오징어 1kg</a></td>
+						<td><%=r.getRecipeTitle() %></td>
+						<td><a href="#댓글달기로 이동하는게 나으려나??"><%=r.getMem() %></a></td>
+						<td><%=r.getClickNo() %></td>
+					</tr>
+					<%} %>
+				<%} %>
+
 			</tbody>
 		</table>
-		<script>
-		// 테이블 검색 
-			$(document).ready(function() {
-				$("#myInput").on("keyup",function() {
-					var value = $(this).val().toLowerCase();
-						$("#myTable tr").filter(function() {
-							$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-						});
-					});
-			});
-		</script>
-			
+
+		
+	<!-- 상세페이지이동 -->
+	<script>
+      	$(function(){
+      		$(".table>tbody>tr>td").click(function(){
+      			location.href = "<%=broccoli%>/detail.rc?rco=" + $(this).parent().children().eq(0).text();	
+      		});
+      	});
+    </script>	
+	
+		
+	<!-- 페이징바 -->
+	<div  class="paging-area" align="center">
+
 		<ul class="pager">
-			<li><a href="#">이전</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">다음</a></li>
+		<% if(p.getCurrentPage()!= 1){ %>
+			<li><a href="<%=broccoli %>/selectRecipe.admin?currentPage=<%=p.getCurrentPage()-1%>">이전</a></li>
+		<% } %>
+		
+		<% for(int i = p.getStartPage();i<=p.getEndPage();i++){ %>
+			<li><a href="<%=broccoli%>/selectRecipe.admin?currentPage=<%=i%>" class="btn btn-sm"> <%=i%></a></li>
+		<%} %>
+		
+		<% if(p.getCurrentPage() != p.getMaxPage()){ %>
+			<li><a href="<%=broccoli%>/selectRecipe.admin?currentPage=<%=p.getCurrentPage()+1%>">다음</a></li>
+		<%} %>
 		</ul>
 	</div>
-
+	<script>
+		$(function(){
+			$(".btn-sm").click(function(){
+				$(this).attr(active);
+			})
+		})
+	</script>
+</div>
 </body>
 </html>

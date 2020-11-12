@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.kh.product.model.dao.ProductDao;
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductQna;
 import com.kh.review.model.vo.Review;
 
 public class ProductService {
@@ -216,6 +217,60 @@ public class ProductService {
 		close(conn);
 		
 		return result;
+	}
+	
+	
+	public ArrayList<ProductQna> selectProductQnaList(PageInfo pi) {
+		Connection conn = getConnection();
+		
+		ArrayList<ProductQna> list = new ProductDao().selectProductQnaList(conn, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public ArrayList<Product> selectSearchList(String keyword,PageInfo pi) {
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new ProductDao().selectSearchList(conn, keyword, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int selectSearchCount(String keyword) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new ProductDao().selectSearchCount(conn, keyword);
+		
+		close(conn);
+		
+		return listCount;
+		
+		
+	}
+	
+	public ProductQna selectAdminProductQnaDetail(int qnaNo) {
+		Connection conn = getConnection();
+		
+		ProductQna pq = new ProductDao().selectAdminProductQnaDetail(conn, qnaNo);
+		
+		close(conn);
+		
+		return pq;
+	}
+	
+	public int selectPdtQnaListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new ProductDao().selectPdtQnaListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
 	}
 	
 	

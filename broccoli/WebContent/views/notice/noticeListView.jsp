@@ -3,7 +3,9 @@
 <%@ page import = "java.util.ArrayList, com.kh.notice.model.vo.Notice" %>
 <%
 		ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+		Notice n = (Notice)request.getAttribute("n");
 %>
+
 	
 <!DOCTYPE html>
 <html lang="en">
@@ -106,67 +108,68 @@ body{font-size:18px;}
                         없음 페이지
 					</div> -->
 					<form action="list.no" method="post">
+					
 					<tr>
 						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td>[가격인상공지] 브로콜라 1.5L외 5건 </td>
+						<td><b>브로콜리</b></td>
                         <td>2020-10-30</td>
                         <td>10</td>
 					</tr>
 					<tr>
 						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td>[가격인상공지] [조선호텔김치] 포기김치 외 10건</td>
+						<td><b>브로콜리</b></td>
                         <td>2020-10-30</td>
-                        <td>2</td>
+                        <td>0</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>[가격인상공지] 펩시콜라 3L 외 5건</td>
+						<td><b>브로콜리</b></td>
+                        <td>2020-10-30</td>
+                        <td>0</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>나 운영자 아니다</td>
+						<td><b>브로콜리</b></td>
+                        <td>2020-10-30</td>
+                        <td>0</td>
 					</tr>
 					<tr>
 						<td>1</td>
 						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td><b>브로콜리</b></td>
                         <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>제목입니다1</td>
-						<td>작성자아이디</td>
-                        <td>2020-10-30</td>
-                        <td>1</td>
+                        <td>0</td>
 					</tr>
 
 					<tr>
 						<td>1</td>
 						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td><b>브로콜리</b></td>
                         <td>2020-10-30</td>
-                        <td>1</td>
+                        <td>0</td>
 					</tr>
 
 					<tr>
 						<td>1</td>
 						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td><b>브로콜리</b></td>
                         <td>2020-10-30</td>
-                        <td>12</td>
+                        <td>0</td>
 					</tr>
 
 					<tr>
 						<td>1</td>
 						<td>제목입니다1</td>
-						<td>작성자아이디</td>
+						<td><b>브로콜리</b></td>
                         <td>2020-10-30</td>
-                        <td>1</td>
+                        <td>0</td>
 					</tr>
+					</form>
 				</tbody>
-			</form>
 			</table>
 			
 			

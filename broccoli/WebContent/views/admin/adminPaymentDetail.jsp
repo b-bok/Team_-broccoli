@@ -54,7 +54,7 @@
 
     <br>
 
-    <form action="paymentDetail.admin">
+    <form action="paymentDetail.admin" method="POST">
 
     <div class=all style="margin-left: 300px;">
 
@@ -65,8 +65,8 @@
 
     
       <select name="select" id="option" style="float: right; margin-top: 25px;" > 
-          <option><a href="checkAll">전체조회</a></option>
-          <option selected><a href="checkDetail">상세조회</a></option>
+          <option><a href="checkAll.admin">전체조회</a></option>
+          <option selected><a href="checkDetail.admin">상세조회</a></option>
       </select>  
     <br><br>
     <hr>

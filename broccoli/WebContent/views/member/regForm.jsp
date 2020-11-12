@@ -3,6 +3,10 @@
 <html>
 <head>
 <title>브로콜리 회원가입</title>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .container {
 	padding: 16px;
@@ -183,8 +187,14 @@ span {
 									$(function(){
 										$("#memPwd").keyup(function(){
 											
-											var regEx = /^[a-z\d]{8,14}$/i;
+											var regEx = /^[a-z\d]{8,15}$/i;
 											var result = regEx.exec($(this).val());
+											
+											// 추가 : 비밀번호 규칙 정규식
+											// 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력
+										    // var regEx = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-z]{2,50}).{8,50}$/i;
+
+											
 											if(result!=null){
 												$(".pwd.regEx").html("유효한 비밀번호입니다").css("color","green");
 											}else{
@@ -386,7 +396,6 @@ span {
 							<td>
 								<input type="checkbox" id="terms"> <label for="terms">전체 동의합니다</label><br> 
 								<input type="checkbox" id="terms1" name="chk"> <label for="terms1">이용약관동의<span>(필수)</span></label>
-								
 								<a href="#myModal1" data-toggle="modal">약관보기></a><br>
 							 	<input	type="checkbox" id="terms2" name="chk"> 
 							 	<label for="terms2">개인정보처리방침 동의 <span>(필수)</span></label>
@@ -402,6 +411,8 @@ span {
 						</tr>
 					</table>
 				</form>
+				
+				
 				<script>
 					// 전체선택할 수 있는 jquery 
 					$(function() {

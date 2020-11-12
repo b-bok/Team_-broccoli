@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.common.Pagination;
-import com.kh.recipe.model.service.RecipeService;
-import com.kh.recipe.model.vo.Recipe;
 import com.kh.report.model.service.ReportService;
+import com.kh.report.model.vo.Report;
 
 /**
  * Servlet implementation class SelectReportController
@@ -38,8 +37,8 @@ public class SelectReportController extends HttpServlet {
 		int listCount = new ReportService().selectListCount();
 		
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		int pageLimit = 10;
-		int boardLimit = 10;
+		int pageLimit = 2;
+		int boardLimit = 5;
 		int maxPage = (int) Math.ceil((double)listCount/boardLimit);
 		int startPage = ((currentPage - 1)/pageLimit) * pageLimit + 1; 
 		int endPage = startPage + pageLimit -1 ;
@@ -48,7 +47,9 @@ public class SelectReportController extends HttpServlet {
 		}
 		
 		Pagination p = new Pagination(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Recipe> list = new RecipeService().selectList(p);
+		ArrayList<Report> list = new ReportService().selectList(p);
+		
+		System.out.println(list);
 		
 		request.setAttribute("p", p);
 		request.setAttribute("list", list);

@@ -147,7 +147,7 @@
   <div class="topnav">
     <div class="topnav-right">
       <a href="#search"><a href="#"><span class="fa fa-fw fa-user" style="font-size: 24px;"></span> 관리자정보</a>
-      <a href="<%=broccoli%>"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
+      <a href="<%=broccoli%>/login.admin"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
     </div>
   </div>
   
@@ -172,7 +172,7 @@
       <a href="<%=broccoli%>/enrollProduct.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품등록/수정/삭제</a>
       <a href="<%=broccoli%>/selectProduct.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품조회</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 재고관리</a>
-      <a href="<%=broccoli%>/productQnaList.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품 문의관리</a>
+      <a href="<%=broccoli%>/productQnaList.admin?currentPage=1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 상품 문의관리</a>
       <a href="<%=broccoli%>/eventList.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 이벤트 상품관리</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 이벤트 등록및수정</a>
     </div>
@@ -181,7 +181,7 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 결제내역 전체조회</a>
+      <a href="<%=broccoli%>/paymentManage.admin">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 결제내역 전체조회</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 문의관리</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 이벤트 상품관리</a>
       <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i> 이벤트 등록및수정</a>

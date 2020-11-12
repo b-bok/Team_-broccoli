@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.kh.product.model.vo.PageInfo;
 import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductQna;
 import com.kh.review.model.vo.Review;
 
 
@@ -120,6 +121,7 @@ public class ProductDao {
 
 	
 	public ArrayList<Product> selectBestProduct(Connection conn, PageInfo pi) {
+		
 		ArrayList<Product> list = new ArrayList<>();
 		
 		PreparedStatement pstmt  = null;
@@ -162,6 +164,8 @@ public class ProductDao {
 
 		return list;
 	}
+	
+	
 	
 	public ArrayList<Product> selectNewProduct(Connection conn, PageInfo pi) {
 		ArrayList<Product> list = new ArrayList<>();
@@ -663,6 +667,206 @@ public class ProductDao {
 	}
 	
 	
+	public ArrayList<ProductQna> selectProductQnaList(Connection conn, PageInfo pi){
+		// select문 => 여러행 ArrayList
+		ArrayList<ProductQna> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectProductQnaList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset= pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new ProductQna(
+										rset.getInt("qna_no"),
+										rset.getString("mem_name"),
+										rset.getString("p_name"),
+										rset.getString("qna_title"),
+										rset.getString("yes_no"),
+										rset.getDate("qna_date"),
+										rset.getString("notice_yn")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Product> selectSearchList(Connection conn, String keyword, PageInfo pi) {
+		
+		ArrayList<Product> list = new ArrayList<>();
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectSearchList");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1)*pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+
+			pstmt.setString(1, keyword);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+
+			
+			
+			while(rset.next()) {
+				
+				list.add(new Product(
+									   rset.getInt("p_no")
+									 , rset.getString("p_name")
+									 , rset.getInt("p_price")
+									 , rset.getInt("p_discount")
+									 , rset.getString("p_detail")
+									 , rset.getString("p_thumbnail")
+						             )
+						);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+		
+		
+	}
+
+	public int selectSearchCount(Connection conn, String keyword) {
+		
+		
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearchCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, keyword);
+						
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				listCount = rset.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		
+		return listCount;
+	}
+	
+	public ProductQna selectAdminProductQnaDetail(Connection conn, int qnaNo) {
+		
+		ProductQna pq = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdminProductQnaDetail");
+		
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, qnaNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					pq = new ProductQna(rset.getInt("p_no"),
+										  rset.getString("mem_name"),
+										  rset.getString("p_name"),
+										  rset.getString("qna_title"),
+										  rset.getString("qna_detail"),
+										  rset.getString("qna_answer"),
+										  rset.getString("yes_no"),
+										  rset.getDate("qna_date"),
+										  rset.getString("notice_yn"),
+										  rset.getString("secret"));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+
+		return pq;
+	}
+	
+	
+	public int selectPdtQnaListCount(Connection conn) {
+		
+		int listCount = 0;
+
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPdtQnaListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				
+				listCount = rset.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+
+		
+		return listCount;
+	}
 	
 }
 

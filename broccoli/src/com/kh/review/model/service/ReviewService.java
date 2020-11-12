@@ -27,7 +27,7 @@ public class ReviewService {
 			rollback(conn);
 		}
 		
-
+		close(conn);
 		return result;
 		
 	}
@@ -58,7 +58,7 @@ public class ReviewService {
 			rollback(conn);
 		}
 		
-
+		close(conn);
 		return result;
 		
 	}

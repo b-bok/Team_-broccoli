@@ -28,6 +28,22 @@
 				  WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="selectReport">
+		SELECT
+                 REPORT_NO
+                ,MEM_NO
+                ,REPORT_CATEGORY
+                ,REPORT_BOARD_NO
+                ,REPORT_DATE
+                ,REPORT_CONTENTS
+                ,REPORT_RESULT
+                ,BC_YN
+                ,BLINDING
+           FROM REPORTS 
+           JOIN MEMBER USING(MEM_NO)
+          WHERE REPORT_NO = ?
+	</entry>
+	
 	
 	
 	

@@ -38,6 +38,16 @@
 	
 	</entry>
 	
+		<entry key="selectSearchCount">
+		
+		SELECT 
+		       COUNT(*) LISTCOUNT
+		  FROM PRODUCT
+		  WHERE P_NAME LIKE '%' || ? || '%'
+		 
+	
+	</entry>
+	
 	
 	<entry key="selectBestProduct">
 	
@@ -386,4 +396,84 @@
 		    ,  P_THUMBNAIL =?
 		 WHERE P_NO = ?
 	</entry>
+	
+	<entry key="selectProductQnaList">
+		SELECT *
+		  FROM (
+		       SELECT      
+		             ROWNUM RNUM
+		           , A.* 
+		       FROM (     
+		            SELECT
+		               QNA_NO
+		             , P_NAME  
+		             , QNA_TITLE
+		             , MEM_NAME
+		             , QNA_DATE     
+		             , YES_NO
+		             , NOTICE_YN
+		            FROM PRODUCT_QNA
+		            JOIN MEMBERS USING(MEM_NO)
+		            ORDER
+		                BY  QNA_NO DESC
+		            ) A
+		  )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	<entry key="selectSearchList">
+	
+		SELECT *
+		
+		  FROM (
+		        SELECT
+		              ROWNUM RNUM
+		            , A.* 
+		        FROM
+		            (SELECT 
+		                  P_NO
+		                , P_NAME
+		                , P_PRICE
+		                , P_DISCOUNT
+		                , P_DETAIL
+		                , P_THUMBNAIL
+		             FROM PRODUCT
+		             WHERE P_NAME LIKE '%' || ? || '%'
+		             ORDER 
+		                BY P_NO ASC) A
+		                )       
+		                
+		WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+	
+	<entry key="selectAdminProductQnaDetail">
+		SELECT
+		       P_NO
+		     , MEM_NAME
+		     , P_NAME
+		     , QNA_TITLE
+		     , QNA_DETAIL
+		     , QNA_ANSWER
+		     , YES_NO
+		     , QNA_DATE
+		     , NOTICE_YN
+		     , SECRET
+		 FROM PRODUCT_QNA
+		 JOIN MEMBERS USING(MEM_NO)
+		WHERE QNA_NO =?
+	</entry>
+	
+	<entry key="selectPdtQnaListCount">
+		SELECT 
+		      COUNT(*) LISTCOUNT
+		 FROM PRODUCT_QNA
+	</entry>
+	
+	
+	
+	
+	
+	
 </properties>

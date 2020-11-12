@@ -34,6 +34,28 @@ public class Review {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+
+	public Review(int reviewNo, int pno, String mem, Date regDate, String reviewTitle, String reviewContent,
+			int clickNo, int reviewRate, int like) {
+		super();
+		this.reviewNo = reviewNo;
+		this.pno = pno;
+		this.mem = mem;
+		this.regDate = regDate;
+		this.reviewTitle = reviewTitle;
+		this.reviewContent = reviewContent;
+		this.clickNo = clickNo;
+		this.reviewRate = reviewRate;
+		this.like = like;
+	}
+
 
 	public String getReviewAttach() {
 		return reviewAttach;
