@@ -13,6 +13,7 @@ public class Order {
 	private String zipcode;			// 우편번호
 	private String address1;		// 주소
 	private String address2;		// 상세주소
+	private String addextra;		// 상세주소2
 	private String mobile;			// 연락처
 	private String receiver;		// 수령인
 	private String recieverPhone;	// 수령인연락처
@@ -27,12 +28,84 @@ public class Order {
 	private String delCom;			// 택배회사
 	private String driver;			// 택배기사
 	
+	private int pno;				// 상품번호
+	private String pName;			// 상품이름
+	private String thumbnail;		// 썸네일경로
+	private int point;				// 적립금
+	private int quantity;			// 수량
+	private int price;				// 가격
+	
 	public Order() {}
 
+	
+	public Order(int memNo, String memName, String zipcode, String address1, String address2, String addextra,
+			String mobile, int totalAmt, int pno, String pName, String thumbnail, int point, int quantity, int price) {
+		super();
+		this.memNo = memNo;
+		this.memName = memName;
+		this.zipcode = zipcode;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.addextra = addextra;
+		this.mobile = mobile;
+		this.totalAmt = totalAmt;
+		this.pno = pno;
+		this.pName = pName;
+		this.thumbnail = thumbnail;
+		this.point = point;
+		this.quantity = quantity;
+		this.price = price;
+	}
+
+	
 	public Order(int orderNo, int memNo, int deliverNo, Date orderdate, String orderCondition, String memName,
-			String zipcode, String address1, String address2, String mobile, String receiver, String recieverPhone,
-			String recieve, int deliveryFee, String pointYn, String payment, int totalAmt, String category,
-			int invoiceNo, String delYn, String delCom, String driver) {
+			String address1, String address2, String mobile, String receiver, String recieverPhone, String recieve,
+			int deliveryFee, String pointYn, String payment, int totalAmt) {
+		super();
+		this.orderNo = orderNo;
+		this.memNo = memNo;
+		this.deliverNo = deliverNo;
+		this.orderdate = orderdate;
+		this.orderCondition = orderCondition;
+		this.memName = memName;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.mobile = mobile;
+		this.receiver = receiver;
+		this.recieverPhone = recieverPhone;
+		this.recieve = recieve;
+		this.deliveryFee = deliveryFee;
+		this.pointYn = pointYn;
+		this.payment = payment;
+		this.totalAmt = totalAmt;
+	}
+
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	public Order(int orderNo, int memNo, int deliverNo, Date orderdate, String orderCondition, String memName,
+			String zipcode, String address1, String address2, String addextra, String mobile, String receiver,
+			String recieverPhone, String recieve, int deliveryFee, String pointYn, String payment, int totalAmt,
+			String category, int invoiceNo, String delYn, String delCom, String driver, int pno, String pName,
+			String thumbnail, int point) {
 		super();
 		this.orderNo = orderNo;
 		this.memNo = memNo;
@@ -43,6 +116,7 @@ public class Order {
 		this.zipcode = zipcode;
 		this.address1 = address1;
 		this.address2 = address2;
+		this.addextra = addextra;
 		this.mobile = mobile;
 		this.receiver = receiver;
 		this.recieverPhone = recieverPhone;
@@ -56,7 +130,65 @@ public class Order {
 		this.delYn = delYn;
 		this.delCom = delCom;
 		this.driver = driver;
+		this.pno = pno;
+		this.pName = pName;
+		this.thumbnail = thumbnail;
+		this.point = point;
 	}
+
+
+
+
+
+	public String getAddextra() {
+		return addextra;
+	}
+
+
+	public void setAddextra(String addextra) {
+		this.addextra = addextra;
+	}
+
+
+	public int getPno() {
+		return pno;
+	}
+
+
+	public void setPno(int pno) {
+		this.pno = pno;
+	}
+
+
+	public String getpName() {
+		return pName;
+	}
+
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+
+	public int getPoint() {
+		return point;
+	}
+
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
 
 	public int getOrderNo() {
 		return orderNo;

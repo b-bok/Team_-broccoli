@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" %>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.order.model.vo.*" %>
 <%
-	HashMap<String,String> map = (HashMap<String, String>)request.getAttribute("map");
+	ArrayList<Order> list = (ArrayList<Order>)request.getAttribute("list");
 	int totalamt = (int)request.getAttribute("totalamt");
-	int quantity = (int)request.getAttribute("quantity");
-	if(map.get("addex") == null){
-		map.replace("addex", "");
-	}
 %>      
 <!DOCTYPE html>
 <html>
@@ -65,26 +61,29 @@
                 </thead>
                 <tbody>
                     <tr>
+                    	<% for(Order o : list) { %>
+                    	<input type="hidden" name="name" value="<%= o.getMemName() %>">
                         <td width="10" style="vertical-align: middle;">
                         </td>
                         <td width="60" style="vertical-align: middle;">
-                            <img width="75" height="75" src="<%= map.get("thumb")%>">
+                            <img width="75" height="75" src="<%= o.getThumbnail() %>">
                         </td>
                         <td width="300" style="vertical-align: middle;">
-                            <a href="<%= broccoli %>/detail.pb?pno=<%= map.get("pno")%>">
+                            <a href="<%= broccoli %>/detail.pb?pno=<%= o.getPno() %>">
                                 <div>
-                                    <%= map.get("pname") %> <br>
-                                    <%= map.get("price") %>원
+                                    <%= o.getpName() %> <br>
+                                    <%= o.getPrice() %>원
                                 </div>
                             </a>
                         </td>
                         <td width="100" align="center" style="vertical-align: middle;">
-                            <div class="pagination"><%= quantity %></div>
+                            <div class="pagination"><%= o.getQuantity()%></div>
                         </td>
                         <td width="100" align="center" style="vertical-align: middle;">
-                            <div id="price"><%= totalamt %></div>원 
+                            <div id="price"><%= o.getTotalAmt() %></div>원 
                         </td>
                     </tr>
+                    <% } %>
                 </tbody>
             </table>
             <br><br>
@@ -94,12 +93,11 @@
             <table class="table2" border="0" style="height: 80px;">
                 <tr>
                     <th width="100">보내는 분 *</th>
-                    <td><%= map.get("mname") %></td>
-                    <input type="hidden" name="name" value="<%= map.get("mname") %>">
+                    <td><%= list.get(0).getMemName() %></td>
                 </tr>
                 <tr>
                     <th>연락처 *</th>
-                    <td><%= map.get("mobile") %></td>
+                    <td><%= list.get(0).getMobile() %></td>
                 </tr>
             </table>
             <br><br><br>
@@ -113,14 +111,13 @@
                         <div id="div11" style="border: 1px solid green; display: none; border-radius: 13px; 
                         padding: 3px; margin-left: 5px; margin-top: 0px; font-size: 8px;">기본 배송지</div> <br>
                         <div class="address">
-                            <span id="add1"><%= map.get("zipcode") + map.get("add1") %> </span> <br>
-                            <span id="add2"><%= map.get("add2") + map.get("addex") %> </span> <br>
-                            <span id="name"><%= map.get("mname") %></span> ,  
-                            <span id="mobile"><%= map.get("mobile") %></span>
-                            <input type="hidden" name="inputadd" id="inputadd" value="<%= map.get("zipcode") + map.get("add1") %>">
-                            <input type="hidden" name="inputadd2" id="inputadd2" value="<%= map.get("add2") + map.get("addex")%> ">
-                            <input type="hidden" name="inputname" id="inputname" value="<%= map.get("mname") %>">
-                            <input type="hidden" name="inputmobile" id="inputmobile" value="<%= map.get("mobile") %>">
+                            <span id="add1"><%= list.get(0).getZipcode() + list.get(0).getAddress1() %> </span> <br>
+                            <span id="add2"><%= list.get(0).getAddress2() + list.get(0).getAddextra() %> </span> <br>
+                            <span id="name"><%= list.get(0).getMemName() %></span> ,  
+                            <span id="mobile"><%= list.get(0).getMobile() %></span>
+                            <input type="hidden" name="inputadd" id="inputadd" value="<%= login.getZipcode() + login.getAddress1() %>">
+                            <input type="hidden" name="inputadd2" id="inputadd2" value="<%= login.getAddress2() %>">
+                            <input type="hidden" name="inputmobile" id="inputmobile" value="<%= login.getMobile() %>">
                             <input type="hidden" name="inputdno" id="inputdno" value="">
                         </div>
                     </td>
@@ -138,7 +135,7 @@
                     <td>
                         <div class="address" id="received">
                             	 <br>
-                            	<br>
+                            	 <br>
                         </div>
                         <input type="hidden" name="enter" id="en" value="">
                         <input type="hidden" name="receiveHow" id="rc" value="">
@@ -153,7 +150,7 @@
                 <tr>
                     <th width="100">적립금 사용</th>
                     <td width="200" style="text-align: center; box-sizing: border-box;">
-                        <input type="number" name="point" id="point" min="0" style="text-align: right;" value="<%= map.get("point") %>">원
+                        <input type="number" name="point" id="point" min="0" style="text-align: right;" value="<%= list.get(0).getPoint() %>">원
                     </td>
                     <td>
                         <label class="form-check-label">
@@ -162,7 +159,7 @@
                             	$(function(){
                             		$("#pointYn").click(function(){
                             			if($(this).is(":checked") == true){
-                        					$("#point").val(<%= map.get("point")%>);
+                        					$("#point").val(<%= list.get(0).getPoint() %>);
                         				}else{
                         					$("#point").val(0);
                         				}
@@ -266,10 +263,6 @@
             <br><br><br><br><br>
         </div>
     </form>
-    
-    
-    
-    
     <script>
     	$(function(){
     		
@@ -316,7 +309,7 @@
             	<div>
             		<h5>출입 방법*</h5>
             		<label for="enter" style="margin:5px">
-	            	<input type="text" class="form-control" id="enter"> 
+	            	<input type="text" class="form-control" name="enter" id="enter"> 
 	            	</label>
             	</div>
 	            	* 공동 현관 비밀번호 등 출입방법을 적어주세요.
@@ -336,8 +329,8 @@
                		  }
                	  }
                	  document.getElementById("received").innerHTML = receive +  "<br>출입방법: "+ document.getElementById("enter").value;
-               	  document.getElementById("rc").value = receive;
-               	  document.getElementById("en").value = document.getElementById("enter").value;
+               	document.getElementById("rc").value = receive;
+             	  document.getElementById("en").value = document.getElementById("enter").value;
             	}
             </script>
         </div>

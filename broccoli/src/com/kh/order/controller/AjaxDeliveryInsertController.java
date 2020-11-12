@@ -1,7 +1,6 @@
 package com.kh.order.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,36 +13,47 @@ import com.kh.order.model.service.OrderService;
 import com.kh.order.model.vo.DeliverRegister;
 
 /**
- * Servlet implementation class PopupChangeAddressController
+ * Servlet implementation class AjaxDeliveryInsertController
  */
-@WebServlet("/changeAdd.or")
-public class PopupChangeAddressController extends HttpServlet {
+@WebServlet("/ajaxAddr.or")
+public class AjaxDeliveryInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PopupChangeAddressController() {
+    public AjaxDeliveryInsertController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		request.setCharacterEncoding("utf-8");
+		Member m = (Member)request.getSession().getAttribute("login");
+		int mno = m.getMemNo();
+		String addName = request.getParameter("addName");
+		String add1 = request.getParameter("add1");
+		String add2 = request.getParameter("add2");
+		String name = request.getParameter("name");
+		String mobile = request.getParameter("mobile");
+		String defaultYN = request.getParameter("defaultYN");
+		
+		DeliverRegister dr = new DeliverRegister(mno, add1, add2, addName, name, mobile, defaultYN);
+		
+		response.setCharacterEncoding("UTF-8");
+
+		int row = new OrderService().selectAddressNo(mno);
+		int result = 0;
+		if(row < 5) {
+			result = new OrderService().insertDeliverRegister(dr);
+		}
+		
+		response.getWriter().print(result);
 		
 		
-//		배송지 테이블에서 배송지 조회해오기
-		Member login = (Member)request.getSession().getAttribute("login");
-		int mno = login.getMemNo();
-		
-		
-		ArrayList<DeliverRegister> list = new OrderService().selectDeliveryList(mno);
-		
-		request.setAttribute("dlist", list);
-		request.getRequestDispatcher("/views/order/changeAdd.jsp").forward(request, response);
 	}
 
 	/**

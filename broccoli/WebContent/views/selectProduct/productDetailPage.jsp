@@ -138,7 +138,7 @@
                         </tr>
                         <tr>
                             <th>구매수량</th>
-                            <td><input type="number" min="1" max="50" name="amount" id="amount" value="1"></td>
+                            <td><input type="number" min="1" max="50" name="quantity" id="amount" value="1"></td>
                         </tr>
                         <tfoot>
                         <tr>
@@ -233,7 +233,7 @@
         			document.form1.action = "<%= broccoli %>/cart.or" ;
         		}
         		if(index == 2){
-        			document.form1.action = "<%= broccoli %>/dOrder.or";
+        			document.form1.action = "<%= broccoli %>/order.or";
         		}
         		document.form1.submit();
         	}
