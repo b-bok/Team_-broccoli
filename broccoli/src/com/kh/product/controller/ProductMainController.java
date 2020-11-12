@@ -58,7 +58,7 @@ public class ProductMainController extends HttpServlet {
 		pageLimit = 3;
 		
 		// * boardLimt : 한 페이지 내에 보여질 게시글 최대 갯수
-		boardLimit = 5;
+		boardLimit = 6;
 		
 		// * maxPage : 제일 마지막 페이지수
 		
