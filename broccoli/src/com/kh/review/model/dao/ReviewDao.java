@@ -196,7 +196,7 @@ public class ReviewDao {
 									,rset.getString("review_content")
 									,rset.getInt("click_no")
 									,rset.getInt("review_rate")
-									,rset.getInt("like")
+									,rset.getInt("LIKE_COUNT")
 									));
 			}
 			
