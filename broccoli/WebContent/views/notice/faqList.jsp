@@ -93,11 +93,12 @@ margin-top: 50px;
            <select name="qCategory" id="qCategory">
 
             <!-- Member, Payment, Cencle, Delivery  -->
-            <option value="0" name="0" selected>선택</option>
-            <option value="1" name="1">회원 문의</option>
-            <option value="2" name="2">주문/결제</option>
-            <option value="3" name="3">취소/교환/환불</option>
-            <option value="4" name="4">배송문의</option>
+            <option value="0" >선택</option>
+            <option value="1" >회원 문의</option>
+            <option value="2" >주문/결제</option>
+            <option value="3" >취소/교환/환불</option>
+            <option value="4" >배송문의</option>
+            
         </select>
 
         <button type="submit" class="btn btn-outline-success btn-sm" id="submit">검색</button>

@@ -795,7 +795,45 @@ public class ProductDao {
 		return listCount;
 	}
 	
-	
+	public ProductQna selectAdminProductQnaDetail(Connection conn, int qnaNo) {
+		
+		ProductQna pq = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdminProductQnaDetail");
+		
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, qnaNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					pq = new ProductQna(rset.getInt("p_no"),
+										  rset.getString("mem_name"),
+										  rset.getString("p_name"),
+										  rset.getString("qna_title"),
+										  rset.getString("qna_detail"),
+										  rset.getString("qna_answer"),
+										  rset.getString("yes_no"),
+										  rset.getDate("qna_date"),
+										  rset.getString("notice_yn"),
+										  rset.getString("secret"));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+
+		return pq;
+	}
 	
 }
 

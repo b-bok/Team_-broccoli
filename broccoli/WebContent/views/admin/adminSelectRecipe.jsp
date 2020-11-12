@@ -89,7 +89,7 @@ a {
 	<!-- 상세페이지이동 -->
 	<script>
       	$(function(){
-      		$(".table>tbody>tr").click(function(){
+      		$(".table>tbody>tr>td").click(function(){
       			location.href = "<%=broccoli%>/detail.rc?rco=" + $(this).parent().children().eq(0).text();	
       		});
       	});

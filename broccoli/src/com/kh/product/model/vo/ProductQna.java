@@ -38,6 +38,21 @@ public class ProductQna {
 	
 	
 	
+	public ProductQna(int pNo, String memNo, String pName, String qnaTitle, String qnaDetail, String qnaAnswer,
+			String yesNo, Date qnaDate, String noticeYn, String secret) {
+		super();
+		this.pNo = pNo;
+		this.memNo = memNo;
+		this.pName = pName;
+		this.qnaTitle = qnaTitle;
+		this.qnaDetail = qnaDetail;
+		this.qnaAnswer = qnaAnswer;
+		this.yesNo = yesNo;
+		this.qnaDate = qnaDate;
+		this.noticeYn = noticeYn;
+		this.secret = secret;
+	}
+
 	public ProductQna(int qnaNo, String memNo, String pName, String qnaTitle, String yesNo, Date qnaDate,
 			String noticeYn) {
 		super();

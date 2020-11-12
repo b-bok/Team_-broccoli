@@ -37,8 +37,8 @@ public class SelectReportController extends HttpServlet {
 		int listCount = new ReportService().selectListCount();
 		
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		int pageLimit = 10;
-		int boardLimit = 10;
+		int pageLimit = 2;
+		int boardLimit = 5;
 		int maxPage = (int) Math.ceil((double)listCount/boardLimit);
 		int startPage = ((currentPage - 1)/pageLimit) * pageLimit + 1; 
 		int endPage = startPage + pageLimit -1 ;
@@ -48,6 +48,8 @@ public class SelectReportController extends HttpServlet {
 		
 		Pagination p = new Pagination(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Report> list = new ReportService().selectList(p);
+		
+		System.out.println(list);
 		
 		request.setAttribute("p", p);
 		request.setAttribute("list", list);

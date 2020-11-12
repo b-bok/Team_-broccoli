@@ -253,5 +253,15 @@ public class ProductService {
 		
 	}
 	
+	public ProductQna selectAdminProductQnaDetail(int qnaNo) {
+		Connection conn = getConnection();
+		
+		ProductQna pq = new ProductDao().selectAdminProductQnaDetail(conn, qnaNo);
+		
+		close(conn);
+		
+		return pq;
+	}
+	
 	
 }

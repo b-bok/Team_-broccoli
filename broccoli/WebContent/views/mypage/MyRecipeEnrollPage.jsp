@@ -192,7 +192,76 @@
                 <div class="product2">
                     <div class="product2_1">사진</div>
                     <div class="product2_2">주문번호 / 결제금액</div>
-                    <div class="product2_3"> <button type="button"class="btn btn-outline-success">레시피작성하기</button></div>
+                    <div class="product2_3"> 
+                    <div class="container1">
+                            
+                          
+                            <!-- Button to Open the Modal -->
+                            <button type="button"class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">레시피작성하기</button>
+                          
+                            <!-- The Modal -->
+                            <div class="modal" id="myModal" >
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">레시피</h4>
+                                    <button type="button" class="close" style="color:white" data-dismiss="modal">&times;</button>
+                                  </div>
+                                  
+                                  <!-- Modal body -->
+                                  <div class="modal-body">
+                                      <table class="modal-table">
+                                          <tr id="tr1"><td><div class="image"><img src="images/200x200.png" alt="My Image"></div>
+                                                  <div class="pname"><br><br><br>브로콜리</div></td>
+                                          </tr>
+                                          
+                                          <tr><td>상품 만족도<br><br>
+                                             <br>
+                                              어떤점이좋았나요?<br><br>
+                                              <h7 class="h">제목</h7><br>
+                                              <input type="text" class="maintext" maxlength="50px"><br><br>
+                                              <h7 class="h">내용</h7><br>
+                                              <textarea type="text" class="subtext" maxlength="1000px"></textarea>
+
+
+
+                                           </td></tr>
+                                          <tr><td><form name="write">
+                                                            <table id='insertTable' border=0 cellpadding=0 cellspacing=0>
+                                                                <tr>
+                                                                    <td valign=bottom>
+                                                                        <INPUT type='file' maxLength='100' name='filename1' size='25'>
+                                                                    </td>
+                                                                    <td width=100>
+                                                                        <input type="button" value="추가" onClick="addFile(this.form)" border=0 style='cursor:hand'>
+                                                                        <input type="button" value="삭제" onClick='deleteFile(this.form)' border=0 style='cursor:hand'>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <input type="hidden" name="rowCount" value="1">
+                                                            <input type="submit">
+                                                        </form>                
+
+                                                        </td></tr>
+                                      </table>
+
+                                  </div>
+                                  
+                                  <!-- Modal footer -->
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">작성</button>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+                          
+                        </div>
                 </div>
             </div>
           </div>

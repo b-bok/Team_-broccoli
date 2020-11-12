@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.product.model.vo.*" %>    
+<%
+	ProductQna pq = (ProductQna)request.getAttribute("pq");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,32 +38,30 @@
             <table id="pAnswerForm" border="1">
                 <tr>
                     <td>번호</td>
-                    <td>314</td>
+                    <td><%= pq.getQnaNo() %></td>
                     <td>상품번호</td>
-                    <td>1234</td>
+                    <td><%= pq.getpNo() %></td>
                 </tr>
                 <tr>
                     <td>업체명</td>
                     <td>**식품</td>
                     <td>작성자</td>
-                    <td>홍길동</td>
+                    <td><%= pq.getMemNo() %></td>
                 </tr>
                 <tr>
                     <td>상품명</td>
-                    <td>[소이연남] 소고기쌀국수</td>
+                    <td><%= pq.getpName() %></td>
                     <td>작성일</td>
-                    <td>2020-09-29</td>
+                    <td><%= pq.getQnaDate() %></td>
                 </tr>
                 <tr>
                     <td>제목</td>
-                    <td colspan="3">요리법이 어떻게 되요??</td>
+                    <td colspan="3"><%= pq.getQnaTitle() %></td>
                 </tr>
                 <tr>
                     <td>내용</td>
                     <td colspan="5">
-                        소고기 쌀국수 요리법이 궁금합니다 <br> 3가지만 알려주세요 <br>
-                        소고기 쌀국수 요리법이 궁금합니다 <br> 3가지만 알려주세요 <br>
-                        소고기 쌀국수 요리법이 궁금합니다 <br> 3가지만 알려주세요
+                       <%= pq.getQnaDetail() %>
                     </td> 
                 </tr>
                 <tr>
@@ -70,7 +72,7 @@
                 </tr>
                 <tr>
                     <td>답변</td>
-                    <td colspan="5"><textarea id="pAnswer" cols="50" rows="10" style="resize: none;"></textarea></td>
+                    <td colspan="5"><textarea id="pAnswer" cols="50" rows="10" style="resize: none;"><%= pq.getQnaAnswer() %></textarea></td>
                 </tr>
             </table>
             <br>

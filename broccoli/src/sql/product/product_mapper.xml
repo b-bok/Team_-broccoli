@@ -448,7 +448,22 @@
 	
 	</entry>
 	
-	
+	<entry key="selectAdminProductQnaDetail">
+		SELECT
+		       P_NO
+		     , MEM_NAME
+		     , P_NAME
+		     , QNA_TITLE
+		     , QNA_DETAIL
+		     , QNA_ANSWER
+		     , YES_NO
+		     , QNA_DATE
+		     , NOTICE_YN
+		     , SECRET
+		 FROM PRODUCT_QNA
+		 JOIN MEMBERS USING(MEM_NO)
+		WHERE QNA_NO =?
+	</entry>
 	
 	
 	
