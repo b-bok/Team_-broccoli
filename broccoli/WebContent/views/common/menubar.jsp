@@ -54,6 +54,17 @@ div {
         
         }
         
+        #title_goods>a {
+        	color: black;
+            font-weight: bold;
+        }
+        
+        #title_goods>a:hover{
+ 			text-decoration: none;
+            color: green;
+        
+        }
+        
         /* 최상단상단메뉴바 */
         #head {
             height: 15%;
@@ -181,7 +192,8 @@ div {
 				<li><a href="<%= broccoli %>/bestProduct.pb?currentPage=1">베스트</a></li>
 				<li><a href="<%= broccoli%>/eventProduct.pb">이벤트</a></li>
 				<li>
-					<form class="form-inline" action="<%=broccoli %>/search.pb" method="GET">
+					<form class="form-inline" action="<%=broccoli %>/search.pb?" method="GET">
+						<input type="hidden" name="currentPage" value=1 />
 						<input name="search" class="form-control form-control-sm"
 							type="text" size="15px" placeholder="검색어를 입력하세요">
 						<button class="btn btn-secondary btn-sm" type="submit" style="padding:8px">

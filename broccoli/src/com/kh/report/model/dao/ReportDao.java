@@ -35,7 +35,7 @@ public class ReportDao {
 		int listCount = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectListCoun");
+		String sql = prop.getProperty("selectListCount");
 		
 		try {
 			stmt = conn.createStatement();
@@ -96,6 +96,67 @@ public class ReportDao {
 		return list;
 		
 				
+	}
+	
+	public int increaseCount(Connection conn, int repno) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, repno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public Report selectReport(Connection conn, int repno) {
+		
+		Report rp = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, repno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				rp = new Report(rset.getInt("report_no")
+						,rset.getString("mem_no")
+						,rset.getString("report_category")
+						,rset.getInt("report_board_no")
+						,rset.getDate("report_date")
+						,rset.getString("report_contents")
+						,rset.getString("report_result")
+						,rset.getString("bc_yn")
+						,rset.getString("blinding")
+						);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		return rp;
+		
 	}
 
 }
