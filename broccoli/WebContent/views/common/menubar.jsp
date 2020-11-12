@@ -163,7 +163,7 @@ div {
 					style="font-size: 12px; padding: 0px;">고객센터</a>
 					<ul class="submenu">
 						<li><a href="<%= broccoli %>/list.no" class="dropdown-item" style="font-size: 11px;">공지사항</a></li>
-						<li><a href="<%= broccoli %>/list.faq" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
+						<li><a href="<%= broccoli %>/category.faq" class="dropdown-item" style="font-size: 11px;">자주하는 질문</a></li>
 						
 						<%if(login == null){%>
 						<!-- 1:1 문의, 신고하기 클릭하면 로그인 페이지로 이동하도록  -->

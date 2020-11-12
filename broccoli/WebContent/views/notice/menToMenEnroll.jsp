@@ -146,10 +146,11 @@
 </style>
 </head>
 <body>
+<body>
 <%@ include file="../common/menubar.jsp"%>
 <br clear="both">
 
-<div class="wrap">
+<div class="wrap" style="margin-top:50px;">
     
     <div id="content">
 
@@ -159,13 +160,13 @@
          </div>
 
             <div id="content_2">
-             <br><br><h1>내 문의 조회 > 1 : 1 문의</h1><hr>
+             <br><br><h3>l 1:1 문의</h1><hr>
                 
-               <form class="qnaenroll">
+               <form class="qnaenroll" action="insert.con" method="POST">
                   <table align = "center" border="1" style="border-color:rgba(128, 128, 128, 0.13)">
                     <tr>
-                        <th class="rect" rowspan="2" width="100" style="text-align:center;">제목</th>
-                        <td width="100">
+                        <th class="rect" rowspan="2" width="100" style="text-align:center; padding:5px;">제목</th>
+                        <td width="100" style="padding:5px;">
                             <select name="category">
                              <option value="return" selected>선택</option>
                              <option value="return">배송지연</option>
@@ -180,7 +181,7 @@
                         <th><input type="text" size="100"></th>
                     </tr>
                     <tr>
-                        <th class="rect" height="70"width="100"style="text-align:center;">주문번호</th>
+                        <th class="rect" height="70"width="100"style="text-align:center; padding:5px; ">주문번호</th>
                         <td><input type="text"> <button type="button" class="btn btn-success btn-sm">주문조회</button></td>
                     </tr>
                     <tr>
@@ -233,7 +234,7 @@
                    </table>
                    <div class="enrollbutton" align="center"><br>
                     <button type="button" class="btn btn-outline-success btn-sm">등록하기</button>
-                    <button onclick="history.back()" class="btn btn-outline-danger btn-sm">뒤로가기</button>
+                    <a href="<%=broccoli%>/list.no" class="btn btn-outline-light text-dark">뒤로가기</a>
                    </div>
                    
                </form>
@@ -245,5 +246,6 @@
     </div>
 </div>
 <%@ include file="../common/footer.jsp"%>
+
 </body>
 </html>

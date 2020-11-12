@@ -82,8 +82,8 @@ body{font-size:18px;}
 		<!-- 좌측 버튼태그 (경로) -->
 		<div class="btn-group-vertical" id="btn-group">
 			<a href="<%=broccoli%>/list.no" class="btn btn-outline-light text-dark">공지사항</a>
-			<a href="<%=broccoli%>/list.faq" class="btn btn-outline-light text-dark">자주하는 질문</a>
-			<a href="" class="btn btn-outline-light text-dark">1:1 문의</a>
+			<a href="<%=broccoli%>/category.faq" class="btn btn-outline-light text-dark">자주하는 질문</a>
+			<a href="<%=broccoli%>/insert.con" class="btn btn-outline-light text-dark">1:1 문의</a>
 		</div>
   
 		<!-- 게시판 리스트 -->
