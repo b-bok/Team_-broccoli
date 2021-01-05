@@ -181,56 +181,7 @@
 	
 					}
 					
-					$(".thumbmenu").html(str);
-					
-					var page = "";
-					
-					
-					if(pageInfo.currentPage != 1) {
-						
-						page += "<li class='page-item'>" +
-						 "<a class='page-link'" + "href='<%=broccoli %>/' + ''" + ">"	
-						+ "이전"  + "</a>" + "</li>";
-						
-						
-						
-						
-					}
-					
-					
-					
-					for(var i = pageInfo.startPage; i<pageInfo.endPage; i++) {
-						
-						if(pageInfo.currentPage == i) {
-							
-							
-							page += "<li class='page-item active'>" +
-										"<a class='page-link'" + "href=''" + ">" + i + "</a>" + "</li>"
-							
-							
-						}else {
-							
-							page += "<li class='page-item'>" +
-							"<a class='page-link'" + "href=''" + ">" + i + "</a>" + "</li>"
-	
-						}
-
-					}
-					
-					
-					
-					if(pageInfo.currentPage != pageInfo.maxPage) {
-						
-						page += "<li class='page-item'>" +
-						 "<a class='page-link'" + "href=''" + ">"	
-						+ "다음"  + "</a>" + "</li>";
-						
-					}
-					
-					
-					
-					$(".pagination").html(page);
-					
+					$(".thumbmenu").html(str);		
 					
 				},
 				error : function(){
